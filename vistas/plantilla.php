@@ -19,8 +19,8 @@
 
   $vistas = $IV->obtener_vistas_controlador();
 
-  if ($vistas == "homePage" || $vistas == "404" || $vistas == "login" || $vistas == "agendarCita") {
-    if ($vistas == "homePage" || $vistas == "login" || $vistas == "agendarCita") {
+  if ($vistas == "homePage" || $vistas == "404" || $vistas == "login" || $vistas == "agendarCita" || $vistas == "registroCliente" || $vistas == "recuperarContra") {
+    if ($vistas == "homePage" || $vistas == "login" || $vistas == "agendarCita" || $vistas == "registroCliente" || $vistas == "recuperarContra") {
   //if ($vistas == "login" || $vistas == "404") {
     //if ($vistas == "login") {
       session_start(['name' => 'AMU']);
