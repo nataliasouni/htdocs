@@ -59,19 +59,21 @@
             <!-- Content -->
             <div class="tile-container">
 
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png"
-                                alt="Ensamble">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Ensamble</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
+                <a href="<?= SERVERURL; ?>ensambleM">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png"
+                                    alt="Ensamble">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Ensamble</h2>
+                                <p class="card-description">Descripción</p>
+                                <div class="registradas">Registradas</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <div class="card">
                     <div class="card-content">
@@ -86,6 +88,24 @@
                         </div>
                     </div>
                 </div>
+
+                <a href="<?= SERVERURL; ?>insumos">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content-img">
+                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/productos.png"
+                                alt="Devolucion">
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Insumos</h2>
+                            <p class="card-description">Descripción
+                            </p>
+                            <div class="registradas">Registradas</div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">

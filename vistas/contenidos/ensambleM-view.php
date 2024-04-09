@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-usuario/usuario.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-ensamble/ensamble.css">
 
 <main class="full-box main-container">
     <!-- Incluir la barra lateral -->
@@ -14,7 +14,7 @@
             <div class="tile-container">
 
                 <div class="choose-option">
-                    <h2 style='color: #0053A9'>Usuarios</h2>
+                    <h2 style='color: #0053A9'>Ensamble Existente</h2>
                 </div>
 
                 <div class="gestionarCliente">
@@ -26,29 +26,27 @@
                             <thead>
                                 <tr>
                                     <th>Item</th>
-                                    <th>Cédula</th>
-                                    <th>Nombre de usuario</th>
-                                    <th>Contraseña</th>
-                                    <th>Teléfono</th>
-                                    <th>Email</th>
-                                    <th>Permiso</th>
+                                    <th>Orden de producción</th>
+                                    <th>Cantidad por producción</th>
                                     <th>Estado</th>
+                                    <th>Contenido</th>
+                                    <th>Productos Total</th>
                                     <th class="editar">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                require_once "./controladores/usuarioControlador.php";
-                                $insUsuario = new usuarioControlador();
-                                echo $insUsuario->enlistarUsuarioControlador();
+                                    require_once "./controladores/ensambleControlador.php";
+                                    $insEnsamble = new ensambleControlador();
+                                    echo $insEnsamble->enlistarEnsambleControlador();
                                 ?>
                             </tbody>
                         </table>
                     </div>
                     <div class="pagination" id="paginationContainer"></div>
                     <div class="text-center">
-                        <button class="btn btn-primary" onclick="location.href='./agregarUsuario'">Agregar
-                            Usuario</button>
+                        <button class="btn btn-primary" onclick="location.href='./agregarEnsamble'">Agregar
+                            Ensamble</button>
                     </div>
                 </div>
             </div>
@@ -56,6 +54,6 @@
     </section>
 </main>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/usuario-script/usuario.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/ensamble-script/ensamble.js"></script>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/usuario-script/cancelarBtn.js" type="module"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/ensamble-script/cancelarBtn.js" type="module"></script>

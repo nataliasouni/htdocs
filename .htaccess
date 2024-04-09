@@ -1,8 +1,15 @@
 RewriteEngine On
-
 Options All -indexes
 
-RewriteRule ^([a-zA-Z0-9/_ñÑáéíóúÁÉÍÓÚ]+)$ index.php?views=$1
+# Nueva regla de reescritura para /productos/{categoria}
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^productos/([^/]+)$ productos.php?categoria=$1 [QSA,L]
+
+# Regla existente para reescribir todas las demás solicitudes a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9/_ñÑáéíóúÁÉÍÓÚ]+)$ index.php?views=$1 [QSA,L]
 
 
 
