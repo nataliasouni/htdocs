@@ -174,8 +174,12 @@ class ensambleControlador extends ensambleModelo
                     '<td><input type="number" name="cantidad[]" class="cantidad" required></td>' .
                     '<td>
                     <select class="pendiente" name="Pendiente[]">
-                        <option value="No">No</option>
-                        <option value="Si">Si</option>
+                    <option value="Si") {
+                        echo "selected";
+                    } ?>Esta pendiente</option>
+                    <option value="No") {
+                        echo "selected";
+                    } ?>No esta Pendiente</option>
                     </select>
                 </td>';
                 $tabla .= '</tr>';

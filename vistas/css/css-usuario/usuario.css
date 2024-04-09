@@ -240,7 +240,11 @@
 
 /* Ajustar el tamaño de las columnas en dispositivos pequeños */
 @media screen and (max-width: 767px) {
-    .table-responsive table,
+
+    .table-responsive table{
+        width: 530px;
+
+    }
     .table-responsive thead,
     .table-responsive tbody,
     .table-responsive tr,
