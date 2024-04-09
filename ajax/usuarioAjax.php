@@ -2,14 +2,14 @@
 $peticionAjax = true;
 require_once "../config/APP.php";
 
-if (isset($_POST['cedulaNormal']) || isset($_POST['cedulaDelete']) || isset($_POST['usuarioUpdate'])) {
+if (isset($_POST['cedula']) || isset($_POST['cedulaDelete']) || isset($_POST['usuarioCedulaUpdate'])) {
 
     //Instancia del controlador de usuarios
     require_once "../controladores/usuarioControlador.php";
     $objUsuario = new usuarioControlador();
 
     //Agregar usuario
-    if (isset($_POST['cedulaNormal'])) {
+    if (isset($_POST['usuario'])) {
         echo $objUsuario->agregarUsuarioControlador();
     }
 
@@ -19,7 +19,7 @@ if (isset($_POST['cedulaNormal']) || isset($_POST['cedulaDelete']) || isset($_PO
     }
 
     //Actualizar usuario
-    if(isset($_POST['usuarioUpdate'])){
+    if(isset($_POST['usuarioCedulaUpdate'])){
         echo $objUsuario->actualizarUsuarioControlador();
     }
     
