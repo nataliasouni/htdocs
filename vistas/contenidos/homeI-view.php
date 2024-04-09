@@ -59,85 +59,113 @@
             <!-- Content -->
             <div class="tile-container">
                 <a href="<?= SERVERURL; ?>homeP">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/produccion.png"
-                                alt="Produccion">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Producción de prendas quirurgicas</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/produccion.png"
+                                    alt="Produccion">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Producción de prendas quirurgicas</h2>
+                                <p class="card-description">Descripción</p>
+                                <div class="registradas">Registradas</div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </a>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/movilidad.png"
-                                alt="Movilidad">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Movilidad y Recuperación</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/mueble.png"
-                                alt="Mueble">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Muebles hospitalarios</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
+
+                <?php
+                $var = "Movilidad y Recuperación";
+                ?>
+                <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
+                    <div class="card" data-categoria="Movilidad y Recuperación">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/movilidad.png"
+                                    alt="Movilidad">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Movilidad y Recuperación</h2>
+                                <p class="card-description">Descripción</p>
+                                <div class="registradas">Registradas</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/respiratorio.png"
-                                alt="linea">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Línea respiratoría</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/colchones.png"
-                                alt="colchones">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Colchones y Colchonetas</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
+                </a>
+
+                <?php
+                $var = "Muebles Hospitalarios";
+                ?>
+                <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
+                    <div class="card" data-categoria="Muebles Hospitalarios">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/mueble.png"
+                                    alt="Mueble">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Muebles hospitalarios</h2>
+                                <p class="card-description">Descripción</p>
+                                <div class="registradas">Registradas</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/prendas.png"
-                                alt="linea">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Prendas quirurgicas</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
+                </a>
+                <?php
+                $var = "Línea respiratoria";
+                ?>
+                <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
+
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/respiratorio.png"
+                                    alt="linea">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Línea respiratoría</h2>
+                                <p class="card-description">Descripción</p>
+                                <div class="registradas">Registradas</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
+                <?php
+                $var = "Colchones y Colchonetas";
+                ?>
+                <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/colchones.png"
+                                    alt="colchones">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Colchones y Colchonetas</h2>
+                                <p class="card-description">Descripción</p>
+                                <div class="registradas">Registradas</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <?php
+                $var = "Prendas Quirurgicas";
+                ?>
+                <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/prendas.png"
+                                    alt="linea">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Prendas quirurgicas</h2>
+                                <p class="card-description">Descripción</p>
+                                <div class="registradas">Registradas</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
     </section>
 </main>

@@ -26,35 +26,50 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <?php
+                        $var = "Movilidad y Recuperación";
+                    ?>    
+                    <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/movilidad.png"
                             alt="Submenu Image">
                         Movilidad y recuperaciones
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <?php
+                        $var = "Muebles Hospitalarios";
+                    ?>    
+                    <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/mueble.png"
                             alt="Submenu Image">
                         Muebles hospitalarios
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <?php
+                        $var = "Línea Respiratoria";
+                    ?>    
+                    <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/respiratorio.png"
                             alt="Submenu Image">
                         Linea respiratoria
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <?php
+                        $var = "Colchones y Colchonetas";
+                    ?>    
+                    <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>"> 
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/colchones.png"
                             alt="Submenu Image">
                         Colchones y colchonetas
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <?php
+                        $var = "Prendas Quirurgicas";
+                    ?>    
+                    <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>"> 
                         <img class="submenu-image" src="./vistas/img/prendas.png"
                             alt="Submenu Image">
                         Prendas quirurgicas

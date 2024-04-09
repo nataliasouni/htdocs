@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-usuario/usuario.css">
+
 <main class="full-box main-container">
     <!-- Incluir la barra lateral -->
     <?php include "./vistas/inc/NavLateral.php"; ?>
@@ -20,7 +22,7 @@
                 <div class="añadir_cleinte-form">
                     <div class="form-group">
                     <p class="titulos_form">Cédula</p>
-                    <input type="text" name="cedula" class="login_nombreUsuario" required>
+                    <input type="text" name="cedulaNormal" class="login_nombreUsuario" required>
                     </div>
                     <div class="form-group">
                     <p class="titulos_form">Nombre de Usuario</p>
@@ -54,8 +56,8 @@
                     <input type="text" name="telefono" class="login_password" required>
                     </div>
                     <div class="botones">
-                    <button class="estado-enviar" type="submit" style="cursor: pointer" title="Enviar" name="Enviar">Agregar</button>
-                    <button id="botonCancelar" type="button" class="estado-cancelar" style="cursor: pointer" title="Cancelar" name="Cancelar">Cancelar</button>
+                        <button class="estado-enviar" type="submit" style="cursor: pointer" title="Enviar" name="Enviar">Agregar</button>
+                        <button id="botonCancelar" type="button" class="estado-cancelar" style="cursor: pointer" title="Cancelar" name="Cancelar">Cancelar</button>
                     </div>
                 </div>
             </form>
@@ -63,3 +65,7 @@
             </div>
     </section>
 </main>
+
+<script src="<?php echo SERVERURL; ?>vistas/js/usuario-script/usuario.js"></script>
+
+<script src="<?php echo SERVERURL; ?>vistas/js/usuario-script/cancelarBtn.js" type="module"></script>
