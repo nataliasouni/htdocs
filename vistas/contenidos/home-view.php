@@ -277,6 +277,7 @@
                             <?php
                             if ($_SESSION['permiso'] == "Produccion") {
                                 ?>
+                            <a href="<?= SERVERURL; ?>produccion">
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="content-img">
@@ -291,6 +292,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </a>
                                 <?php
                             }
                             ?>

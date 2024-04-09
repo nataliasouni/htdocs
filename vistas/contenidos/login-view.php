@@ -33,15 +33,16 @@
           required>
 
         <div class="centrados">
-          <a href="recuperarContra">¿Olvidaste tu contraseña?</a>
-          <p> </p>
           <button class="login_botonIngresar" type="submit" style="cursor: pointer" title="Ingresar"
             name="Ingresar">Iniciar Sesion</button>
-          <!-- Contenido del panel de registro aquí -->
+        </div>
+      </form>
+      <div class="centrados">
+          <a href="recuperarContra">¿Olvidaste tu contraseña?</a>
+          <p> </p>
           <p> </p>
           <button class="ghost" id="signUp" onclick="location.href='registroCliente'">Registrarse</button>
         </div>
-      </form>
     </div>
   </div>
   <div class="boton" style="text-align: left;">

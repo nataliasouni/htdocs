@@ -34,8 +34,8 @@
             <input type="password" name="contrasena" placeholder="">
             <p> </p>
             <button id="registrarse" type="submit">Registrarse</button>
-            <button id="btnIniciarSesion" type="button" onclick="location.href='login'">Iniciar sesión</button>
         </form>
+        <button id="btnIniciarSesion" type="button" onclick="location.href='login'">Iniciar sesión</button>
     </div>
 </div>
 

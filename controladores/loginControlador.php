@@ -25,7 +25,7 @@ class loginControlador extends loginModelo
                 allowOutsideClick: false
             }).then((result) => {
                 if (result.value) {
-                    location.href = '';
+                    location.href = 'login';
                 }
             })
             </script>";
@@ -52,7 +52,7 @@ class loginControlador extends loginModelo
                     confirmButtonText: 'Aceptar'
                 }).then((result) => {
                     if (result.value) {
-                        window.location.href = '" . SERVERURL . "';
+                        window.location.href = 'login';
                     }
                 })
                 </script>";;
@@ -79,7 +79,7 @@ class loginControlador extends loginModelo
                 confirmButtonText: 'Aceptar'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = '" . SERVERURL . "';
+                    window.location.href = 'login';
                 }
             })
             </script>";
@@ -143,7 +143,7 @@ class loginControlador extends loginModelo
                     allowOutsideClick: false
                     }).then((result) => {
                         if (result.value) {
-                            location.href = '';
+                            location.href = 'recuperarContra';
                         }
                         })
                     </script>";
@@ -180,7 +180,7 @@ class loginControlador extends loginModelo
                                             allowOutsideClick: false
                                         }).then((result) => {
                                             if (result.value) {
-                                                location.href = '" . SERVERURL . "';
+                                                location.href = 'login';
                                             }
                                         });
                                     } else {
@@ -192,7 +192,7 @@ class loginControlador extends loginModelo
                                             allowOutsideClick: false
                                         }).then((result) => {
                                             if (result.value) {
-                                                location.href = '';
+                                                location.href = 'recuperarContra';
                                             }
                                         });
                                     }
@@ -216,7 +216,7 @@ class loginControlador extends loginModelo
                     allowOutsideClick: false
                     }).then((result) => {
                         if (result.value) {
-                            location.href = '';
+                            location.href = 'recuperarContra';
                         }
                         })
                     </script>";
@@ -232,7 +232,7 @@ class loginControlador extends loginModelo
                     allowOutsideClick: false
                     }).then((result) => {
                     if (result.value) {
-                        location.href = '';
+                        location.href = 'recuperarContra';
                     }
                     })
                 </script>";
