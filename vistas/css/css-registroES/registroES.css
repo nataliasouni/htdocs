@@ -1,0 +1,291 @@
+.gestionarCliente {
+    padding-top: 50px;
+}
+
+/* Estilos para el filtro */
+.filter-container {
+    margin-bottom: 15px;
+}
+
+.filter-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para la paginación */
+.pagination {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #2DAF76;
+    color: #fff;
+}
+
+.pagination a.active:hover {
+    background-color: #006439;
+    color: #fff;
+}
+
+.pagination a:hover {
+    background-color: #0053A9;
+    color: #fff;
+}
+
+.formularioAjax {
+    margin: 30px auto;
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(125, 212, 173, 0.096);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.detallesU {
+    margin: 30px auto;
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(125, 212, 173, 0.096);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.añadir_cleinte-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.titulos_form {
+    margin: 0;
+    color: #333;
+}
+
+.login_nombreUsuario, .login_password, .selectform {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.botones {
+    grid-column: span 2;
+    text-align: center;
+}
+
+.detallesUs {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Esto puede variar según tu diseño */
+}
+
+.estado-volver {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0053A9;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+.estado-enviar {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2DAF76;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.estado-cancelar {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #DC0000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.estado-enviar:hover{
+    background-color: #00864c;
+}
+
+.estado-cancelar:hover {
+    background-color: #a50101;
+}
+
+.btn-primary{
+    background-color: #0053A9 !important; 
+}
+
+.btn-primary:hover{
+    background-color: #003064 !important; 
+}
+
+.btn-editar,
+.btn-detalles {
+    border: none; /* Eliminar bordes */
+    background: none; /* Eliminar fondo */
+    padding: 0; /* Eliminar espaciado interno */
+    cursor: pointer;
+}
+
+.btn-estado-usuario {
+    border: none; /* Eliminar bordes */
+    background: none; /* Eliminar fondo */
+    padding: 0; /* Eliminar espaciado interno */
+    cursor: none;
+}
+
+.btn-editar img,
+.btn-detalles img,
+.btn-estado-usuario img {
+    width: 20px; /* Ancho de la imagen */
+    height: 20px; /* Altura de la imagen */
+    border: none !important; /* Asegurar que no haya bordes en la imagen */
+}
+
+.table {
+    border-collapse: collapse; /* Para fusionar los bordes de las celdas */
+}
+
+
+
+.table th,
+.table td {
+    padding: 12px 20px; /* Añadir un espaciado interno a las celdas */
+    vertical-align: middle; /* Centrar verticalmente el contenido */
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table th:nth-child(4),
+.table td:nth-child(4) {
+    width: 220px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+}
+.table th:nth-child(3),
+.table td:nth-child(3) {
+    width: 100px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+}
+.table th.editar,
+.table td.editar {
+    width: 150px; /* Ancho fijo para la columna "Opciones" */
+    border: none !important;
+}
+
+/* Media queries para ajustar estilos en diferentes tamaños de pantalla */
+@media screen and (max-width: 768px) {
+    .añadir_cleinte-form {
+        display: block;
+    }
+
+    .filter-input,
+    .pagination a,
+    .formularioAjax {
+        width: 90%; /* Ajustar el ancho en dispositivos pequeños */
+        max-width: none; /* Anular el ancho máximo en dispositivos pequeños */
+    }
+
+
+    .table {
+        width: 350px;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .table thead,
+    .table tbody,
+    .table th,
+    .table td,
+    .table tr {
+        display: block;
+
+    }
+
+    .table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .table tr {
+        margin-bottom: 20px; /* Aumentar el margen inferior */
+    }
+
+    .table td {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+        top: 0px;
+        left: 30px;
+    }
+
+    .table td:before {
+        position: absolute;
+        top: 10px;
+        left: 30px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: normal;
+        overflow: hidden;
+    }
+
+    .table td:nth-of-type(1):before { content: "Item: "; }
+    .table td:nth-of-type(2):before { content: "ID: "; }
+    .table td:nth-of-type(3):before { content: "Cédula: "; }
+    .table td:nth-of-type(4):before { content: "Nombre del trabajador: "; }
+    .table td:nth-of-type(5):before { content: "Fecha: "; }
+    .table td:nth-of-type(6):before { content: "Hora Entrada: "; }
+    .table td:nth-of-type(7):before { content: "Hora Salida: "; }
+    .table td:nth-of-type(8):before { content: "Horas trabajadas: "; }
+    .table td:nth-of-type(9):before { content: "Opciones: "; }
+
+    /* Mostrar la columna "Item" en dispositivos móviles */
+    .table td:nth-of-type(1),
+    .table th:nth-of-type(1) {
+        position: absolute;
+        top: 0px;
+        left: 30px;
+        width: 350px;
+        padding-right: 200px;
+        white-space: normal;
+        overflow: hidden;
+        display: block;
+        position: relative;      
+        width: 350px;
+    }
+}
+
