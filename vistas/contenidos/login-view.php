@@ -22,7 +22,8 @@
       <!-- Contenido de tu formulario de inicio de sesión aquí -->
       <form id="loginform" action="" method="POST">
         <div class="imagen">
-        <img src="<?php echo SERVERURL; ?>vistas/img/logoAMU.png" alt="Logo de AMU" class="imagen-verticalmente-centrada">
+          <img src="<?php echo SERVERURL; ?>vistas/img/logoAMU.png" alt="Logo de AMU"
+            class="imagen-verticalmente-centrada">
         </div>
         <label id="nombre" for="usuario" class="titulos">Nombre de usuario</label>
         <input type="text" placeholder=" " autocomplete="off" id="usuario" name="usuario" class="login_nombreUsuario"
@@ -30,20 +31,25 @@
         <label for="password" class="titulos">Contraseña</label>
         <input type="password" placeholder=" " autocomplete="off" id="password" name="password" class="login_password"
           required>
-         
+
         <div class="centrados">
-        <a href="recuperarContra">¿Olvidaste tu contraseña?</a>
-        <p> </p>
-        <button class="login_botonIngresar" type="submit" style="cursor: pointer" title="Ingresar"
-          name="Ingresar">Iniciar Sesion</button>
-        <!-- Contenido del panel de registro aquí -->
-        <p> </p>
-        <button class="ghost" id="signUp" onclick="location.href='registroCliente'">Registrarse</button>
+          <a href="recuperarContra">¿Olvidaste tu contraseña?</a>
+          <p> </p>
+          <button class="login_botonIngresar" type="submit" style="cursor: pointer" title="Ingresar"
+            name="Ingresar">Iniciar Sesion</button>
+          <!-- Contenido del panel de registro aquí -->
+          <p> </p>
+          <button class="ghost" id="signUp" onclick="location.href='registroCliente'">Registrarse</button>
         </div>
       </form>
     </div>
   </div>
+  <div class="boton" style="text-align: left;">
+    <a onclick="window.history.back();"><button class="estado-volver" title="Volver" name="Volver"
+        style="font-size: 15px; width: 100px; margin: 10px">Volver</button></a>
   </div>
+  </div>
+
 
   <!-- Instancia del LoginControlador -->
   <?php
@@ -64,5 +70,3 @@
         }).join("");
     })
   </script>
-
-  
