@@ -1,0 +1,104 @@
+
+
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Barra de navegación */
+.full-box.navbar-infohead {
+    background-color: #75a4d66b;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+.full-box.navbar-infohead a {
+    color: #0055A7;
+    text-decoration: none;
+    margin-left: 10px; /* Aumenta el espacio entre los enlaces */
+    font-size: 16px;
+}
+
+/* Contenedores de la barra de navegación */
+.left-itemshea, .right-itemshea {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+/* Botones de la barra de navegación */
+.botonesHeader, .botonesCatalogo, .botonesCita {
+    color: #fff;
+    font-weight: bold;
+    height: 40px;
+    width: auto; /* Ajusta el ancho automáticamente según el contenido */
+    margin-right: 10px; /* Aumenta el espacio entre los botones */
+    border-radius: 10px;
+    border: none;
+    background-color: #0053A9;
+    padding: 0 20px; /* Añade espaciado interno a los botones */
+    cursor: pointer;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en filas adicionales */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    padding: 20px; /* Añade espacio interno al contenedor principal */
+}
+
+/* Tarjetas */
+.card-homepage {
+    width: 45%; /* Ancho de la tarjeta en pantallas grandes */
+    margin: 10px; /* Espacio entre las tarjetas */
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card-homepage img {
+    width: 100%; /* Ajusta la imagen al ancho de la tarjeta */
+    height: auto; /* Mantiene la proporción de aspecto */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-homepage h2 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #000;
+}
+
+.card-homepage p {
+    font-size: 14px;
+    color: #333;
+    padding: 0 10px;
+}
+
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .card-homepage {
+        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    }
+
+    .full-box.navbar-infohead {
+        padding: 5px; /* Reduce el espacio interno de la barra de navegación */
+    }
+
+    .left-itemshea, .right-itemshea {
+        flex-direction: column; /* Cambia la dirección de los elementos en columnas */
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+    }
+
+    .botonesHeader, .botonesCatalogo, .botonesCita {
+        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+        margin-bottom: 10px; /* Aumenta el espacio entre los botones */
+    }
+}

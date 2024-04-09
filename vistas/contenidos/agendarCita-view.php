@@ -1,8 +1,9 @@
-<main class="full-box main-container">
-    <!-- Incluir la barra lateral -->
-    <?php include "./vistas/inc/NavLateral.php"; ?>
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-citas/agendarCitas.css">
 
-    <?php include "./vistas/inc/header.php"; ?>
+<main class="full-box main-container">
+    <!-- Incluir la barra header -->
+    <?php include "./vistas/inc/headerInicio.php"; ?>
+
 
     <section class="full-box page-content">
 
@@ -50,56 +51,45 @@
                         <span class="sr-only">Siguiente</span>
                     </a>
                 </div>
+            </div>   
+        </diV>
+        
+        <!-- -----------------Contenido---------------------- -->
+<!--
+
+        <div class="container">
+            <div class="card">
+                <img class="card-imgCita" src="<?php echo SERVERURL; ?>vistas/img/cita.png"
+                    alt="Agendar citas">
+                <p>Contenido de la Card 1...</p>
             </div>
-
-            <div class="choose-option">
-                <h2 style='color: #0053A9'>Elegir opción</h2>
+            <div class="card">
+                <img class="card-imgCita" src="<?php echo SERVERURL; ?>vistas/img/conCita.png"
+                    alt="Consultar citas">
+            <p>Contenido de la Card 2...</p>
             </div>
-
-            <!-- Content -->
-            <div class="tile-container">
-
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png"
-                                alt="Ensamble">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Ensamble</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/corte.png"
-                                alt="Prendas Cortadas">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Prendas Cortadas</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
-                                alt="Devolucion">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Devolución por defectos</h2>
-                            <p class="card-description">Descripción
-                            </p>
-                            <div class="registradas">Registradas</div>
-                        </div>
-                    </div>
-                </div>
+        </div>
+-->
+        
+        <div class="content-cita">
+            <div class="card">
+                <img class="card-imgcita" src="<?php echo SERVERURL; ?>vistas/img/cita.png"
+                    alt="Agendar citas">
+                <h2>Agendar cita</h2>
             </div>
+            <div class="card">
+                <img class="card-imgcita" src="<?php echo SERVERURL; ?>vistas/img/conCita.png"
+                    alt="Consultar citas">
+                <h2>Consultar cita</h2>
+            
+            </div>
+        </div>
+
+
+
+
     </section>
+
+    <?php include "./vistas/inc/footerHome.php"; ?>
+
 </main>

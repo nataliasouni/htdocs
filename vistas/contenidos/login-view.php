@@ -36,7 +36,7 @@
                     <!-- Contenido del panel de registro aquí -->
                     <img src="<?php echo SERVERURL; ?>vistas/img/logoAMU.png" alt="Logo de AMU" style="width: 300px; height: auto;">
                     <p>Regístrate con nosotros</p>
-                    <button class="ghost" id="signUp" onclick="location.href='registrarse'">Registrarse</button>
+                    <button class="ghost" id="signUp">Registrarse</button>
                 </div>
             </div>
         </div>

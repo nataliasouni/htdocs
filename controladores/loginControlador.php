@@ -31,7 +31,7 @@ class loginControlador extends loginModelo
             </script>";
             exit();
         }
-        
+
         $datos = [
             "Usuario" => $usuario,
             "Clave" => $clave

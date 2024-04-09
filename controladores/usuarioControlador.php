@@ -11,16 +11,16 @@ class usuarioControlador extends usuarioModelo
   public function agregarUsuarioControlador()
   {
     //Controlador para agregar usuario
-    $cedula = mainModel::limpiarCadena($_POST['cedulaNormal']);
+    $cedula = mainModel::limpiarCadena($_POST['cedula']);
     $usuario = mainModel::limpiarCadena($_POST['usuario']);
     $password1 = mainModel::limpiarCadena($_POST['contrasena1']);
+    $permisos = mainModel::limpiarCadena($_POST['permisos']);
     $password2 = mainModel::limpiarCadena($_POST['contrasena2']);
     $telefono = mainModel::limpiarCadena($_POST['telefono']);
     $email = mainModel::limpiarCadena($_POST['email']);
-    $permisos = mainModel::limpiarCadena($_POST['permisos']);
 
     //Verificar si hay campos vacios
-    if ($cedula == "" || $usuario == "" || $password1 == "" || $password2 == "" || $permisos == "" || $telefono == "" || $email == "") {
+    if ($cedula == "" || $usuario == "" || $password1 == "" || $password2 == "" || $permisos == "" || $telefono== "" || $email == "") {
       $alerta = [
         "Alerta" => "simple",
         "Titulo" => "Ocurrió un error inesperado",
@@ -148,7 +148,7 @@ class usuarioControlador extends usuarioModelo
       "NombreUsuario" => $usuario,
       "Contrasena" => $clave,
       "Permiso" => $permisos,
-      "Telefono" => $telefono,
+      "Telefono" => $telefono ,
       "Email" => $email
     ];
 
@@ -156,11 +156,10 @@ class usuarioControlador extends usuarioModelo
 
     if ($agregarUsuario->rowCount() == 1) {
       $alerta = array(
-        "Alerta" => "redireccionarUser",
+        "Alerta" => "recargar",
         "Titulo" => "Usuario registrado",
-        "Texto" => "Se ha completado el registro del usuario.",
-        "Tipo" => "success",
-        "Url" => SERVERURL . "usuarios"
+        "Texto" => "Se ha completado el registro del usuario",
+        "Tipo" => "success"
       );
       echo json_encode($alerta);
       exit();
@@ -184,7 +183,7 @@ class usuarioControlador extends usuarioModelo
     $datos = $conexion->query($consulta);
     $datos = $datos->fetchAll();
     $total = $conexion->query("SELECT FOUND_ROWS()");
-    $total = (int) $total->fetchColumn();
+    $total = (int)$total->fetchColumn();
     $tabla = '';
 
     if ($total >= 1) {
@@ -194,34 +193,18 @@ class usuarioControlador extends usuarioModelo
         $tabla .= '<tr>
                     <td>' . $contador . '</td>
                     <td>' . $rows['cedula'] . '</td>' .
-          '<td>' . $rows['nombre_usuario'] . '</td>' .
-          '<td>' . mainModel::decryption($rows['contrasena']) . '</td>' .
-          '<td>' . $rows['telefono'] . '</td>' .
-          '<td>' . $rows['email'] . '</td>' .
-          '<td>' . $rows['permiso'] . '</td>' .
-          '<td>' . ($rows['estado'] == "si" ? "Habilitada" : "Deshabilitada") . '</td>';
+                    '<td>' . $rows['nombre_usuario'] . '</td>' .
+                    '<td>' . mainModel::decryption($rows['contrasena'])  . '</td>' .
+                    '<td>' . $rows['telefono'] . '</td>' .
+                    '<td>' . $rows['email'] . '</td>' . 
+                    '<td>' . $rows['permiso'] . '</td>' .
+                    '<td>' . ($rows['estado'] == "si" ? "Habilitada" : "Deshabilitada") . '</td>';
 
         //Botones
         if ($rows['cedula'] != 1) {
-          $imagenEstado = ($rows['estado'] == "si") ? "habilitado.jpeg" : "deshabilitado.jpeg";
-
           $tabla .= '<td>
-
-                        <button onclick="window.location.href = \'' . SERVERURL . 'editarusuario/' .
-                          mainModel::encryption($rows['cedula']) . '\';" class="estado-editar button_js btn-editar" 
-                        type="button" title="Editar" name="Editar"> 
-                        <img src="./vistas/img/editar.png"></img>
-                        </button>
-                        <button onclick="window.location.href = \'' . SERVERURL . 'detallesUsuario/' .
-                          mainModel::encryption($rows['cedula']) . '\';" class="estado-detalles button_js btn-detalles" 
-                        type="button" title="detalles" name="detalles"> 
-                        <img src="./vistas/img/detalles.png"></img>
-                        </button>
-                        <button class="estado-usuario button_js btn-estado-usuario">
-                        <img src="./vistas/img/' . $imagenEstado . '" alt="">
-                        </button>
-                        
-                      </td>';
+                            <button onclick="window.location.href = \'' . SERVERURL . 'editarusuario/' . mainModel::encryption($rows['cedula']) . '\';" class="estado-editar button_js" type="button" style="cursor: pointer" title="Editar" name="Editar">Editar</button>
+                        </td>';
         }
         $tabla .= '
                     </tr>';
@@ -320,7 +303,7 @@ class usuarioControlador extends usuarioModelo
   public function actualizarUsuarioControlador()
   {
     //Recibiendo Identificador unico
-    $cedula = mainModel::decryption($_POST['usuarioUpdate']);
+    $cedula = mainModel::decryption($_POST['usuarioCedulaUpdate']);
     $cedula = mainModel::limpiarCadena($cedula);
 
     //Comprobar existencia del usuario
@@ -344,13 +327,13 @@ class usuarioControlador extends usuarioModelo
     $usuario = mainModel::limpiarCadena($_POST['usuarioUp']);
     $nuevaContrasena1 = mainModel::limpiarCadena($_POST['nuevaContrasena1Up']);
     $nuevaContrasena2 = mainModel::limpiarCadena($_POST['nuevaContrasena2Up']);
+    $permisos = mainModel::limpiarCadena($_POST['permisosUp']);
     $telefono = mainModel::limpiarCadena($_POST['telefonoUp']);
     $email = mainModel::limpiarCadena($_POST['emailUp']);
     $estado = mainModel::limpiarCadena($_POST['estado']);
-    $permisos = mainModel::limpiarCadena($_POST['permisosUp']);
 
     //Comprobar si han habido cambios
-    if ($cedulaNueva == $datos['cedula'] && $usuario == $datos['nombre_usuario'] && $telefono == $datos['telefono'] && $email == $datos['email'] && $estado == $datos['estado'] && $permisos == $datos['permiso']) {
+    if ($cedulaNueva == $datos['cedula'] && $usuario == $datos['nombre_usuario'] && $permisos == $datos['permiso'] && $telefono == $datos['telefono'] && $email == $datos['email'] && $estado == $datos['estado']) {
       if ($nuevaContrasena1 == "" || $nuevaContrasena2 == "") {
         $alerta = [
           "Alerta" => "simple",
@@ -387,6 +370,22 @@ class usuarioControlador extends usuarioModelo
                 - El dominio debe tener al menos una extensión de dos o más letras, como .com, .org, .net, etc.",
           "Tipo" => "error"
         );
+        echo json_encode($alerta);
+        exit();
+      }
+    }
+
+    //Verificar cedula nueva
+    if ($cedulaNueva != $datos['cedula']) {
+      $checKCedulaNueva = mainModel::consultaSimple("SELECT * FROM usuario WHERE cedula = '$cedulaNueva'");
+
+      if ($checKCedulaNueva->rowCount() > 0) {
+        $alerta = [
+          "Alerta" => "simple",
+          "Titulo" => "Ocurrió un error inesperado",
+          "Texto" => "Ya existe un usuario registrado con el número de cédula que quieres usar para la actualización de datos del usuario.",
+          "Tipo" => "error"
+        ];
         echo json_encode($alerta);
         exit();
       }
@@ -443,7 +442,7 @@ class usuarioControlador extends usuarioModelo
       case "Administrador":
       case "Taller":
       case "Produccion":
-        break;
+      break;
       default:
         $alerta = array(
           "Alerta" => "simple",
@@ -477,10 +476,10 @@ class usuarioControlador extends usuarioModelo
       "Cedula" => $cedulaNueva,
       "Usuario" => $usuario,
       "Contrasena" => $claveUpdate,
+      "Permiso" => $permisos,
       "Telefono" => $telefono,
       "Email" => $email,
       "Estado" => $estado,
-      "Permiso" => $permisos,
       "CedulaOld" => $datos['cedula']
     ];
 
@@ -492,7 +491,7 @@ class usuarioControlador extends usuarioModelo
         "Titulo" => "Usuario actualizado",
         "Texto" => "Se ha completado la actualizacion de datos del usuario.",
         "Tipo" => "success",
-        "Url" => SERVERURL . "usuarios"
+        "Url" => SERVERURL . "gestionar_usuario"
       );
       echo json_encode($alerta);
       exit();
