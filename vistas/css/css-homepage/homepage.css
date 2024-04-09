@@ -7,98 +7,246 @@ body {
     margin: 0;
     padding: 0;
 }
-
-/* Barra de navegación */
 .full-box.navbar-infohead {
     background-color: #75a4d66b;
     color: #fff;
     padding: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: space-between; 
 }
-
 .full-box.navbar-infohead a {
     color: #0055A7;
     text-decoration: none;
-    margin-left: 10px; /* Aumenta el espacio entre los enlaces */
-    font-size: 16px;
+    margin-left: 3px;
+    font-size: 20px;
 }
 
-/* Contenedores de la barra de navegación */
-.left-itemshea, .right-itemshea {
+.left-itemshea {
     display: flex;
-    align-items: center; /* Centra verticalmente los elementos */
+    color : #0053A9;
 }
 
-/* Botones de la barra de navegación */
-.botonesHeader, .botonesCatalogo, .botonesCita {
+.right-itemshea {
+    
+    display: flex;
+    position: relative; 
+    z-index: 1; 
+}
+
+.botonesHeader{
     color: #fff;
-    font-weight: bold;
-    height: 40px;
-    width: auto; /* Ajusta el ancho automáticamente según el contenido */
-    margin-right: 10px; /* Aumenta el espacio entre los botones */
+    font: bold;
+    height: 110%;
+    width: 150px;
+    margin-right: 5%;
     border-radius: 10px;
-    border: none;
+    border: #fff;
     background-color: #0053A9;
-    padding: 0 20px; /* Añade espaciado interno a los botones */
-    cursor: pointer;
 }
 
-/* Contenedor principal */
-.container {
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en filas adicionales */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    padding: 20px; /* Añade espacio interno al contenedor principal */
+.botonesCatalogo{
+    height: 27px;
+    width: 27px;
+    color: #fff;
+    margin-right: 5%;
+    border-radius: 10px;
+    border: #fff;
+    background-color: #0053A9;
 }
 
-/* Tarjetas */
+.botonesCita{
+    color: #fff;
+    font: bold;
+    height: 40px;
+    width: 100%;
+    margin-right: 5%;
+    border-radius: 10px;
+    border: #fff;
+    background-color: #0053A9;
+}
+
+.choose-option {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0px; 
+    position: relative; 
+}
+
 .card-homepage {
-    width: 45%; /* Ancho de la tarjeta en pantallas grandes */
-    margin: 10px; /* Espacio entre las tarjetas */
-    background-color: #fff;
-    border-radius: 15px;
+    display: flex;
+}
+
+.card-contenthomepage {
+    width: 85%; /* Ancho de la tarjeta */
+    height: auto; /* Altura de la tarjeta */
+    background-color: #fff; 
+    border-radius: 25px;
+    margin: 30px 10px 20px 20px;
+    overflow: hidden;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    /*cursor: pointer;*/
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+
+}
+
+.card-descriptionhomepage {
+    font-size: 5px;
+    color: #313131; /* Color del texto de la descripción */
+    margin-top: 2px; /* Espaciado superior */
+    margin-right: 20px;
+    /*line-height: 5px;*/
+}
+
+.card-detailshomepage {
+    width: 80%; /* Ancho del contenido de la tarjeta */
+    display: flex; /* Utilizar flexbox para alinear los elementos */
+    flex-direction: column; /* Alinear elementos verticalmente */
+    justify-content: center; /* Centrar verticalmente */
+    padding-left: 10px; /* Añadir un poco de espacio a la izquierda */
+    text-align: left;
+}
+
+.card-imagehomepage {
+    width: 85%; /* Ajustar el ancho de la imagen */
+    height: auto; /* Mantener la relación de aspecto */
+    padding-left: 50px;
+    margin-top: 10px;
+    border-radius: 15px; /* Ajustar bordes */
+    object-fit: cover; /* Ajustar tamaño de imagen */
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-.card-homepage img {
-    width: 100%; /* Ajusta la imagen al ancho de la tarjeta */
-    height: auto; /* Mantiene la proporción de aspecto */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-.card-homepage h2 {
-    font-size: 18px;
-    margin: 10px 0;
-    color: #000;
-}
-
-.card-homepage p {
+.card-titlehomepage {
+    width: auto;
     font-size: 14px;
-    color: #333;
-    padding: 0 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    color: #000000; /* Color del texto en la superposición */
+    border-bottom: 1px solid #000; /* Línea de color negro debajo del título */
+    padding-bottom: 5px; /* Espacio entre el título y la línea */
+    text-align: center;
 }
 
-/* Media Query para pantallas más pequeñas */
-@media (max-width: 768px) {
-    .card-homepage {
-        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
-    }
+.contentboton{
+    width: 10px;
+    margin-left: 40%;
+    margin-bottom: 10px;
+}
 
-    .full-box.navbar-infohead {
-        padding: 5px; /* Reduce el espacio interno de la barra de navegación */
-    }
+.imgButton{
+    width: 25px;
+    height: 25px;
+}
 
-    .left-itemshea, .right-itemshea {
-        flex-direction: column; /* Cambia la dirección de los elementos en columnas */
-        align-items: flex-start; /* Alinea los elementos a la izquierda */
-    }
+.container {
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
 
-    .botonesHeader, .botonesCatalogo, .botonesCita {
-        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
-        margin-bottom: 10px; /* Aumenta el espacio entre los botones */
-    }
+.left-container{
+    width: auto;
+    height: auto;
+    background-color: red;
+    margin-right: 200px; /* Espacio entre el recuadro grande y los pequeños */
+    padding: 20px; /* Espaciado interno del recuadro grande */
+}
+
+.right-container{
+    width: auto;
+    height: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    border-radius: 20px;
+    /*background-color: black; /* Color de fondo del recuadro grande */
+}
+
+.large-box {
+    /*flex-grow: 1; /* Toma todo el espacio restante */
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #fff; /* Color de fondo del recuadro grande */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    margin-right: 10%; /* Espacio entre el recuadro grande y los pequeños */
+    padding: 20px; /* Espaciado interno del recuadro grande */
+    /*float: left;*/
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.img-foto{
+    width: 50%;
+    height: 100%;
+    margin-bottom: 5%;
+    border-radius: 100%;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.content-text{
+    font-size: 14px;
+    color: #313131; /* Color del texto de la descripción */
+}
+
+.img-contentfoto{
+    width: auto;
+    height: auto;
+}
+
+.small-boxes {
+    /*float: right;*/
+    display: flex;
+    width: 130%;
+    height: 50%;
+    flex-direction: row; /* Envuelve los recuadros pequeños cuando no caben en una línea */
+    margin-right: 50%;
+}
+
+.box-arriba , .box-abajo{
+    display: flex;
+    width: calc(50% - 10px); /* Ancho del 50% menos los márgenes */
+    height: 150px; /* Altura de los recuadros pequeños */
+    margin-bottom: 30px; /* Espacio entre los recuadros pequeños */
+    margin-right: 30px; /* Espacio entre los recuadros pequeños */
+    background-color: #fff; /* Color de fondo de los recuadros pequeños */
+    padding: 10px; /* Espaciado interno de los recuadros pequeños */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    border-radius: 20px;
+    
+    
+}
+
+
+.box-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+
+ /*Establecer el tamaño del carrusel para ocupar toda la pantalla */
+#myCarousel {
+    width: 100%;
+    height: 50vh; /* Altura completa de la ventana */
+}
+
+/* Ajustar el tamaño de las imágenes para que ocupen todo el carrusel */
+#myCarousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Para que la imagen se ajuste dentro del espacio sin deformarse */
 }
