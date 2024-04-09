@@ -88,7 +88,7 @@
                         </div>
                         <div class="card-details">
                             <h2 class="card-title">Talleres</h2>
-                            <p class="card-description">Descripción</p>
+                            <p class="card-description">Aquí podrás ver la info de todos los talleres</p>
                             <div class="registradas">Registradas</div>
                         </div>
                     </div>
