@@ -25,8 +25,6 @@ function enviarFormularioAjax(e) {
     textoAlerta = "Los datos se eliminaran del sistema";
   } else if (tipo === "update") {
     textoAlerta = "Los datos se actualizaran del sistema";
-  } else if (tipo === "confirm") {
-      textoAlerta = "Esta seguro";
   } else if (tipo === "search") {
     textoAlerta = "Se elimnara el termino de busqueda";
   } else if (tipo === "loans") {
