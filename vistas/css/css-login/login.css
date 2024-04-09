@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 110vh; /* Cambia la altura del contenedor principal */
+    background: #ffffff;;
+  }
+  
+  .form-container {
+    background: #caddef;
+    padding: 20px; /* Aumenta el relleno para hacer el panel más grande */
+    border-radius: 10px;
+    width: 100%; /* Ajusta el ancho del panel */
+    max-width: 450px; /* Limita el ancho máximo para que no se estire demasiado en pantallas grandes */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7); /* Ajusta la sombra */
+    text-align: left;
+  }
+  
+  .form-container form {
+    flex-direction: column;
+  }
+  
+  .form-container button#signUp {
+    background: #3FC56A;
+    border-color: #3FC56A; /* Cambia el color del borde al mismo verde */
+    color: #fff; /* Cambia el color del texto a blanco */
+  }
+  
+
+
+  .centrados{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+  }
+
+  .imagen{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .imagen-verticalmente-centrada {
+    width: 280px;
+  }
+  
+
+  .form-container label {
+    font-weight: bold;
+    font-size: 17px;
+    color: #0056b3;
+    text-align: left;
+    margin: 0;
+  }
+
+  .titulos {
+    text-align: left;
+  }
+  
+  .form-container input {
+    background: #f3f7fd; /* Cambia el color de fondo */
+    border: 1px solid #ccc; /* Cambia el color del borde a un tono más suave */
+    border-radius: 10px; /* Añade esquinas redondeadas */
+    padding: 12px 10px;
+    width: 100%;
+    width: calc(100% - 10px); /* Ajusta el ancho del input considerando el relleno */
+    box-sizing: border-box; /* Incluye el borde y el relleno en el ancho total */
+    margin-bottom: 20px;
+  }
+  
+  .form-container button {
+    border-radius: 20px;
+    border: 1px solid #0f61a8;
+    background: #0f61a8;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    width: 177px;
+    height: 35px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin: 13 auto;
+    text-align: center;
+  }
+  
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .form-container a {
+    text-align: center; /* Centra el texto */
+    color: #0056b3;
+    text-decoration: underline;
+  }
+
+  .form-container p  {
+    text-align: center;
+    margin-bottom: 0px; /* Ajusta el margen inferior según sea necesario */
+    font-weight: bold;
+    color: #0056b3;
+  }
+  
