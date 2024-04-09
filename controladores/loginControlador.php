@@ -45,7 +45,7 @@ class loginControlador extends loginModelo
                 echo "<script>
                 Swal.fire({
                     title: 'Cuenta deshabilitada',
-                    text: 'Esta cuenta se encuentra deshabilitada y no puede acceder al sistema, contacte con el máster para su habilitación.',
+                    text: 'Esta cuenta se encuentra deshabilitada y no puede acceder al sistema, contacte con la persona encargada para su habilitación.',
                     type: 'error',
                     allowOutsideClick: false,
                     confirmButtonText: 'Aceptar'
