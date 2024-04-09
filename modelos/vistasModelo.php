@@ -7,7 +7,7 @@ class vistasModelo
     $listaBlanca = ["home", "homeP", "homeN", "homeI", "homeT", "homeOT", "homeOTT", "usuarios", "agregarUsuario", "agendarCita",
     "agregarAlquiler", "agregarEnsamble", "agregarEntradaRES", "agregarInsumo", "agregarProducto", "agregarTrabajador", "alquilerProductos",
     "detallesEnsamble", "detallesInsumo", "detallesProducto", "detallesUsuario", "editarEnsamble", "editarInsumo", "editarProducto", 
-    "editarProductoEnsamble", "editarRegistro", "editarTrabajador", "editarUsuario", "ensambleM", "homeGT", "insumos", "produccion",
+    "editarProductoEnsamble", "editarRegistro", "editarTrabajador", "editarusuario", "ensambleM", "homeGT", "insumos", "produccion",
     "productos", "registroES", "trabajadores"];
 
     if (in_array($vistas, $listaBlanca)) {
