@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-trabajador/trabajador.css">
 <main class="full-box main-container">
     <!-- Incluir la barra lateral -->
     <?php include "./vistas/inc/NavLateral.php"; ?>

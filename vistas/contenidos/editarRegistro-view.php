@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-registroES/registroES.css">
 <?php
 // Verificar permisos de usuario
 if ($_SESSION['permiso'] != "Master") {
