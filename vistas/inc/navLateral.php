@@ -26,50 +26,35 @@
                     </a>
                 </li>
                 <li>
-                    <?php
-                        $var = "Movilidad y Recuperación";
-                    ?>    
-                    <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
+                    <a href="#">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/movilidad.png"
                             alt="Submenu Image">
                         Movilidad y recuperaciones
                     </a>
                 </li>
                 <li>
-                    <?php
-                        $var = "Muebles Hospitalarios";
-                    ?>    
-                    <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
+                    <a href="#">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/mueble.png"
                             alt="Submenu Image">
                         Muebles hospitalarios
                     </a>
                 </li>
                 <li>
-                    <?php
-                        $var = "Línea Respiratoria";
-                    ?>    
-                    <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
+                    <a href="#">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/respiratorio.png"
                             alt="Submenu Image">
                         Linea respiratoria
                     </a>
                 </li>
                 <li>
-                    <?php
-                        $var = "Colchones y Colchonetas";
-                    ?>    
-                    <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>"> 
+                    <a href="#">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/colchones.png"
                             alt="Submenu Image">
                         Colchones y colchonetas
                     </a>
                 </li>
                 <li>
-                    <?php
-                        $var = "Prendas Quirurgicas";
-                    ?>    
-                    <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>"> 
+                    <a href="#">
                         <img class="submenu-image" src="./vistas/img/prendas.png"
                             alt="Submenu Image">
                         Prendas quirurgicas
@@ -206,15 +191,31 @@
         <?php } ?>
         <?php if ($_SESSION['permiso'] == "Administrador" || $_SESSION['permiso'] == "Master"){ ?>
         <li>
-            <a href="#">
-                <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/registro.png" alt="Menu Image">
-                Registro Entrada y Salida
+            <a href="homeGT">
+                <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/obrero.png" alt="Menu Image">
+                Control de Trabajadores
             </a>
+                <ul class="submenu">
+                    <li>
+                        <a href="<?= SERVERURL; ?>registroES">
+                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/tiempo-extraordinario.png"
+                                alt="Submenu Image">
+                            Registro Entrada y Salida
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= SERVERURL; ?>trabajadores">
+                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/gestion-de-candidatos.png"
+                                alt="Submenu Image">
+                            Lista Trabajadores
+                    </a>
+                </li>
+                </ul>
         </li>
         <?php } ?>
         <?php if ($_SESSION['permiso'] == "Administrador" || $_SESSION['permiso'] == "Master"){ ?>
         <li>
-            <a href="#">
+            <a href="alquilerProductos">
                 <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/alquiler.png" alt="Menu Image">
                 Alquiler Productos
             </a>

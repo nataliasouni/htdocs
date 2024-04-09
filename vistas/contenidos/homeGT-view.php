@@ -58,48 +58,46 @@
 
             <!-- Content -->
             <div class="tile-container">
-
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png"
-                                alt="Ensamble">
+                <?php
+                if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" ) {
+                    ?>
+                    <a href="<?= SERVERURL; ?>trabajadores">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="content-img">
+                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/gestion-de-candidatos.png"
+                                        alt="Inventario">
+                                </div>
+                                <div class="card-details">
+                                    <h2 class="card-title">Lista Trabajadores</h2>
+                                    <p class="card-description">Aqui podrás ver la lista de trabajadores</p>
+                                    <div class="registradas">Registradas</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Ensamble</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
+                <?php
+                }
+                ?>
+                <?php
+                if ($_SESSION['permiso'] == "Master") {
+                    ?>
+                     <a href="<?= SERVERURL; ?>registroES">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="content-img">
+                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/tiempo-extraordinario.png"
+                                        alt="Talleres">
+                                </div>
+                                <div class="card-details">
+                                    <h2 class="card-title">Registro Entrada y Salida</h2>
+                                    <p class="card-description">Aqui podras registrar la entrada y salida de los trabajadores</p>
+                                    <div class="registradas">Registradas</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/corte.png"
-                                alt="Prendas Cortadas">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Prendas Cortadas</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
-                                alt="Devolucion">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Devolución por defectos</h2>
-                            <p class="card-description">Descripción
-                            </p>
-                            <div class="registradas">Registradas</div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                }
+                ?>
             </div>
     </section>
 </main>

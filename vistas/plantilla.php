@@ -19,8 +19,8 @@
 
   $vistas = $IV->obtener_vistas_controlador();
 
-  if ($vistas == "login" || $vistas == "404" || $vistas == "registrarse") {
-    if ($vistas == "login" || $vistas == "registrarse") {
+  if ($vistas == "login" || $vistas == "404") {
+    if ($vistas == "login") {
       session_start(['name' => 'AMU']);
       session_unset();
       session_destroy();

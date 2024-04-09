@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-trabajador/trabajador.css">
 <main class="full-box main-container">
     <!-- Incluir la barra lateral -->
     <?php include "./vistas/inc/NavLateral.php"; ?>
@@ -12,32 +13,29 @@
             <div class="tile-container">
 
                 <div class="choose-option">
-                    <h2 style='color: #0053A9'>Usuarios</h2>
+                    <h2 style='color: #0053A9'>Trabajadores</h2>
                 </div>
 
                 <div class="gestionarCliente">
                     <div class="filter-container">
-                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar usuario...">
+                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar trabajador...">
                     </div>
                     <table id="alertTable" class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Item</th>
                                 <th>Cédula</th>
-                                <th>Nombre de usuario</th>
-                                <th>Contraseña</th>
+                                <th>Nombre de Trabajador</th>
                                 <th>Teléfono</th>
-                                <th>Email</th>
-                                <th>Permiso</th>
                                 <th>Estado</th>
-                                <th class="editar"></th>
+                                <th class="editar">Opciones</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody">
                             <?php
-                            require_once "./controladores/usuarioControlador.php";
-                            $insUsuario = new usuarioControlador();
-                            echo $insUsuario->enlistarUsuarioControlador();
+                            require_once "./controladores/trabajadorControlador.php";
+                            $insTrabajador = new trabajadorControlador();
+                            echo $insTrabajador->enlistarTrabajadorControlador();
                             ?>
                         </tbody>
                     </table>
@@ -46,11 +44,16 @@
                             <!-- Aquí se insertará dinámicamente la paginación -->
                         </ul>
                     </nav>
-                    <div class="text-center">
-                        <button class="btn btn-primary" onclick="location.href='./agregarUsuario'">Agregar Usuario</button>
+                    <div class="d-flex justify-content-end">
+                        <div class="mr-2">
+                            <button class="btn btn-primary" onclick="location.href='./agregarTrabajador'">Agregar Trabajador</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </main>
+<script src="<?php echo SERVERURL; ?>vistas/js/trabajador-script/trabajador.js"></script>
+
+<script src="<?php echo SERVERURL; ?>vistas/js/trabajador-script/botonCancelar.js" type="module"></script>
