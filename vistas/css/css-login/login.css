@@ -4,6 +4,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
   }
+
   
   .container {
     display: flex;
@@ -11,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 110vh; /* Cambia la altura del contenedor principal */
-    background: #ffffff;;
+    background: transparent;
   }
   
   .form-container {
@@ -82,10 +83,10 @@ body {
     border: 1px solid #0f61a8;
     background: #0f61a8;
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: none;
     transition: transform 80ms ease-in;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
     width: 177px;
@@ -112,4 +113,6 @@ body {
     font-weight: bold;
     color: #0056b3;
   }
+
   
+

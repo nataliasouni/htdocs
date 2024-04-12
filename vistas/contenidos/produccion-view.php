@@ -19,7 +19,7 @@
                     <div class="containerCompleto">
                         <div class="centrados">
                             <form action="" method="POST"> <!-- Formulario -->
-                                <label class="titulos" id="seleccionar">Seleccione un trabajador para ingresar la cantidad producida:</label>
+                                <label class="titulos" id="seleccionar">Seleccione un trabajador para ingresar la cantidad elaborada:</label>
                                 <select id="cedulatrabajador" name="cedulatrabajador">
                                     <!-- Aquí se cargarán los nombres de los trabajadores desde el controlador -->
                                     <?php
@@ -41,7 +41,7 @@
                                 <input type="date" id="fecha" name="fecha">
                                 <p> </p>
                                 <div class="input-button-container">
-                                    <label class="titulos" id="pr" >Ingrese las prendas quirurjicas producidas: </label>
+                                    <label class="titulos" id="pr" >Ingrese las prendas quirurgicas elaboradas: </label>
                                     <input name="prendasquirurgicas"id="prendasquirurgicas" type="text" placeholder=" " autocomplete="off" id="produccion" name="produccion" required></input>
                                     <div >
                                         <label class="titulos" id="pre" >Ingrese las prendas defectuosas encontradas: </label>

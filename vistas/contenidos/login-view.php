@@ -45,10 +45,7 @@
         </div>
     </div>
   </div>
-  <div class="boton" style="text-align: left;">
-    <a onclick="window.history.back();"><button class="estado-volver" title="Volver" name="Volver"
-        style="font-size: 15px; width: 100px; margin: 10px">Volver</button></a>
-  </div>
+  
   </div>
 
 

@@ -35,10 +35,10 @@ body {
   border: 1px solid #0f61a8;
   background: #0f61a8;
   color: #fff;
-  font-size: 12px; /* Ajuste de tamaño de fuente */
+  font-size: 14px; /* Ajuste de tamaño de fuente */
   font-weight: bold;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  text-transform: none;
   transition: transform 80ms ease-in;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
   margin-bottom: 30px; /* Ajuste del margen inferior */
