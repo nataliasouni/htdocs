@@ -70,13 +70,44 @@
     grid-gap: 20px;
 }
 
+.añadir_cliente-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.referenciasPersonales1-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+
+
+
+.referenciasPersonales2-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
 .form-group {
     margin-bottom: 15px;
+}
+
+.Productos-group {
+    display: contents;
 }
 
 .titulos_form {
     margin: 0;
     color: #333;
+}
+
+.tituloT_form {
+    margin: 0;
+    color: #333;
+    text-align: left;
 }
 
 .login_nombreUsuario, .login_password, .selectform {
@@ -160,6 +191,25 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.ref-group input[type="text"] {
+    width: 50%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.refTel-group input[type="text"] {
+    width: 50%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-right: 210px;
 }
 
 .botones {
