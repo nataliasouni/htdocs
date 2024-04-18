@@ -134,6 +134,17 @@ class registroESControlador extends registroESModelo
         return registroESModelo::datosRegistroESModelo($id);
     } //Fin del controlador
 
+
+    // Método para cargar los nombres y las cedulas de los trabajadores en el ComboBox
+    public function cargarNombresYCedulasTrabajadores() {
+        $registroESModelo = new registroESModelo();
+        $datosTrabajadores = $registroESModelo->obtenerNombresYCedulasTrabajadoresModelo();
+            
+        foreach ($datosTrabajadores as $nombre => $cedula) {
+                echo "<option value='$cedula'>$nombre </option>";
+            }
+    }
+
     //Inicio del controlador
     public function actualizarRegistroESControlador()
     {

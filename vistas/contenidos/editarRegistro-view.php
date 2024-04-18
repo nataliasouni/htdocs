@@ -44,7 +44,7 @@ if ($datosRegistroES->rowCount() == 1) {
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Fecha</p>
-                            <input type="text" name="fechaUp" class="login_password" value="<?= $campos['fecha'] ?>" required>
+                            <input type="date" name="fechaUp" class="login_password" value="<?= $campos['fecha'] ?>" readonly>
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Hora de Entrada</p>
