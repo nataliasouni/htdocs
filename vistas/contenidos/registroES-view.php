@@ -24,7 +24,7 @@
                         <thead>
                             <tr>
                                 <th>Item</th>
-                                <th>ID</th>
+                            
                                 <th>Cédula</th>
                                 <th>Nombre del trabajador</th>
                                 <th>Fecha</th>

@@ -43,19 +43,6 @@ class trabajadorControlador extends trabajadoresModelo
         exit();
       }
   
-      //Comprobar que no hay un usuario con el mismo nombre de usuario
-      $checkUser = mainModel::consultaSimple("SELECT nombre FROM trabajadores WHERE nombre = '$trabajador'");
-  
-      if ($checkUser->rowCount() > 0) {
-        $alerta = array(
-          "Alerta" => "simple",
-          "Titulo" => "Ocurrió un error inesperado",
-          "Texto" => "El nombre de trabajador no se encuentra disponible.",
-          "Tipo" => "error"
-        );
-        echo json_encode($alerta);
-        exit();
-      }
   
   
   
@@ -239,7 +226,7 @@ class trabajadorControlador extends trabajadoresModelo
     }
 
     //Obtener valores del form
-    $cedulaNueva = mainModel::limpiarCadena($_POST['cedula']);
+    $cedulaNueva = mainModel::limpiarCadena($_POST['cedulaUp']);
     $trabajador = mainModel::limpiarCadena($_POST['trabajadorUp']);
     $telefono = mainModel::limpiarCadena($_POST['telefonoUp']);
     $estado = mainModel::limpiarCadena($_POST['estado']);

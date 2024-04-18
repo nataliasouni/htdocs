@@ -192,11 +192,11 @@
 
 .table th:nth-child(4),
 .table td:nth-child(4) {
-    width: 220px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+    width: 150px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
 }
 .table th:nth-child(3),
 .table td:nth-child(3) {
-    width: 100px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+    width: 200px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
 }
 .table th.editar,
 .table td.editar {
@@ -233,6 +233,26 @@
 
     }
 
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        width: 200px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+        padding: 15px 175px;
+    }
+
+    .table th:nth-child(4),
+    .table td:nth-child(4) {
+        width: 350px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+        padding-right: 0%;    
+    }
+
+    .table td:nth-of-type(4):before {
+        content: "Fecha: ";
+        padding-right: 0;
+        width: 39px;
+    }
+
+
+
     .table thead tr {
         position: absolute;
         top: -9999px;
@@ -243,14 +263,20 @@
         margin-bottom: 20px; /* Aumentar el margen inferior */
     }
 
+    .table th,
+    .table td {
+        padding: 12px 175px; /* Aumentar el padding para dar más espacio */
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
     .table td {
         border: none;
         border-bottom: 1px solid #ddd;
         position: relative;
         padding-left: 50%;
         text-align: left;
-        top: 0px;
-        left: 30px;
+        
     }
 
     .table td:before {
@@ -264,21 +290,20 @@
     }
 
     .table td:nth-of-type(1):before { content: "Item: "; }
-    .table td:nth-of-type(2):before { content: "ID: "; }
-    .table td:nth-of-type(3):before { content: "Cédula: "; }
-    .table td:nth-of-type(4):before { content: "Nombre del trabajador: "; }
-    .table td:nth-of-type(5):before { content: "Fecha: "; }
-    .table td:nth-of-type(6):before { content: "Hora Entrada: "; }
-    .table td:nth-of-type(7):before { content: "Hora Salida: "; }
-    .table td:nth-of-type(8):before { content: "Horas trabajadas: "; }
-    .table td:nth-of-type(9):before { content: "Opciones: "; }
+    .table td:nth-of-type(2):before { content: "Cédula: "; }
+    .table td:nth-of-type(3):before { content: "Nombre del trabajador: "; }
+    .table td:nth-of-type(4):before { content: "Fecha: "; }
+    .table td:nth-of-type(5):before { content: "Hora Entrada: "; }
+    .table td:nth-of-type(6):before { content: "Hora Salida: "; }
+    .table td:nth-of-type(7):before { content: "Horas trabajadas: "; }
+    .table td:nth-of-type(8):before { content: "Opciones: "; }
 
     /* Mostrar la columna "Item" en dispositivos móviles */
     .table td:nth-of-type(1),
     .table th:nth-of-type(1) {
         position: absolute;
         top: 0px;
-        left: 30px;
+        
         width: 350px;
         padding-right: 200px;
         white-space: normal;
@@ -286,6 +311,7 @@
         display: block;
         position: relative;      
         width: 350px;
+        padding: 9px 175px;
     }
 }
 

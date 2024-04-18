@@ -95,7 +95,7 @@ class registroESControlador extends registroESModelo
                 //Filas
                 $tabla .= '<tr>
                             <td>' . $contador . '</td>
-                            <td>' . $rows['id'] . '</td>
+                           
                             <td>' . $rows['cedula'] . '</td>' .
                             '<td>' . $rows['nombre'] . '</td>' .
                             '<td>' . $rows['fecha'] . '</td>' .
