@@ -203,7 +203,6 @@ class registroESControlador extends registroESModelo
         }
 
         //Obtener valores del form
-
         $cedulaNueva = mainModel::limpiarCadena($_POST['cedulaUp']);
         $fecha = mainModel::limpiarCadena($_POST['fechaUp']);
         $horaEntrada = mainModel::limpiarCadena($_POST['horaEntradaUp']);

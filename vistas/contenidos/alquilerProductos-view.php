@@ -24,7 +24,6 @@
                         <thead>
                             <tr>
                                 <th>Item</th>
-                                <th>ID</th>
                                 <th>Nombre del Producto</th>
                                 <th>Detalles</th>
                                 <th>Cantidad</th>
@@ -36,6 +35,9 @@
                         </thead>
                         <tbody id="tableBody">
                             <?php
+                            require_once "./controladores/alquilerproductosControlador.php";
+                            $insProducto = new alquilerproductosControlador();
+                            echo $insProducto->enlistaralquilerproductosControlador();
 
                             ?>
                         </tbody>
@@ -47,7 +49,8 @@
                     </nav>
                     <div class="d-flex justify-content-end">
                         <div class="mr-2">
-                            <button class="btn btn-primary" onclick="location.href='./agregarAlquiler'">Alquilar Productos</button>
+                            <button class="btn btn-primary" onclick="location.href='./agregarAlquiler'">Alquilar
+                                Productos</button>
                         </div>
                     </div>
                 </div>
