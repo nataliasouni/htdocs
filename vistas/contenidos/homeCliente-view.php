@@ -2,7 +2,7 @@
 
 <main class="full-box main-container">
     <!-- Incluir la barra header -->
-    <?php include "./vistas/inc/headerInicio.php"; ?>
+    <?php include "./vistas/inc/header.php"; ?>
 
 
     <section class="full-box page-content">

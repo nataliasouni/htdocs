@@ -405,4 +405,38 @@ class productoControlador extends productosModelo
     }
   }
 
+  public function enlistarProductoHomeControlador($categoria, $enTarjetas = false)
+{
+    // Prepara la consulta SQL para seleccionar solo los productos de la categoría especificada
+    $consulta = "SELECT * FROM productos WHERE Categoria = :categoria ORDER BY Id ASC";
+    $conexion = mainModel::conectarBD();
+    $datos = $conexion->prepare($consulta);
+    $datos->bindParam(':categoria', $categoria);
+    $datos->execute();
+    $total = $datos->rowCount();
+    $output = '';
+
+    if ($total >= 1) {
+        while ($rows = $datos->fetch()) {
+        
+            $output .= '<div class="card">';
+            $output .= '<img src="' . SERVERURL . 'src/imagenes/productos/' . $rows['Imagen'] . '" class="card-img-top" alt="Imagen del producto">';
+            $output .= '<div class="card-body">';
+            $output .= '<h5 class="card-title">' . $rows['Nombre'] . '</h5>';
+            $output .= '<p class="card-text">' . $rows['Descripcion'] . '</p>';
+            $output .= '</div></div>';
+        }
+    } else {
+        $output .= '<p>No hay registros en la categoría seleccionada</p>';
+    }
+
+    // Si se solicita, envuelve las tarjetas en un contenedor div
+    if ($enTarjetas) {
+        $output = '<div class="card-deck">' . $output . '</div>';
+    }
+
+    return $output;
+}
+
+
 }

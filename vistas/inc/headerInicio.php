@@ -12,10 +12,16 @@
             </div>
             <div class="right-itemshea">
                     <!-- Navegación de productos -->
-                <button onclick ="location.href='homePage'" class = "botonesHeader"> Productos </button>
+                <a href="<?= SERVERURL; ?>homePage">
+                    <button class = "botonesHeader"> Productos </button>
+                </a>
                     <!-- Agendar citas -->
-                <button onclick="location.href='agendarCita'" class = "botonesHeader"> Agendar Citas </button>
+                <a href="<?= SERVERURL; ?>agendarCita">
+                    <button class = "botonesHeader"> Agendar Citas </button>
+                </a>
                     <!-- Contactanos -->
-                <button onclick="location.href='contactanos'" class = "botonesHeader"> Contactanos </button>
+                <a href="<?= SERVERURL; ?>contactanos">
+                    <button class = "botonesHeader"> Contactanos </button>
+                </a>
             </div>
         </nav>

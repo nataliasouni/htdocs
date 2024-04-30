@@ -1,9 +1,7 @@
-
 .content-cita {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 15%;
 }
 
 .card {
@@ -20,8 +18,7 @@
 }
 
 .card-imgcita {
-    max-width: 100%;
-    width: 50%;
+    width: 25%;
     height: auto;
     margin-bottom: 10px; /* Espacio entre la imagen y el texto */
 }

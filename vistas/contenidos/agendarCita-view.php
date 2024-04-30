@@ -4,7 +4,6 @@
     <!-- Incluir la barra header -->
     <?php include "./vistas/inc/headerInicio.php"; ?>
 
-
     <section class="full-box page-content">
 
         <div class="page-content">
@@ -51,38 +50,37 @@
                         <span class="sr-only">Siguiente</span>
                     </a>
                 </div>
-            </div>   
+            </div>
         </diV>
-        
-        <!-- -----------------Contenido---------------------- -->
-<!--
 
-        <div class="container">
-            <div class="card">
-                <img class="card-imgCita" src="<?php echo SERVERURL; ?>vistas/img/cita.png"
-                    alt="Agendar citas">
-                <p>Contenido de la Card 1...</p>
-            </div>
-            <div class="card">
-                <img class="card-imgCita" src="<?php echo SERVERURL; ?>vistas/img/conCita.png"
-                    alt="Consultar citas">
-            <p>Contenido de la Card 2...</p>
-            </div>
-        </div>
--->
-        
+
+
         <div class="content-cita">
-            <div class="card">
-                <img class="card-imgcita" src="<?php echo SERVERURL; ?>vistas/img/cita.png"
-                    alt="Agendar citas">
-                <h2>Agendar cita</h2>
-            </div>
-            <div class="card">
-                <img class="card-imgcita" src="<?php echo SERVERURL; ?>vistas/img/conCita.png"
-                    alt="Consultar citas">
-                <h2>Consultar cita</h2>
-            
-            </div>
+            <?php if (isset($_SESSION['permiso'])) { // Verificar si se ha iniciado sesión ?>
+                <a href="<?= SERVERURL; ?>generarCita">
+                    <div class="card">
+                        <img class="card-imgcita" src="<?php echo SERVERURL; ?>vistas/img/cita.png" alt="Agendar citas">
+                        <h2>Agendar cita</h2>
+                    </div>
+                </a>
+            <?php } else { // Si no se ha iniciado sesión, redirigir a la página de inicio de sesión ?>
+                <a href="<?= SERVERURL; ?>login">
+                    <div class="card">
+                        <img class="card-imgcita" src="<?php echo SERVERURL; ?>vistas/img/cita.png" alt="Agendar citas">
+                        <h2>Agendar cita</h2>
+                    </div>
+                </a>
+            <?php } ?>
+            <?php if (isset($_SESSION['permiso']) && $_SESSION['permiso'] == "Cliente") { ?>
+                <a href="<?= SERVERURL; ?>ensambleM">
+                    <div class="card">
+                        <img class="card-imgcita" src="<?php echo SERVERURL; ?>vistas/img/conCita.png"
+                            alt="Consultar citas">
+                        <h2>Consultar cita</h2>
+                    </div>
+                </a>
+            <?php } ?>
+        </div>
         </div>
 
 

@@ -1,0 +1,40 @@
+/* Estilos para las tarjetas de productos */
+.card {
+    margin-bottom: 20px;
+    width: 60%;
+    height: auto;
+    border: 1px solid #e0e0e0; /* Color del borde suave */
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: box-shadow 0.3s ease; /* Transición suave para la sombra */
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Efecto de sombra aumentado al pasar el cursor sobre la tarjeta */
+}
+
+.card img {
+    margin: 15px;
+    margin-bottom: 5px;
+    width: 60%; /* Asegura que la imagen se ajuste al ancho de la tarjeta */
+    height: auto; /* Altura automática para mantener la proporción */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-title {
+    margin-top: 0;
+    font-size: 1.2rem; /* Tamaño del título reducido */
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333; /* Color del título */
+}
+
+.card-text {
+    margin-bottom: 20px; /* Espacio entre la descripción y los botones */
+    color: #666; /* Color del texto de la descripción */
+}
