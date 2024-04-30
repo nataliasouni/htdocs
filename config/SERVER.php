@@ -1,7 +1,7 @@
 <?php
 /* Parametros de conexion a la BD */
 define('SERVER', 'localhost');
-define('DB', 'amu');
+define('DB', 'bdamu');
 define('USER', 'root');
 define('PASSWORD', '');
 

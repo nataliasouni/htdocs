@@ -101,8 +101,8 @@ class alquilerproductosControlador extends alquilerproductosModelo
                     <td>' . $rows['nombreproducto'] . '</td>' .
                     '<td>' . $rows['detalles'] . '</td>' .
                     '<td>' . $rows['cantidad'] . '</td>' .
-                    '<td>' . $rows['alquiler15'] . '</td>' .
-                    '<td>' . $rows['alquiler30'] . '</td>' .
+                    '<td>' . $rows['alquiler15dias'] . '</td>' .
+                    '<td>' . $rows['alquiler30dias'] . '</td>' .
                     '<td>' . $rows['deposito'] . '</td>' ;
 
         //Botones
@@ -124,6 +124,42 @@ class alquilerproductosControlador extends alquilerproductosModelo
 
     return $tabla;
   } //Fin del controlador
+
+    //Inicio del controlador
+    public function enlistarproductosAlquilerControlador()
+    {
+      $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM alquilerproductos ORDER BY id ASC";
+      $conexion = mainModel::conectarBD();
+      $datos = $conexion->query($consulta);
+      $datos = $datos->fetchAll();
+      $total = $conexion->query("SELECT FOUND_ROWS()");
+      $total = (int)$total->fetchColumn();
+      $tabla = '';
+  
+      if ($total >= 1) {
+        $contador = 1;
+        foreach ($datos as $rows) {
+          //Filas
+          $tabla .= '<tr>
+                      <td>' . $contador . '</td>
+                      <td>' . $rows['nombreproducto'] . '</td>' .
+                      '<td>' . $rows['detalles'] . '</td>' .
+                      '<td>' . $rows['deposito'] . '</td>' ;
+  
+
+          $tabla .= '
+                      </tr>';
+          $contador++;
+        }
+      } else {
+        $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
+      }
+  
+      $tabla .= '</tbody>
+              </table>';
+  
+      return $tabla;
+    } //Fin del controlador
 
 
   //Inicio del controlador
