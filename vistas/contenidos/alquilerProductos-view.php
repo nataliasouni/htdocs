@@ -31,6 +31,7 @@
                                 <th>Alquiler 30 Dias</th>
                                 <th>Deposito</th>
                                 <th class="editar">Opciones</th>
+                                
                             </tr>
                         </thead>
                         <tbody id="tableBody">

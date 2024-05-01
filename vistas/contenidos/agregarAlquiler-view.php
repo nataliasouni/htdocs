@@ -43,10 +43,7 @@
                                         <option value="90">90 días</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <p class="titulos_form">Total a Pagar</p>
-                                    <input type="text" name="totalPagar" class="login_nombreUsuario" required>
-                                </div>
+
                             </div>
 
 
@@ -58,32 +55,18 @@
                                     <input type="text" class="form-control" id="filterInput"
                                         placeholder="Buscar Producto...">
                                 </div>
-                                <table id="alertTable" class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nombre del Producto</th>
-                                            <th>Detalles</th>
-                                            <th>Deposito</th>
 
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tableBody">
-                                        <?php
-                                        require_once "./controladores/alquilerproductosControlador.php";
-                                        $insProducto = new alquilerproductosControlador();
-                                        echo $insProducto->enlistarproductosAlquilerControlador();
-
-
-
-                                        ?>
-                                    </tbody>
-                                </table>
+                               
                                 <nav>
                                     <ul class="pagination justify-content-center" id="paginationContainer">
                                         <!-- Aquí se insertará dinámicamente la paginación -->
                                     </ul>
                                 </nav>
+
+                                <div class="totalPagar">
+                                    <p class="titulos_form">Total a Pagar</p>
+                                    <input type="text" name="totalPagar" class="login_nombreUsuario" required>
+                                </div>
 
                                 <div class="Cliente-group">
                                     <div class="choose-option">
