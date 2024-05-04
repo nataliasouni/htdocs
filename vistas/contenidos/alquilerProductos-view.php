@@ -50,10 +50,6 @@
                     </nav>
                     <div class="d-flex justify-content-end">
                         <div class="mr-2">
-                            <button class="btn btn-primary" onclick="location.href='./agregarAlquiler'">Alquilar
-                                 Productos</button>
-                        </div>
-                        <div class="mr-2">
                             <button class="btn btn-primary" onclick="location.href='./agregarAlquiler'">Agregar Producto Para Alquiler
                                  </button>
                         </div>

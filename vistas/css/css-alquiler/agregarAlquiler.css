@@ -64,31 +64,73 @@
     font-size: 24px;
 }
 
-.añadir_cleinte-form {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
-}
-
-.añadir_cliente-form {
+.añadir_alquiler-form {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.añadir_cliente-form{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 15px;
 }
 
 .referenciasPersonales1-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
+    grid-gap: 20px;    
+    margin-top: 15px;
 }
 
-
-
+.añadir_producto-form{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin-top: 15px;
+}
 
 .referenciasPersonales2-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.Cliente-group{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.botones {
+    text-align: center;
+}
+
+.contrato, .pagare {
+    background-color: #0053A9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contrato:hover, .pagare:hover {
+    background-color: #003366;
 }
 
 .form-group {
