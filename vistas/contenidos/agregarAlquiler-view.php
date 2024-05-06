@@ -31,7 +31,7 @@ if ($datosalquilerproductos->rowCount() == 1) {
                     <div class="formularioAjax content">
                         <div class="choose-option">
                             <h2 style='color: #0053A9'> Alquiler </h2>
-                            <form action="<?php echo SERVERURL; ?>ajax/registroESAjax.php" method="POST" data-form="save">
+                            <form action="<?php echo SERVERURL; ?>ajax/registroESAjax.php" method="POST" data-form="save" id="formularioContrato">
                                 <div class="añadir_alquiler-form">
 
                                     <div class="form-group">
@@ -41,7 +41,7 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Fecha de Devolucion</p>
-                                        <input type="date" name="fechaDevolucion" class="login_nombreUsuario" readonly>
+                                        <input type="date" name="fechaDevolucion" id="fechaDevolucion" class="login_nombreUsuario" readonly>
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Tiempo de alquiler</p>
@@ -72,7 +72,7 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                         </div>
                                         <div class="form-group">
                                             <p class="titulos_form">Nombre del Producto</p>
-                                            <input type="text" name="trabajadorUp" class="login_password"
+                                            <input type="text" name="nombreproducto" class="login_password"
                                                 value="<?= $campos['nombreproducto'] ?>" required
                                                 oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
                                         </div>
@@ -180,9 +180,8 @@ if ($datosalquilerproductos->rowCount() == 1) {
 
                                             <div class="form-group botones">
                                                 <!-- Botón para generar el contrato -->
-                                                <a href="<?= SERVERURL ?>pdfs/contrato/contratoPDF.php" target="_blank">PDF
-                                                <button class="contrato" style="cursor: pointer"
-                                                    title="Generar Contrato">Generar Contrato</button></a>
+                                                <a class="contrato" style="cursor: pointer"
+                                                    title="Generar Contrato" onclick="generarContrato()">Generar Contrato</a>
                                                 <!-- Botón para generar el pagaré -->
                                                 <button class="pagare" onclick="generarPagarePDF()" style="cursor: pointer"
                                                     title="Generar Pagare">Generar Pagaré</button>
@@ -208,8 +207,6 @@ if ($datosalquilerproductos->rowCount() == 1) {
     </main>
 
     <script src="<?php echo SERVERURL; ?>vistas/js/alquiler-script/alquiler.js"></script>
-    <script src="ruta/a/tu/carpeta/jspdf.umd.min.js"></script>
-
 
     <?php
 } else {
