@@ -79,12 +79,17 @@ function generarContrato() {
     var fechaEntrega = document.getElementById("fechaEntrega").value;
     var fechaDevolucion = document.getElementById("fechaDevolucion").value;
     var tiempoAlquiler = document.getElementById("tiempoAlquiler").value;
+    var nombreCliente = document.getElementById("nombreCliente").value;
+    var cedulaCliente = document.getElementById("cedulaCliente").value;
 
     // Crear objeto FormData para enviar los datos al script PHP
     var formData = new FormData();
     formData.append('fechaEntrega', fechaEntrega);
     formData.append('fechaDevolucion', fechaDevolucion);
     formData.append('tiempoAlquiler', tiempoAlquiler);
+    formData.append('nombreCliente', nombreCliente);
+    formData.append('cedulaCliente', cedulaCliente);
+
 
     // Enviar los datos al script PHP utilizando AJAX
     var xhr = new XMLHttpRequest();

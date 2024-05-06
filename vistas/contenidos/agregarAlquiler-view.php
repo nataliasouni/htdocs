@@ -106,11 +106,11 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     <div class="añadir_cliente-form">
                                         <div class="form-group">
                                             <p class="titulos_form">Nombre del Cliente</p>
-                                            <input type="text" name="nombreCliente" class="login_nombreUsuario" required>
+                                            <input type="text" name="nombreCliente" id="nombreCliente" class="login_nombreUsuario" required>
                                         </div>
                                         <div class="form-group">
                                             <p class="titulos_form">Cedula </p>
-                                            <input type="text" name="cedulaCliente" class="login_nombreUsuario" required>
+                                            <input type="text" name="cedulaCliente" id="cedulaCliente" class="login_nombreUsuario" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="Imagen" class="titulos_form">Fotocopia de la Cedula</label>
