@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-insumo/insumo.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-prendasQ/prendasQ.css">
 
 <main class="full-box main-container">
     <!-- Incluir la barra lateral -->
@@ -14,13 +14,14 @@
             <div class="tile-container">
 
                 <div class="choose-option">
-                    <h2 style='color: #0053A9'>Insumos</h2>
+                    <h2 style='color: #0053A9'>Prendas Defectuosas</h2>
                 </div>
 
                 <div class="gestionarProducto">
                     <div class="filter-container">
-                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar producto...">
+                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar prenda...">
                     </div>
+
                     <div class="table-responsive">
                         <table id="alertTableProductos" class="table table-striped">
                             <thead>
@@ -35,26 +36,21 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    require_once "./controladores/insumoControlador.php";
-                                    $insInsumo = new insumoControlador();
-                                    echo $insInsumo->enlistarInsumoControlador();
+                                require_once "./controladores/devolucionPrendasControlador.php";
+                                $insPrendas = new devolucionPrendasControlador();
+                                echo $insPrendas->enlistarPrendaControlador();
                                 ?>
                             </tbody>
 
                         </table>
                     </div>
                     <div class="pagination" id="paginationContainer"></div>
-                    <div class="text-center">
-                        <button class="btn btn-primary"
-                            onclick="location.href='./agregarInsumo'">Agregar
-                            Insumo</button>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 </main>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/insumo.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/prendasC-script/prendasC.js"></script>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/cancelarBtn.js" type="module"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/prendasC-script/cancelarBtn.js" type="module"></script>

@@ -75,6 +75,7 @@
                     </div>
                 </a>
 
+                <a href="<?= SERVERURL; ?>prendasCortadas">
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -88,6 +89,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
 
                 <a href="<?= SERVERURL; ?>insumos">
                 <div class="card">
@@ -106,20 +108,22 @@
                 </div>
                 </a>
 
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
-                                alt="Devolucion">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Devolución por defectos</h2>
-                            <p class="card-description">Descripción
-                            </p>
-                            <div class="registradas">Registradas</div>
+                <a href="<?= SERVERURL; ?>devolucionPorDefecto">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
+                                    alt="Devolucion">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Devolución por defectos</h2>
+                                <p class="card-description">Descripción
+                                </p>
+                                <div class="registradas">Registradas</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
     </section>
 </main>

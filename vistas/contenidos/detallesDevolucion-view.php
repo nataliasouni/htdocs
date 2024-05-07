@@ -1,15 +1,14 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-producto/productos.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-prendasQ/prendasQ.css">
 
 <?php
 
-require_once "./controladores/insumoControlador.php";
-$insInsumoControlador = new insumoControlador();
+require_once "./controladores/devolucionPrendasControlador.php";
+$insPrendaControlador = new devolucionPrendasControlador();
 
-$datosInsumo = $insInsumoControlador->datosInsumoControlador($pagina[1]);
-if ($datosInsumo->rowCount() == 1) {
-    $campos = $datosInsumo->fetch();
+$datosPrenda = $insPrendaControlador->datosPrendaControlador($pagina[1]);
+if ($datosPrenda->rowCount() == 1) {
+    $campos = $datosPrenda->fetch();
     ?>
-
 
     <main class="full-box main-container">
         <!-- Incluir la barra lateral -->
@@ -25,16 +24,18 @@ if ($datosInsumo->rowCount() == 1) {
                 <div class="tile-container">
 
                     <div class="choose-option">
-                        <h2 style='color: #0053A9'>Detalles producto</h2>
+                        <h2 style='color: #0053A9'>Detalles devolución por defecto</h2>
                     </div>
 
                     <div class="detallesUs">
                         <form class="detallesU">
-                            <input type="hidden" name="usuarioUpdate" value="<?= $pagina[1] ?>" disabled>
+                            <input type="hidden" name="prendaUpdate" value="<?= $pagina[1] ?>" disabled>
+
                             <div class="añadir_producto-form">
                                 <div class="form-group">
-                                    <label for="idNormal" class="titulos_form">Id</label>
-                                    <input type="text" name="Id" class="producto_id" value="<?= $campos['IdInsumo'] ?>" disabled>
+                                    <label for="idPrenda" class="titulos_form">Id</label>
+                                    <input type="text" name="IdPrenda" class="producto_id" value="<?= $campos['id'] ?>"
+                                        disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="Nombre" class="titulos_form">Nombre</label>
@@ -52,7 +53,7 @@ if ($datosInsumo->rowCount() == 1) {
                                         value="<?= $campos['Cantidad'] ?>" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <p class="titulos_form">Estado del insumo:</p>
+                                    <p class="titulos_form">Estado de la cuenta:</p>
                                     <select name="EstadoUp" class="selectform area" disabled>
                                         <option value="si" <?php if ($campos['Estado'] == "si") {
                                             echo "selected";
@@ -72,8 +73,9 @@ if ($datosInsumo->rowCount() == 1) {
         </section>
     </main>
 
-    <script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/insumo.js"></script>
-    <script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/cancelarBtn.js" type="module"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/devolucion-script/devolucion.js"></script>
+
+    <script src="<?php echo SERVERURL; ?>vistas/js/devolucion-script/cancelarEdicion.js" type="module"></script>
 
     <?php
 } else {
@@ -82,7 +84,7 @@ if ($datosInsumo->rowCount() == 1) {
     <html>
 
     <head>
-        <title>No hay datos que mostrar del producto</title>
+        <title>No hay datos que mostrar de la prenda Quirurgica</title>
         <!-- Css editar usuarios - Usuario no encontrado -->
         <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-usuarios/noEncontrado.css">
     </head>
@@ -91,7 +93,7 @@ if ($datosInsumo->rowCount() == 1) {
         <div class="container">
             <div class="message">
                 <h2>No hay datos que mostrar</h2>
-                <p>No se encontraron registros para este producto.</p>
+                <p>No se encontraron registros para esta prenda Quirurgica.</p>
             </div>
         </div>
 

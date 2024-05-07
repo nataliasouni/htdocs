@@ -1,13 +1,13 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-producto/productos.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-prendasQ/prendasQ.css">
 
 <?php
 
-require_once "./controladores/insumoControlador.php";
-$insInsumoControlador = new insumoControlador();
+require_once "./controladores/prendasControlador.php";
+$insPrendaControlador = new prendasControlador();
 
-$datosInsumo = $insInsumoControlador->datosInsumoControlador($pagina[1]);
-if ($datosInsumo->rowCount() == 1) {
-    $campos = $datosInsumo->fetch();
+$datosPrenda = $insPrendaControlador->datosPrendaControlador($pagina[1]);
+if ($datosPrenda->rowCount() == 1) {
+    $campos = $datosPrenda->fetch();
     ?>
 
     <main class="full-box main-container">
@@ -27,31 +27,31 @@ if ($datosInsumo->rowCount() == 1) {
                         <h2 style='color: #0053A9'>Editar insumo</h2>
                     </div>
 
-                    <form class="formularioAjax content campo" action="<?php echo SERVERURL; ?>ajax/insumosAjax.php"
+                    <form class="formularioAjax content campo" action="<?php echo SERVERURL; ?>ajax/prendasAjax.php"
                         method="POST" data-form="update">
-                        <input type="hidden" name="insumoUpdate" value="<?= $pagina[1] ?>">
+                        <input type="hidden" name="prendaUpdate" value="<?= $pagina[1] ?>">
 
                         <div class="añadir_producto-form">
                             <div class="form-group">
-                                <label for="idInsumo" class="titulos_form">Id</label>
-                                <input type="text" name="IdInsumo" class="producto_id" 
-                                value="<?= $campos['IdInsumo'] ?>"
+                                <label for="idPrenda" class="titulos_form">Id</label>
+                                <input type="text" name="IdPrenda" class="producto_id" 
+                                value="<?= $campos['id'] ?>"
                                     readonly>
                             </div>
                             <div class="form-group">
                                 <label for="Nombre" class="titulos_form">Nombre</label>
                                 <input type="text" name="NombreUp" class="producto_nombre"
-                                    value="<?= $campos['Nombre'] ?>" required>
+                                    value="<?= $campos['nombre'] ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="Descripcion" class="titulos_form">Descripción</label>
                                 <textarea name="DescripcionUp" class="producto_descripcion"
-                                    required><?= $campos['Descripcion'] ?></textarea>
+                                    required><?= $campos['descripcion'] ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="Cantidad" class="titulos_form">Cantidad</label>
                                 <input type="number" name="CantidadUp" class="producto_cantidad"
-                                    value="<?= $campos['Cantidad'] ?>" required>
+                                    value="<?= $campos['cantidadDisponible'] ?>" required>
                             </div>
                             <div class="form-group">
                                 <p class="titulos_form">Estado de la cuenta:</p>
@@ -74,8 +74,9 @@ if ($datosInsumo->rowCount() == 1) {
         </section>
     </main>
 
-    <script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/insumo.js"></script>
-    <script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/cancelarBtn.js" type="module"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/prendasQ-script/prendasQ.js"></script>
+
+    <script src="<?php echo SERVERURL; ?>vistas/js/prendasQ-script/cancelarEdicion.js" type="module"></script>
 
     <?php
 } else {
@@ -84,7 +85,7 @@ if ($datosInsumo->rowCount() == 1) {
     <html>
 
     <head>
-        <title>No hay datos que mostrar del producto</title>
+        <title>No hay datos que mostrar de la prenda Quirurgica</title>
         <!-- Css editar usuarios - Usuario no encontrado -->
         <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-usuarios/noEncontrado.css">
     </head>
@@ -93,7 +94,7 @@ if ($datosInsumo->rowCount() == 1) {
         <div class="container">
             <div class="message">
                 <h2>No hay datos que mostrar</h2>
-                <p>No se encontraron registros para este producto.</p>
+                <p>No se encontraron registros para esta prenda Quirurgica.</p>
             </div>
         </div>
 

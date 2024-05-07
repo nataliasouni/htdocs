@@ -1,8 +1,3 @@
-/* Agregar clases a las etiquetas HTML según la estructura proporcionada */
-.tile-container {
-    display: contents !important;
-}
-
 .gestionarCliente {
     padding-top: 50px;
 }
@@ -11,19 +6,17 @@
     background-color: rgba(125, 212, 173, 0.096);
 }
 
-.choose-option {
-    margin-bottom: 10px; /* Espacio inferior para separar del formulario */
-}
-
-.choose-option h2 {
-    color: #0053A9;
-    margin: 0; /* Eliminar el margen superior del h2 */
+.table-striped tbody tr.deshabilitado {
+    background-color: #ffcbcb6e; /* Cambia el color de fondo */
+    color: #b40300; /* Cambia el color del texto */
+    /* Otros estilos de diseño según tus preferencias */
 }
 
 /* Estilos para el filtro */
 .filter-container {
     margin-bottom: 15px;
 }
+
 
 .filter-input {
     width: 100%;
@@ -38,7 +31,6 @@
 .pagination {
     margin-top: 15px;
     text-align: center;
-    justify-content: center;
 }
 
 .pagination a {
@@ -66,6 +58,53 @@
     color: #fff;
 }
 
+.formularioAjax {
+    margin: 30px auto;
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(125, 212, 173, 0.096);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.añadir_producto-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Alinear elementos hacia los extremos */
+}
+
+.form-group {
+    width: calc(50% - 10px); /* Establecer el ancho específico para cada columna */
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.boton {
+    display: flex;
+    justify-content: center;
+}
+
+.titulos_form {
+    margin: 0;
+    color: #333;
+    text-align: left !important;
+}
+
+.producto_id,
+.producto_nombre,
+.producto_descripcion,
+.producto_cantidad,
+.producto_alquiler,
+.selectform {
+    width: calc(100% - 12px); /* Ajustar el ancho para tomar en cuenta el borde */
+    padding: 8px; /* Incrementar el relleno */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
 .detallesU {
     margin: 30px auto;
     width: 80%;
@@ -76,37 +115,40 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.titulos_form {
-    margin: 0;
-    color: #333;
-}
-
-.login_nombreUsuario,
-.login_password,
-.selectform {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+.Imagen {
+    justify-content: center;
+    padding: 500px;
 }
 
 .botones {
-    grid-column: span 2;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: calc(100% - 12px);
+    text-align: center; /* Alinear los botones a la derecha */
 }
 
-.detallesUs {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Esto puede variar según tu diseño */
+.custom-file-input {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px; /* Ajusta el margen inferior según tus necesidades */
+}
+
+.custom-file-input input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px; /* Ajusta el tamaño de la fuente según tus necesidades */
+    cursor: pointer;
+    opacity: 0;
+}
+
+.custom-file-input label {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .estado-volver {
@@ -143,7 +185,7 @@
     transition: background-color 0.3s;
 }
 
-.estado-enviar:hover {
+.estado-enviar:hover{
     background-color: #00864c;
 }
 
@@ -151,13 +193,12 @@
     background-color: #a50101;
 }
 
-.btn-primary {
-    background-color: #0053A9 !important;
-    margin: 20px;
+.btn-primary{
+    background-color: #0053A9 !important; 
 }
 
-.btn-primary:hover {
-    background-color: #003064 !important;
+.btn-primary:hover{
+    background-color: #003064 !important; 
 }
 
 .btn-editar,
@@ -168,45 +209,29 @@
     cursor: pointer;
 }
 
-.btn-estado-usuario {
-    border: none; /* Eliminar bordes */
-    background: none; /* Eliminar fondo */
-    padding: 0; /* Eliminar espaciado interno */
-    cursor: none;
-}
-
 .btn-editar img,
-.btn-detalles img,
-.btn-estado-usuario img {
+.btn-detalles img {
     width: 20px; /* Ancho de la imagen */
     height: 20px; /* Altura de la imagen */
     border: none !important; /* Asegurar que no haya bordes en la imagen */
 }
 
-.text-center {
-    text-align: right !important;
-}
-
 .table {
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo para la tabla */
     border-collapse: collapse; /* Para fusionar los bordes de las celdas */
-    justify-content: center;
-    text-align: center;
-    align-items: center;
 }
 
 .table th,
 .table td {
-    padding: 8px; /* Añadir un espaciado interno a las celdas */
+    padding: 12px; /* Aumentar el espacio interno de las celdas */
+    text-align: center; /* Alinear horizontalmente el contenido */
+    vertical-align: middle; /* Alinear verticalmente el contenido */
 }
 
-.table th:nth-child(3), 
+.table th:nth-child(3),
 .table td:nth-child(3) {
-     width: auto !important;
-}
-
-.table th:nth-child(4),
-.table td:nth-child(4) {
-    width: auto; /* Ancho de la columna "Nombre de usuario" */
+    width: 200px; /* Ancho de la columna "Descipcion" */
 }
 
 .table th.editar,
@@ -215,36 +240,44 @@
     border: none !important;
 }
 
+
 /* Media queries para ajustar estilos en diferentes tamaños de pantalla */
 @media screen and (max-width: 768px) {
-    .añadir_cleinte-form {
+    .form-group {
+        width: calc(100% - 12px); /* En pantallas pequeñas, ocupar todo el ancho disponible */
+    }
+    .añadir_producto-form {
         display: block;
     }
-
+    
     .formularioAjax {
-        width: 100%;
+        width: 90%; /* Ajustar el ancho en dispositivos pequeños */
         max-width: none; /* Anular el ancho máximo en dispositivos pequeños */
     }
 }
 
 /* Estilos para hacer que la tabla sea responsive */
 .table-responsive {
-    overflow-x: auto;
-    margin-left: 10px; /* Ajustar margen izquierdo */
+    overflow-x: scroll;
+    width: auto;
+    margin-left: 5px; /* Ajustar margen izquierdo */
     margin-right: 10px; /* Ajustar margen derecho */
 }
 
 /* Ajustar el tamaño de las columnas en dispositivos pequeños */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 853px) {
     .table-responsive {
         margin-right: 0;
-        overflow-x: auto; /* Permitir desplazamiento horizontal */
-        width: 400px !important;
+        overflow-x: scroll; /* Permitir desplazamiento horizontal */
+    }
+
+    .table {
+        width: 400px;
     }
 
     .filter-container {
         margin-top: 0px;
-        width: 200px !important;
+        width: 200px;
         margin-left: 10px;
     }
 
@@ -255,7 +288,20 @@
 }
 
 /* Ajustar el tamaño de las columnas en dispositivos pequeños */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 853px) {
+
+    *,
+    *::before,
+    *::after {
+    box-sizing: content-box; 
+    }
+
+    table th, .table td {
+        padding: 12px;
+        text-align: left; 
+        vertical-align: middle;
+    }
+
     .table-responsive table,
     .table-responsive thead,
     .table-responsive tbody,
@@ -265,14 +311,14 @@
         display: block;
     }
 
+    .table {
+        text-align: left !important;
+    }
+
     .table-responsive thead tr {
         position: absolute;
         top: -9999px;
         left: -9999px;
-    }
-
-    .table {
-        text-align: left !important;
     }
 
     .table-responsive tr {
@@ -285,6 +331,9 @@
         border-bottom: 1px solid #ddd;
         position: relative;
         padding-left: 50%;
+        max-width: 200px; /* Definir un ancho máximo para las celdas */
+        overflow: hidden; /* Ocultar el contenido que se desborde */
+        text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) para indicar que hay más contenido oculto */
     }
 
     .table-responsive td:before {
@@ -296,12 +345,13 @@
         white-space: nowrap;
     }
 
-    .table-responsive td:nth-of-type(1):before { content: "Item:"; }
-    .table-responsive td:nth-of-type(2):before { content: "Orden de Producción:"; }
-    .table-responsive td:nth-of-type(3):before { content: "Cantidad por Producción:"; }
-    .table-responsive td:nth-of-type(4):before { content: "Estado:"; }
-    .table-responsive td:nth-of-type(5):before { content: "Contenido:"; }
-    .table-responsive td:nth-of-type(6):before { content: "Productos Total:"; }
-    .table-responsive td:nth-of-type(7):before { content: "Opciones:"; }
+    .table-responsive td:nth-of-type(1):before { content: "Id:"; }
+    .table-responsive td:nth-of-type(2):before { content: "Nombre:"; }
+    .table-responsive td:nth-of-type(3):before { content: "Descripción:"; }
+    .table-responsive td:nth-of-type(4):before { content: "Cantidad:"; }
+    .table-responsive td:nth-of-type(5):before { content: "Estado:"; }
+    .table-responsive td:nth-of-type(6):before { content: "Opciones:"; }
 }
+
+
 

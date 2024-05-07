@@ -1,13 +1,13 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-producto/productos.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-prendasQ/prendasQ.css">
 
 <?php
 
-require_once "./controladores/insumoControlador.php";
-$insInsumoControlador = new insumoControlador();
+require_once "./controladores/devolucionPrendasControlador.php";
+$insPrendaControlador = new devolucionPrendasControlador();
 
-$datosInsumo = $insInsumoControlador->datosInsumoControlador($pagina[1]);
-if ($datosInsumo->rowCount() == 1) {
-    $campos = $datosInsumo->fetch();
+$datosPrenda = $insPrendaControlador->datosPrendaControlador($pagina[1]);
+if ($datosPrenda->rowCount() == 1) {
+    $campos = $datosPrenda->fetch();
     ?>
 
     <main class="full-box main-container">
@@ -24,18 +24,18 @@ if ($datosInsumo->rowCount() == 1) {
                 <div class="tile-container">
 
                     <div class="choose-option">
-                        <h2 style='color: #0053A9'>Editar insumo</h2>
+                        <h2 style='color: #0053A9'>Editar devolución por defecto</h2>
                     </div>
 
-                    <form class="formularioAjax content campo" action="<?php echo SERVERURL; ?>ajax/insumosAjax.php"
+                    <form class="formularioAjax content campo" action="<?php echo SERVERURL; ?>ajax/devolucionPrendasAjax.php"
                         method="POST" data-form="update">
-                        <input type="hidden" name="insumoUpdate" value="<?= $pagina[1] ?>">
+                        <input type="hidden" name="prendaUpdate" value="<?= $pagina[1] ?>">
 
                         <div class="añadir_producto-form">
                             <div class="form-group">
-                                <label for="idInsumo" class="titulos_form">Id</label>
-                                <input type="text" name="IdInsumo" class="producto_id" 
-                                value="<?= $campos['IdInsumo'] ?>"
+                                <label for="idPrenda" class="titulos_form">Id</label>
+                                <input type="text" name="IdPrenda" class="producto_id" 
+                                value="<?= $campos['id'] ?>"
                                     readonly>
                             </div>
                             <div class="form-group">
@@ -74,8 +74,9 @@ if ($datosInsumo->rowCount() == 1) {
         </section>
     </main>
 
-    <script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/insumo.js"></script>
-    <script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/cancelarBtn.js" type="module"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/devolucion-script/devolucion.js"></script>
+
+    <script src="<?php echo SERVERURL; ?>vistas/js/devolucion-script/cancelarEdicion.js" type="module"></script>
 
     <?php
 } else {
@@ -84,7 +85,7 @@ if ($datosInsumo->rowCount() == 1) {
     <html>
 
     <head>
-        <title>No hay datos que mostrar del producto</title>
+        <title>No hay datos que mostrar de la prenda Quirurgica</title>
         <!-- Css editar usuarios - Usuario no encontrado -->
         <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-usuarios/noEncontrado.css">
     </head>
@@ -93,7 +94,7 @@ if ($datosInsumo->rowCount() == 1) {
         <div class="container">
             <div class="message">
                 <h2>No hay datos que mostrar</h2>
-                <p>No se encontraron registros para este producto.</p>
+                <p>No se encontraron registros para esta prenda Quirurgica.</p>
             </div>
         </div>
 

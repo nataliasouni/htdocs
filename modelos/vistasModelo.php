@@ -4,11 +4,13 @@ class vistasModelo
   //Modelo obtener vistas
   protected static function obtener_vistas_modelo($vistas)
   {
-    $listaBlanca = ["home", "homeP", "homeN", "homeI", "homeT", "homeOT", "homeOTT", "usuarios", "agregarUsuario",
+    $listaBlanca = ["home", "homeP", "homeN", "homeI", "homeT", "homeOT", "homeOTT", "usuarios", "agregarUsuario", "agendarCita",
     "agregarAlquiler", "agregarEnsamble", "agregarEntradaRES", "agregarInsumo", "agregarProducto", "agregarTrabajador", "alquilerProductos",
     "detallesEnsamble", "detallesInsumo", "detallesProducto", "detallesUsuario", "editarEnsamble", "editarInsumo", "editarProducto", 
     "editarProductoEnsamble", "editarRegistro", "editarTrabajador", "editarusuario", "ensambleM", "homeGT", "insumos", "produccion",
-    "productos", "registroES", "trabajadores", "generarCita", "homeCliente"];
+    "productos", "registroES", "trabajadores", "prendasQuirurgicas", "agregarPrenda", "editarPrenda", "detallesPrenda", "prendasCortadas",
+    "agregarPrendaCortada", "editarPrendaCortada", "detallesPrendaCortada", "devolucionPorDefecto", "agregarDevolucion", "editarDevolucion", 
+    "detallesDevolucion"];
 
     if (in_array($vistas, $listaBlanca)) {
       if (is_file("./vistas/contenidos/" . $vistas . "-view.php")) {
@@ -28,10 +30,6 @@ class vistasModelo
       $contenido = "recuperarContra";    
     } elseif($vistas == "registroCliente"){
       $contenido = "registroCliente";
-    }elseif($vistas == "detallehome"){
-      $contenido = "detallehome";
-    }elseif($vistas == "productosHome"){
-      $contenido = "productosHome";
     }else {
       $contenido = "404";
     }

@@ -1,15 +1,14 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-producto/productos.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-prendasQ/prendasQ.css">
 
 <?php
 
-require_once "./controladores/insumoControlador.php";
-$insInsumoControlador = new insumoControlador();
+require_once "./controladores/prendasControlador.php";
+$insPrendaControlador = new prendasControlador();
 
-$datosInsumo = $insInsumoControlador->datosInsumoControlador($pagina[1]);
-if ($datosInsumo->rowCount() == 1) {
-    $campos = $datosInsumo->fetch();
+$datosPrenda = $insPrendaControlador->datosPrendaControlador($pagina[1]);
+if ($datosPrenda->rowCount() == 1) {
+    $campos = $datosPrenda->fetch();
     ?>
-
 
     <main class="full-box main-container">
         <!-- Incluir la barra lateral -->
@@ -25,34 +24,36 @@ if ($datosInsumo->rowCount() == 1) {
                 <div class="tile-container">
 
                     <div class="choose-option">
-                        <h2 style='color: #0053A9'>Detalles producto</h2>
+                        <h2 style='color: #0053A9'>Editar insumo</h2>
                     </div>
 
                     <div class="detallesUs">
                         <form class="detallesU">
-                            <input type="hidden" name="usuarioUpdate" value="<?= $pagina[1] ?>" disabled>
+                            <input type="hidden" name="prendaUpdate" value="<?= $pagina[1] ?>" disabled>
+
                             <div class="añadir_producto-form">
                                 <div class="form-group">
-                                    <label for="idNormal" class="titulos_form">Id</label>
-                                    <input type="text" name="Id" class="producto_id" value="<?= $campos['IdInsumo'] ?>" disabled>
+                                    <label for="idPrenda" class="titulos_form">Id</label>
+                                    <input type="text" name="IdPrenda" class="producto_id" value="<?= $campos['id'] ?>"
+                                        disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="Nombre" class="titulos_form">Nombre</label>
                                     <input type="text" name="NombreUp" class="producto_nombre"
-                                        value="<?= $campos['Nombre'] ?>" disabled>
+                                        value="<?= $campos['nombre'] ?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="Descripcion" class="titulos_form">Descripción</label>
                                     <textarea name="DescripcionUp" class="producto_descripcion"
-                                        disabled><?= $campos['Descripcion'] ?></textarea>
+                                        disabled><?= $campos['descripcion'] ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="Cantidad" class="titulos_form">Cantidad</label>
                                     <input type="number" name="CantidadUp" class="producto_cantidad"
-                                        value="<?= $campos['Cantidad'] ?>" disabled>
+                                        value="<?= $campos['cantidadDisponible'] ?>" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <p class="titulos_form">Estado del insumo:</p>
+                                    <p class="titulos_form">Estado de la cuenta:</p>
                                     <select name="EstadoUp" class="selectform area" disabled>
                                         <option value="si" <?php if ($campos['Estado'] == "si") {
                                             echo "selected";
@@ -72,8 +73,9 @@ if ($datosInsumo->rowCount() == 1) {
         </section>
     </main>
 
-    <script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/insumo.js"></script>
-    <script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/cancelarBtn.js" type="module"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/producto-script/producto.js"></script>
+
+    <script src="<?php echo SERVERURL; ?>vistas/js/producto-script/cancelarEdicion.js" type="module"></script>
 
     <?php
 } else {

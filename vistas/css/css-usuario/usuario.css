@@ -243,8 +243,13 @@
 
     .table-responsive table{
         width: 530px;
-
     }
+
+    .table {
+        text-align: left !important;
+        margin-left: 10px;
+    }
+    
     .table-responsive thead,
     .table-responsive tbody,
     .table-responsive tr,

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-insumo/insumo.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-prendasQ/prendasQ.css">
 
 <main class="full-box main-container">
     <!-- Incluir la barra lateral -->
@@ -14,15 +14,15 @@
             <div class="tile-container">
 
                 <div class="choose-option">
-                    <h2 style='color: #0053A9'>Agregar Insumo</h2>
+                    <h2 style='color: #0053A9'>Agregar Devolucion por Defectos</h2>
                 </div>
 
-                <form class="formularioAjax content styled-form" action="<?php echo SERVERURL; ?>ajax/insumosAjax.php"
+                <form class="formularioAjax content styled-form" action="<?php echo SERVERURL; ?>ajax/devolucionPrendasAjax.php"
                     method="POST" data-form="save" enctype="multipart/form-data">
                     <div class="añadir_producto-form">
                         <div class="form-group">
                             <label for="idNormal" class="titulos_form">Id</label>
-                            <input type="text" id="idInsumo" name="idInsumo" class="producto_id" required>
+                            <input type="text" id="idPrenda" name="idPrenda" class="producto_id" required>
                         </div>
                         <div class="form-group">
                             <label for="Nombre" class="titulos_form">Nombre</label>
@@ -50,6 +50,6 @@
     </section>
 </main>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/insumo.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/prendasC-script/prendasC.js"></script>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/cancelarBtn.js" type="module"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/prendasC-script/cancelarBtn.js" type="module"></script>
