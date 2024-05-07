@@ -25,3 +25,11 @@ tbody tr:hover {
 .tituloPDF {
     font-family: "Helvetica", sans-serif;
 }
+
+.huella-container {
+    border: 1px solid black;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    margin-bottom: 20px;
+}

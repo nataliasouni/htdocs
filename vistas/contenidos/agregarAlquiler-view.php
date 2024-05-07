@@ -72,7 +72,7 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                         </div>
                                         <div class="form-group">
                                             <p class="titulos_form">Nombre del Producto</p>
-                                            <input type="text" name="nombreproducto" class="login_password"
+                                            <input type="text" name="nombreProducto" id="nombreProducto" class="login_password"
                                                 value="<?= $campos['nombreproducto'] ?>" required
                                                 oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
                                         </div>
@@ -183,8 +183,8 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                                 <a class="contrato" style="cursor: pointer"
                                                     title="Generar Contrato" onclick="generarContrato()">Generar Contrato</a>
                                                 <!-- Botón para generar el pagaré -->
-                                                <button class="pagare" onclick="generarPagarePDF()" style="cursor: pointer"
-                                                    title="Generar Pagare">Generar Pagaré</button>
+                                                <a class="pagare"  style="cursor: pointer"
+                                                    title="Generar Pagare" onclick="generarPagare()" >Generar Pagaré</a>
                                             </div>
 
 
