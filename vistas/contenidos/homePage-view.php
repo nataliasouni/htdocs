@@ -1,250 +1,189 @@
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-homepage/homepage.css">
 
+<?php include "./vistas/inc/headerInicio.php"; ?>
+
 <main class="full-box main-container">
-    <!-- Incluir la barra header -->
-    <?php include "./vistas/inc/headerInicio.php"; ?>
 
-
-    <section class="full-box page-content">
-
-        <div class="page-content">
-
-            <div class="banner">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="<?php echo SERVERURL; ?>vistas/img/img1.jpg" alt="Primera imagen">
-                            <div class="carousel-caption">
-                                <h5>Título de la primera imagen</h5>
-                                <p>Descripción de la primera imagen.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="<?php echo SERVERURL; ?>vistas/img/img2.jpg" alt="Segunda imagen">
-                            <div class="carousel-caption">
-                                <h5>Título de la segunda imagen</h5>
-                                <p>Descripción de la segunda imagen.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="<?php echo SERVERURL; ?>vistas/img/img3.jpg" alt="Tercera imagen">
-                            <div class="carousel-caption">
-                                <h5>Título de la tercera imagen</h5>
-                                <p>Descripción de la tercera imagen.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="<?php echo SERVERURL; ?>vistas/img/img4.jpg" alt="Cuarta imagen">
-                            <div class="carousel-caption">
-                                <h5>Título de la cuarta imagen</h5>
-                                <p>Descripción de la cuarta imagen.</p>
-                            </div>
-                        </div>
-                        <!-- Agrega más imágenes aquí -->
-                    </div>
-                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Anterior</span>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Siguiente</span>
-                    </a>
-                </div>
-            </div>      
+    <!-- Slider o Banner Principal -->
+    <section class="banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h1>Bienvenido a AMU</h1>
+            <p>Tu mejor opción para comprar tus productos de ayudas y movilidad.</p>
+            <a href="" class="cta">Explora nuestros productos</a>
         </div>
-
-<!---------------------------------------------------------------------->
-
-            <div class="choose-option">
-                <h2 style='color: #0053A9'>Nuestros Productos</h2>
-            </div>
-
-<!---------------------------------------------------------------------->
-            <!-- Content -->
-
-            
-                <div class="card-homepage">
-
-                    <div class="card-contenthomepage">
-                        <div class="card-detailshomepage">
-                            <h2 class="card-titlehomepage">Ayudas de movilidad y recuperación en venta alquiler mantenimiento y reparación</h2>
-                            
-                            <img class="card-imagehomepage" src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo1.png"
-                                alt="Imagen Catalogo1">
-                            </img>
-                            
-                            <p class="card-descriptionhomepage"><li>Camas hospitalarias</li>
-                                                        <li>Sillas de ruedas</li>
-                                                        <li>Muletas</li>
-                                                        <li>Bastones</li>
-                                                        <li>Caminadores</li>
-                                                        <li>Ayudas sanitarias</li>
-                                                        <li>Muebles hospitalarios</li>
-                                                        <li>Nebulizadores</li>
-                                                        <li>Camillas</li>
-                                                        <li>Oxigeno</li>
-                                                        <li>Extractores de leche materna.</li>
-                            </p>
-                            <div class="contentBoton">
-                                <a type = "button" onclick ="location.href='#'" class = "botonesCatalogo"> 
-                                    <img class="imgButton" src ="<?php echo SERVERURL; ?>vistas/img/mas.png" alt = "Más"></img>
-                                </a>
-                            </div>
-                        </div>
-                        
-                    </div>
-
-                    
-                    <div class="card-contenthomepage">
-                        <div class="card-detailshomepage">
-                            <h2 class="card-titlehomepage">Línea de muebles hospitalarios</h2>
-
-                            <img class="card-imagehomepage" src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo2.png"
-                                alt="Imagen Catalogo1"></img>
-                            
-                            <p class="card-descriptionhomepage"><li>Diván o camillas</li>
-                                                            <li>Atril</li>
-                                                            <li>Biombo</li>
-                                                            <li>Butaco</li>
-                                                            <li>Cama-cuna</li>
-                                                            <li>Cama de levante hospitalaria</li>
-                                                            <li>Escalerilla</li>
-                                                            <li>Mesa ginecológica</li>
-                                                            <li>Mesa para curaciones</li>
-                                                            <li>Mesa de mayo</li>
-                                                            <li>Botiquín primero auxilios</li>
-                            </p>
-                            <div class="contentBoton">
-                                <a type = "button" onclick ="location.href='#'" class = "botonesCatalogo"> 
-                                    <img class="imgButton" src ="<?php echo SERVERURL; ?>vistas/img/mas.png" alt = "Más"></img>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                
-
-           
-                
-                    <div class="card-contenthomepage">
-                        <div class="card-detailshomepage">
-                            <h2 class="card-titlehomepage">Artículos de atención pre hospitalaria o rescate</h2>
-                            
-                            <img class="card-imagehomepage" src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo3.png"
-                                alt="Imagen Catalogo1"></img>
-                            <p class="card-descriptionhomepage"><li>Camilla para ambulancia</li>
-                                                                <li>Camilla plegable</li>
-                                                                <li>Camilla tipo cuchara</li>
-                                                                <li>Camilla rígida</li>
-                                                                <li>Silla de emergencia para ambulancia</li>
-                                                                <li>Camilla inmovilizadora tipo colchón</li>
-                                                                <li>Tabla de rescate en madera</li>
-                                                                <li>Cuello cervical</li>
-                                                                <li>Tabla de reanimación RCP</li>
-                            </p>
-                            <div class="contentBoton">
-                                <a type = "button" onclick ="location.href='#'" class = "botonesCatalogo"> 
-                                    <img class="imgButton" src ="<?php echo SERVERURL; ?>vistas/img/mas.png" alt = "Más"></img>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                
-
-                
-                    <div class="card-contenthomepage">
-                        <div class="card-detailshomepage">
-                            <h2 class="card-titlehomepage">Colchones y ropa de cama hospitalaria</h2>
-                            
-                            <img class="card-imagehomepage" src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo4.png"
-                                alt="Imagen Catalogo1"></img>
-                            <p class="card-descriptionhomepage"><li>Almohada</li>
-                                                                <li>Colchón clínico</li>
-                                                                <li>Colchón tipo antiescara</li>
-                                                                <li>Colchoneta de camilla</li>
-                                                                <li>Protector para colcho</li>
-                                                                <li>Protector para almohada</li>
-                                                                <li>Juego de sabana</li>
-                                                                <li>Toalla de cuerpo</li>
-                                                                <li>Toalla de manos</li>
-                            </p>
-                            <div class="contentBoton">
-                                <a type = "button" onclick ="location.href='#'" class = "botonesCatalogo"> 
-                                    <img class="imgButton" src ="<?php echo SERVERURL; ?>vistas/img/mas.png" alt = "Más"></img>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-<!---------------------------------------------------------------------->
-            <!-- division de cita -->
-
-            <div class="choose-option">
-                <h2 style='color: #0053A9'>Agenda tu cita</h2>
-            </div>
-
-            <!-- Contenido de cita-->
-            
-
-            <div class="container">
-
-                <!--<div class="left-container">-->
-                    <div class="large-box">
-                        <!-- Contenido del recuadro grande -->
-                        <!--<div class = "img-contentfoto">-->
-                            <img class = "img-foto" src="<?php echo SERVERURL; ?>vistas/img/diana.jpg"
-                            alt="Imagen Diana"></img>
-
-                        <!--</div>-->
-                        <p class="content-text">
-                            Soy Diana Carolina Rodriguez Calle y me complace presentarme como fonoaudióloga 
-                            especializada en la creación de moldes para protectores de oído en AMU (ayudas medicas universales). 
-                            Con una sólida formación académica obtenida en la Universidad del Valle y años de experiencia en el 
-                            campo de la fonoaudiología, me comprometo a proporcionarle servicios de la más alta calidad y 
-                            atención personalizada a cada uno de mis pacientes Mi enfoque se centra en brindar soluciones 
-                            adaptadas a las necesidades individuales de cada cliente, utilizando tecnología de vanguardia y 
-                            técnicas especializadas en la toma de impresiones para garantizar la máxima comodidad y eficacia de 
-                            los protectores de oído.
-                        </p>
-
-                        <button onclick ="location.href='#'" class = "botonesCita"> Agendar tu cita </button>
-
-
-                    </div>
-                    
-                    
-                <!--</div>-->
-                    <div class="right-container">
-                        <div class="small-boxes">
-                            <div class="box-arriba">
-                                <!-- Contenido del recuadro 3 -->
-                                <img class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector1.jpg"
-                                    alt="Imagen protector1"></img>
-                            </div>
-                            <div class="box-arriba">
-                                <!-- Contenido del recuadro 3 -->
-                                <img class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector2.jpg"
-                                alt="Imagen protector2"></img>
-                            </div>
-                        </div>
-                        <div class="small-boxes">
-                            <div class="box-abajo">
-                                <!-- Contenido del recuadro 3 -->
-                                <img class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector3.jpg"
-                                alt="Imagen protector3"></img>
-                            </div>
-                            <div class="box-abajo">
-                                <!-- Contenido del recuadro 3 -->
-                                <img class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector4.jpg"
-                                alt="Imagen protector4"></img>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-
-        
-        
     </section>
-    <?php include "./vistas/inc/footerHome.php"; ?>
+
+    <!-- Sección de Categoria-->
+    <section id="categorias" class="categorias">
+        <div class="container-categoria">
+            <div class="categoria">
+                <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo1.png" alt="Categoría 1">
+                <p>Descripción breve de la categoría 1.</p>
+                <a href="#">Ver más</a>
+            </div>
+            <div class="categoria">
+                <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo2.png" alt="Categoría 2">
+                <p>Descripción breve de la categoría 2.</p>
+                <a href="#">Ver más</a>
+            </div>
+            <div class="categoria">
+                <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo3.png" alt="Categoría 3">
+                <p>Descripción breve de la categoría 3.</p>
+                <a href="#">Ver más</a>
+            </div>
+            <div class="categoria">
+                <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo4.png" alt="Categoría 4">
+                <p>Descripción breve de la categoría 4.</p>
+                <a href="#">Ver más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Productos -->
+    <section id="productos" class="productos">
+        <div class="container" id="container">
+            <?php
+            require_once "./controladores/productoControlador.php";
+            $insProducto = new productoControlador();
+            echo $insProducto->enlistarProductoHomeControlador();
+            ?>
+        </div>
+        <div class="buttons-container">
+            <button id="prevBtn" class="prev">&#10094; Anterior</button>
+            <button id="nextBtn" class="next">Siguiente &#10095;</button>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios de Agendamiento de Citas -->
+    <section id="servicios" class="servicios">
+        <div class="container-servicios">
+            <div class="servicios-info">
+                <h2>Agendamiento de Citas para Fonondología</h2>
+                <p></p>
+                <p>Soy Diana Carolina Rodriguez Calle y me complace presentarme como fonoaudióloga especializada en la
+                    creación de moldes para protectores de oído en AMU (ayudas medicas universales). Con una sólida
+                    formación académica obtenida en la Universidad del Valle y años de experiencia en el campo de la
+                    fonoaudiología, me comprometo a proporcionarle servicios de la más alta calidad y atención
+                    personalizada a cada uno de mis pacientes Mi enfoque se centra en brindar soluciones adaptadas a las
+                    necesidades individuales de cada cliente, utilizando tecnología de vanguardia y técnicas
+                    especializadas en la toma de impresiones para garantizar la máxima comodidad y eficacia de los
+                    protectores de oído.
+                </p>
+                <p>Agende su cita con nuestra especialista en fonodilogía, la Dra. Diana Carolina Rodriguez, quien
+                    cuenta con años de
+                    experiencia y un trato humano excepcional para ayudarlo con sus necesidades auditivas.</p>
+                <div class="gallery">
+                    <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector1.jpg" alt="Imagen 1">
+                    <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector2.jpg" alt="Imagen 2">
+                    <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector3.jpg" alt="Imagen 3">
+                    <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector4.jpg" alt="Imagen 4">
+                </div>
+                <a href="#agendar-cita" class="cta">Agendar Cita</a>
+            </div>
+            <div class="servicios-images">
+                <img src="<?php echo SERVERURL; ?>vistas/img/diana.jpg" alt="Foto de la Fonodilogo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="contacto">
+        <div class="container-contacto">
+            <h2>Contacto</h2>
+            <p>Estamos aquí para ayudarte. Contáctanos.</p>
+            <form action="enviar.php" method="post">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="email" name="email" placeholder="Correo electrónico" required>
+                <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+            <div class="informacion-contacto">
+                <p>Dirección: Carrera 27 No.23-11</p>
+                <p>Teléfono: 300 6137041</p>
+                <p>Correo electrónico: info@amu.com</p>
+            </div>
+        </div>
+    </section>
 </main>
+
+<?php include "./vistas/inc/footerHome.php"; ?>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const container = document.getElementById("container");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        let scrollAmount = 0;
+        const cardWidth = container.firstElementChild.offsetWidth + 20; // Ancho de la tarjeta + margen
+        const autoScrollSpeed = 6000; // Tiempo en milisegundos entre cada desplazamiento automático
+
+        // Función para desplazar hacia la derecha
+        function scrollToRight() {
+            scrollAmount += cardWidth;
+            container.scroll({
+                top: 0,
+                left: scrollAmount,
+                behavior: "smooth"
+            });
+            // Si llegamos al final del contenedor, regresamos al inicio con un pequeño retraso
+            if (scrollAmount >= container.scrollWidth - container.offsetWidth) {
+                setTimeout(() => {
+                    scrollAmount = 0;
+                    container.scroll({
+                        top: 0,
+                        left: scrollAmount,
+                        behavior: "auto"
+                    });
+                }, 500); // Retraso de 500 milisegundos antes de restablecer el desplazamiento
+            }
+        }
+
+        // Función para desplazar hacia la izquierda
+        function scrollToLeft() {
+            scrollAmount -= cardWidth;
+            container.scroll({
+                top: 0,
+                left: scrollAmount,
+                behavior: "smooth"
+            });
+            // Si estamos al inicio del contenedor y hacemos clic en "Prev", nos desplazamos al final
+            if (scrollAmount < 0) {
+                setTimeout(() => {
+                    scrollAmount = container.scrollWidth - container.offsetWidth;
+                    container.scroll({
+                        top: 0,
+                        left: scrollAmount,
+                        behavior: "auto"
+                    });
+                }, 500); // Retraso de 500 milisegundos antes de restablecer el desplazamiento
+            }
+        }
+
+        // Iniciar el desplazamiento automático hacia la derecha
+        const autoScrollInterval = setInterval(scrollToRight, autoScrollSpeed);
+
+        // Detener el desplazamiento automático cuando el cursor se posa sobre el contenedor
+        container.addEventListener("mouseenter", function () {
+            clearInterval(autoScrollInterval);
+        });
+
+        // Reanudar el desplazamiento automático cuando el cursor sale del contenedor
+        container.addEventListener("mouseleave", function () {
+            autoScrollInterval = setInterval(scrollToRight, autoScrollSpeed);
+        });
+
+        // Desplazamiento hacia la izquierda cuando se presiona el botón "Prev"
+        prevBtn.addEventListener("click", function () {
+            scrollToLeft();
+        });
+
+        // Desplazamiento hacia la derecha cuando se presiona el botón "Next"
+        nextBtn.addEventListener("click", function () {
+            scrollToRight();
+        });
+    });
+
+</script>
