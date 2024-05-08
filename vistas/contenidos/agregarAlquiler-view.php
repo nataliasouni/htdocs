@@ -181,10 +181,9 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                             <div class="form-group botones">
                                                 <!-- Botón para generar el contrato -->
                                                 <a class="contrato" style="cursor: pointer"
-                                                    title="Generar Contrato" onclick="generarContrato()">Generar Contrato</a>
+                                                    title="Generar Contrato" onclick="generarContrato()">Generar Contrato y Pagare</a>
                                                 <!-- Botón para generar el pagaré -->
-                                                <a class="pagare"  style="cursor: pointer"
-                                                    title="Generar Pagare" onclick="generarPagare()" >Generar Pagaré</a>
+
                                             </div>
 
 
