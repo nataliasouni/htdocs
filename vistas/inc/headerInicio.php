@@ -8,15 +8,37 @@
             </a>
         </div>
         <div class="menu-container">
-            <select id="productos-dropdown">
-                <option value="<?= SERVERURL; ?>homePage">Productos</option>
-                <!-- Aquí puedes cargar dinámicamente las categorías de productos desde la base de datos -->
-                <option value="#">Categoría 1</option>
-                <option value="#">Categoría 2</option>
-                <option value="#">Categoría 3</option>
-            </select>
+            <a href="<?= SERVERURL; ?>homePage">Inicio</a>
+            <ul>
+                <li class="dropdown">
+                    <a href="<?php echo SERVERURL; ?>productosHomepage" class="dropbtn">Productos</a>
+                    <div class="dropdown-content">
+                        <a href="<?php echo SERVERURL; ?>productosHomepage">Todos los Productos</a>
+                        <?php
+                        $var = "Movilidad y Recuperación";
+                        ?>
+                        <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Movilidad Y
+                            recuperación</a>
+                        <?php
+                        $var2 = "Muebles Hospitalarios";
+                        ?>
+                        <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var2; ?>">Muebles
+                            hospitalarios</a>
+                        <?php
+                        $var3 = "Línea Respiratoria";
+                        ?>
+                        <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var3; ?>">Linea
+                            Respiratoria</a>
+                        <?php
+                        $var4 = "Colchones y Colchonetas";
+                        ?>
+                        <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var4; ?>">Colchones y
+                            Colchonetas</a>
+                    </div>
+                </li>
+            </ul>
             <a href="<?= SERVERURL; ?>agendarCita">Agendar Cita</a>
-            <a href="#contacto">Contáctanos</a>
+            <a href="<?= SERVERURL; ?>homePage#contacto">Contáctanos</a>
         </div>
         <div class="login-container">
             <!-- Inicio de sesión -->
@@ -27,4 +49,3 @@
         </div>
     </div>
 </header>
-

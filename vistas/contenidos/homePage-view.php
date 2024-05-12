@@ -10,7 +10,7 @@
         <div class="banner-content">
             <h1>Bienvenido a AMU</h1>
             <p>Tu mejor opción para comprar tus productos de ayudas y movilidad.</p>
-            <a href="" class="cta">Explora nuestros productos</a>
+            <a href="<?php echo SERVERURL; ?>productosHomepage" class="cta">Explora nuestros productos</a>
         </div>
     </section>
 
@@ -18,24 +18,48 @@
     <section id="categorias" class="categorias">
         <div class="container-categoria">
             <div class="categoria">
+                <?php
+                $var = "Movilidad y Recuperación";
+                ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo1.png" alt="Categoría 1">
-                <p>Descripción breve de la categoría 1.</p>
-                <a href="#">Ver más</a>
+                <p>Ofrecemos una gama completa de ayudas de movilidad y recuperación en venta, alquiler, mantenimiento y
+                    reparación. Desde camas hospitalarias, sillas de ruedas, muletas, hasta nebulizadores y extractores
+                    de leche materna, cubrimos todas tus necesidades de cuidado y rehabilitación. ¡Contáctanos para
+                    encontrar la solución perfecta para ti!</p>
+                <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
             <div class="categoria">
+                <?php
+                $var = "Muebles Hospitalarios";
+                ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo2.png" alt="Categoría 2">
-                <p>Descripción breve de la categoría 2.</p>
-                <a href="#">Ver más</a>
+                <p>Descubre nuestra línea de muebles hospitalarios, diseñados para garantizar calidad y funcionalidad en
+                    entornos médicos. Desde camillas y camas de levante hasta mesas especializadas y botiquines de
+                    primeros auxilios, equipa tu centro médico con lo mejor.</p>
+                <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
             <div class="categoria">
+                <?php
+                $var = "Línea Respiratoria";
+                ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo3.png" alt="Categoría 3">
-                <p>Descripción breve de la categoría 3.</p>
-                <a href="#">Ver más</a>
+                <p>Explora nuestra línea respiratoria, dedicada a mejorar la calidad de vida de nuestros clientes. Desde
+                    nebulizadores hasta oxígeno y extractores de leche materna, ofrecemos una amplia gama de productos
+                    diseñados para facilitar la respiración y promover la salud pulmonar. Confía en nosotros para
+                    encontrar las soluciones que necesitas para cuidar de tu salud respiratoria.</p>
+                <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
             <div class="categoria">
+                <?php
+                $var = "Colchones y Colchonetas";
+                ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo4.png" alt="Categoría 4">
-                <p>Descripción breve de la categoría 4.</p>
-                <a href="#">Ver más</a>
+                <p>Descubre nuestra selección de colchones y ropa de cama hospitalaria diseñados para ofrecer confort y
+                    cuidado. Desde almohadas hasta colchones clínicos y tipo antiescara, así como protectores para
+                    colchón y almohada. Además, disponemos de juegos de sábanas y toallas de cuerpo y manos para
+                    garantizar un entorno cómodo y acogedor. ¡Haz de tu espacio médico un lugar de descanso y bienestar!
+                </p>
+                <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
         </div>
     </section>
@@ -79,7 +103,7 @@
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector3.jpg" alt="Imagen 3">
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector4.jpg" alt="Imagen 4">
                 </div>
-                <a href="#agendar-cita" class="cta">Agendar Cita</a>
+                <a href="<?= SERVERURL; ?>agendarCita" class="cta">Agendar Cita</a>
             </div>
             <div class="servicios-images">
                 <img src="<?php echo SERVERURL; ?>vistas/img/diana.jpg" alt="Foto de la Fonodilogo">
@@ -87,24 +111,24 @@
         </div>
     </section>
 
-    <!-- Sección de Contacto -->
     <section id="contacto" class="contacto">
         <div class="container-contacto">
             <h2>Contacto</h2>
             <p>Estamos aquí para ayudarte. Contáctanos.</p>
-            <form action="enviar.php" method="post">
-                <input type="text" name="nombre" placeholder="Nombre" required>
-                <input type="email" name="email" placeholder="Correo electrónico" required>
-                <textarea name="mensaje" placeholder="Mensaje" required></textarea>
-                <button type="submit">Enviar Mensaje</button>
+            <form id="formulario-contacto" action="#" method="POST">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                <textarea name="mensaje" id="mensaje" placeholder="Mensaje" required></textarea>
+                <button type="button" onclick="enviarFormulario()">Enviar Mensaje</button>
             </form>
             <div class="informacion-contacto">
-                <p>Dirección: Carrera 27 No.23-11</p>
+                <p>Dirección: Carrera 27 No.31-32</p>
                 <p>Teléfono: 300 6137041</p>
                 <p>Correo electrónico: info@amu.com</p>
             </div>
         </div>
     </section>
+
 </main>
 
 <?php include "./vistas/inc/footerHome.php"; ?>
@@ -186,4 +210,58 @@
         });
     });
 
+    function enviarFormulario() {
+        var nombre = $('#nombre').val().trim();
+        var email = $('#email').val().trim();
+        var mensaje = $('#mensaje').val().trim();
+
+        // Verificar si alguno de los campos obligatorios está vacío
+        if (nombre === '' || email === '' || mensaje === '') {
+            // Mostrar alerta de error si algún campo está vacío
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, complete todos los campos antes de enviar el mensaje.'
+            });
+            return; // Salir de la función si algún campo está vacío
+        }
+
+        var formData = new FormData(document.getElementById('formulario-contacto')); // Obtener datos del formulario
+
+        fetch('ajax/contactanosAjax.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Mostrar alerta de éxito
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Mensaje enviado correctamente!',
+                        text: data.message
+                    });
+
+                    // Limpiar los campos del formulario después de enviar correctamente
+                    $('#formulario-contacto input[type="text"], #formulario-contacto input[type="email"], #formulario-contacto textarea').val('');
+                } else {
+                    // Mostrar alerta de error
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al enviar el mensaje',
+                        text: data.message
+                    });
+                }
+            })
+            .catch(error => {
+                // Manejar errores de la solicitud AJAX
+                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al enviar el formulario. Por favor, inténtalo de nuevo.'
+                });
+            });
+    }
+    
 </script>

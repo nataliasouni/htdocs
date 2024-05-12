@@ -22,11 +22,17 @@ class vistasModelo
     //  $contenido = "login";
     } elseif ($vistas == "homePage" || $vistas == "index") {
       $contenido = "homePage";
+    }elseif($vistas == "productosHomepage"){
+      $contenido = "productosHomepage";    
+    }elseif($vistas == "productosHomepageCategorias"){
+      $contenido = "productosHomepageCategorias";    
+    }elseif($vistas == "detallesProductosHome"){
+      $contenido = "detallesProductosHome";    
     }elseif ($vistas == "login"){
       $contenido = "login";
     }elseif ($vistas == "agendarCita"){
       $contenido = "agendarCita";
-    } elseif($vistas == "recuperarContra"){
+    }elseif($vistas == "recuperarContra"){
       $contenido = "recuperarContra";    
     } elseif($vistas == "registroCliente"){
       $contenido = "registroCliente";
