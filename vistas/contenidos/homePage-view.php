@@ -190,53 +190,53 @@
             <div class="container">
 
                 <!--<div class="left-container">-->
-                    <div class="large-box">
-                        <!-- Contenido del recuadro grande -->
-                        <!--<div class = "img-contentfoto">-->
-                            <img class = "img-foto" src="<?php echo SERVERURL; ?>vistas/img/diana.jpg"
-                            alt="Imagen Diana"></img>
+                <div class="large-box">
+    <!-- Contenido del recuadro grande -->
+    <!--<div class = "img-contentfoto">-->
+    <img id="Diana" class="img-foto" src="<?php echo SERVERURL; ?>vistas/img/diana.jpg" alt="Imagen Diana"></img>
 
-                        <!--</div>-->
-                        <p class="content-text">
-                            Soy Diana Carolina Rodriguez Calle y me complace presentarme como fonoaudióloga 
-                            especializada en la creación de moldes para protectores de oído en AMU (ayudas medicas universales). 
-                            Con una sólida formación académica obtenida en la Universidad del Valle y años de experiencia en el 
-                            campo de la fonoaudiología, me comprometo a proporcionarle servicios de la más alta calidad y 
-                            atención personalizada a cada uno de mis pacientes Mi enfoque se centra en brindar soluciones 
-                            adaptadas a las necesidades individuales de cada cliente, utilizando tecnología de vanguardia y 
-                            técnicas especializadas en la toma de impresiones para garantizar la máxima comodidad y eficacia de 
-                            los protectores de oído.
-                        </p>
+    <!--</div>-->
+    <p class="content-text" style="text-align: justify;">
+        Soy Diana Carolina Rodríguez Calle y me complace presentarme como fonoaudióloga especializada
+        en la elaboración de protectores auditivos personalizados, para la prevención de deterioros
+        audiológicos asociados a infecciones por uso de piscinas, mares, ríos, exposición a ambientes
+        altamente ruidosos por maquinarias pesadas, etc., con una sólida formación académica 
+        obtenida en la Universidad del Valle y muchos años de experiencia en el campo de la 
+        fonoaudiología. Como profesional, me comprometo a proporcionar servicios de la más 
+        alta calidad y atención personalizada a cada uno de mis pacientes. Mi enfoque se centra 
+        en brindar soluciones adaptadas a las necesidades individuales de cada uno de ellos, 
+        garantizando la máxima comodidad y eficacia en los protectores de oído. Agenda tu cita 
+        en Ayudas Médicas Universales, Carrera 27 número 31-32, Centro, Palmira (Valle).
+    </p>
 
-                        <button onclick ="location.href='#'" class = "botonesCita"> Agendar tu cita </button>
+    <button id="agendaAbajo" onclick="location.href='#'" class="botonesCita"> Agendar tu cita </button>
+</div>
 
-
-                    </div>
                     
                     
                 <!--</div>-->
                     <div class="right-container">
-                        <div class="small-boxes">
-                            <div class="box-arriba">
+                        <div id="smal1" class="small-boxes">
+                            <div id="box1" class="box-arriba">
                                 <!-- Contenido del recuadro 3 -->
-                                <img class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector1.jpg"
+                                <img id="imagen1" class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector1.jpg"
                                     alt="Imagen protector1"></img>
                             </div>
-                            <div class="box-arriba">
+                            <div id="box2" class="box-arriba">
                                 <!-- Contenido del recuadro 3 -->
-                                <img class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector2.jpg"
+                                <img id="imagen2" class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector2.jpg"
                                 alt="Imagen protector2"></img>
                             </div>
                         </div>
-                        <div class="small-boxes">
-                            <div class="box-abajo">
+                        <div id="smal2" class="small-boxes">
+                            <div id="box3" class="box-abajo">
                                 <!-- Contenido del recuadro 3 -->
-                                <img class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector3.jpg"
+                                <img id="imagen3" class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector3.jpg"
                                 alt="Imagen protector3"></img>
                             </div>
-                            <div class="box-abajo">
+                            <div id="box4" class="box-abajo">
                                 <!-- Contenido del recuadro 3 -->
-                                <img class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector4.jpg"
+                                <img id="imagen4" class="box-img" src="<?php echo SERVERURL; ?>vistas/img/imgProtector4.jpg"
                                 alt="Imagen protector4"></img>
                             </div>
                         </div>

@@ -35,7 +35,7 @@ if ($datosTrabajador->rowCount() == 1) {
                         <div class="añadir_cleinte-form">
                             <div class="form-group">
                                 <p class="titulos_form">Cédula</p>
-                                <input type="text" name="cedula" class="login_nombreUsuario"
+                                <input type="text" name="cedulaUp" class="login_nombreUsuario"
                                     value="<?= $campos['cedula'] ?>" readonly>
                             </div>
                             <div class="form-group">

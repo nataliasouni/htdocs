@@ -13,10 +13,7 @@ if (isset($_POST['cedulaA']) || isset($_POST['cedulaDelete']) || isset($_POST['i
         echo $objRegistroES->agregarRegistroESControlador();
     }
 
-    //Eliminar 
-    if(isset($_POST['cedulaDelete'])){
-        echo $objRegistroES->eliminarTrabajadorControlad();
-    }
+  
 
     //Actualizar 
     if(isset($_POST['idUpdate'])){

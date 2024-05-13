@@ -8,7 +8,8 @@ class vistasModelo
     "agregarAlquiler", "agregarEnsamble", "agregarEntradaRES", "agregarInsumo", "agregarProducto", "agregarTrabajador", "alquilerProductos",
     "detallesEnsamble", "detallesInsumo", "detallesProducto", "detallesUsuario", "editarEnsamble", "editarInsumo", "editarProducto", 
     "editarProductoEnsamble", "editarRegistro", "editarTrabajador", "editarusuario", "ensambleM", "homeGT", "insumos", "produccion",
-    "productos", "registroES", "trabajadores"];
+    "productos", "registroES", "trabajadores","produccionMaster","editarProduccion","detallesProduccion","notificaciones","prendasQuirurgicas",
+    "devolucionDefectos","ensambleTaller","agregarEnsambleTaller","enviarEnsambleTaller"];
 
     if (in_array($vistas, $listaBlanca)) {
       if (is_file("./vistas/contenidos/" . $vistas . "-view.php")) {

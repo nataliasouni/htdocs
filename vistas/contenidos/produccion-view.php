@@ -38,18 +38,26 @@
                                 </select>
                                 <p> </p>
                                 <label for="fecha" id="fec">Fecha:</label>
-                                <input type="date" id="fecha" name="fecha">
+                                <input type="date" id="fecha" name="fecha" required>
+                                <p> </p>
+                                <label class="titulos" id="seleccionarPrenda">Seleccione el tipo de prenda producido:</label>
+                                <select id="idPrenda" name="idPrenda">
+                                    <!-- Aquí se cargarán los nombres de los talleres desde el controlador -->
+                                    <?php
+                                    echo $produccionControlador->cargarNombresIdPrendas();
+                                    ?>
+                                </select>
                                 <p> </p>
                                 <div class="input-button-container">
                                     <label class="titulos" id="pr" >Ingrese las prendas quirurgicas elaboradas: </label>
-                                    <input name="prendasquirurgicas"id="prendasquirurgicas" type="text" placeholder=" " autocomplete="off" id="produccion" name="produccion" required></input>
+                                    <input name="totalprendasquirurgicas"id="totalprendasquirurgicas" type="number" placeholder=" " autocomplete="off" id="produccion" name="produccion" required min="0" inputmode="numeric"> 
                                     <div >
                                         <label class="titulos" id="pre" >Ingrese las prendas defectuosas encontradas: </label>
-                                        <input name="prendasdefectuosas" id="prendasdefectuosas" type="text" placeholder=" " autocomplete="off" id="otraProduccion" name="otraProduccion" required></input>
+                                        <input name="totalprendasdefectuosas" id="totalprendasdefectuosas" type="number" placeholder=" " autocomplete="off" id="otraProduccion" name="otraProduccion" required min="0" inputmode="numeric">
                                     </div>
                                 </div>
                                 <button id="ingresarP" type="submit">Ingresar Produccion</button>
-                                <button id="cancelar" onclick="location.href='home'">Cancelar</button>
+                                <button id="cancelar" type="button" onclick="window.location.href = 'home'">Cancelar</button>
                             </form> <!-- Fin del formulario -->
                         </div>  
                     </div>
@@ -60,13 +68,16 @@
         <?php
         // Procesar los datos del formulario si se envían
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['cedulatrabajador'], $_POST['idtaller'], $_POST['fecha'], $_POST['prendasquirurgicas'], $_POST['prendasdefectuosas'])) {
+            if (isset($_POST['cedulatrabajador'], $_POST['idtaller'], $_POST['fecha'], $_POST['idPrenda'],$_POST['totalprendasquirurgicas'], $_POST['totalprendasdefectuosas'])) {
                 require_once "./controladores/produccionControlador.php";
                 $produccionControlador = new produccionControlador();
                 echo $produccionControlador->registrarProduccion();
             }
         }
         ?>
+
+        
+        
     </section>
 </main>
 

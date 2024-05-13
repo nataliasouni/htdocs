@@ -239,7 +239,7 @@ class trabajadorControlador extends trabajadoresModelo
     }
 
     //Obtener valores del form
-    $cedulaNueva = mainModel::limpiarCadena($_POST['cedula']);
+    $cedulaNueva = mainModel::limpiarCadena($_POST['cedulaUp']);
     $trabajador = mainModel::limpiarCadena($_POST['trabajadorUp']);
     $telefono = mainModel::limpiarCadena($_POST['telefonoUp']);
     $estado = mainModel::limpiarCadena($_POST['estado']);

@@ -75,6 +75,7 @@
                     </div>
                 </a>
 
+                <a href="<?= SERVERURL; ?>prendasCortadas">
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -88,6 +89,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
 
                 <a href="<?= SERVERURL; ?>insumos">
                 <div class="card">
