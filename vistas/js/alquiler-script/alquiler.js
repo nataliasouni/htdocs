@@ -118,48 +118,7 @@ function generarContrato() {
     xhr.send(formData);
 }
 
-function generarPagare() {
-    // Obtener los valores de los campos del formulario
-    var fechaEntrega = document.getElementById("fechaEntrega").value;
-    var fechaDevolucion = document.getElementById("fechaDevolucion").value;
-    var tiempoAlquiler = document.getElementById("tiempoAlquiler").value;
-    var nombreCliente = document.getElementById("nombreCliente").value;
-    var cedulaCliente = document.getElementById("cedulaCliente").value;
-    var nombreProducto = document.getElementById("nombreProducto").value;
 
-    // Crear objeto FormData para enviar los datos al script PHP
-    var formData = new FormData();
-    formData.append('fechaEntrega', fechaEntrega);
-    formData.append('fechaDevolucion', fechaDevolucion);
-    formData.append('tiempoAlquiler', tiempoAlquiler);
-    formData.append('nombreCliente', nombreCliente);
-    formData.append('cedulaCliente', cedulaCliente);
-    formData.append('nombreProducto', nombreProducto);
 
-    // Enviar los datos al script PHP utilizando AJAX
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '../../../pdfs/pagare/solicitudPDF.php', true);
-    xhr.responseType = 'blob'; // Indicar que la respuesta será un blob (archivo binario)
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            // Crear una URL del objeto blob para el PDF generado
-            var blob = new Blob([xhr.response], { type: 'application/pdf' });
-            var url = window.URL.createObjectURL(blob);
-
-            // Crear un enlace con la URL del PDF
-            var link = document.createElement('a');
-            link.href = url;
-            link.download = 'pagare_alquiler_' + new Date().toISOString().slice(0, 10) + '.pdf'; // Nombre del archivo PDF
-            document.body.appendChild(link);
-
-            // Simular un clic en el enlace para abrir el PDF en una nueva pestaña y permitir la descarga
-            link.click();
-
-            // Limpiar la URL creada
-            window.URL.revokeObjectURL(url);
-        }
-    };
-    xhr.send(formData);
-}
 
 

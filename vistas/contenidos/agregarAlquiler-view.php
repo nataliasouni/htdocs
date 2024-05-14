@@ -31,8 +31,15 @@ if ($datosalquilerproductos->rowCount() == 1) {
                     <div class="formularioAjax content">
                         <div class="choose-option">
                             <h2 style='color: #0053A9'> Alquiler </h2>
-                            <form action="<?php echo SERVERURL; ?>ajax/registroESAjax.php" method="POST" data-form="save" id="formularioContrato">
+                            <form action="<?php echo SERVERURL; ?>ajax/alquilerAjax.php" method="POST" data-form="save"
+                                id="formularioAlquiler">
                                 <div class="añadir_alquiler-form">
+
+                                    <div class="form-group">
+                                        <p class="titulos_form">Numero de Contrato</p>
+                                        <input type="number" name="numeroContrato" id="numeroContrato"
+                                            class="login_nombreUsuario" required>
+                                    </div>
 
                                     <div class="form-group">
                                         <p class="titulos_form">Fecha de Entrega</p>
@@ -41,7 +48,8 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Fecha de Devolucion</p>
-                                        <input type="date" name="fechaDevolucion" id="fechaDevolucion" class="login_nombreUsuario" readonly>
+                                        <input type="date" name="fechaDevolucion" id="fechaDevolucion"
+                                            class="login_nombreUsuario" readonly>
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Tiempo de alquiler</p>
@@ -67,13 +75,13 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     <div class="añadir_producto-form">
                                         <div class="form-group">
                                             <p class="titulos_form">ID</p>
-                                            <input type="text" name="cedulaUp" class="login_nombreUsuario"
+                                            <input type="text" name="idProducto" class="login_nombreUsuario"
                                                 value="<?= $campos['id'] ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <p class="titulos_form">Nombre del Producto</p>
-                                            <input type="text" name="nombreProducto" id="nombreProducto" class="login_password"
-                                                value="<?= $campos['nombreproducto'] ?>" required
+                                            <input type="text" name="nombreProducto" id="nombreProducto"
+                                                class="login_password" value="<?= $campos['nombreproducto'] ?>" required
                                                 oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
                                         </div>
                                         <div class="form-group">
@@ -106,17 +114,19 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     <div class="añadir_cliente-form">
                                         <div class="form-group">
                                             <p class="titulos_form">Nombre del Cliente</p>
-                                            <input type="text" name="nombreCliente" id="nombreCliente" class="login_nombreUsuario" required>
+                                            <input type="text" name="nombreCliente" id="nombreCliente"
+                                                class="login_nombreUsuario" required>
                                         </div>
                                         <div class="form-group">
                                             <p class="titulos_form">Cedula </p>
-                                            <input type="text" name="cedulaCliente" id="cedulaCliente" class="login_nombreUsuario" required>
+                                            <input type="text" name="cedulaCliente" id="cedulaCliente"
+                                                class="login_nombreUsuario" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="Imagen" class="titulos_form">Fotocopia de la Cedula</label>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="Imagen" name="imagen"
-                                                    accept="image/*" lang="es" required>
+                                                <input type="file" class="custom-file-input" id="Imagen"
+                                                    name="fotocopiaCedula" accept="image/*" lang="es" required>
                                                 <label class="custom-file-label" id="customFileLabel"
                                                     for="Imagen">Seleccionar
                                                     archivo...</label>
@@ -125,8 +135,8 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                         <div class="form-group">
                                             <label for="Imagen" class="titulos_form">Fotocopia del Recibo</label>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="Imagen" name="imagen"
-                                                    accept="image/*" lang="es" required>
+                                                <input type="file" class="custom-file-input" id="Imagen"
+                                                    name="fotocopiaRecibo" accept="image/*" lang="es" required>
                                                 <label class="custom-file-label" id="customFileLabel"
                                                     for="Imagen">Seleccionar
                                                     archivo...</label>
@@ -134,11 +144,11 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                         </div>
                                         <div class="form-group">
                                             <p class="titulos_form">Direccion</p>
-                                            <input type="text" name="direccion" class="login_nombreUsuario" required>
+                                            <input type="text" name="Direccion" class="login_nombreUsuario" required>
                                         </div>
                                         <div class="form-group">
                                             <p class="titulos_form">Telefono</p>
-                                            <input type="text" name="telefono" class="login_nombreUsuario" required>
+                                            <input type="text" name="Telefono" class="login_nombreUsuario" required>
                                         </div>
                                     </div>
 
@@ -174,16 +184,27 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                         </div>
 
                                         <div class="Cliente-group">
-                                            <div class="choose-option">
+                                            <div class="contratoPagare">
                                                 <h2 style='color: #0053A9'>Contrato y Pagare</h2>
                                             </div>
 
                                             <div class="form-group botones">
                                                 <!-- Botón para generar el contrato -->
-                                                <a class="contrato" style="cursor: pointer"
-                                                    title="Generar Contrato" onclick="generarContrato()">Generar Contrato y Pagare</a>
+                                                <a class="contrato" style="cursor: pointer" title="Generar Contrato"
+                                                    onclick="generarContrato()">Generar Contrato y Pagare</a>
                                                 <!-- Botón para generar el pagaré -->
 
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="Imagen" class="titulos_form">Subir Contrato y Pagare</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="Imagen"
+                                                        name="contratoPagare" accept="image/*" lang="es" required>
+                                                    <label class="custom-file-label" id="customFileLabel"
+                                                        for="Imagen">Seleccionar
+                                                        archivo...</label>
+                                                </div>
                                             </div>
 
 
@@ -194,7 +215,7 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                             <div class="form-group botones">
                                                 <button class="estado-enviar" type="submit" style="cursor: pointer"
                                                     title="Enviar" name="Enviar">Agregar</button>
-                                                <button id="botonCancelarES" type="button" class="estado-cancelar"
+                                                <button id="botonCancelarAl" type="button" class="estado-cancelar"
                                                     style="cursor: pointer" title="Cancelar"
                                                     name="Cancelar">Cancelar</button>
                                             </div>
@@ -205,7 +226,6 @@ if ($datosalquilerproductos->rowCount() == 1) {
         </section>
     </main>
 
-    <script src="<?php echo SERVERURL; ?>vistas/js/alquiler-script/alquiler.js"></script>
 
     <?php
 } else {
@@ -231,3 +251,5 @@ if ($datosalquilerproductos->rowCount() == 1) {
 }
 ?>
     <script src="<?php echo SERVERURL; ?>vistas/js/alquiler-script/alquiler.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/alquiler-script/botonCancelarAl.js" type="module"></script>
+

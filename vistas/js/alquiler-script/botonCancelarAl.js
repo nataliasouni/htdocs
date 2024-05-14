@@ -1,6 +1,6 @@
 import { SERVERURL } from '../../../config/APPJS.js';
 
-let botonCancelar = document.getElementById('botonCancelarES');
+let botonCancelar = document.getElementById('botonCancelarAl');
 let formulario = document.getElementsByClassName('formularioAjax')[0];
 let formCambiado = false;
 
@@ -16,7 +16,7 @@ botonCancelar.addEventListener('click', function () {
     if (formCambiado) {
         Swal.fire({
             title: '¿Estás seguro?',
-            text: 'Los datos que hayas ingresado se eliminarán y regresarás a la ventana "registroES".',
+            text: 'Los datos que hayas ingresado se eliminarán y regresarás a la ventana "alquilerProductos".',
             type: 'question',
             showCancelButton: true,
             confirmButtonText: 'Aceptar',
@@ -24,13 +24,13 @@ botonCancelar.addEventListener('click', function () {
             allowOutsideClick: false
         }).then(function (result) {
             if (result.value) {
-                window.location.href = SERVERURL + 'registroES';
+                window.location.href = SERVERURL + 'alquilerProductos';
               }
         });
     } else {
         Swal.fire({
             title: '¿Estás seguro?',
-            text: 'Regresarás a la ventana "registroES".',
+            text: 'Regresarás a la ventana "alquilerProductos".',
             type: 'question',
             showCancelButton: true,
             confirmButtonText: 'Aceptar',
@@ -38,7 +38,7 @@ botonCancelar.addEventListener('click', function () {
             allowOutsideClick: false
         }).then(function (result) {
             if (result.value) {
-                window.location.href = SERVERURL + 'registroES';
+                window.location.href = SERVERURL + 'alquilerProductos';
               }
         });
     }
