@@ -82,7 +82,9 @@
     color: #333;
 }
 
-.login_nombreUsuario, .login_password, .selectform {
+.login_nombreUsuario,
+.login_password,
+.selectform {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
@@ -98,7 +100,8 @@
 .detallesUs {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Esto puede variar según tu diseño */
+    align-items: center;
+    /* Esto puede variar según tu diseño */
 }
 
 .estado-volver {
@@ -135,7 +138,7 @@
     transition: background-color 0.3s;
 }
 
-.estado-enviar:hover{
+.estado-enviar:hover {
     background-color: #00864c;
 }
 
@@ -143,47 +146,59 @@
     background-color: #a50101;
 }
 
-.btn-primary{
-    background-color: #0053A9 !important; 
+.btn-primary {
+    background-color: #0053A9 !important;
 }
 
-.btn-primary:hover{
-    background-color: #003064 !important; 
+.btn-primary:hover {
+    background-color: #003064 !important;
 }
 
 .btn-editar,
 .btn-detalles {
-    border: none; /* Eliminar bordes */
-    background: none; /* Eliminar fondo */
-    padding: 0; /* Eliminar espaciado interno */
+    border: none;
+    /* Eliminar bordes */
+    background: none;
+    /* Eliminar fondo */
+    padding: 0;
+    /* Eliminar espaciado interno */
     cursor: pointer;
 }
 
 .btn-estado-usuario {
-    border: none; /* Eliminar bordes */
-    background: none; /* Eliminar fondo */
-    padding: 0; /* Eliminar espaciado interno */
+    border: none;
+    /* Eliminar bordes */
+    background: none;
+    /* Eliminar fondo */
+    padding: 0;
+    /* Eliminar espaciado interno */
     cursor: none;
 }
 
 .btn-editar img,
 .btn-detalles img,
 .btn-estado-usuario img {
-    width: 20px; /* Ancho de la imagen */
-    height: 20px; /* Altura de la imagen */
-    border: none !important; /* Asegurar que no haya bordes en la imagen */
+    width: 20px;
+    /* Ancho de la imagen */
+    height: 20px;
+    /* Altura de la imagen */
+    border: none !important;
+    /* Asegurar que no haya bordes en la imagen */
 }
 
 .table {
-    border-collapse: collapse; /* Para fusionar los bordes de las celdas */
+    border-collapse: collapse;
+    /* Para fusionar los bordes de las celdas */
 }
 
 
 
 .table th,
 .table td {
-    padding: 12px 20px; /* Añadir un espaciado interno a las celdas */
-    vertical-align: middle; /* Centrar verticalmente el contenido */
+    padding: 12px 9px;
+    /* Añadir un espaciado interno a las celdas */
+    vertical-align: middle;
+    /* Centrar verticalmente el contenido */
 }
 
 .table th {
@@ -192,15 +207,20 @@
 
 .table th:nth-child(4),
 .table td:nth-child(4) {
-    width: 100px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+    width: 110px;
+    /* Ajustar el ancho de la columna "Nombre del trabajador" */
 }
+
 .table th:nth-child(3),
 .table td:nth-child(3) {
-    width: 200px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+    width: 170px;
+    /* Ajustar el ancho de la columna "Nombre del trabajador" */
 }
+
 .table th.editar,
 .table td.editar {
-    width: 150px; /* Ancho fijo para la columna "Opciones" */
+    width: 150px;
+    /* Ancho fijo para la columna "Opciones" */
     border: none !important;
 }
 
@@ -213,10 +233,9 @@
     .filter-input,
     .pagination a,
     .formularioAjax {
-        width: 90%; /* Ajustar el ancho en dispositivos pequeños */
-        max-width: none; /* Anular el ancho máximo en dispositivos pequeños */
+        width: 90%;
+        max-width: none;
     }
-
 
     .table {
         width: 350px;
@@ -230,7 +249,6 @@
     .table td,
     .table tr {
         display: block;
-
     }
 
     .table thead tr {
@@ -239,8 +257,24 @@
         left: -9999px;
     }
 
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        width: 230px;
+        /* Ajustar el ancho de la columna "Nombre del trabajador" */
+        padding: 20px 175px;
+    }
+
     .table tr {
-        margin-bottom: 20px; /* Aumentar el margen inferior */
+        margin-bottom: 20px;
+        /* Aumentar el margen inferior */
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 175px;
+        /* Aumentar el padding para dar más espacio */
+        text-align: left;
+        border-bottom: 1px solid #ddd;
     }
 
     .table td {
@@ -249,8 +283,6 @@
         position: relative;
         padding-left: 50%;
         text-align: left;
-        top: 0px;
-        left: 30px;
     }
 
     .table td:before {
@@ -263,29 +295,54 @@
         overflow: hidden;
     }
 
-    .table td:nth-of-type(1):before { content: "Item: "; }
-    .table td:nth-of-type(2):before { content: "ID: "; }
-    .table td:nth-of-type(3):before { content: "Nombre del Producto: "; }
-    .table td:nth-of-type(4):before { content: "Detalles: "; }
-    .table td:nth-of-type(5):before { content: "Cantidad: "; }
-    .table td:nth-of-type(6):before { content: "Alquiler 15 Dias: "; }
-    .table td:nth-of-type(7):before { content: "Alquiler 30 Dias: "; }
-    .table td:nth-of-type(8):before { content: "Deposito: "; }
-    .table td:nth-of-type(9):before { content: "Opciones: "; }
+    .table td:nth-of-type(1):before {
+        content: "Item: ";
+    }
+
+    .table td:nth-of-type(2):before {
+        content: "ID: ";
+    }
+
+    .table td:nth-of-type(3):before {
+        content: "Nombre del Producto: ";
+    }
+
+    .table td:nth-of-type(4):before {
+        content: "Detalles: ";
+    }
+
+    .table td:nth-of-type(5):before {
+        content: "Cantidad: ";
+    }
+
+    .table td:nth-of-type(6):before {
+        content: "Alquiler 15 Dias: ";
+    }
+
+    .table td:nth-of-type(7):before {
+        content: "Alquiler 30 Dias: ";
+    }
+
+    .table td:nth-of-type(8):before {
+        content: "Deposito: ";
+    }
+
+    .table td:nth-of-type(9):before {
+        content: "Opciones: ";
+    }
 
     /* Mostrar la columna "Item" en dispositivos móviles */
     .table td:nth-of-type(1),
     .table th:nth-of-type(1) {
         position: absolute;
         top: 0px;
-        left: 30px;
         width: 350px;
         padding-right: 200px;
         white-space: normal;
         overflow: hidden;
         display: block;
-        position: relative;      
+        position: relative;
         width: 350px;
+        padding: 12px 175px;
     }
 }
-

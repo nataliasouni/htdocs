@@ -24,14 +24,14 @@
                         <thead>
                             <tr>
                                 <th>Item</th>
+                                <th>Codigo</th>
                                 <th>Nombre del Producto</th>
                                 <th>Detalles</th>
-                                <th>Cantidad</th>
                                 <th>Alquiler 15 Dias</th>
                                 <th>Alquiler 30 Dias</th>
                                 <th>Deposito</th>
                                 <th class="editar">Opciones</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody id="tableBody">
@@ -50,11 +50,7 @@
                     </nav>
                     <div class="d-flex justify-content-end">
                         <div class="mr-2">
-                            <button class="btn btn-primary" onclick="location.href='./agregarAlquiler'">Alquilar
-                                 Productos</button>
-                        </div>
-                        <div class="mr-2">
-                            <button class="btn btn-primary" onclick="location.href='./agregarAlquiler'">Agregar Producto Para Alquiler
+                            <button class="btn btn-primary" onclick="location.href='./agregarProductosAlquiler'">Agregar Producto Para Alquiler
                                  </button>
                         </div>
                     </div>
@@ -63,3 +59,5 @@
         </div>
     </section>
 </main>
+
+<script src="<?php echo SERVERURL; ?>vistas/js/alquiler-script/alquiler.js"></script>

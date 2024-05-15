@@ -30,7 +30,7 @@ botonCancelar.addEventListener('click', function () {
     } else {
         Swal.fire({
             title: '¿Estás seguro?',
-            text: 'Regresarás a la ventana "trabajadores".',
+            text: 'Regresarás a la ventana "registroES".',
             type: 'question',
             showCancelButton: true,
             confirmButtonText: 'Aceptar',

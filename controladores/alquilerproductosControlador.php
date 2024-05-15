@@ -11,12 +11,16 @@ class alquilerproductosControlador extends alquilerproductosModelo
   public function agregaralquilerproductosControlador()
   {
     //Controlador para agregar usuario
-    $cedula = mainModel::limpiarCadena($_POST['cedula']);
-    $trabajador = mainModel::limpiarCadena($_POST['nombreTrabajador']);
-    $telefono = mainModel::limpiarCadena($_POST['telefono']);
+    $codigoProducto = mainModel::limpiarCadena($_POST['codigoProducto']);
+    $nombreProducto = mainModel::limpiarCadena($_POST['nombreProducto']);
+    $detallesProducto = mainModel::limpiarCadena($_POST['detallesProducto']);
+    $precio15Dias = mainModel::limpiarCadena($_POST['precio15Dias']);
+    $precio30Dias = mainModel::limpiarCadena($_POST['precio30Dias']);
+    $precioDeposito = mainModel::limpiarCadena($_POST['precioDeposito']);
+
 
     //Verificar si hay campos vacios
-    if ($cedula == "" || $trabajador == "" || $telefono == "") {
+    if ($codigoProducto == "" || $nombreProducto == "" || $detallesProducto == "" || $precio15Dias == "" || $precio30Dias == "" || $precioDeposito == "") {
       $alerta = [
         "Alerta" => "simple",
         "Titulo" => "Ocurrió un error inesperado",
@@ -31,7 +35,7 @@ class alquilerproductosControlador extends alquilerproductosModelo
 
 
     //Comprobar que no hay un usuario con la misma CC
-    $checkCc = mainModel::consultaSimple("SELECT cedula FROM trabajadores WHERE cedula = '$cedula'");
+    $checkCc = mainModel::consultaSimple("SELECT id FROM alquilerproductos WHERE id = '$codigoProducto'");
     if ($checkCc->rowCount() > 0) {
       $alerta = array(
         "Alerta" => "simple",
@@ -44,26 +48,26 @@ class alquilerproductosControlador extends alquilerproductosModelo
     }
 
 
-
-
-
-    $datosAgregarTrabajador = [
-      "cedula" => $cedula,
-      "nombreTrabajador" => $trabajador,
+    $datosAgregarProductoAlquiler = [
+      "codigoProducto" => $codigoProducto,
+      "nombreProducto" => $nombreProducto,
+      "detallesProducto" => $detallesProducto,
+      "precio15Dias" => $precio15Dias,
+      "precio30Dias" => $precio30Dias,
+      "precioDeposito" => $precioDeposito,
       "estado" => "si",
-      "telefono" => $telefono
 
     ];
 
-    $agregarTrabajador = trabajadoresModelo::agregarTrabajadorModelo($datosAgregarTrabajador);
+    $AgregarProductoAlquiler = alquilerProductosModelo::agregarProductoModelo($datosAgregarProductoAlquiler);
 
-    if ($agregarTrabajador->rowCount() == 1) {
+    if ($AgregarProductoAlquiler->rowCount() == 1) {
       $alerta = array(
         "Alerta" => "redireccionarUser",
-        "Titulo" => "Trabajador registrado",
-        "Texto" => "Se ha completado el registro del trabajador.",
+        "Titulo" => "Producto registrado",
+        "Texto" => "Se ha completado el registro del producto.",
         "Tipo" => "success",
-        "Url" => SERVERURL . "trabajadores"
+        "Url" => SERVERURL . "alquilerProductos"
       );
       echo json_encode($alerta);
       exit();
@@ -71,7 +75,7 @@ class alquilerproductosControlador extends alquilerproductosModelo
       $alerta = array(
         "Alerta" => "simple",
         "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "No hemos podido registrar el usuario",
+        "Texto" => "No hemos podido registrar el producto",
         "Tipo" => "error"
       );
       echo json_encode($alerta);
@@ -95,39 +99,38 @@ class alquilerproductosControlador extends alquilerproductosModelo
     if ($total >= 1) {
       $contador = 1;
       foreach ($datos as $rows) {
-        //Filas
-        $tabla .= '<tr>
-                    <td>' . $contador . '</td>
-                    <td>' . $rows['nombreproducto'] . '</td>' .
-          '<td>' . $rows['detalles'] . '</td>' .
-          '<td>' . $rows['cantidad'] . '</td>' .
-          '<td>' . $rows['alquiler15dias'] . '</td>' .
-          '<td>' . $rows['alquiler30dias'] . '</td>' .
-          '<td>' . $rows['deposito'] . '</td>';
+        if ($rows['estado'] == 'si') {
+          //Filas
+          $tabla .= '<tr>
+                          <td>' . $contador . '</td>
+                          <td>' . $rows['id'] . '</td>' .
+            '<td>' . $rows['nombreproducto'] . '</td>' .
+            '<td>' . $rows['detalles'] . '</td>' .
+            '<td>' . $rows['alquiler15dias'] . '</td>' .
+            '<td>' . $rows['alquiler30dias'] . '</td>' .
+            '<td>' . $rows['deposito'] . '</td>';
 
-        //Botones
-        //Botones
-        if ($rows['id'] != 0) {
-          $tabla .= '<td>
-                          <button onclick="window.location.href = \'' . SERVERURL . 'editarTrabajador/' . mainModel::encryption($rows['id']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/lapiz.png"></img></button>
-                          <button onclick="window.location.href = \'' . SERVERURL . 'agregarAlquiler/' . mainModel::encryption($rows['id']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/contrato.png"></img></button>
-                      </td>';
+          //Botones
+          if ($rows['id'] != 0) {
+            $tabla .= '<td>
+                                  <button onclick="window.location.href = \'' . SERVERURL . 'editarProductosAlquiler/' . mainModel::encryption($rows['id']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/lapiz.png"></img></button>
+                                  <button onclick="window.location.href = \'' . SERVERURL . 'agregarAlquiler/' . mainModel::encryption($rows['id']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/contrato.png"></img></button>
+                              </td>';
+          }
+
+          $tabla .= '</tr>';
+          $contador++;
         }
-      
-        $tabla .= '
-                    </tr>';
-        $contador++;
       }
     } else {
       $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
     }
 
     $tabla .= '</tbody>
-            </table>';
+              </table>';
 
     return $tabla;
   } //Fin del controlador
-
 
 
 
@@ -139,16 +142,15 @@ class alquilerproductosControlador extends alquilerproductosModelo
 
     return alquilerProductosModelo::datosalquilerproductoModelo($id);
   } //Fin del controlador
-
   //Inicio del controlador
-  public function actualizarTrabajadorControlador()
+  public function actualizarProductosAlquilerControlador()
   {
     //Recibiendo Identificador unico
-    $cedula = mainModel::decryption($_POST['trabajadorUpdate']);
-    $cedula = mainModel::limpiarCadena($cedula);
+    $codigoProducto = mainModel::decryption($_POST['productoAlquilerUpdate']);
+    $codigoProducto = mainModel::limpiarCadena($codigoProducto);
 
     //Comprobar existencia del usuario
-    $checKCedula = mainModel::consultaSimple("SELECT * FROM trabajadores WHERE cedula = $cedula");
+    $checKCedula = mainModel::consultaSimple("SELECT * FROM alquilerproductos WHERE id = $codigoProducto");
 
     if ($checKCedula->rowCount() <= 0) {
       $alerta = [
@@ -164,18 +166,21 @@ class alquilerproductosControlador extends alquilerproductosModelo
     }
 
     //Obtener valores del form
-    $cedulaNueva = mainModel::limpiarCadena($_POST['cedulaUp']);
-    $trabajador = mainModel::limpiarCadena($_POST['trabajadorUp']);
-    $telefono = mainModel::limpiarCadena($_POST['telefonoUp']);
-    $estado = mainModel::limpiarCadena($_POST['estado']);
+    $codigo = mainModel::limpiarCadena($_POST['codigoUp']);
+    $nombre = mainModel::limpiarCadena($_POST['nombreUp']);
+    $detalles = mainModel::limpiarCadena($_POST['detallesProducto']);
+    $precio15Dias = mainModel::limpiarCadena($_POST['precio15Dias']);
+    $precio30Dias = mainModel::limpiarCadena($_POST['precio30Dias']);
+    $precioDeposito = mainModel::limpiarCadena($_POST['precioDeposito']);
 
     //Comprobar si han habido cambios
-    if ($cedulaNueva == $datos['cedula'] && $trabajador == $datos['nombre'] && $telefono == $datos['telefono'] && $estado == $datos['estado']) {
+    if ($codigo == $datos['id'] && $nombre == $datos['nombreproducto'] && $detalles == $datos['detalles'] && $precio15Dias == $datos['alquiler15dias'] 
+    && $precio30Dias == $datos['alquiler30dias'] && $precioDeposito == $datos['deposito']) {
 
       $alerta = [
         "Alerta" => "simple",
         "Titulo" => "Atención",
-        "Texto" => "No has realizado ningún cambio en la información del trabajador.",
+        "Texto" => "No has realizado ningún cambio en la información del producto.",
         "Tipo" => "warning"
       ];
       echo json_encode($alerta);
@@ -183,56 +188,33 @@ class alquilerproductosControlador extends alquilerproductosModelo
 
     }
 
-    //Comprobar campos vacios
-    if ($cedulaNueva == "" || $trabajador == "" || $telefono == "") {
-      $alerta = [
-        "Alerta" => "simple",
-        "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "No has llenado todos los campos para la actualización de datos del trabajador.",
-        "Tipo" => "error"
-      ];
-      echo json_encode($alerta);
-      exit();
-    }
 
 
 
 
 
-    //Comprobar estado
-    switch ($estado) {
-      case "si":
-      case "no":
-        break;
-      default:
-        $alerta = array(
-          "Alerta" => "simple",
-          "Titulo" => "Ocurrió un error inesperado",
-          "Texto" => 'La opción del campo "Estado" no es válida.',
-          "Tipo" => "error"
-        );
-        echo json_encode($alerta);
-        exit();
-    }
+
+
 
     //Array de datos para la actualizacion de datos
-    $datosActualizarTrabajador = [
-      "Cedula" => $cedulaNueva,
-      "Trabajador" => $trabajador,
-      "Telefono" => $telefono,
-      "Estado" => $estado,
-      "CedulaOld" => $datos['cedula']
+    $datosActualizarProducto = [
+      "id" => $codigo,
+      "nombreproducto" => $nombre,
+      "detalles" => $detalles,
+      "alquiler15dias" => $precio15Dias,
+      "alquiler30dias" => $precio30Dias,
+      "deposito" => $precioDeposito,
     ];
 
-    $actualizarTrabajador = trabajadoresModelo::actualizarTrabajadorModelo($datosActualizarTrabajador);
+    $ActualizarProducto = alquilerProductosModelo::actualizarProductoModelo($datosActualizarProducto);
 
-    if ($actualizarTrabajador->rowCount() == 1) {
+    if ($ActualizarProducto->rowCount() == 1) {
       $alerta = array(
         "Alerta" => "redireccionarUser",
         "Titulo" => "Usuario actualizado",
-        "Texto" => "Se ha completado la actualizacion de datos del usuario.",
+        "Texto" => "Se ha completado la actualizacion de datos del producto.",
         "Tipo" => "success",
-        "Url" => SERVERURL . "trabajadores"
+        "Url" => SERVERURL . "alquilerProductos"
       );
       echo json_encode($alerta);
       exit();
@@ -240,11 +222,13 @@ class alquilerproductosControlador extends alquilerproductosModelo
       $alerta = array(
         "Alerta" => "simple",
         "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "No se ha podido completar la actualización de los datos del usuario.",
+        "Texto" => "No se ha podido completar la actualización de los datos del producto.",
         "Tipo" => "error"
       );
       echo json_encode($alerta);
       exit();
     }
   } //Fin del controlador
+
 }
+
