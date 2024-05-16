@@ -5,7 +5,7 @@ class talleresModelo extends mainModel
 {
     
     public function obtenerTalleresModelo() {
-        $sql = self::conectarBD()->prepare("SELECT nombre FROM taller ");
+        $sql = self::conectarBD()->prepare("SELECT nombre_usuario FROM usuario WHERE estado = 'si'  AND permiso = 'Taller' ");
         // Ejecutar la consulta
         $sql->execute();
         // Obtener los resultados de la consulta

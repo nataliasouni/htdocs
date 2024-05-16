@@ -81,13 +81,16 @@ class ProduccionModelo extends mainModel{
 
     // Función para obtener los nombres y los id de los talleres desde la base de datos
     public function obtenerNombresIdTalleresModelo() {
-        $sql = self::conectarBD()->prepare("SELECT id,nombre FROM taller");
+        $sql = self::conectarBD()->prepare("SELECT cedula, nombre_usuario 
+        FROM usuario 
+        WHERE estado = 'si' 
+        AND permiso = 'Taller' ");
         // Ejecutar la consulta
         $sql->execute();
         // Obtener los resultados de la consulta
         $nombresTalleres = array();
         while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-            $nombresTalleres[$row['nombre']] = $row['id'];
+            $nombresTalleres[$row['nombre_usuario']] = $row['cedula'];
     }
     return $nombresTalleres;
     }

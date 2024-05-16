@@ -298,6 +298,28 @@
                                 <?php
                             }
                             ?>
+                             <?php
+                            if ($_SESSION['permiso'] == "Cliente") {
+                                ?>
+                            <a href="<?= SERVERURL; ?>agendarCitas">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="content-img">
+                                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/cita.png"
+                                                alt="Registro de produccion">
+                                        </div>
+                                        <div class="card-details">
+                                            <h2 class="card-title">Agendamiento de citas</h2>
+                                            <p class="card-description">Aqui podrás registrar tus citas con la doctora Diana
+                                            </p>
+                                            <div class="registradas"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                                <?php
+                            }
+                            ?>
                         </div>
                     </section>
                 </main>

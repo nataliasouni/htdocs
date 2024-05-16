@@ -127,7 +127,7 @@
                 <?php
                 require_once "./controladores/talleresControlador.php";
                 $tallerControlador = new talleresControlador();
-                echo $tallerControlador->cargarTallerNavModelo();
+                echo $tallerControlador->cargarTallerNavControlador();
                 ?>
             </ul>
         </li> 
