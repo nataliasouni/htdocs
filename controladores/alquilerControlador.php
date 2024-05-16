@@ -352,3 +352,4 @@ public function enlistaralquilerControlador()
         }
     } //Fin del controlador
 }
+

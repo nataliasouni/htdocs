@@ -1,4 +1,3 @@
-
 function setFechaActual() {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -118,7 +117,6 @@ function generarContrato() {
     };
     xhr.send(formData);
 }
-
 
 
 
