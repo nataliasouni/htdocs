@@ -6,6 +6,7 @@ require_once "./controladores/ensambleControlador.php";
 $insEnsambleControlador = new ensambleControlador();
 
 $datosEnsamble = $insEnsambleControlador->datosEnsambleControlador($pagina[1]);
+
 if ($datosEnsamble->rowCount() == 1) {
     $campos = $datosEnsamble->fetch();
     ?>

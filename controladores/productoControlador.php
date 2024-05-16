@@ -137,6 +137,47 @@ class productoControlador extends productosModelo
     }
   } // Fin del controlador
 
+  public function enlistarProductoControladorCategoria($categoria)
+  {
+    // Prepara la consulta SQL para seleccionar solo los productos de la categoría especificada
+    $consulta = "SELECT * FROM productos WHERE Categoria = :categoria ORDER BY Id ASC";
+    $conexion = mainModel::conectarBD();
+    $datos = $conexion->prepare($consulta);
+    $datos->bindParam(':categoria', $categoria);
+    $datos->execute();
+    $total = $datos->rowCount();
+    $tarjetas = '';
+
+    if ($total >= 1) {
+      while ($rows = $datos->fetch()) {
+        // Generar tarjeta para cada producto
+        $estadoProducto = $rows['Estado'] == "si" ? "Habilitada" : "Deshabilitada";
+        $claseFila = $rows['Estado'] == "si" ? "" : "deshabilitado";
+
+        $tarjetas .= '<div class="tarjeta ' . $claseFila . '">';
+        $tarjetas .= '<div class="imagen">';
+        if ($rows['Imagen'] == "") {
+          $tarjetas .= 'Imagen no disponible';
+        } else {
+          $tarjetas .= '<img src="' . SERVERURL . 'src/imagenes/productos/' . $rows['Imagen'] . '" alt="' . $rows['Nombre'] . '">';
+        }
+        $tarjetas .= '</div>';
+        $tarjetas .= '<div class="contenido">';
+        $tarjetas .= '<h3>' . $rows['Nombre'] . '</h3>';
+        $tarjetas .= '<p>' . $rows['Descripcion'] . '</p>';
+        $tarjetas .= '<button onclick="window.location.href = \'' . SERVERURL . 'detallesProductosHome/' .
+          mainModel::encryption($rows['Id']) . '\';" class="estado-detalles button_js btn-detalles" 
+          type="button" title="detalles" name="detalles">Detalles</button>';
+        $tarjetas .= '</div>';
+        $tarjetas .= '</div>';
+      }
+    } else {
+      $tarjetas .= '<p>No hay registros en la categoría seleccionada</p>';
+    }
+
+    return $tarjetas;
+  }
+
   //Inicio del controlador
   public function enlistarProductoControlador($categoria)
   {
@@ -193,6 +234,121 @@ class productoControlador extends productosModelo
 
     return $tabla;
   }
+
+  public function enlistarProductoHomeControlador()
+  {
+    // Prepara la consulta SQL para seleccionar todos los productos
+    $consulta = "SELECT * FROM productos ORDER BY Id ASC";
+    $conexion = mainModel::conectarBD();
+    $datos = $conexion->query($consulta);
+    $total = $datos->rowCount();
+    $tarjetas = '';
+
+    if ($total >= 1) {
+      while ($rows = $datos->fetch()) {
+        // Generar tarjeta para cada producto
+        $estadoProducto = $rows['Estado'] == "si" ? "Habilitada" : "Deshabilitada";
+        $claseFila = $rows['Estado'] == "si" ? "" : "deshabilitado";
+
+        $tarjetas .= '<div class="tarjeta ' . $claseFila . '">';
+        $tarjetas .= '<div class="imagen">';
+        if ($rows['Imagen'] == "") {
+          $tarjetas .= 'Imagen no disponible';
+        } else {
+          $tarjetas .= '<img src="' . SERVERURL . 'src/imagenes/productos/' . $rows['Imagen'] . '" alt="' . $rows['Nombre'] . '">';
+        }
+        $tarjetas .= '</div>';
+        $tarjetas .= '<div class="contenido">';
+        $tarjetas .= '<h3>' . $rows['Nombre'] . '</h3>';
+        $tarjetas .= '<button onclick="window.location.href = \'' . SERVERURL . 'detallesProductosHome/' .
+          mainModel::encryption($rows['Id']) . '\';" class="estado-detalles button_js btn-detalles" 
+            type="button" title="detalles" name="detalles">Leer más</button>';
+        $tarjetas .= '</div>';
+        $tarjetas .= '</div>';
+      }
+    } else {
+      $tarjetas .= '<p>No hay productos registrados</p>';
+    }
+
+    return $tarjetas;
+  }
+
+  public function enlistarProductosHomeControlador()
+  {
+    // Prepara la consulta SQL para seleccionar todos los productos
+    $consulta = "SELECT * FROM productos ORDER BY Id ASC";
+    $conexion = mainModel::conectarBD();
+    $datos = $conexion->query($consulta);
+    $total = $datos->rowCount();
+    $tarjetas = '';
+
+    if ($total >= 1) {
+      while ($rows = $datos->fetch()) {
+        // Generar tarjeta para cada producto
+        $estadoProducto = $rows['Estado'] == "si" ? "Habilitada" : "Deshabilitada";
+        $claseFila = $rows['Estado'] == "si" ? "" : "deshabilitado";
+
+        $tarjetas .= '<div class="tarjeta ' . $claseFila . '">';
+        $tarjetas .= '<div class="imagen">';
+        if ($rows['Imagen'] == "") {
+          $tarjetas .= 'Imagen no disponible';
+        } else {
+          $tarjetas .= '<img src="' . SERVERURL . 'src/imagenes/productos/' . $rows['Imagen'] . '" alt="' . $rows['Nombre'] . '">';
+        }
+        $tarjetas .= '</div>';
+        $tarjetas .= '<div class="contenido">';
+        $tarjetas .= '<h3>' . $rows['Nombre'] . '</h3>';
+        $tarjetas .= '<button onclick="window.location.href = \'' . SERVERURL . 'detallesProductosHome/' .
+          mainModel::encryption($rows['Id']) . '\';" class="estado-detalles button_js btn-detalles" 
+              type="button" title="detalles" name="detalles">Ver más detalles</button>';
+        $tarjetas .= '</div>';
+        $tarjetas .= '</div>';
+      }
+    } else {
+      $tarjetas .= '<p>No hay productos registrados</p>';
+    }
+
+    return $tarjetas;
+  }
+
+  public function enlistarProductosDestacadosControlador($idProductoActual)
+  {
+    // Prepara la consulta SQL para seleccionar los productos destacados
+    // Excluye el producto actualmente visto
+    $consulta = "SELECT * FROM productos WHERE Id <> :idProductoActual AND Estado = 'si'";
+    $conexion = mainModel::conectarBD();
+    $datos = $conexion->prepare($consulta);
+    $datos->bindValue(':idProductoActual', $idProductoActual);
+    $datos->execute();
+    $total = $datos->rowCount();
+    $tarjetas = '';
+
+    if ($total >= 1) {
+      while ($rows = $datos->fetch()) {
+        // Generar tarjeta para cada producto
+        $tarjetas .= '<div class="tarjeta">';
+        $tarjetas .= '<div class="imagen">';
+        if ($rows['Imagen'] == "") {
+          $tarjetas .= 'Imagen no disponible';
+        } else {
+          $tarjetas .= '<img src="' . SERVERURL . 'src/imagenes/productos/' . $rows['Imagen'] . '" alt="' . $rows['Nombre'] . '">';
+        }
+        $tarjetas .= '</div>';
+        $tarjetas .= '<div class="contenido">';
+        $tarjetas .= '<h3>' . $rows['Nombre'] . '</h3>';
+        $tarjetas .= '<button onclick="window.location.href = \'' . SERVERURL . 'detallesProductosHome/' .
+          mainModel::encryption($rows['Id']) . '\';" class="estado-detalles button_js btn-detalles" 
+            type="button" title="detalles" name="detalles">Ver más detalles</button>';
+        $tarjetas .= '</div>';
+        $tarjetas .= '</div>';
+      }
+    } else {
+      $tarjetas .= '<p>No hay productos destacados disponibles</p>';
+    }
+
+    return $tarjetas;
+  }
+
 
 
   public function datosProductoControlador($id)

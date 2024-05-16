@@ -68,7 +68,11 @@ class loginControlador extends loginModelo
                 $_SESSION['permiso'] = $datos['permiso'];
                 $_SESSION['token_amu'] = md5(uniqid(mt_rand(), true));
 
-                return header("location:" . SERVERURL . "home");
+                if ($_SESSION['permiso'] == "Cliente") {
+                    header("location:" . SERVERURL . "homeCliente");
+                } else {
+                    header("location:" . SERVERURL . "home");
+                }
             }
         } else {
             echo "<script>

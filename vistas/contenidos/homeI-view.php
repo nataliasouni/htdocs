@@ -148,10 +148,7 @@
                         </div>
                     </div>
                 </a>
-                <?php
-                $var = "Prendas Quirurgicas";
-                ?>
-                <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
+                <a href="<?= SERVERURL; ?>prendasQuirurgicas">
                     <div class="card">
                         <div class="card-content">
                             <div class="content-img">
