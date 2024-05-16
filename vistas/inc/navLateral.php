@@ -238,7 +238,7 @@
         <?php } ?>
         <?php if ($_SESSION['permiso'] == "Administrador" || $_SESSION['permiso'] == "Master"){ ?>    
         <li>
-            <a href="#">
+            <a href="controlAlquileres">
                 <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/control.png" alt="Menu Image">
                 Control de Alquileres
             </a>

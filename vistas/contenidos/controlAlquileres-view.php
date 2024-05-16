@@ -13,7 +13,7 @@
             <div class="tile-container">
 
                 <div class="choose-option">
-                    <h2 style='color: #0053A9'>Productos Disponibles Para Alquilar</h2>
+                    <h2 style='color: #0053A9'>Alquileres Vigentes</h2>
                 </div>
 
                 <div class="gestionarCliente">
@@ -24,21 +24,22 @@
                         <thead>
                             <tr>
                                 <th>Item</th>
-                                <th>Codigo</th>
+                                <th>Numero de Alquiler</th>
+                                <th>Nombre del cliente </th>
+                                <th>Codigo del Producto </th>
                                 <th>Nombre del Producto</th>
-                                <th>Detalles</th>
-                                <th>Alquiler 15 Dias</th>
-                                <th>Alquiler 30 Dias</th>
-                                <th>Deposito</th>
+                                <th>Fecha de Entrega</th>
+                                <th>Fecha de Devolucion</th>
+                                <th>Tiempo Restante</th>
                                 <th class="editar">Opciones</th>
 
                             </tr>
                         </thead>
                         <tbody id="tableBody">
                             <?php
-                            require_once "./controladores/alquilerproductosControlador.php";
-                            $insProducto = new alquilerproductosControlador();
-                            echo $insProducto->enlistaralquilerproductosControlador();
+                            require_once "./controladores/alquilerControlador.php";
+                            $insProducto = new alquilerControlador();
+                            echo $insProducto->enlistaralquilerControlador();
 
                             ?>
                         </tbody>
@@ -49,10 +50,7 @@
                         </ul>
                     </nav>
                     <div class="d-flex justify-content-end">
-                        <div class="mr-2">
-                            <button class="btn btn-primary" onclick="location.href='./agregarProductosAlquiler'">Agregar Producto Para Alquiler
-                                 </button>
-                        </div>
+
                     </div>
                 </div>
             </div>

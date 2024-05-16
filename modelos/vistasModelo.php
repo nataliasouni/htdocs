@@ -8,7 +8,7 @@ class vistasModelo
     "agregarAlquiler", "agregarEnsamble", "agregarEntradaRES", "agregarInsumo", "agregarProducto", "agregarTrabajador", "alquilerProductos",
     "detallesEnsamble", "detallesInsumo", "detallesProducto", "detallesUsuario", "editarEnsamble", "editarInsumo", "editarProducto", 
     "editarProductoEnsamble", "editarRegistro", "editarTrabajador", "editarusuario", "ensambleM", "homeGT", "insumos", "produccion",
-    "productos", "registroES", "trabajadores","agregarProductosAlquiler","editarProductosAlquiler"];
+    "productos", "registroES", "trabajadores","agregarProductosAlquiler","editarProductosAlquiler","controlAlquileres","visualizarAlquiler"];
 
     if (in_array($vistas, $listaBlanca)) {
       if (is_file("./vistas/contenidos/" . $vistas . "-view.php")) {

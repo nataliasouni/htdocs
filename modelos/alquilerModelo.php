@@ -34,13 +34,20 @@ class alquilerModelo extends mainModel
     } //Fin del modelo
 
     //Modelo para obtener datos 
-    protected static function datosalquilerproductoModelo($numeroalquiler)
+    protected static function datosalquilerModelo($numeroalquiler)
     {
-        $sql = mainModel::conectarBD()->prepare("SELECT * FROM  alquiler WHERE numeroalquiler = :numeroalquiler");
+        $sql = mainModel::conectarBD()->prepare("
+            SELECT a.numeroalquiler, a.nombrecliente, ap.id AS id, ap.nombreproducto AS nombre_producto,
+                   ap.detalles AS detalles_producto, ap.deposito AS deposito_producto, a.fechaentrega,
+                   a.fechadevolucion,a.tiempodias,a.totalpagar,a.nombrecliente,a.cedulacliente,a.direccion,a.telefono,a.nombreref1,a.nombreref2,a.telefonoref1,a.telefonoref2,a.fotocopiacedula,a.fotocopiarecibo,a.contratopagare
+            FROM alquiler a
+            JOIN alquilerproductos ap ON a.id = ap.id
+            WHERE a.numeroalquiler = :numeroalquiler
+            ORDER BY a.numeroalquiler ASC
+        ");
         $sql->bindParam(":numeroalquiler", $numeroalquiler);
         $sql->execute();
         return $sql;
-
     } //Fin del modelo
 
     // Modelo para actualizar los datos del usuario

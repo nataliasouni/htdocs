@@ -168,63 +168,80 @@ class alquilerControlador extends alquilerModelo
 
     //Fin del controlador
 
-    //Inicio del controlador
-    public function enlistaralquilerproductosControlador()
-    {
-        $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM alquilerproductos ORDER BY id ASC";
-        $conexion = mainModel::conectarBD();
-        $datos = $conexion->query($consulta);
-        $datos = $datos->fetchAll();
-        $total = $conexion->query("SELECT FOUND_ROWS()");
-        $total = (int) $total->fetchColumn();
-        $tabla = '';
+//Inicio del controlador
+public function enlistaralquilerControlador()
+{
+    // Consulta SQL para obtener los datos de la tabla alquiler
+    $consulta = "SELECT a.numeroalquiler, a.nombrecliente, ap.id AS id, ap.nombreproducto AS nombre_producto, a.fechaentrega, a.fechadevolucion 
+    FROM alquiler a
+    JOIN alquilerproductos ap ON a.id = ap.id
+    ORDER BY a.numeroalquiler ASC";
+    
+    // Conexión a la base de datos
+    $conexion = mainModel::conectarBD();
+    
+    // Ejecutar la consulta y obtener los datos
+    $datos = $conexion->query($consulta);
+    $datos = $datos->fetchAll();
+    
+    // Contar el total de filas encontradas
+    $total = $conexion->query("SELECT FOUND_ROWS()");
+    $total = (int) $total->fetchColumn();
+    
+    // Inicializar variable para construir la tabla HTML
+    $tabla = '';
 
-        if ($total >= 1) {
-            $contador = 1;
-            foreach ($datos as $rows) {
-                //Filas
-                $tabla .= '<tr>
-                    <td>' . $contador . '</td>
-                    <td>' . $rows['nombreproducto'] . '</td>' .
-                    '<td>' . $rows['detalles'] . '</td>' .
-                    '<td>' . $rows['cantidad'] . '</td>' .
-                    '<td>' . $rows['alquiler15dias'] . '</td>' .
-                    '<td>' . $rows['alquiler30dias'] . '</td>' .
-                    '<td>' . $rows['deposito'] . '</td>';
-
-                //Botones
-                //Botones
-                if ($rows['id'] != 0) {
-                    $tabla .= '<td>
-                          <button onclick="window.location.href = \'' . SERVERURL . 'editarTrabajador/' . mainModel::encryption($rows['id']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/lapiz.png"></img></button>
-                          <button onclick="window.location.href = \'' . SERVERURL . 'agregarAlquiler/' . mainModel::encryption($rows['id']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/contrato.png"></img></button>
-                      </td>';
-                }
-
-                $tabla .= '
-                    </tr>';
-                $contador++;
+    // Comprobar si se encontraron filas
+    if ($total >= 1) {
+        $contador = 1; // Inicializar contador de filas
+        // Iterar sobre los datos obtenidos
+        foreach ($datos as $rows) {
+            // Calcular el tiempo restante en días
+            $fechaDevolucion = new DateTime($rows['fechadevolucion']);
+            $fechaActual = new DateTime();
+            $diferencia = $fechaDevolucion->diff($fechaActual);
+            $tiempoRestante = $diferencia->days;
+            // Filas de la tabla HTML
+            $tabla .= '<tr>
+                            <td>' . $contador . '</td>
+                            <td>' . $rows['numeroalquiler'] . '</td>' .
+                            '<td>' . $rows['nombrecliente'] . '</td>' .
+                            '<td>' . $rows['id'] . '</td>' .
+                            '<td>' . $rows['nombre_producto'] . '</td>' .
+                            '<td>' . $rows['fechaentrega'] . '</td>' .
+                            '<td>' . $rows['fechadevolucion'] . '</td>' .
+                            '<td>' . $tiempoRestante +1 .'</td>';
+            // Botones (si es necesario)
+            if ($rows['id'] != 0) {
+                $tabla .= '<td>
+                              <button onclick="window.location.href = \'' . SERVERURL . 'visualizarAlquiler/' . mainModel::encryption($rows['numeroalquiler']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/lapiz.png"></img></button>
+                          </td>';
             }
-        } else {
-            $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
+            $tabla .= '</tr>';
+            $contador++; // Incrementar contador de filas
         }
+    } else {
+        // Mensaje si no se encontraron registros
+        $tabla .= '<tr><td colspan="6">No hay registros en el sistema</td></tr>';
+    }
 
-        $tabla .= '</tbody>
-            </table>';
+    // Cerrar la tabla HTML
+    $tabla .= '</tbody>
+                </table>';
 
-        return $tabla;
-    } //Fin del controlador
-
+    // Devolver la tabla HTML generada
+    return $tabla;
+} //Fin del controlador
 
 
 
     //Inicio del controlador
-    public function datosalquilerproductoControlador($id)
+    public function datosalquilerControlador($numeroalquiler)
     {
-        $id = mainModel::decryption($id);
-        $id = mainModel::limpiarCadena($id);
+        $numeroalquiler = mainModel::decryption($numeroalquiler);
+        $numeroalquiler = mainModel::limpiarCadena($numeroalquiler);
 
-        return alquilerModelo::datosalquilerproductoModelo($id);
+        return alquilerModelo::datosalquilerModelo($numeroalquiler);
     } //Fin del controlador
 
     //Inicio del controlador

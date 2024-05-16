@@ -5,12 +5,12 @@ if ($_SESSION['permiso'] != "Master") {
     exit();
 }
 
-require_once "./controladores/alquilerproductosControlador.php";
-$insalquilerproductosControlador = new alquilerproductosControlador();
+require_once "./controladores/alquilerControlador.php";
+$insalquilerControlador = new alquilerControlador();
 
-$datosalquilerproductos = $insalquilerproductosControlador->datosalquilerproductoControlador($pagina[1]);
-if ($datosalquilerproductos->rowCount() == 1) {
-    $campos = $datosalquilerproductos->fetch();
+$datosalquiler = $insalquilerControlador->datosalquilerControlador($pagina[1]);
+if ($datosalquiler->rowCount() == 1) {
+    $campos = $datosalquiler->fetch();
     ?>
 
 
@@ -38,26 +38,25 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                 <div class="form-group">
                                     <p class="titulos_form">Numero de Contrato</p>
                                     <input type="number" name="numeroAlquiler" id="numeroAlquiler"
-                                        class="login_nombreUsuario" required>
+                                        class="login_nombreUsuario" value="<?= $campos['numeroalquiler'] ?>" readonly>
                                 </div>
 
                                 <div class="form-group">
                                     <p class="titulos_form">Fecha de Entrega</p>
                                     <input type="date" name="fechaEntrega" id="fechaEntrega" class="login_nombreUsuario"
-                                        readonly>
+                                        value="<?= $campos['fechaentrega'] ?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <p class="titulos_form">Fecha de Devolucion</p>
                                     <input type="date" name="fechaDevolucion" id="fechaDevolucion"
-                                        class="login_nombreUsuario" readonly>
+                                        class="login_nombreUsuario" value="<?= $campos['fechadevolucion'] ?>" readonly
+                                        readonly>
                                 </div>
                                 <div class="form-group">
                                     <p class="titulos_form">Tiempo de alquiler</p>
-                                    <select name="tiempoAlquiler" id="tiempoAlquiler" class="login_nombreUsuario" required>
-                                        <option value="" disabled selected>Seleccionar duración </option>
-                                        <option value="15">15 días</option>
-                                        <option value="30">30 días</option>
-                                    </select>
+                                    <input type="text" name="tiempoAlquiler" id="tiempoAlquiler" class="login_nombreUsuario"
+                                        value="<?= $campos['tiempodias'] ?>" readonly readonly>
+
                                 </div>
 
                             </div>
@@ -78,26 +77,27 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     <div class="form-group">
                                         <p class="titulos_form">Nombre del Producto</p>
                                         <input type="text" name="nombreProducto" id="nombreProducto" class="login_password"
-                                            value="<?= $campos['nombreproducto'] ?>" readonly
+                                            value="<?= $campos['nombre_producto'] ?>" readonly
                                             oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Detalles del Producto</p>
                                         <input type="text" name="trabajadorUp" class="login_password"
-                                            value="<?= $campos['detalles'] ?>" readonly
+                                            value="<?= $campos['detalles_producto'] ?>" readonly
                                             oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Deposito</p>
                                         <input type="text" name="deposito" class="login_password"
-                                            value="<?= $campos['deposito'] ?>" readonly
+                                            value="<?= $campos['deposito_producto'] ?>" readonly
                                             oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
                                     </div>
 
 
                                     <div class="totalPagar">
                                         <p class="titulos_form">Total a Pagar</p>
-                                        <input type="number" name="totalPagar" class="login_nombreUsuario" readonly>
+                                        <input type="number" name="totalPagar" class="login_nombreUsuario"
+                                            value="<?= $campos['totalpagar'] ?>" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -112,23 +112,16 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     <div class="form-group">
                                         <p class="titulos_form">Nombre del Cliente</p>
                                         <input type="text" name="nombreCliente" id="nombreCliente"
-                                            class="login_nombreUsuario" required
-                                            oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                            class="login_nombreUsuario" value="<?= $campos['nombrecliente'] ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Cedula </p>
                                         <input type="text" name="cedulaCliente" id="cedulaCliente"
-                                            class="login_nombreUsuario" required
-                                            oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                            class="login_nombreUsuario" value="<?= $campos['cedulacliente'] ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="FotocopiaC" class="titulos_form">Fotocopia de la Cedula</label>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="FotocopiaC" name="fotocopiaC"
-                                                accept="application/pdf" lang="es" required>
-                                            <label class="custom-file-label" id="customFileLabelCedula"
-                                                for="FotocopiaC">Seleccionar archivo...</label>
-                                        </div>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="FotocopiaR" class="titulos_form">Fotocopia del Recibo</label>
@@ -143,12 +136,13 @@ if ($datosalquilerproductos->rowCount() == 1) {
 
                                     <div class="form-group">
                                         <p class="titulos_form">Direccion</p>
-                                        <input type="text" name="Direccion" class="login_nombreUsuario" required>
+                                        <input type="text" name="Direccion" class="login_nombreUsuario"
+                                            value="<?= $campos['direccion'] ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Telefono</p>
-                                        <input type="text" name="Telefono" class="login_nombreUsuario" required
-                                            oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                        <input type="text" name="Telefono" class="login_nombreUsuario"
+                                            value="<?= $campos['telefono'] ?>" readonly>
                                     </div>
                                 </div>
 
@@ -160,26 +154,26 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     <div class="referenciasPersonales1-form">
                                         <div class="ref-group">
                                             <p class="titulos_form">Nombre del Referente 1</p>
-                                            <input type="text" name="nombreReferencia1" class="login_nombreUsuario" required
-                                               >
+                                            <input type="text" name="nombreReferencia1" class="login_nombreUsuario"
+                                                value="<?= $campos['nombreref1'] ?>" readonly>
                                         </div>
                                         <div class="refTel-group">
                                             <p class="tituloT_form">Telefono </p>
                                             <input type="text" name="telefonoReferencia1" class="login_nombreUsuario"
-                                                required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                                value="<?= $campos['telefonoref1'] ?>" readonly>
                                         </div>
                                     </div>
 
                                     <div class="referenciasPersonales2-form">
                                         <div class="ref-group">
                                             <p class="titulos_form">Nombre del Referente 2</p>
-                                            <input type="text" name="nombreReferencia2" class="login_nombreUsuario" required
-                                                >
+                                            <input type="text" name="nombreReferencia2" class="login_nombreUsuario"
+                                                value="<?= $campos['nombreref2'] ?>" readonly>
                                         </div>
                                         <div class="refTel-group">
                                             <p class="tituloT_form">Telefono </p>
                                             <input type="text" name="telefonoReferencia2" class="login_nombreUsuario"
-                                                required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                                value="<?= $campos['telefonoref2'] ?>" readonly>
                                         </div>
                                     </div>
 

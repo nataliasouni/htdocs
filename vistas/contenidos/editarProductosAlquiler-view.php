@@ -73,7 +73,7 @@ if ($datosTrabajador->rowCount() == 1) {
                             <div class="botones">
                                 <button id="btnActualizar" class="estado-enviar" type="submit" style="cursor: pointer"
                                     title="Enviar" name="Enviar">Actualizar</button>
-                                <button id="cancelarEdicionUsuario" type="button" class="estado-cancelar"
+                                <button id="botonCancelarAl" type="button" class="estado-cancelar"
                                     style="cursor: pointer" title="Cancelar" name="Cancelar">Cancelar</button>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ if ($datosTrabajador->rowCount() == 1) {
         </section>
     </main>
 
-    <script src="<?php echo SERVERURL; ?>vistas/js/trabajador-script/cancelarEdicion.js" type="module"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/alquiler-script/botonCancelarAl.js" type="module"></script>
     <?php
 } else {
     ?>
