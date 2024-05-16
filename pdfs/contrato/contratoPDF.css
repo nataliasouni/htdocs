@@ -1,0 +1,35 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+}
+
+th {
+    background-color: #1FC6DE;
+    color: #333333;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #e2e6ea;
+}
+
+.tituloPDF {
+    font-family: "Helvetica", sans-serif;
+}
+
+.huella-container {
+    border: 1px solid black;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    margin-bottom: 20px;
+}

@@ -24,10 +24,11 @@
                         <thead>
                             <tr>
                                 <th>Item</th>
-                                <th>ID</th>
+                            
                                 <th>Cédula</th>
                                 <th>Nombre del trabajador</th>
-                                <th>Fecha</th>
+                                <th>Fecha<br>Año-Mes-Día</th>
+                                
                                 <th>Hora Entrada</th>
                                 <th>Hora Salida</th>
                                 <th>Horas trabajadas</th>

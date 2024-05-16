@@ -1,0 +1,108 @@
+/* Estilos para la sección de detalles del producto */
+.detallesProductos {
+    padding: 20px;
+}
+.container-detalles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image {
+    padding-right: 20px;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-info h2 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.product-info .descripcion {
+    font-size: 18px;
+}
+
+.productos-destacados {
+    margin-top: 50px; /* Ajusta el margen superior según sea necesario */
+    text-align: center; /* Centra los elementos dentro de la sección */
+}
+
+.container-destacados {
+    position: relative;
+    margin-top: 20px; /* Espacio entre el título y los botones de navegación */
+    overflow: hidden; /* Oculta el desbordamiento de los elementos fuera del contenedor */
+}
+
+.productos-container {
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    scroll-behavior: smooth; /* Suaviza el desplazamiento */
+}
+
+.productos-destacados .btn-prev,
+.productos-destacados .btn-next {
+    position: absolute;
+    top: 50%; /* Centra verticalmente los botones */
+    transform: translateY(-50%); /* Ajusta la posición vertical */
+    background-color: #00a783b0; /* Fondo semitransparente */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    z-index: 1; /* Asegura que los botones estén por encima de los productos */
+}
+
+.productos-destacados .btn-prev {
+    left: 10px; /* Alinea el botón hacia la izquierda */
+}
+
+.productos-destacados .btn-next {
+    right: 10px; /* Alinea el botón hacia la derecha */
+}
+
+.tarjeta {
+    display: inline-block;
+    width: 200px; /* Ancho de cada tarjeta */
+    margin: 0 10px; /* Espacio entre las tarjetas */
+    border: 1px solid #ccc; /* Borde para las tarjetas */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.tarjeta .imagen {
+    width: 100%;
+    height: 150px; /* Altura de la imagen */
+    overflow: hidden;
+}
+
+.tarjeta .imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para que cubra todo el contenedor */
+}
+
+.tarjeta .contenido {
+    padding: 10px;
+}
+
+.tarjeta h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.tarjeta button {
+    background-color: #00a783;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.tarjeta button:hover {
+    background-color: rgb(0, 71, 148);
+}

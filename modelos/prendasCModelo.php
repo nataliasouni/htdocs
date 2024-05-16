@@ -48,7 +48,6 @@ class prendasCModelo extends mainModel
     }
 }
 
-
 protected static function obtenerPrendaModelo()
 {
     $sql = mainModel::conectarBD()->prepare("SELECT * FROM prendascortadas ");
@@ -56,4 +55,5 @@ protected static function obtenerPrendaModelo()
     return $sql;
 
 } //Fin del modelo
+
 }

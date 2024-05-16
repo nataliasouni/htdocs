@@ -1,0 +1,54 @@
+.productos{
+    padding: 20px;
+}
+/* Estilos para el contenedor principal de productos */
+.container-productos {
+    display: grid; /* Utiliza el modelo de diseño grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Crea columnas flexibles con un ancho mínimo de 250px y un máximo de 1fr */
+    grid-gap: 20px; /* Espacio entre las celdas */
+}
+
+/* Estilos para cada tarjeta de producto */
+.tarjeta {
+    border: 1px solid #ccc; /* Borde del producto */
+    padding: 15px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background-color: #fff; /* Color de fondo */
+    transition: box-shadow 0.3s ease; /* Transición suave para la sombra */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.tarjeta:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al pasar el ratón */
+}
+
+/* Estilos para la imagen del producto */
+.tarjeta .imagen img {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+    height: auto; /* Para mantener la proporción de aspecto */
+}
+
+/* Estilos para el título del producto */
+.tarjeta .contenido h3 {
+    font-size: 16px; /* Tamaño de fuente del título */
+    margin-top: 10px; /* Espaciado superior */
+    margin-bottom: 5px; /* Espaciado inferior */
+}
+
+/* Estilos para el botón "Ver más detalles" */
+.tarjeta .contenido button {
+    background-color: #0055A7; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+    padding: 8px 16px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor de puntero */
+    font-size: 14px; /* Tamaño de fuente */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.tarjeta .contenido button:hover {
+    background-color: rgb(0, 71, 148); /* Color de fondo del botón al pasar el ratón */
+}
+

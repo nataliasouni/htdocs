@@ -13,8 +13,6 @@ if (isset($_POST['cedulaA']) || isset($_POST['cedulaDelete']) || isset($_POST['i
         echo $objRegistroES->agregarRegistroESControlador();
     }
 
-  
-
     //Actualizar 
     if(isset($_POST['idUpdate'])){
         echo $objRegistroES->actualizarRegistroESControlador();

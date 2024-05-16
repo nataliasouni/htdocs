@@ -10,6 +10,9 @@ class vistasModelo
     "editarProductoEnsamble", "editarRegistro", "editarTrabajador", "editarusuario", "ensambleM", "homeGT", "insumos", "produccion",
     "productos", "registroES", "trabajadores","produccionMaster","editarProduccion","detallesProduccion","notificaciones","prendasQuirurgicas",
     "devolucionDefectos","ensambleTaller","agregarEnsambleTaller","enviarEnsambleTaller"];
+    "productos", "registroES", "trabajadores", "prendasQuirurgicas", "agregarPrenda", "editarPrenda", "detallesPrenda", "prendasCortadas",
+    "agregarPrendaCortada", "editarPrendaCortada", "detallesPrendaCortada", "devolucionPorDefecto", "agregarDevolucion", "editarDevolucion", 
+    "detallesDevolucion"];
 
     if (in_array($vistas, $listaBlanca)) {
       if (is_file("./vistas/contenidos/" . $vistas . "-view.php")) {
@@ -21,11 +24,17 @@ class vistasModelo
     //  $contenido = "login";
     } elseif ($vistas == "homePage" || $vistas == "index") {
       $contenido = "homePage";
+    }elseif($vistas == "productosHomepage"){
+      $contenido = "productosHomepage";    
+    }elseif($vistas == "productosHomepageCategorias"){
+      $contenido = "productosHomepageCategorias";    
+    }elseif($vistas == "detallesProductosHome"){
+      $contenido = "detallesProductosHome";    
     }elseif ($vistas == "login"){
       $contenido = "login";
     }elseif ($vistas == "agendarCita"){
       $contenido = "agendarCita";
-    } elseif($vistas == "recuperarContra"){
+    }elseif($vistas == "recuperarContra"){
       $contenido = "recuperarContra";    
     } elseif($vistas == "registroCliente"){
       $contenido = "registroCliente";

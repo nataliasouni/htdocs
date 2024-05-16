@@ -239,6 +239,12 @@
         left: -9999px;
     }
 
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        width: 230px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+        padding: 20px 175px;
+    }
+
     .table tr {
         margin-bottom: 20px; /* Aumentar el margen inferior */
     }
@@ -249,7 +255,7 @@
         text-align: left;
         border-bottom: 1px solid #ddd;
     }
-    
+
     .table td {
         border: none;
         border-bottom: 1px solid #ddd;
@@ -286,5 +292,6 @@
         display: block;
         position: relative;      
         width: 350px;
+        padding: 12px 175px;
     }
 }

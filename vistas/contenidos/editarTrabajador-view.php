@@ -41,13 +41,13 @@ if ($datosTrabajador->rowCount() == 1) {
                             <div class="form-group">
                                 <p class="titulos_form">Nombre de Trabajador</p>
                                 <input type="text" name="trabajadorUp" class="login_password"
-                                    value="<?= $campos['nombre'] ?>" required>
+                                    value="<?= $campos['nombre'] ?>" required oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
                             </div>
 
                             <div class="form-group">
                                 <p class="titulos_form">Telefono</p>
                                 <input type="text" name="telefonoUp" class="login_password" value="<?= $campos['telefono'] ?>"
-                                    required>
+                                    required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                             </div>
                             <div class="form-group">
                                 <p class="titulos_form">Estado de la cuenta:</p>

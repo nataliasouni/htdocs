@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-producto/productos.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-insumo/insumo.css">
 
 <main class="full-box main-container">
     <!-- Incluir la barra lateral -->
@@ -14,7 +14,7 @@
             <div class="tile-container">
 
                 <div class="choose-option">
-                    <h2 style='color: #0053A9'>Productos</h2>
+                    <h2 style='color: #0053A9'>Insumos</h2>
                 </div>
 
                 <div class="gestionarProducto">
@@ -55,6 +55,6 @@
     </section>
 </main>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/producto-script/producto.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/insumo.js"></script>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/producto-script/cancelarBtn.js" type="module"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/cancelarBtn.js" type="module"></script>
