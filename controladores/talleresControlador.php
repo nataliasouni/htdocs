@@ -9,10 +9,10 @@ class talleresControlador extends talleresModelo
 {
     public function enlistarPrendasQControlador($nombre)
     {
-        $consulta = "SELECT p.fecha, p.idPrenda, p.prendasquirurgicas, t.nombre AS nombre_taller
+        $consulta = "SELECT p.fecha, p.idPrenda, p.prendasquirurgicas, t.nombre_usuario AS nombre_taller
                  FROM produccion p
-                 JOIN taller t ON p.idtaller = t.id
-                 WHERE t.nombre = :nombre ORDER BY p.fecha DESC";
+                 JOIN usuario t ON p.idtaller = t.cedula
+                 WHERE t.nombre_usuario = :nombre ORDER BY p.fecha DESC";
         $conexion = mainModel::conectarBD();
         $datos = $conexion->prepare($consulta);
         $datos->bindParam(':nombre', $nombre);
@@ -46,10 +46,10 @@ class talleresControlador extends talleresModelo
 
     public function enlistarDefectuosasControlador($nombre)
     {
-        $consulta = "SELECT p.fecha, p.idPrenda, p.prendasdefectuosas, t.nombre AS nombre_taller
+        $consulta = "SELECT p.fecha, p.idPrenda, p.prendasdefectuosas, t.nombre_usuario AS nombre_taller
                  FROM produccion p
-                 JOIN taller t ON p.idtaller = t.id
-                 WHERE t.nombre = :nombre ORDER BY p.fecha DESC"
+                 JOIN usuario t ON p.idtaller = t.cedula
+                 WHERE t.nombre_usuario = :nombre ORDER BY p.fecha DESC"
         ;
         $conexion = mainModel::conectarBD();
         $datos = $conexion->prepare($consulta);
@@ -82,13 +82,13 @@ class talleresControlador extends talleresModelo
         return $tabla;
     }
 
-    public function cargarTallerModelo()
+    public function cargarTallerControlador()
     {
         $tallerModelo = new talleresModelo();
         $talleres = $tallerModelo->obtenerTalleresModelo();
 
         foreach ($talleres as $taller) {
-            $nombre = $taller['nombre'];
+            $nombre = $taller['nombre_usuario'];
             $var = $nombre;
 
             echo '<a href="' . SERVERURL . 'homeOT?variable=' . $var . '">';
@@ -109,13 +109,13 @@ class talleresControlador extends talleresModelo
 
     }
 
-    public function cargarTallerNavModelo()
+    public function cargarTallerNavControlador()
     {
         $tallerModelo = new talleresModelo();
         $talleres = $tallerModelo->obtenerTalleresModelo();
 
         foreach ($talleres as $taller) {
-            $nombre = $taller['nombre'];
+            $nombre = $taller['nombre_usuario'];
             $var = $nombre;
 
             echo '<li>';

@@ -111,7 +111,7 @@ class produccionControlador extends produccionModelo {
         ];
 
         produccionModelo::actualizarPrendasModelo($datos);
-        produccionModelo::prendasTallerModelo($datos);
+        //produccionModelo::prendasTallerModelo($datos);
         if (produccionModelo::registrarProduccionModelo( $datos )) {
             
             echo "<script>
@@ -160,8 +160,8 @@ class produccionControlador extends produccionModelo {
         $produccionModelo = new ProduccionModelo();
         $datosTalleres = $produccionModelo->obtenerNombresIdTalleresModelo();
 
-        foreach ($datosTalleres as $nombre => $id) {
-        echo "<option value='$id'>$nombre</option>";
+        foreach ($datosTalleres as $nombre_usuario => $cedula) {
+        echo "<option value='$cedula'>$nombre_usuario</option>";
         }
     }
 
@@ -181,10 +181,10 @@ class produccionControlador extends produccionModelo {
 public function generarTablaProduccion()
 {
     // Consulta SQL para obtener los datos necesarios de la tabla producción y realizar los joins con las tablas relacionadas
-    $consulta = "SELECT p.id ,p.fecha, t.nombre AS nombre_trabajador, tall.nombre AS nombre_taller, pq.nombre AS prenda_elaborada, p.prendasquirurgicas AS cantidad_prendas, p.prendasdefectuosas AS prendas_defectuosas
+    $consulta = "SELECT p.id ,p.fecha, t.nombre AS nombre_trabajador, tall.nombre_usuario AS nombre_taller, pq.nombre AS prenda_elaborada, p.prendasquirurgicas AS cantidad_prendas, p.prendasdefectuosas AS prendas_defectuosas
                  FROM produccion p
                  INNER JOIN trabajadores t ON p.cedulatrabajador = t.cedula
-                 INNER JOIN taller tall ON p.idtaller = tall.id
+                 INNER JOIN usuario tall ON p.idtaller = tall.cedula
                  INNER JOIN prendasquirurgicas pq ON p.idprenda = pq.id
                  GROUP BY p.id
                  ORDER BY p.id DESC"

@@ -32,6 +32,7 @@ class loginControlador extends loginModelo
             exit();
         }
 
+        $clave = mainModel::encryption($clave);
         
         $datos = [
             "Usuario" => $usuario,
@@ -68,11 +69,7 @@ class loginControlador extends loginModelo
                 $_SESSION['permiso'] = $datos['permiso'];
                 $_SESSION['token_amu'] = md5(uniqid(mt_rand(), true));
 
-                if ($_SESSION['permiso'] == "Cliente") {
-                    header("location:" . SERVERURL . "homeCliente");
-                } else {
-                    header("location:" . SERVERURL . "home");
-                }
+                return header("location:" . SERVERURL . "home");
             }
         } else {
             echo "<script>
