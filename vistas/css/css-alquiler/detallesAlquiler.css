@@ -1,0 +1,286 @@
+.gestionarCliente {
+    padding-top: 50px;
+}
+
+/* Estilos para el filtro */
+.filter-container {
+    margin-bottom: 15px;
+}
+
+.filter-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para la paginación */
+.pagination {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #2DAF76;
+    color: #fff;
+}
+
+.pagination a.active:hover {
+    background-color: #006439;
+    color: #fff;
+}
+
+.pagination a:hover {
+    background-color: #0053A9;
+    color: #fff;
+}
+
+.formularioAjax {
+    margin: 30px auto;
+    width: 95%; /* Ajustado el ancho del formulario */
+    background-color: rgba(125, 212, 173, 0.096);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formularioAjax h2.choose-option {
+    color: #0053A9;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.añadir_alquiler-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.añadir_cliente-form{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.referenciasPersonales1-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;    
+    margin-top: 15px;
+}
+
+.añadir_producto-form{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin-top: 15px;
+}
+
+.referenciasPersonales2-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.Cliente-group{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.botones {
+    text-align: center;
+}
+
+.contrato, .pagare {
+    background-color: #0053A9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 30px;
+
+}
+.contratoPagare{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+.contrato:hover, .pagare:hover {
+    background-color: #003366;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.Productos-group {
+    display: contents;
+}
+
+.titulos_form {
+    margin: 0;
+    color: #333;
+}
+
+.tituloT_form {
+    margin: 0;
+    color: #333;
+    text-align: left;
+}
+
+.login_nombreUsuario, .login_password, .selectform {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.botones {
+    grid-column: span 4;
+    text-align: center;
+}
+
+.detallesUs {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Esto puede variar según tu diseño */
+}
+
+.estado-volver {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0053A9;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+.estado-enviar {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2DAF76;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.estado-cancelar {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #DC0000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.estado-enviar:hover{
+    background-color: #00864c;
+}
+
+.estado-cancelar:hover {
+    background-color: #a50101;
+}
+
+.btn-primary{
+    background-color: #0053A9 !important; 
+}
+
+.btn-primary:hover{
+    background-color: #003064 !important; 
+}
+
+.form-group p {
+    margin: 5px 0;
+    color: #333;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.ref-group input[type="text"] {
+    width: 50%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.refTel-group input[type="text"] {
+    width: 50%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-right: 210px;
+}
+
+#nombreCliente, #cedulaCliente, #Direccion, #Telefono {
+    text-align: center;
+}
+
+.fotocopias {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.botones {
+    grid-column: span 4;
+    text-align: center;
+}
+
+.editar{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}

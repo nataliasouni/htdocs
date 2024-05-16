@@ -18,22 +18,24 @@ class alquilerControlador extends alquilerModelo
         $id = mainModel::limpiarCadena($_POST['idProducto']);
         $nombrecliente = mainModel::limpiarCadena($_POST['nombreCliente']);
         $cedulacliente = mainModel::limpiarCadena($_POST['cedulaCliente']);
-        $fotocopiacedula = mainModel::limpiarCadena($_POST['fotocopiaCedula']);
-        $fotocopiarecibo = mainModel::limpiarCadena($_POST['fotocopiaRecibo']);
+        $fotocopiacedula = isset($_FILES['fotocopiaC']) ? $_FILES['fotocopiaC'] : null;
+        $fotocopiarecibo = isset($_FILES['fotocopiaR']) ? $_FILES['fotocopiaR'] : null;
         $direccion = mainModel::limpiarCadena($_POST['Direccion']);
         $telefono = mainModel::limpiarCadena($_POST['Telefono']);
         $nombreref1 = mainModel::limpiarCadena($_POST['nombreReferencia1']);
         $nombreref2 = mainModel::limpiarCadena($_POST['nombreReferencia2']);
         $telefonoref1 = mainModel::limpiarCadena($_POST['telefonoReferencia1']);
         $telefonoref2 = mainModel::limpiarCadena($_POST['telefonoReferencia2']);
-        $contratopagare = mainModel::limpiarCadena($_POST['contratoPagare']);
+        $contratopagare = isset($_FILES['Contrato']) ? $_FILES['Contrato'] : null;
         $totalpagar = mainModel::limpiarCadena($_POST['totalPagar']);
 
 
         //Verificar si hay campos vacios
-        if ($numeroalquiler == "" || $fechaentrega == "" || $fechadevolucion == "" || $tiempodias == "" || $nombrecliente == "" || $cedulacliente == ""
-        || $fotocopiacedula == "" || $fotocopiarecibo == "" || $telefono == "" || $direccion == "" || $nombreref1 == "" || $nombreref2 == "" || $telefonoref1 == ""
-        || $telefonoref2 == "" || $contratopagare == "" || $totalpagar == "" || $id == "") {
+        if (
+            $numeroalquiler == "" || $fechaentrega == "" || $fechadevolucion == "" || $tiempodias == "" || $nombrecliente == "" || $cedulacliente == ""
+            || $fotocopiacedula == "" || $fotocopiarecibo == "" || $telefono == "" || $direccion == "" || $nombreref1 == "" || $nombreref2 == "" || $telefonoref1 == ""
+            || $telefonoref2 == "" || $contratopagare == "" || $totalpagar == "" || $id == ""
+        ) {
             $alerta = [
                 "Alerta" => "simple",
                 "Titulo" => "Ocurrió un error inesperado",
@@ -60,29 +62,83 @@ class alquilerControlador extends alquilerModelo
             exit();
         }
 
+        // Procesar la imagen
+        $identificadorCedula = uniqid();
+        $nombreArchivo1 = $fotocopiacedula['name'];
+        $rutaArchivo1 = $fotocopiacedula['tmp_name'];
 
+        $directorioArchivosC = "../src/alquiler/cedula";
+        $ruta1 = $directorioArchivosC . '/' . $identificadorCedula . "-" . $nombreArchivo1;
 
+        // Mover la imagen al directorio de destino
+        if (!move_uploaded_file($rutaArchivo1, $ruta1)) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "Hubo un problema al cargar la imagen del producto.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
 
+        $identificadorRecibo = uniqid();
+        $nombreArchivo2 = $fotocopiarecibo['name'];
+        $rutaArchivo2 = $fotocopiarecibo['tmp_name'];
 
+        $directorioArchivosR = "../src/alquiler/recibo";
+        $ruta2 = $directorioArchivosR . '/' . $identificadorRecibo . "-" . $nombreArchivo2;
+
+        // Mover la imagen al directorio de destino
+        if (!move_uploaded_file($rutaArchivo2, $ruta2)) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "Hubo un problema al cargar la imagen del producto.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        $identificadorCon = uniqid();
+        $nombreArchivo3 = $contratopagare['name'];
+        $rutaArchivo3 = $contratopagare['tmp_name'];
+
+        $directorioArchivosCon = "../src/alquiler/contrato";
+        $ruta3 = $directorioArchivosCon . '/' . $identificadorCon . "-" . $nombreArchivo3;
+
+        // Mover la imagen al directorio de destino
+        if (!move_uploaded_file($rutaArchivo3, $ruta3)) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "Hubo un problema al cargar la imagen del producto.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+        
         $datosAgregarAlquiler = [
             "numeroAlquiler" => $numeroalquiler,
-            "fechaEntrega" => $fechaentrega,
-            "fechaDevolucion" => $fechadevolucion,
-            "tiempoAlquiler" => $tiempodias,
-            "Id" => $id,
-            "nombreCliente" =>  $nombrecliente,
-            "cedulaCliente" => $cedulacliente,
-            "fotocopiaCedula" => $fotocopiacedula ,
-            "fotocopiaRecibo" => $fotocopiarecibo,
-            "Direccion" => $direccion,
-            "Telefono" => $telefono,
-            "nombreRef1" => $nombreref1,
-            "nombreRef2" =>  $nombreref2,
-            "telefonoRef1" => $telefonoref1,
-            "telefonoRef2" => $telefonoref2,
-            "contratoPagare" => $contratopagare,
-            "totalPagar" => $totalpagar,
-    
+            "fechaentrega" => $fechaentrega,
+            "fechadevolucion" => $fechadevolucion,
+            "tiempodias" => $tiempodias,
+            "id" => $id,
+            "nombrecliente" => $nombrecliente,
+            "cedulacliente" => $cedulacliente,
+            "fotocopiacedula" => $identificadorCedula . "-" . $nombreArchivo1,
+            "fotocopiarecibo" => $identificadorRecibo . "-" . $nombreArchivo2,
+            "direccion" => $direccion,
+            "telefono" => $telefono,
+            "nombreref1" => $nombreref1,     
+            "telefonoref1" => $telefonoref1,
+            "nombreref2" => $nombreref2,
+            "telefonoref2" => $telefonoref2,
+            "contratopagare" => $identificadorCon . "-" . $nombreArchivo3,
+            "totalpagar" => $totalpagar,
+
 
         ];
 
@@ -94,7 +150,7 @@ class alquilerControlador extends alquilerModelo
                 "Titulo" => "Trabajador registrado",
                 "Texto" => "Se ha completado el registro del trabajador.",
                 "Tipo" => "success",
-                "Url" => SERVERURL . "trabajadores"
+                "Url" => SERVERURL . "alquilerProductos"
             );
             echo json_encode($alerta);
             exit();
@@ -112,63 +168,80 @@ class alquilerControlador extends alquilerModelo
 
     //Fin del controlador
 
-    //Inicio del controlador
-    public function enlistaralquilerproductosControlador()
-    {
-        $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM alquilerproductos ORDER BY id ASC";
-        $conexion = mainModel::conectarBD();
-        $datos = $conexion->query($consulta);
-        $datos = $datos->fetchAll();
-        $total = $conexion->query("SELECT FOUND_ROWS()");
-        $total = (int) $total->fetchColumn();
-        $tabla = '';
+//Inicio del controlador
+public function enlistaralquilerControlador()
+{
+    // Consulta SQL para obtener los datos de la tabla alquiler
+    $consulta = "SELECT a.numeroalquiler, a.nombrecliente, ap.id AS id, ap.nombreproducto AS nombre_producto, a.fechaentrega, a.fechadevolucion 
+    FROM alquiler a
+    JOIN alquilerproductos ap ON a.id = ap.id
+    ORDER BY a.numeroalquiler ASC";
+    
+    // Conexión a la base de datos
+    $conexion = mainModel::conectarBD();
+    
+    // Ejecutar la consulta y obtener los datos
+    $datos = $conexion->query($consulta);
+    $datos = $datos->fetchAll();
+    
+    // Contar el total de filas encontradas
+    $total = $conexion->query("SELECT FOUND_ROWS()");
+    $total = (int) $total->fetchColumn();
+    
+    // Inicializar variable para construir la tabla HTML
+    $tabla = '';
 
-        if ($total >= 1) {
-            $contador = 1;
-            foreach ($datos as $rows) {
-                //Filas
-                $tabla .= '<tr>
-                    <td>' . $contador . '</td>
-                    <td>' . $rows['nombreproducto'] . '</td>' .
-                    '<td>' . $rows['detalles'] . '</td>' .
-                    '<td>' . $rows['cantidad'] . '</td>' .
-                    '<td>' . $rows['alquiler15dias'] . '</td>' .
-                    '<td>' . $rows['alquiler30dias'] . '</td>' .
-                    '<td>' . $rows['deposito'] . '</td>';
-
-                //Botones
-                //Botones
-                if ($rows['id'] != 0) {
-                    $tabla .= '<td>
-                          <button onclick="window.location.href = \'' . SERVERURL . 'editarTrabajador/' . mainModel::encryption($rows['id']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/lapiz.png"></img></button>
-                          <button onclick="window.location.href = \'' . SERVERURL . 'agregarAlquiler/' . mainModel::encryption($rows['id']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/contrato.png"></img></button>
-                      </td>';
-                }
-
-                $tabla .= '
-                    </tr>';
-                $contador++;
+    // Comprobar si se encontraron filas
+    if ($total >= 1) {
+        $contador = 1; // Inicializar contador de filas
+        // Iterar sobre los datos obtenidos
+        foreach ($datos as $rows) {
+            // Calcular el tiempo restante en días
+            $fechaDevolucion = new DateTime($rows['fechadevolucion']);
+            $fechaActual = new DateTime();
+            $diferencia = $fechaDevolucion->diff($fechaActual);
+            $tiempoRestante = $diferencia->days + 1;
+            // Filas de la tabla HTML
+            $tabla .= '<tr>
+                            <td>' . $contador . '</td>
+                            <td>' . $rows['numeroalquiler'] . '</td>' .
+                            '<td>' . $rows['nombrecliente'] . '</td>' .
+                            '<td>' . $rows['id'] . '</td>' .
+                            '<td>' . $rows['nombre_producto'] . '</td>' .
+                            '<td>' . $rows['fechaentrega'] . '</td>' .
+                            '<td>' . $rows['fechadevolucion'] . '</td>' .
+                            '<td>' . $tiempoRestante +1 .'</td>';
+            // Botones (si es necesario)
+            if ($rows['id'] != 0) {
+                $tabla .= '<td>
+                              <button onclick="window.location.href = \'' . SERVERURL . 'visualizarAlquiler/' . mainModel::encryption($rows['numeroalquiler']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/detalles.png"></img></button>
+                          </td>';
             }
-        } else {
-            $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
+            $tabla .= '</tr>';
+            $contador++; // Incrementar contador de filas
         }
+    } else {
+        // Mensaje si no se encontraron registros
+        $tabla .= '<tr><td colspan="6">No hay registros en el sistema</td></tr>';
+    }
 
-        $tabla .= '</tbody>
-            </table>';
+    // Cerrar la tabla HTML
+    $tabla .= '</tbody>
+                </table>';
 
-        return $tabla;
-    } //Fin del controlador
-
+    // Devolver la tabla HTML generada
+    return $tabla;
+} //Fin del controlador
 
 
 
     //Inicio del controlador
-    public function datosalquilerproductoControlador($id)
+    public function datosalquilerControlador($numeroalquiler)
     {
-        $id = mainModel::decryption($id);
-        $id = mainModel::limpiarCadena($id);
+        $numeroalquiler = mainModel::decryption($numeroalquiler);
+        $numeroalquiler = mainModel::limpiarCadena($numeroalquiler);
 
-        return alquilerModelo::datosalquilerproductoModelo($id);
+        return alquilerModelo::datosalquilerModelo($numeroalquiler);
     } //Fin del controlador
 
     //Inicio del controlador
@@ -279,3 +352,4 @@ class alquilerControlador extends alquilerModelo
         }
     } //Fin del controlador
 }
+

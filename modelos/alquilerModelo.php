@@ -6,14 +6,13 @@ class alquilerModelo extends mainModel
     //Modelo para agrega
     protected static function agregarAlquilerModelo($datos)
     {
-        $sql = mainModel::conectarBD()->prepare("INSERT INTO alquiler(numeroalquiler,fechaentrega,fechadevolucion,tiempodias,id,nombrecliente,cedulacliente,fotocopiacedula,
-        
-        fotocopiarecibo,direccion,telefono,nombreref1,nombreref2,telefonoref1,telefonoref2,contratopagare,totalpagar) 
-        VALUES(:numeroAlquiler,:fechaEntrega,:fechaDevolucion,:tiempoDias,:Id,:nombreCliente,:cedulaCliente,:fotocopiaCedula,
-        
-        :fotocopiaRecibo,:Direccion,:Telefono,:nombreRef1,:nombreRef2,:telefonoRef1,:telefonoRef2,:contratoPagare,:totalPagar)");
+        $sql = mainModel::conectarBD()->prepare("INSERT INTO 
+        alquiler(numeroalquiler,fechaentrega,fechadevolucion,tiempodias,id,nombrecliente,cedulacliente,
+        fotocopiacedula, fotocopiarecibo,direccion,telefono,nombreref1, telefonoref1, nombreref2,telefonoref2,
+        contratopagare,totalpagar) 
+        VALUES(:numeroAlquiler,:fechaEntrega,:fechaDevolucion,:tiempoDias,:Id,:nombreCliente,:cedulaCliente,:fotocopiaCedula, :fotocopiaRecibo,:Direccion,:Telefono,:nombreRef1,:telefonoRef1, :nombreRef2, :telefonoRef2,:contratoPagare,:totalPagar)");
 
-        $sql->bindParam(":numeroAlquiler", $datos['numeroalquiler']);
+        $sql->bindParam(":numeroAlquiler", $datos['numeroAlquiler']);
         $sql->bindParam(":fechaEntrega", $datos['fechaentrega']);
         $sql->bindParam(":fechaDevolucion", $datos['fechadevolucion']);
         $sql->bindParam(":tiempoDias", $datos['tiempodias']);
@@ -35,13 +34,20 @@ class alquilerModelo extends mainModel
     } //Fin del modelo
 
     //Modelo para obtener datos 
-    protected static function datosalquilerproductoModelo($numeroalquiler)
+    protected static function datosalquilerModelo($numeroalquiler)
     {
-        $sql = mainModel::conectarBD()->prepare("SELECT * FROM  alquiler WHERE numeroalquiler = :numeroalquiler");
+        $sql = mainModel::conectarBD()->prepare("
+            SELECT a.numeroalquiler, a.nombrecliente, ap.id AS id, ap.nombreproducto AS nombre_producto,
+                   ap.detalles AS detalles_producto, ap.deposito AS deposito_producto, a.fechaentrega,
+                   a.fechadevolucion,a.tiempodias,a.totalpagar,a.nombrecliente,a.cedulacliente,a.direccion,a.telefono,a.nombreref1,a.nombreref2,a.telefonoref1,a.telefonoref2,a.fotocopiacedula,a.fotocopiarecibo,a.contratopagare
+            FROM alquiler a
+            JOIN alquilerproductos ap ON a.id = ap.id
+            WHERE a.numeroalquiler = :numeroalquiler
+            ORDER BY a.numeroalquiler ASC
+        ");
         $sql->bindParam(":numeroalquiler", $numeroalquiler);
         $sql->execute();
         return $sql;
-
     } //Fin del modelo
 
     // Modelo para actualizar los datos del usuario

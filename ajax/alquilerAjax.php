@@ -2,7 +2,9 @@
 $peticionAjax = true;
 require_once "../config/APP.php";
 
-if (isset($_POST['numeroAlquiler'])  ) {
+
+if (isset($_POST['numeroAlquiler'])  || isset($_POST['alquilerUpdate'])) {
+
 
     //Instancia del controlador de usuarios
     require_once "../controladores/alquilerControlador.php";
@@ -12,7 +14,6 @@ if (isset($_POST['numeroAlquiler'])  ) {
     if (isset($_POST['numeroAlquiler'])) {
         echo $objAlquiler->agregaralquilerControlador();
     }
-
 
 } else {
     session_start(['name' => 'AMU']);
