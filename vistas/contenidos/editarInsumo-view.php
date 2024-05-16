@@ -74,9 +74,8 @@ if ($datosInsumo->rowCount() == 1) {
         </section>
     </main>
 
-    <script src="<?php echo SERVERURL; ?>vistas/js/producto-script/producto.js"></script>
-
-    <script src="<?php echo SERVERURL; ?>vistas/js/producto-script/cancelarEdicion.js" type="module"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/insumo.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/cancelarBtn.js" type="module"></script>
 
     <?php
 } else {

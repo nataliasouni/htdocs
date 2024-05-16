@@ -1,25 +1,29 @@
-/* Estilos para el footer */
-flooter.full-box.footer-info {
-    background-color: #75a4d66b; /* Cambia el color de fondo según sea necesario */
-    flood-opacity: 6%;
-    display: flex;
-    color: #000000; /* Cambia el color del texto según sea necesario */
-    font: bold;
-    padding: 20px; /* Añade espacio alrededor del contenido */
-    height: 150px;
+/* Estilos generales para el footer */
+.footer-info {
+    color: #000; /* Color del texto */
+    padding: 20px 0; /* Espaciado interno */
+    text-align: center;
+    font-family: Arial, sans-serif; /* Familia de fuentes */
 }
 
-/* Estilos para los elementos a la izquierda 
-.left-items {
+/* Estilos para el contenedor del footer */
+.container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-}*/
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el footer horizontalmente */
+}
+
+
+
+
 
 .left-items {
+/* Estilos para el contenido del footer */
+.footer-content {
     display: flex;
-    width: 33.3%;
-    /*padding: 5%;*/
-    margin-right: 10%;
+    align-items: center;
 }
 
 .right-items {
@@ -33,28 +37,104 @@ flooter.full-box.footer-info {
 
 .content-red{
     background-color: #0053A9;
-    width: 100%;
-    height: 100%;
     border-radius: 100%;
-    margin-right: 2%;
+    margin-top: 25px;
     align-content: center;
     text-align: center;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    margin-left: 25px;
+
+.footer-social ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.social-media {
-    width: 50%;
-    height: 50%;
+.footer-social li {
+    display: inline-block;
+    margin-right: 10px;
 }
+
 
 /* Estilos para el texto en el centro */
 .center-items {
     text-align: center;
     align-content: center;
     flex-grow: 1; /* Aprovecha todo el espacio disponible */
-    width: 33.3%;
+    width: 42%;
+    margin-left: -80px;
+
 }
 
 /* Estilos para el logo a la derecha */
 .item-img {
     width: 50%; /* Ajusta el tamaño del logo según sea necesario */
 }
+
+
+#ig,#face,#ws{
+    width: 40px;
+    height: 40px;
+}
+
+/* Media queries para hacer responsive */
+@media screen and (max-width: 768px) {
+    .left-items,
+    .center-items,
+    .right-items {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .left-items{
+        width: auto;
+        margin-top: 2px;
+    }
+    
+    .center-items {
+        width: 100%;
+        margin-left: 0;
+        font-size: 14px;
+        margin-right: 0px;
+        text-align: justify;
+    }
+
+    .content-red{
+        margin-top: 5px;
+        margin-left: 0px;
+        height: 90px;
+        width: 45px;
+    }
+
+    #text{
+        size: 3px;
+    }
+
+    #ig,#face,#ws{
+        width: 20px;
+        height: 20px;
+    }
+
+    .item-img {
+        width: 0%;
+        height: 0%; /* Ajusta el tamaño del logo según sea necesario */
+    }
+}
+
+.footer-social a {
+    color: #000; /* Color de los enlaces */
+    text-decoration: none;
+    font-size: 20px; /* Tamaño de los íconos */
+    transition: color 0.3s; /* Efecto de transición al pasar el cursor */
+}
+
+.footer-social a:hover {
+    color: #01294e; /* Cambia el color al pasar el cursor */
+}
+
+.footer-logo img {
+    width: 100px; /* Tamaño del logo */
+}
+

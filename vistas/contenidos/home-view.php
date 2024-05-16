@@ -259,6 +259,7 @@
                             <?php
                             if ($_SESSION['permiso'] == "Master") {
                                 ?>
+                                <a href="<?= SERVERURL; ?>produccionMaster">
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="content-img">
@@ -274,6 +275,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                </a>
                                 <?php
                             }
                             ?>

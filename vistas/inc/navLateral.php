@@ -124,55 +124,11 @@
                 Control de Talleres
             </a>
             <ul class="submenu">
-                <li>
-                    <a href="<?= SERVERURL; ?>homeOT">
-                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/talleres.png"
-                            alt="Submenu Image">
-                        Taller 1
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= SERVERURL; ?>homeOT">
-                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/talleres.png"
-                            alt="Submenu Image">
-                        Taller 2
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= SERVERURL; ?>homeOT">
-                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/talleres.png"
-                            alt="Submenu Image">
-                        Taller 3
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= SERVERURL; ?>homeOT">
-                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/talleres.png"
-                            alt="Submenu Image">
-                        Taller 4
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= SERVERURL; ?>homeOT">
-                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/talleres.png"
-                            alt="Submenu Image">
-                        Taller 5
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= SERVERURL; ?>homeOT">
-                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/talleres.png"
-                            alt="Submenu Image">
-                        Taller 6
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= SERVERURL; ?>homeOT">
-                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/talleres.png"
-                            alt="Submenu Image">
-                        Taller 7
-                    </a>
-                </li>
+                <?php
+                require_once "./controladores/talleresControlador.php";
+                $tallerControlador = new talleresControlador();
+                echo $tallerControlador->cargarTallerNavModelo();
+                ?>
             </ul>
         </li> 
         <?php } ?>
@@ -183,9 +139,9 @@
                 Notificaciones
             </a>
             <ul class="submenu">
-                <?php if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" || $_SESSION['permiso'] == "Taller"){ ?>
+                <?php if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" ){ ?>
                 <li>
-                    <a href="#">
+                <a href="<?= SERVERURL; ?>notificaciones">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/inventario.png"
                             alt="Submenu Image">
                         Inventario
@@ -198,6 +154,15 @@
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/talleres.png"
                             alt="Submenu Image">
                         Talleres
+                    </a>
+                </li>
+                <?php } ?>
+                <?php if ($_SESSION['permiso'] == "Taller"){ ?>
+                <li>
+                    <a href="#">
+                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/inventario.png"
+                            alt="Submenu Image">
+                        Inventario
                     </a>
                 </li>
                 <?php } ?>
@@ -262,7 +227,7 @@
         <?php } ?>
         <?php if ($_SESSION['permiso'] == "Master"){ ?>
         <li>
-            <a href="#">
+            <a href="<?= SERVERURL; ?>produccionMaster">
                 <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/produccion.png" alt="Menu Image">
                 Control de producción
             </a>

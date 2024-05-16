@@ -8,7 +8,7 @@ class registroClienteModelo extends mainModel
         
 
         // Preparar la consulta SQL
-        $sql = self::conectarBD()->prepare("INSERT INTO usuario (cedula, nombre_usuario, contrasena, telefono, email, permiso, estado) VALUES (:cedula, :nombre_usuario, :contrasena, :telefono, :email, 'Cliente', 'Si')");
+        $sql = self::conectarBD()->prepare("INSERT INTO usuario (cedula, nombre_usuario, contrasena, telefono, email, permiso, estado) VALUES (:cedula, :nombre_usuario, :contrasena, :telefono, :email, 'Cliente', 'si')");
 
         // Bind parameters
         $sql->bindParam(":cedula", $datos['cedula']);

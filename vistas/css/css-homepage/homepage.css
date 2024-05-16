@@ -1,207 +1,334 @@
-
-
-
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
-.full-box.navbar-infohead {
-    background-color: #75a4d66b;
-    color: #fff;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between; 
-}
-.full-box.navbar-infohead a {
-    color: #0055A7;
-    text-decoration: none;
-    margin-left: 3px;
-    font-size: 20px;
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.left-itemshea {
+/* Banner Principal */
+.banner {
+    position: relative; /* Agrega posición relativa para los elementos absolutos */
+    background-image: url('../../img/img1.jpg');
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+    padding: 80px 0;
     display: flex;
-    color : #0053A9;
+    align-items: flex-end; /* Alinea los elementos en la parte inferior */
 }
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro con opacidad del 50% */
+}
+
+.banner-content {
+    position: relative; /* Ajusta la posición del contenido */
+    z-index: 1; /* Asegura que el contenido esté sobre la superposición */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#inicioSesion{
+    margin-left: 20px;
+}
+
+#botonProductos{
+    margin-right: 20px;
+}
+
 
 .right-itemshea {
     
     display: flex;
     position: relative; 
     z-index: 1; 
+=======
+.banner h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
 }
 
-.botonesHeader{
+.banner p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta {
+    background-color: #0053A2;
     color: #fff;
-    font: bold;
-    height: 110%;
-    width: 150px;
-    margin-right: 5%;
-    border-radius: 10px;
-    border: #fff;
-    background-color: #0053A9;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
-.botonesCatalogo{
-    height: 27px;
-    width: 27px;
+.cta:hover {
+    background-color: #01294e;
     color: #fff;
-    margin-right: 5%;
-    border-radius: 10px;
-    border: #fff;
-    background-color: #0053A9;
 }
 
-.botonesCita{
-    color: #fff;
-    font: bold;
-    height: 40px;
-    width: 100%;
-    margin-right: 5%;
-    border-radius: 10px;
-    border: #fff;
-    background-color: #0053A9;
+/* Sección de Productos */
+.productos {
+    padding: 50px 0;
+    background-color: #f2f2f2;
 }
 
-.choose-option {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 0px; 
-    position: relative; 
-}
-
-.card-homepage {
+/* Estilos del contenedor de productos */
+.productos .container {
     display: flex;
+    overflow-x: hidden; /* Permitir el desplazamiento horizontal */
+    gap: 20px;
+    padding-bottom: 20px; /* Agregar un espacio en la parte inferior para los botones de navegación */
 }
 
-.card-contenthomepage {
-    width: 85%; /* Ancho de la tarjeta */
-    height: auto; /* Altura de la tarjeta */
-    background-color: #fff; 
-    border-radius: 25px;
-    margin: 30px 10px 20px 20px;
+/* Estilos de la tarjeta de producto */
+.tarjeta {
+    flex: 0 0 auto; /* Evitar que las tarjetas se ajusten automáticamente */
+    width: 374px; /* Establecer un ancho fijo para las tarjetas */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    /*cursor: pointer;*/
-    text-align: center;
-    justify-content: center;
-    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.buttons-container {
+    position: absolute;
+    left: 0;
+    right: 0;
     display: flex;
-
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 15px;
 }
 
-.card-descriptionhomepage {
-    font-size: 5px;
-    color: #313131; /* Color del texto de la descripción */
-    margin-top: 2px; /* Espaciado superior */
-    margin-right: 20px;
-    /*line-height: 5px;*/
+.prev, .next {
+    cursor: pointer;
+    background-color: #0053A2;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 2;
 }
 
-.card-detailshomepage {
-    width: 80%; /* Ancho del contenido de la tarjeta */
-    display: flex; /* Utilizar flexbox para alinear los elementos */
-    flex-direction: column; /* Alinear elementos verticalmente */
-    justify-content: center; /* Centrar verticalmente */
-    padding-left: 10px; /* Añadir un poco de espacio a la izquierda */
-    text-align: left;
+.prev:hover, .next:hover {
+    cursor: pointer;
+    background-color: #01294e;
+    color: #fff;
 }
 
-.card-imagehomepage {
-    width: 85%; /* Ajustar el ancho de la imagen */
-    height: auto; /* Mantener la relación de aspecto */
-    padding-left: 50px;
-    margin-top: 10px;
-    border-radius: 15px; /* Ajustar bordes */
-    object-fit: cover; /* Ajustar tamaño de imagen */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.tarjeta:hover {
+    transform: translateY(-5px);
 }
 
-.card-titlehomepage {
-    width: auto;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    margin-top: 5px;
-    color: #000000; /* Color del texto en la superposición */
-    border-bottom: 1px solid #000; /* Línea de color negro debajo del título */
-    padding-bottom: 5px; /* Espacio entre el título y la línea */
-    text-align: center;
-}
-
-.contentboton{
-    width: 10px;
-    margin-left: 40%;
-    margin-bottom: 10px;
-}
-
-.imgButton{
-    width: 25px;
-    height: 25px;
-}
-
-.container {
-    display: flex;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
-.left-container{
-    width: auto;
+.tarjeta .imagen img {
+    width: 100%;
     height: auto;
-    background-color: red;
-    margin-right: 200px; /* Espacio entre el recuadro grande y los pequeños */
-    padding: 20px; /* Espaciado interno del recuadro grande */
+    object-fit: cover;
+}
+
+.tarjeta .contenido {
+    padding: 20px;
+    text-align: center;
+}
+
+.tarjeta h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.tarjeta p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.tarjeta button {
+    background-color: #0053A2;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tarjeta button:hover {
+    background-color: #01294e;
+}
+
+
+.servicios {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.container-servicios {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.servicios-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.servicios-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicios-images img {
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 20px;
 }
 
 .right-container{
     width: auto;
     height: auto;
-    margin-top: 10%;
+    margin-top: 0px;
     margin-bottom: 10%;
-    margin-left: 10%;
+    margin-left: -50px;
     border-radius: 20px;
     /*background-color: black; /* Color de fondo del recuadro grande */
+  
+.gallery img {
+    width: 100%;
+    max-width: 100px;
+    margin: 5px;
 }
 
-.large-box {
-    /*flex-grow: 1; /* Toma todo el espacio restante */
-    width: 50%;
-    height: 100%;
-    border-radius: 20px;
-    background-color: #fff; /* Color de fondo del recuadro grande */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    margin-right: 10%; /* Espacio entre el recuadro grande y los pequeños */
-    padding: 20px; /* Espaciado interno del recuadro grande */
-    /*float: left;*/
+.gallery {
+    display: flex;
     justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos generales de la sección de categorías */
+.categorias {
+    padding: 50px 0;
+    background-color: #ffffff; /* Color de fondo */
     text-align: center;
     align-items: center;
 }
 
+#smal1{
+    margin-right: 50px;
+    width: 250px;
+}
+
+#imagen1{
+    margin-top: 5px;
+    margin-left: 0px;
+    height: 210px;
+    width: 200px;
+}
+
+#box1{
+    margin-left: 0px;
+    width: 320px;
+    height: 240px;
+}
+
+#imagen2{
+    margin-top: 5px;
+    margin-left: 0px;
+    height: 210px;
+    width: 200px;
+}
+
+#box2{
+    margin-left: 80px;
+    width: 320px;
+    height: 240px;
+}
+
+
+#smal2{
+    width: 250px;
+    margin-top: 30px;
+}
+
+#imagen3{
+    margin-top: 5px;
+    margin-left: 0px;
+    height: 210px;
+    width: 200px;
+}
+
+#box3{
+    margin-left: 0px;
+    width: 320px;
+    height: 240px;
+}
+
+#imagen4{
+    margin-top: 5px;
+    margin-left: 0px;
+    height: 210px;
+    width: 200px;
+}
+
+#box4{
+    margin-left: 80px;
+    width: 320px;
+    height: 240px;
+}
+
+#Diana{
+    width: 190px;
+    height: 210px;
+}
+
 .img-foto{
-    width: 50%;
-    height: 100%;
+    width: 210px;
+    height: 200px;
     margin-bottom: 5%;
     border-radius: 100%;
     transition: box-shadow 0.3s ease;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-.content-text{
-    font-size: 14px;
-    color: #313131; /* Color del texto de la descripción */
+/* Contenedor de las categorías */
+.container-categoria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espacio entre las categorías */
 }
 
-.img-contentfoto{
-    width: auto;
-    height: auto;
+/* Estilos para cada categoría */
+.categoria {
+    background-color: #0054a20e; /* Color de fondo */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 30px;
+    max-width: 300px; /* Ancho máximo de la categoría */
+    width: 100%; /* Se expande para ocupar todo el ancho disponible */
+    transition: transform 0.3s ease; /* Efecto de transición suave */
+}
+
+/* Estilos al pasar el cursor sobre cada categoría */
+.categoria:hover {
+    transform: translateY(-5px); /* Efecto de levantamiento */
 }
 
 .small-boxes {
@@ -210,24 +337,41 @@ body {
     width: 130%;
     height: 50%;
     flex-direction: row; /* Envuelve los recuadros pequeños cuando no caben en una línea */
-    margin-right: 50%;
+    margin-left: 10px;
 }
 
 .box-arriba , .box-abajo{
     display: flex;
     width: calc(50% - 10px); /* Ancho del 50% menos los márgenes */
     height: 150px; /* Altura de los recuadros pequeños */
-    margin-bottom: 30px; /* Espacio entre los recuadros pequeños */
-    margin-right: 30px; /* Espacio entre los recuadros pequeños */
     background-color: #fff; /* Color de fondo de los recuadros pequeños */
     padding: 10px; /* Espaciado interno de los recuadros pequeños */
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
     border-radius: 20px;
     
-    
+/* Estilos para la descripción de las categorías */
+.categoria p {
+    font-size: 16px;
+    color: #666; /* Color del texto */
+    margin-bottom: 20px;
 }
 
+/* Estilos para el enlace "Ver productos" */
+.categoria a {
+    display: inline-block;
+    background-color: #0053A2; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Efecto de transición suave */
+}
+
+/* Estilos al pasar el cursor sobre el enlace */
+.categoria a:hover {
+    background-color: #01294e; /* Color de fondo al pasar el cursor */
+}
 
 .box-img {
     width: 100%;
@@ -235,18 +379,109 @@ body {
     border-radius: 20px;
     transition: box-shadow 0.3s ease;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+
+}
+
+#agendaAbajo{
+    width: 35%;
+/* Estilos para la imagen de cada categoría */
+.categoria img {
+    max-width: 100%;
+    border-radius: 10px; /* Ajuste los bordes si es necesario */
+    margin-bottom: 10px;
+}
+
+/* Estilos generales de la sección de contacto */
+.contacto {
+    padding: 50px 0;
+    background-color: #f9f9f9; /* Color de fondo */
+    text-align: center;
+}
+
+/* Contenedor de la sección de contacto */
+.container-contacto {
+    max-width: 600px;
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    padding: 30px; /* Añade espacio interno al contenedor */
+    background-color: #fff; /* Color de fondo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+/* Estilos para el título "Contacto" */
+.container-contacto h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el texto descriptivo */
+.container-contacto p {
+    font-size: 16px;
+    color: #666; /* Color del texto */
+    margin-bottom: 30px;
+}
+
+/* Estilos para el formulario de contacto */
+.container-contacto form input[type="text"],
+.container-contacto form input[type="email"],
+.container-contacto form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.container-contacto form textarea {
+    height: 150px; /* Altura del área de texto */
+}
+
+.container-contacto form button {
+    background-color: #0053A2; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efecto de transición suave */
+}
+
+.container-contacto form button:hover {
+    background-color: #01294e; /* Cambia el color de fondo al pasar el cursor */
+}
+
+/* Estilos para la información de contacto */
+.informacion-contacto {
+    margin: 15px;
+    text-align: center; /* Alinea el texto a la izquierda */
+}
+
+.informacion-contacto p {
+    margin-bottom: 10px;
 }
 
 
- /*Establecer el tamaño del carrusel para ocupar toda la pantalla */
-#myCarousel {
-    width: 100%;
-    height: 50vh; /* Altura completa de la ventana */
-}
 
-/* Ajustar el tamaño de las imágenes para que ocupen todo el carrusel */
-#myCarousel .carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Para que la imagen se ajuste dentro del espacio sin deformarse */
+@media screen and (max-width: 768px) {
+
+    #botonProductos,
+    #botonCitaH,
+    #botonContactanos{
+
+        font-size: 14px;
+        height: 22px;
+        margin-right: 0px;
+        margin-top: 5px;
+    }
+
+    #inicioSesion{
+        margin-top: 5px;
+    }
+    
+    .right-itemshea{
+        flex-direction: column;
+        align-items: center;
+    }
+
+
 }

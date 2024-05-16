@@ -13,7 +13,20 @@ body {
   height: 140vh; /* Cambia la altura del contenedor principal */
   background: #ffffff;
 }
-  
+
+
+#cerrar{
+  height: 35px;
+  width: 35px;
+
+}
+.imagen2{
+  justify-content: right ;
+  align-items: right ;
+  text-align: right ;
+}
+
+
   /* Estilos para el formulario dentro del contenedor */
   .form-container {
     background-color: #d1f8e7  ;
@@ -25,12 +38,13 @@ body {
   }
   
   /* Estilos para la imagen dentro del formulario */
-  .form-container img {
+  .form-container #amu {
     display: block;
     margin: 0 auto 20px;
     align-items: center;
   }
   
+
   /* Estilos para los campos de texto dentro del formulario */
   .form-container input[type="text"],
   .form-container input[type="password"] {
@@ -92,3 +106,7 @@ body {
     font-weight: bold;
     color: #0056b3;
   }
+
+
+
+  @media screen and (max-width: 768px) {}

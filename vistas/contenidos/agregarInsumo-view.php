@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-producto/productos.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-insumo/insumo.css">
 
 <main class="full-box main-container">
     <!-- Incluir la barra lateral -->
@@ -50,6 +50,6 @@
     </section>
 </main>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/producto-script/producto.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/insumo.js"></script>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/producto-script/cancelarBtn.js" type="module"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/insumo-script/cancelarBtn.js" type="module"></script>

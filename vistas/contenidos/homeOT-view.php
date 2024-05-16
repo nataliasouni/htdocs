@@ -56,9 +56,20 @@
                 <h2 style='color: #0053A9'>Elegir opción</h2>
             </div>
 
+            <?php
+            // Verificar si $_GET['variable'] está definida y no está vacía
+                if (isset($_GET['variable']) && !empty($_GET['variable'])) {
+                // Obtener el valor de $_GET['variable']
+                    $var = $_GET['variable'];
+                } else {
+                // Si $_GET['variable'] no está definida o está vacía, mostrar un mensaje de error o manejar el caso según sea necesario
+                echo "La variable 'variable' no está definida en la URL.";
+                }
+            ?>
+
             <!-- Content -->
             <div class="tile-container">
-
+                <a href="<?= SERVERURL; ?>ensambleTaller/taller?variable=<?= $var; ?>">
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -72,20 +83,9 @@
                         </div>
                     </div>
                 </div>
+                </a>
 
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/corte.png"
-                                alt="Prendas Cortadas">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Prendas Cortadas</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
-                        </div>
-                    </div>
-                </div>
+                <a href="<?= SERVERURL; ?>devolucionDefectos/taller?variable=<?= $var; ?>">
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -100,6 +100,9 @@
                         </div>
                     </div>
                 </div>
+                </a>
+
+                <a href="<?= SERVERURL; ?>prendasQuirurgicas/taller?variable=<?= $var; ?>">
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -114,6 +117,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
     </section>
 </main>
