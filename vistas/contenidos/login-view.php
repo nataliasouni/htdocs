@@ -17,8 +17,15 @@
 </head>
 
 <body>
+  
   <div class="container">
     <div class="form-container sign-in-container">
+    <a href="homePage">
+    <div class="imagen2">
+        <img id="cerrar" src="<?php echo SERVERURL; ?>vistas/img/cerrar.png" alt="cerrar">
+    </div>
+    </a>
+
       <!-- Contenido de tu formulario de inicio de sesión aquí -->
       <form id="loginform" action="" method="POST">
         <div class="imagen">

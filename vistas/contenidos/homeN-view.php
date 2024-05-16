@@ -59,13 +59,14 @@
             <!-- Content -->
             <div class="tile-container">
                 <?php
-                if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" || $_SESSION['permiso'] == "Taller") {
+                if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" ) {
                     ?>
+                <a href="<?= SERVERURL; ?>notificaciones">
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
                             <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/inventario.png"
-                                alt="Inventario">
+                        alt="Inventario">
                         </div>
                         <div class="card-details">
                             <h2 class="card-title">Inventario</h2>
@@ -74,6 +75,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
                 <?php
                 }
                 ?>
@@ -96,6 +98,27 @@
                 <?php
                 }
                 ?>
+
+                <?php
+                if ($_SESSION['permiso'] == "Taller") {
+                    ?>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content-img">
+                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/Inventario.png"
+                                alt="Inventario">
+                        </div>
+                        <div class="card-details">
+                            <h2 class="card-title">Inventario</h2>
+                            <p class="card-description">Descripcion</p>
+                            <div class="registradas">Registradas</div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                }
+                ?>
+                
             </div>
     </section>
 </main>

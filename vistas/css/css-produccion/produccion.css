@@ -24,7 +24,7 @@ input[type="date"] {
     border-radius: 10px;
 }
 
-input#prendasquirurgicas{
+input#totalprendasquirurgicas{
     border: 1px solid rgba(0, 0, 0, 0.2);
     background-color: #f3f7fd;
     padding: 10px;
@@ -35,7 +35,7 @@ input#prendasquirurgicas{
     width:150px;
 }
 
-input#prendasdefectuosas {
+input#totalprendasdefectuosas {
     border: 1px solid rgba(0, 0, 0, 0.2);
     background-color: #f3f7fd;
     padding: 10px;
@@ -138,12 +138,12 @@ label{
     margin: 20px auto; /* Centrar botones */
     }
 
-    input#prendasquirurgicas {
+    input#totalprendasquirurgicas {
         margin-left: 3px;
         width: 100%;
     }
 
-    input#prendasdefectuosas {
+    input#totalprendasdefectuosas {
         width: 100%;
     }
     

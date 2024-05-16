@@ -54,7 +54,15 @@ body {
     width: 280px;
   }
   
-
+  #cerrar{
+    height: 35px;
+    width: 35px;
+  }
+  .imagen2{
+    justify-content: right;
+    align-items: right;
+    text-align: right;
+  }
   .form-container label {
     font-weight: bold;
     font-size: 17px;
@@ -115,4 +123,4 @@ body {
   }
 
   
-
+  @media screen and (max-width: 768px) {}

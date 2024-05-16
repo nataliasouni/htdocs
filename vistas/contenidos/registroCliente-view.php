@@ -19,19 +19,25 @@
   
 <div class="container">
     <div class="form-container sign-in-container">
+    <a href="homePage">
+    <div class="imagen2">
+        <img id="cerrar" src="<?php echo SERVERURL; ?>vistas/img/cerrar.png" alt="cerrar">
+    </div>
+    </a>
+
         <form action="#" method="POST">
-            <img src="<?php echo SERVERURL; ?>vistas/img/logoAMU2.png" alt="Logo de AMU" class="imagen-verticalmente-centrada" >
+            <img id="amu" src="<?php echo SERVERURL; ?>vistas/img/logoAMU2.png" alt="Logo de AMU" class="imagen-verticalmente-centrada" >
             
             <p>Nombre de usuario</p>
-            <input type="text" name="nombre_usuario" placeholder="">
+            <input type="text" name="nombre_usuario" placeholder="" required>
             <p>Cedula</p>
-            <input type="text" name="cedula" placeholder="">
+            <input type="text" name="cedula" placeholder=""required>
             <p>Correo electrónico</p>
-            <input type="text" name="email" placeholder="">
+            <input type="text" name="email" placeholder=""required>
             <p>Telefono</p>
-            <input type="text" name="telefono" placeholder="">
+            <input type="text" name="telefono" placeholder=""required>
             <p>Contraseña</p>
-            <input type="password" name="contrasena" placeholder="">
+            <input type="password" name="contrasena" placeholder=""required>
             <p> </p>
             <button id="registrarse" type="submit">Registrarse</button>
         </form>

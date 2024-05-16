@@ -48,4 +48,12 @@ class prendasCModelo extends mainModel
     }
 }
 
+protected static function obtenerPrendaModelo()
+{
+    $sql = mainModel::conectarBD()->prepare("SELECT * FROM prendascortadas ");
+    $sql->execute();
+    return $sql;
+
+} //Fin del modelo
+
 }

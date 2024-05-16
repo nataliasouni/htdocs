@@ -275,4 +275,11 @@ class prendasCControlador extends prendasCModelo
     }
   }
 
+  public function obtenerPrendasCortadasControlador()
+  {
+      $productosEnsamble = prendasCModelo::obtenerPrendaModelo();
+      return $productosEnsamble;
+  }
+
+
 }

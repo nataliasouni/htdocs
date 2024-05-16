@@ -55,7 +55,7 @@ class loginControlador extends loginModelo
                         window.location.href = 'login';
                     }
                 })
-                </script>";;
+                </script>";
                 exit();
             } else {
                 session_start(['name' => 'AMU']);

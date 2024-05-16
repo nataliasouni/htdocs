@@ -19,6 +19,12 @@
 <body>
     <div class="container">
         <div class="form-container sign-in-container">
+        <a href="homePage">
+        <div class="imagen2">
+        <img id="cerrar" src="<?php echo SERVERURL; ?>vistas/img/cerrar.png" alt="cerrar">
+        </div>
+        </a>
+
             <form id="loginform" action="" method="POST">
                 <img src="/vistas/img/logoAMU2.png" alt="Logo de AMU" class="imagen-verticalmente-centrada"">
                 <p class="titulos"> Ingresa tu email para recibir tu nueva contraseña:</p>
