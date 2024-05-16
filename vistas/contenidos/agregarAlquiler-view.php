@@ -113,7 +113,7 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                         <p class="titulos_form">Nombre del Cliente</p>
                                         <input type="text" name="nombreCliente" id="nombreCliente"
                                             class="login_nombreUsuario" required
-                                            oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                            >
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Cedula </p>

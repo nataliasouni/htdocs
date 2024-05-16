@@ -200,7 +200,7 @@ public function enlistaralquilerControlador()
             $fechaDevolucion = new DateTime($rows['fechadevolucion']);
             $fechaActual = new DateTime();
             $diferencia = $fechaDevolucion->diff($fechaActual);
-            $tiempoRestante = $diferencia->days;
+            $tiempoRestante = $diferencia->days + 1;
             // Filas de la tabla HTML
             $tabla .= '<tr>
                             <td>' . $contador . '</td>
@@ -214,7 +214,7 @@ public function enlistaralquilerControlador()
             // Botones (si es necesario)
             if ($rows['id'] != 0) {
                 $tabla .= '<td>
-                              <button onclick="window.location.href = \'' . SERVERURL . 'visualizarAlquiler/' . mainModel::encryption($rows['numeroalquiler']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/lapiz.png"></img></button>
+                              <button onclick="window.location.href = \'' . SERVERURL . 'visualizarAlquiler/' . mainModel::encryption($rows['numeroalquiler']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/detalles.png"></img></button>
                           </td>';
             }
             $tabla .= '</tr>';
