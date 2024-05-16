@@ -59,7 +59,11 @@ class vistasModelo
       "devolucionPorDefecto",
       "agregarDevolucion",
       "editarDevolucion",
-      "detallesDevolucion"
+      "detallesDevolucion",
+      "editarProductosAlquiler",
+      "agregarProductosAlquiler",
+      "controlAlquileres",
+      "visualizarAlquiler"
     ];
 
     if (in_array($vistas, $listaBlanca)) {

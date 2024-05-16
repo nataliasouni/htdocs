@@ -15,32 +15,11 @@
     margin: 0 auto; /* Centra el footer horizontalmente */
 }
 
-.left-items {
 /* Estilos para el contenido del footer */
 .footer-content {
     display: flex;
     align-items: center;
 }
-
-.right-items {
-    display: flex;
-    position: relative; 
-    z-index: 1; 
-    width: 33.3%;
-    justify-content: flex-end;
-    padding-right: 1%;
-}
-
-.content-red{
-    background-color: #0053A9;
-    border-radius: 100%;
-    margin-top: 25px;
-    align-content: center;
-    text-align: center;
-    border-radius: 50%;
-    height: 70px;
-    width: 70px;
-    margin-left: 25px;
 
 .footer-social ul {
     list-style: none;
@@ -51,72 +30,6 @@
 .footer-social li {
     display: inline-block;
     margin-right: 10px;
-}
-
-
-/* Estilos para el texto en el centro */
-.center-items {
-    text-align: center;
-    align-content: center;
-    flex-grow: 1; /* Aprovecha todo el espacio disponible */
-    width: 42%;
-    margin-left: -80px;
-
-}
-
-/* Estilos para el logo a la derecha */
-.item-img {
-    width: 50%; /* Ajusta el tamaño del logo según sea necesario */
-}
-
-
-#ig,#face,#ws{
-    width: 40px;
-    height: 40px;
-}
-
-/* Media queries para hacer responsive */
-@media screen and (max-width: 768px) {
-    .left-items,
-    .center-items,
-    .right-items {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .left-items{
-        width: auto;
-        margin-top: 2px;
-    }
-    
-    .center-items {
-        width: 100%;
-        margin-left: 0;
-        font-size: 14px;
-        margin-right: 0px;
-        text-align: justify;
-    }
-
-    .content-red{
-        margin-top: 5px;
-        margin-left: 0px;
-        height: 90px;
-        width: 45px;
-    }
-
-    #text{
-        size: 3px;
-    }
-
-    #ig,#face,#ws{
-        width: 20px;
-        height: 20px;
-    }
-
-    .item-img {
-        width: 0%;
-        height: 0%; /* Ajusta el tamaño del logo según sea necesario */
-    }
 }
 
 .footer-social a {
