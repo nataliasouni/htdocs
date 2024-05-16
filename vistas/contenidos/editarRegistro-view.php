@@ -44,21 +44,17 @@ if ($datosRegistroES->rowCount() == 1) {
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Fecha</p>
-                            <input type="text" name="fechaUp" class="login_password" value="<?= $campos['fecha'] ?>" required>
+                            <input type="date" name="fechaUp" class="login_password" value="<?= $campos['fecha'] ?>" required>
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Hora de Entrada</p>
-                            <input type="text" name="horaEntradaUp" class="login_password" value="<?= $campos['horaEntrada'] ?>" required>
+                            <input type="time" name="horaEntradaUp" class="login_password" value="<?= $campos['horaEntrada'] ?>" required>
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Hora de Salida</p>
-                            <input type="text" name="horaSalidaUp" class="login_password" value="<?= $campos['horaSalida'] ?>" required>
+                            <input type="time" name="horaSalidaUp" class="login_password" value="<?= $campos['horaSalida'] ?>" required>
                         </div>
-                        <div class="form-group">
-                            <p class="titulos_form">Horas Trabajadas</p>
-                            <input type="text" name="horasTrabajadasUp" class="login_password" value="<?= $campos['horasTrabajadas'] ?>" required>
-                        </div>
-                    </div>
+
 
                     <div class="botones">
                         <button id="btnActualizar" class="estado-enviar" type="submit" style="cursor: pointer" title="Enviar" name="Enviar">Actualizar</button>

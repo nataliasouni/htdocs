@@ -239,8 +239,21 @@
         left: -9999px;
     }
 
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        width: 230px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+        padding: 20px 175px;
+    }
+
     .table tr {
         margin-bottom: 20px; /* Aumentar el margen inferior */
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 175px; /* Aumentar el padding para dar más espacio */
+        text-align: left;
+        border-bottom: 1px solid #ddd;
     }
 
     .table td {
@@ -272,7 +285,6 @@
     .table th:nth-of-type(1) {
         position: absolute;
         top: 0px;
-        left: 30px;
         width: 350px;
         padding-right: 200px;
         white-space: normal;
@@ -280,5 +292,6 @@
         display: block;
         position: relative;      
         width: 350px;
+        padding: 12px 175px;
     }
 }

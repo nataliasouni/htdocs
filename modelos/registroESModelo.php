@@ -52,4 +52,23 @@ class registroESModelo extends mainModel
         return $sql;
     }
     // Fin del modelo
+
+// Función para obtener los nombres y cédulas de los trabajadores activos desde la base de datos
+public function obtenerNombresYCedulasTrabajadoresModelo() {
+    // Preparar la consulta SQL
+    $sql = self::conectarBD()->prepare("SELECT nombre, cedula FROM trabajadores WHERE estado != 'no'");
+    
+    // Ejecutar la consulta
+    $sql->execute();
+    
+    // Obtener los resultados de la consulta
+    $datosTrabajadores = array();
+    while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+        // Almacenar los nombres y cédulas de los trabajadores en un array asociativo
+        $datosTrabajadores[$row['nombre']] = $row['cedula'];
+    }
+    // Retornar el array con los nombres y cédulas de los trabajadores
+    return $datosTrabajadores;
+}
+
 }

@@ -43,19 +43,6 @@ class trabajadorControlador extends trabajadoresModelo
         exit();
       }
   
-      //Comprobar que no hay un usuario con el mismo nombre de usuario
-      $checkUser = mainModel::consultaSimple("SELECT nombre FROM trabajadores WHERE nombre = '$trabajador'");
-  
-      if ($checkUser->rowCount() > 0) {
-        $alerta = array(
-          "Alerta" => "simple",
-          "Titulo" => "Ocurrió un error inesperado",
-          "Texto" => "El nombre de trabajador no se encuentra disponible.",
-          "Tipo" => "error"
-        );
-        echo json_encode($alerta);
-        exit();
-      }
   
   
   
@@ -136,75 +123,6 @@ class trabajadorControlador extends trabajadoresModelo
     return $tabla;
   } //Fin del controlador
 
-  //Inicio del controlador - OPCION NO HABILITADA
-  public function eliminarTrabajadorControlador()
-  {
-
-    //Recibiendo datos
-    $cedulaDelete = mainModel::decryption($_POST['cedulaDelete']);
-    $cedulaDelete = mainModel::limpiarCadena($cedulaDelete);
-
-    //Comprobar usuarios principales
-    if ($cedulaDelete == 1) {
-      $alerta = array(
-        "Alerta" => "simple",
-        "Titulo" => "Usuarios principales del sistema",
-        "Texto" => "No puedes eliminar este usuario.",
-        "Tipo" => "error"
-      );
-      echo json_encode($alerta);
-      exit();
-    }
-
-    //Comprobar usuario en la bd
-    $checkUsuario = mainModel::consultaSimple("SELECT cedula FROM usuario WHERE cedula = '$cedulaDelete'");
-    if ($checkUsuario->rowCount() <= 0) {
-      $alerta = array(
-        "Alerta" => "simple",
-        "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "El usuario que quieres eliminar no existe en el sistema.",
-        "Tipo" => "error"
-      );
-      echo json_encode($alerta);
-      exit();
-    }
-
-    //Comprobar privilegios de master
-    session_start(['name' => 'AMU']);
-
-    if (isset($_SESSION['permiso']) != "Master") {
-      $alerta = array(
-        "Alerta" => "simple",
-        "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "No tienes los permisos necesarios para realizar esta acción.",
-        "Tipo" => "error"
-      );
-      echo json_encode($alerta);
-      exit();
-    }
-
-    $eliminarUsuario = usuarioModelo::eliminarUsuarioModelo($cedulaDelete);
-
-    if ($eliminarUsuario->rowCount() == 1) {
-      $alerta = array(
-        "Alerta" => "recargar",
-        "Titulo" => "Usuario eliminado",
-        "Texto" => "Se ha eliminado el usuario del sistema.",
-        "Tipo" => "success"
-      );
-      echo json_encode($alerta);
-      exit();
-    } else {
-      $alerta = array(
-        "Alerta" => "simple",
-        "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "No hemos podido eliminar el usuario, inténtelo nuevamente",
-        "Tipo" => "error"
-      );
-      echo json_encode($alerta);
-      exit();
-    }
-  } //Fin del controlador
 
   //Inicio del controlador
   public function datosTrabajadorControlador($cedula)
@@ -239,7 +157,7 @@ class trabajadorControlador extends trabajadoresModelo
     }
 
     //Obtener valores del form
-    $cedulaNueva = mainModel::limpiarCadena($_POST['cedula']);
+    $cedulaNueva = mainModel::limpiarCadena($_POST['cedulaUp']);
     $trabajador = mainModel::limpiarCadena($_POST['trabajadorUp']);
     $telefono = mainModel::limpiarCadena($_POST['telefonoUp']);
     $estado = mainModel::limpiarCadena($_POST['estado']);

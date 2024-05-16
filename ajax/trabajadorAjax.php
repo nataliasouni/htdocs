@@ -13,10 +13,6 @@ if (isset($_POST['cedula']) || isset($_POST['cedulaDelete']) || isset($_POST['tr
         echo $objTrabajador->agregarTrabajadorControlador();
     }
 
-    //Eliminar trabajador
-    if(isset($_POST['cedulaDelete'])){
-        echo $objTrabajador->eliminarTrabajadorControlad();
-    }
 
     //Actualizar trabajador
     if(isset($_POST['trabajadorUpdate'])){
