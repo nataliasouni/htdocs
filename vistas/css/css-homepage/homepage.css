@@ -53,7 +53,8 @@ body {
     display: flex;
     position: relative; 
     z-index: 1; 
-=======
+}
+
 .banner h1 {
     font-size: 36px;
     margin-bottom: 20px;
@@ -209,7 +210,8 @@ body {
     margin-left: -50px;
     border-radius: 20px;
     /*background-color: black; /* Color de fondo del recuadro grande */
-  
+}
+
 .gallery img {
     width: 100%;
     max-width: 100px;
@@ -349,7 +351,8 @@ body {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
     border-radius: 20px;
-    
+}
+
 /* Estilos para la descripción de las categorías */
 .categoria p {
     font-size: 16px;
@@ -384,6 +387,8 @@ body {
 
 #agendaAbajo{
     width: 35%;
+}
+
 /* Estilos para la imagen de cada categoría */
 .categoria img {
     max-width: 100%;
