@@ -72,7 +72,7 @@ class prendasControlador extends prendasModelo
         "Titulo" => "Insumo registrado",
         "Texto" => "Se ha completado el registro de la prenda quirurgica.",
         "Tipo" => "success",
-        "Url" => SERVERURL . "prendasQuirurgicas"
+        "Url" => SERVERURL . "prendasQuirurgicasI"
       ];
       echo json_encode($alerta);
       exit();
