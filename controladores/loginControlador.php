@@ -32,7 +32,7 @@ class loginControlador extends loginModelo
             exit();
         }
 
-        $clave = mainModel::encryption($clave);
+     /*   $clave = mainModel::encryption($clave); */
         
         $datos = [
             "Usuario" => $usuario,

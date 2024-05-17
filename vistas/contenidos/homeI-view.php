@@ -148,7 +148,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="<?= SERVERURL; ?>prendasQuirurgicas">
+                <a href="<?= SERVERURL; ?>prendasQuirurgicasI">
                     <div class="card">
                         <div class="card-content">
                             <div class="content-img">
