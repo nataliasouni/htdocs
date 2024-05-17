@@ -63,7 +63,8 @@ class vistasModelo
       "editarProductosAlquiler",
       "agregarProductosAlquiler",
       "controlAlquileres",
-      "visualizarAlquiler"
+      "visualizarAlquiler",
+      "agendarCitas"
     ];
 
     if (in_array($vistas, $listaBlanca)) {

@@ -301,7 +301,7 @@
                                 <?php
                             }
                             ?>
-                             <?php
+                            <?php
                             if ($_SESSION['permiso'] == "Cliente") {
                                 ?>
                             <a href="<?= SERVERURL; ?>agendarCitas">
