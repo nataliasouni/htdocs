@@ -22,7 +22,7 @@
                     <div class="añadir_cleinte-form">
                         <div class="form-group">
                             <p class="titulos_form">Codigo del Producto</p>
-                            <input type="number" name="codigoProducto" class="login_nombreUsuario" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                            <input type="number" name="codigoProducto" class="login_nombreUsuario" required>
                         </div>
 
                         <div class="form-group">
@@ -36,15 +36,15 @@
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Precio del Alquiler 15 Dias</p>
-                            <input type="number" name="precio15Dias" class="login_password" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                            <input type="number" name="precio15Dias" class="login_password" required >
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Precio del Alquiler 30 Dias</p>
-                            <input type="number" name="precio30Dias" class="login_password" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                            <input type="number" name="precio30Dias" class="login_password" required >
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Precio del Deposito</p>
-                            <input type="number" name="precioDeposito" class="login_password" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                            <input type="number" name="precioDeposito" class="login_password" required >
                         </div>
                         <div class="botones">
                             <button class="estado-enviar" type="submit" style="cursor: pointer" title="Enviar"
