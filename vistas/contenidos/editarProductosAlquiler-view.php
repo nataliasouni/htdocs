@@ -43,7 +43,7 @@ if ($datosTrabajador->rowCount() == 1) {
                                 <p class="titulos_form">Nombre del Producto</p>
                                 <input type="text" name="nombreUp" class="login_password"
                                     value="<?= $campos['nombreproducto'] ?>" required
-                                    oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                    >
                             </div>
 
                             <div class="form-group">
@@ -55,19 +55,19 @@ if ($datosTrabajador->rowCount() == 1) {
                                 <p class="titulos_form">Precio del Alquiler 15 Dias</p>
                                 <input type="number" name="precio15Dias" class="login_password"
                                     value="<?= $campos['alquiler15dias'] ?>" required
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                    >
                             </div>
                             <div class="form-group">
                                 <p class="titulos_form">Precio del Alquiler 30 Dias</p>
                                 <input type="number" name="precio30Dias" class="login_password"
                                     value="<?= $campos['alquiler30dias'] ?>" required
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                    >
                             </div>
                             <div class="form-group">
                                 <p class="titulos_form">Precio del Deposito</p>
                                 <input type="number" name="precioDeposito" class="login_password"
                                     value="<?= $campos['deposito'] ?>" required
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                    >
                             </div>
 
                             <div class="botones">

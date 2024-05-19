@@ -87,7 +87,7 @@ class registroESControlador extends registroESModelo
             $alerta = array(
                 "Alerta" => "simple",
                 "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "No hemos podido registrar el usuario",
+                "Texto" => "No hemos podido hacer el registro del usuario",
                 "Tipo" => "error"
             );
             echo json_encode($alerta);
@@ -193,7 +193,7 @@ class registroESControlador extends registroESModelo
             $alerta = [
                 "Alerta" => "simple",
                 "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "EL usuario que intentas editar no se encuentra registrado en el sistema",
+                "Texto" => "EL registro que intentas editar no se encuentra registrado en el sistema",
                 "Tipo" => "error"
             ];
             echo json_encode($alerta);

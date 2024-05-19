@@ -147,8 +147,8 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Telefono</p>
-                                        <input type="text" name="Telefono" class="login_nombreUsuario" required
-                                            oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                        <input type="number" name="Telefono" class="login_nombreUsuario" required>
+                                            
                                     </div>
                                 </div>
 
@@ -165,8 +165,8 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                         </div>
                                         <div class="refTel-group">
                                             <p class="tituloT_form">Telefono </p>
-                                            <input type="text" name="telefonoReferencia1" class="login_nombreUsuario"
-                                                required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                            <input type="number" name="telefonoReferencia1" class="login_nombreUsuario"
+                                                required>
                                         </div>
                                     </div>
 
@@ -178,8 +178,8 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                         </div>
                                         <div class="refTel-group">
                                             <p class="tituloT_form">Telefono </p>
-                                            <input type="text" name="telefonoReferencia2" class="login_nombreUsuario"
-                                                required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                            <input type="number" name="telefonoReferencia2" class="login_nombreUsuario"
+                                                required>
                                         </div>
                                     </div>
 

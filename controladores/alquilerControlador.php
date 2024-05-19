@@ -39,7 +39,7 @@ class alquilerControlador extends alquilerModelo
             $alerta = [
                 "Alerta" => "simple",
                 "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "No has llenado todos los campos para el registro de un nuevo trabajador.",
+                "Texto" => "No has llenado todos los campos para el registro de un nuevo alquiler.",
                 "Tipo" => "error"
             ];
             echo json_encode($alerta);
@@ -55,7 +55,7 @@ class alquilerControlador extends alquilerModelo
             $alerta = array(
                 "Alerta" => "simple",
                 "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "Ya existe un trabajador registrado con el número de cédula que quieres usar para el registro de este nuevo trabajador.",
+                "Texto" => "Ya existe un alquiler registrado con el número de alquiler que quieres usar para el registro de este nuevo alquiler.",
                 "Tipo" => "error"
             );
             echo json_encode($alerta);
@@ -75,7 +75,7 @@ class alquilerControlador extends alquilerModelo
             $alerta = [
                 "Alerta" => "simple",
                 "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "Hubo un problema al cargar la imagen del producto.",
+                "Texto" => "Hubo un problema al cargar la imagen .",
                 "Tipo" => "error"
             ];
             echo json_encode($alerta);
@@ -94,7 +94,7 @@ class alquilerControlador extends alquilerModelo
             $alerta = [
                 "Alerta" => "simple",
                 "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "Hubo un problema al cargar la imagen del producto.",
+                "Texto" => "Hubo un problema al cargar la imagen .",
                 "Tipo" => "error"
             ];
             echo json_encode($alerta);
@@ -113,7 +113,7 @@ class alquilerControlador extends alquilerModelo
             $alerta = [
                 "Alerta" => "simple",
                 "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "Hubo un problema al cargar la imagen del producto.",
+                "Texto" => "Hubo un problema al cargar la imagen.",
                 "Tipo" => "error"
             ];
             echo json_encode($alerta);
@@ -148,7 +148,7 @@ class alquilerControlador extends alquilerModelo
             $alerta = array(
                 "Alerta" => "redireccionarUser",
                 "Titulo" => "Trabajador registrado",
-                "Texto" => "Se ha completado el registro del trabajador.",
+                "Texto" => "Se ha completado el registro del alquiler.",
                 "Tipo" => "success",
                 "Url" => SERVERURL . "alquilerProductos"
             );
@@ -158,7 +158,7 @@ class alquilerControlador extends alquilerModelo
             $alerta = array(
                 "Alerta" => "simple",
                 "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "No hemos podido registrar el usuario",
+                "Texto" => "No hemos podido registrar el alquiler",
                 "Tipo" => "error"
             );
             echo json_encode($alerta);
@@ -244,112 +244,4 @@ public function enlistaralquilerControlador()
         return alquilerModelo::datosalquilerModelo($numeroalquiler);
     } //Fin del controlador
 
-    //Inicio del controlador
-    public function actualizarTrabajadorControlador()
-    {
-        //Recibiendo Identificador unico
-        $cedula = mainModel::decryption($_POST['trabajadorUpdate']);
-        $cedula = mainModel::limpiarCadena($cedula);
-
-        //Comprobar existencia del usuario
-        $checKCedula = mainModel::consultaSimple("SELECT * FROM trabajadores WHERE cedula = $cedula");
-
-        if ($checKCedula->rowCount() <= 0) {
-            $alerta = [
-                "Alerta" => "simple",
-                "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "EL usuario que intentas editar no se encuentra registrado en el sistema",
-                "Tipo" => "error"
-            ];
-            echo json_encode($alerta);
-            exit();
-        } else {
-            $datos = $checKCedula->fetch();
-        }
-
-        //Obtener valores del form
-        $cedulaNueva = mainModel::limpiarCadena($_POST['cedulaUp']);
-        $trabajador = mainModel::limpiarCadena($_POST['trabajadorUp']);
-        $telefono = mainModel::limpiarCadena($_POST['telefonoUp']);
-        $estado = mainModel::limpiarCadena($_POST['estado']);
-
-        //Comprobar si han habido cambios
-        if ($cedulaNueva == $datos['cedula'] && $trabajador == $datos['nombre'] && $telefono == $datos['telefono'] && $estado == $datos['estado']) {
-
-            $alerta = [
-                "Alerta" => "simple",
-                "Titulo" => "Atención",
-                "Texto" => "No has realizado ningún cambio en la información del trabajador.",
-                "Tipo" => "warning"
-            ];
-            echo json_encode($alerta);
-            exit();
-
-        }
-
-        //Comprobar campos vacios
-        if ($cedulaNueva == "" || $trabajador == "" || $telefono == "") {
-            $alerta = [
-                "Alerta" => "simple",
-                "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "No has llenado todos los campos para la actualización de datos del trabajador.",
-                "Tipo" => "error"
-            ];
-            echo json_encode($alerta);
-            exit();
-        }
-
-
-
-
-
-        //Comprobar estado
-        switch ($estado) {
-            case "si":
-            case "no":
-                break;
-            default:
-                $alerta = array(
-                    "Alerta" => "simple",
-                    "Titulo" => "Ocurrió un error inesperado",
-                    "Texto" => 'La opción del campo "Estado" no es válida.',
-                    "Tipo" => "error"
-                );
-                echo json_encode($alerta);
-                exit();
-        }
-
-        //Array de datos para la actualizacion de datos
-        $datosActualizarTrabajador = [
-            "Cedula" => $cedulaNueva,
-            "Trabajador" => $trabajador,
-            "Telefono" => $telefono,
-            "Estado" => $estado,
-            "CedulaOld" => $datos['cedula']
-        ];
-
-        $actualizarTrabajador = alquilerModelo::actualizarAlquilerModelo($datosActualizarTrabajador);
-
-        if ($actualizarTrabajador->rowCount() == 1) {
-            $alerta = array(
-                "Alerta" => "redireccionarUser",
-                "Titulo" => "Usuario actualizado",
-                "Texto" => "Se ha completado la actualizacion de datos del usuario.",
-                "Tipo" => "success",
-                "Url" => SERVERURL . "trabajadores"
-            );
-            echo json_encode($alerta);
-            exit();
-        } else {
-            $alerta = array(
-                "Alerta" => "simple",
-                "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "No se ha podido completar la actualización de los datos del usuario.",
-                "Tipo" => "error"
-            );
-            echo json_encode($alerta);
-            exit();
-        }
-    } //Fin del controlador
 }
-
