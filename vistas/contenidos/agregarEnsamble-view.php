@@ -18,7 +18,7 @@
                     <div class="añadir_cleinte-form">
                         <div class="form-group">
                             <p class="titulos_form">Orden de Producción</p>
-                            <input type="text" name="OrdenProduccion" class="login_nombreUsuario" required>
+                            <input type="number" name="OrdenProduccion" class="login_nombreUsuario" required>
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Cantidad de Producción</p>

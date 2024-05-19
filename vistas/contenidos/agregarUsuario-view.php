@@ -22,7 +22,7 @@
                 <div class="añadir_cleinte-form">
                     <div class="form-group">
                     <p class="titulos_form">Cédula</p>
-                    <input type="text" name="cedulaNormal" class="login_nombreUsuario" required>
+                    <input type="number" name="cedulaNormal" class="login_nombreUsuario" required>
                     </div>
                     <div class="form-group">
                     <p class="titulos_form">Nombre de Usuario</p>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group">
                     <p class="titulos_form">Telefono</p>
-                    <input type="text" name="telefono" class="login_password" required>
+                    <input type="number" name="telefono" class="login_password" required>
                     </div>
                     <div class="botones">
                         <button class="estado-enviar" type="submit" style="cursor: pointer" title="Enviar" name="Enviar">Agregar</button>

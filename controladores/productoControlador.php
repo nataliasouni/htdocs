@@ -16,12 +16,11 @@ class productoControlador extends productosModelo
     $descripcion = mainModel::limpiarCadena($_POST['Descripcion']);
     $categoria = mainModel::limpiarCadena($_POST['Categoria']);
     $cantidad = mainModel::limpiarCadena($_POST['Cantidad']);
-    $alquiler = mainModel::limpiarCadena($_POST['Alquiler']);
     // Verificar si se envió una imagen
     $imagen = isset($_FILES['imagen']) ? $_FILES['imagen'] : null;
 
     // Verificar si hay campos vacíos
-    if ($id == "" || $nombre == "" || $descripcion == "" || $categoria == "" || $cantidad == "" || $alquiler == "" || !$imagen) {
+    if ($id == "" || $nombre == "" || $descripcion == "" || $categoria == "" || $cantidad == "" || !$imagen) {
       $alerta = [
         "Alerta" => "simple",
         "Titulo" => "Ocurrió un error inesperado",
@@ -104,7 +103,6 @@ class productoControlador extends productosModelo
       "Descripcion" => $descripcion,
       "Categoria" => $categoria,
       "Cantidad" => $cantidad,
-      "Alquiler" => $alquiler,
       "Imagen" => $identificadorImagen . "-" . $nombreArchivo,
     ];
 
@@ -203,7 +201,6 @@ class productoControlador extends productosModelo
           '<td>' . $rows['Descripcion'] . '</td>' .
           '<td>' . $rows['Categoria'] . '</td>' .
           '<td>' . $rows['Cantidad'] . '</td>' .
-          '<td>' . $rows['Alquiler'] . '</td>' .
           '<td>' . $estadoProducto . '</td>';
 
         if ($rows['Imagen'] == "") {
@@ -391,7 +388,6 @@ class productoControlador extends productosModelo
     $descripcion = mainModel::limpiarCadena($_POST['DescripcionUp']);
     $categoria = mainModel::limpiarCadena($_POST['CategoriaUp']);
     $cantidad = mainModel::limpiarCadena($_POST['CantidadUp']);
-    $alquiler = mainModel::limpiarCadena($_POST['AlquilerUp']);
     $estado = mainModel::limpiarCadena($_POST['EstadoUp']);
 
     // Verificar si se ha enviado una nueva imagen
@@ -404,7 +400,6 @@ class productoControlador extends productosModelo
       $descripcion == $datos['Descripcion'] &&
       $categoria == $datos['Categoria'] &&
       $cantidad === $datos['Cantidad'] &&
-      $alquiler == $datos['Alquiler'] &&
       $estado == $datos['Estado'] &&
       empty($imagen['name']) // Verificar si no se ha enviado una nueva imagen
     ) {
@@ -421,7 +416,7 @@ class productoControlador extends productosModelo
 
 
     // Verificar que no haya campos vacíos
-    if ($idNuevo == "" || $nombre == "" || $descripcion == "" || $categoria == "" || $cantidad == "" || $alquiler == "" || !$imagen) {
+    if ($idNuevo == "" || $nombre == "" || $descripcion == "" || $categoria == "" || $cantidad == "" || !$imagen) {
       $alerta = [
         "Alerta" => "simple",
         "Titulo" => "Error",
@@ -527,7 +522,6 @@ class productoControlador extends productosModelo
       "DescripcionUp" => $descripcion,
       "CategoriaUp" => $categoria,
       "CantidadUp" => $cantidad,
-      "AlquilerUp" => $alquiler,
       "EstadoUp" => $estado,
       "ImagenUp" => $imagenProducto, // Usar la nueva imagen o mantener la existente
       "idOld" => $datos['Id']

@@ -65,7 +65,7 @@ class vistasModelo
       "controlAlquileres",
       "visualizarAlquiler",
       "agendarCitas", 
-      "prendasQuirurgicasI"
+      "prendasQuirurgicasI",
 
     ];
 
