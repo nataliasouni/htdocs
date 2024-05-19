@@ -22,108 +22,108 @@ if ($datosEnsamble->rowCount() == 1) {
             <div class="page-content">
 
                 <!-- Content -->
-                
-                    <div class="choose-option">
+
+                <div class="choose-option">
                     <?php
                     // Verificar si $_GET['variable'] está definida y no está vacía
                     if (isset($_GET['variable']) && !empty($_GET['variable'])) {
                         // Obtener el valor de $_GET['variable']
                         $Nombre = $_GET['variable'];
-                        
-                        echo '<h2 id="nombreTaller">'. $Nombre . '</h2>';
+
+                        echo '<h2 id="nombreTaller">' . $Nombre . '</h2>';
                     }
                     ?>
                     <p></p>
-                        <h2 style='color: #0053A9'>Informacion del ensamble</h2>
-                    </div>
+                    <h2 style='color: #0053A9'>Informacion del ensamble</h2>
+                </div>
 
-                    <form action="#" method="POST">
-                        <input type="hidden" name="idEnsambleUp1" value="<?= $pagina[1] ?>">
+                <form action="#" method="POST">
+                    <input type="hidden" name="idEnsambleUp1" value="<?= $pagina[1] ?>">
 
-                        <div class="añadir_producto-form">
-                            <div class="form-group">
-                                <p class="titulos_form">Orden de Producción</p>
-                                <input type="text" name="OrdenProduccionUp1" value="<?= $campos['ensamble_id'] ?>"
-                                    class="login_nombreUsuario" disabled>
-                                <input type="hidden" name="OrdenProduccionUp2" value="<?= $campos['ensamble_id'] ?>"
-                                    class="login_nombreUsuario" >
+                    <div class="añadir_producto-form">
+                        <div class="form-group">
+                            <p class="titulos_form">Orden de Producción</p>
+                            <input type="text" name="OrdenProduccionUp1" value="<?= $campos['ensamble_id'] ?>"
+                                class="login_nombreUsuario" disabled>
+                            <input type="hidden" name="OrdenProduccionUp2" value="<?= $campos['ensamble_id'] ?>"
+                                class="login_nombreUsuario">
+                            <?php
+                            // Verificar si $_GET['variable'] está definida y no está vacía
+                            if (isset($_GET['variable']) && !empty($_GET['variable'])) {
+                                // Obtener el valor de $_GET['variable']
+                                $Nombre = $_GET['variable'];
+                            }
+                            ?>
+                            <input type="hidden" name="nombretaller" value="<?php echo isset($Nombre) ? $Nombre : ''; ?>"
+                                class="login_nombreUsuario">
+
+                        </div>
+                        <div class="form-group">
+                            <p class="titulos_form">Cantidad de Producción</p>
+                            <input type="number" value="<?= $campos['CantidadProduccion'] ?>" name="CantidadPUp1"
+                                class="login_password" disabled>
+                        </div>
+
+                        <div class="gestionarProducto">
+                            <div class="choose-option">
+                                <h2 style='color: #0053A9'>Productos del ensamble</h2>
+                            </div>
+                            <div class="choose-option">
+
+                            </div>
+                            <div class="filter-container">
+                                <input type="text" class="form-control" id="filterInput" placeholder="Buscar producto...">
+                            </div>
+                            <div class="table-responsive">
+                                <table id="alertTable" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nombre</th>
+                                            <th>Cantidad</th>
+                                            <th>Pendiente</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         <?php
-                                        // Verificar si $_GET['variable'] está definida y no está vacía
-                                        if (isset($_GET['variable']) && !empty($_GET['variable'])) {
-                                            // Obtener el valor de $_GET['variable']
-                                            $Nombre = $_GET['variable'];
+                                        // Obtener los productos asociados a este ensamble
+                                        $productosEnsamble = $insEnsambleControlador->obtenerProductosEnsambleControlador($campos['ensamble_id'] ?? 0);
+                                        while ($producto = $productosEnsamble->fetch(PDO::FETCH_ASSOC)) {
+                                            ?>
+                                            <tr>
+                                                <td>
+                                                    <?= $producto['Id'] ?>
+                                                    <input type="hidden" name="IdProducto[<?= $producto['Id'] ?>]"
+                                                        value="<?= $producto['Id'] ?>" disabled>
+                                                </td>
+                                                <td>
+                                                    <?= $producto['Nombre'] ?>
+                                                </td>
+                                                <!-- Agrega campos de entrada para la cantidad y el estado pendiente -->
+                                                <td><input type="number" name="CantidadUp[<?= $producto['Id'] ?>]"
+                                                        value="<?= $producto['cantidad'] ?>" class="producto_cantidad" disabled>
+                                                </td>
+                                                <td>
+                                                    <select class="selectform area" name="PendienteUp[<?= $producto['Id'] ?>]"
+                                                        disabled>
+                                                        <option value="Si" <?php if ($producto['Pendiente'] == "Si") {
+                                                            echo "selected";
+                                                        } ?>>Está Pendiente</option>
+                                                        <option value="No" <?php if ($producto['Pendiente'] == "No") {
+                                                            echo "selected";
+                                                        } ?>>No está pendiente</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <?php
                                         }
                                         ?>
-                                        <input type="hidden" name="nombretaller" value="<?php echo isset($Nombre) ? $Nombre : ''; ?>" class="login_nombreUsuario">
 
-                            </div>
-                            <div class="form-group">
-                                <p class="titulos_form">Cantidad de Producción</p>
-                                <input type="number" value="<?= $campos['CantidadProduccion'] ?>" name="CantidadPUp1"
-                                    class="login_password" disabled>
-                            </div>
-                            
-                            <div class="gestionarProducto">
-                                <div class="choose-option">
-                                    <h2 style='color: #0053A9'>Productos del ensamble</h2>
-                                </div>
-                                <div class="choose-option">
-                                    
-                                </div>
-                                <div class="filter-container">
-                                    <input type="text" class="form-control" id="filterInput"
-                                        placeholder="Buscar producto...">
-                                </div>
-                                <div class="table-responsive">
-                                    <table id="alertTable" class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Nombre</th>
-                                                <th>Cantidad</th>
-                                                <th>Pendiente</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            // Obtener los productos asociados a este ensamble
-                                            $productosEnsamble = $insEnsambleControlador->obtenerProductosEnsambleControlador($campos['ensamble_id'] ?? 0);
-                                            while ($producto = $productosEnsamble->fetch(PDO::FETCH_ASSOC)) {
-                                                ?>
-                                                <tr>
-                                                    <td>
-                                                        <?= $producto['Id'] ?>
-                                                        <input type="hidden" name="IdProducto[<?= $producto['Id'] ?>]"
-                                                            value="<?= $producto['Id'] ?>" disabled>
-                                                    </td>
-                                                    <td>
-                                                        <?= $producto['Nombre'] ?>
-                                                    </td>
-                                                    <!-- Agrega campos de entrada para la cantidad y el estado pendiente -->
-                                                    <td><input type="number" name="CantidadUp[<?= $producto['Id'] ?>]"
-                                                            value="<?= $producto['cantidad'] ?>" class="producto_cantidad"
-                                                            disabled></td>
-                                                    <td>
-                                                        <select class="selectform area"
-                                                            name="PendienteUp[<?= $producto['Id'] ?>]" disabled>
-                                                            <option value="Si" <?php if ($producto['Pendiente'] == "Si") {
-                                                                echo "selected";
-                                                            } ?>>Está Pendiente</option>
-                                                            <option value="No" <?php if ($producto['Pendiente'] == "No") {
-                                                                echo "selected";
-                                                            } ?>>No está pendiente</option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>
-
-                                        </tbody>
-                                    </table>   
-                                </div>
-                                <div class="pagination" id="paginationContainer"></div>
-                            </div>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination" id="paginationContainer"></div>
+                    </div>
 
                             <div class="gestionarProducto">
                                 <div class="choose-option">
@@ -147,10 +147,10 @@ if ($datosEnsamble->rowCount() == 1) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                            // Obtener los productos asociados a este ensamble
-                                            $productosEnsamble = $insEnsambleControlador->obtenerProductosEnsambleControlador($campos['ensamble_id'] ?? 0);
-                                            while ($producto = $productosEnsamble->fetch(PDO::FETCH_ASSOC)) {
-                                                ?>
+                                                // Obtener los productos asociados a este ensamble
+                                                $productosEnsamble = $insEnsambleControlador->obtenerProductosEnsambleControlador($campos['ensamble_id'] ?? 0);
+                                                while ($producto = $productosEnsamble->fetch(PDO::FETCH_ASSOC)) {
+                                                    ?>
                                                 <tr>
                                                     <td>
                                                         <?= $producto['Id'] ?>
@@ -160,15 +160,16 @@ if ($datosEnsamble->rowCount() == 1) {
                                                         <?= $producto['Nombre'] ?>
                                                     </td>
                                                     <!-- Agrega campos de entrada para la cantidad y el estado pendiente -->
-                                                    <td><input type="number" name="NuevaCantidad[<?= $producto['Id'] ?>]" class="producto_cantidad"required>
+                                                    <td><input type="number" name="NuevaCantidad[<?= $producto['Id'] ?>]" class="producto_cantidad"
+                                                            required>
                                                     </td>
                                                 </tr>
                                                 <?php
-                                            }
-                                            ?>
-
+                                                }
+                                                ?>
+                            
                                         </tbody>
-                                    </table>   
+                                    </table>
                                 </div>
                                 <div class="pagination" id="paginationContainer"></div>
                             </div>
@@ -177,11 +178,10 @@ if ($datosEnsamble->rowCount() == 1) {
                                     <h2 style='color: #0053A9'>Prendas Cortadas</h2>
                                 </div>
                                 <div class="choose-option">
-                                    
+                            
                                 </div>
                                 <div class="filter-container">
-                                    <input type="text" class="form-control" id="filterInput"
-                                        placeholder="Buscar producto...">
+                                    <input type="text" class="form-control" id="filterInput" placeholder="Buscar producto...">
                                 </div>
                                 <div class="table-responsive">
                                     <table id="alertTable" class="table table-striped">
@@ -198,23 +198,25 @@ if ($datosEnsamble->rowCount() == 1) {
                                             $prendasControlador = new prendasCControlador();
                                             $prendas = $prendasControlador->obtenerPrendasCortadasControlador();
                                             while ($producto = $prendas->fetch(PDO::FETCH_ASSOC)) {
-                                            ?>
+                                                ?>
                                                 <tr>
                                                     <td>
                                                         <?= $producto['id'] ?>
-                                                        <input type="hidden" name="IdPrenda[<?= $producto['id'] ?>]" value="<?= $producto['id'] ?>" disabled>
+                                                        <input type="hidden" name="IdPrenda[<?= $producto['id'] ?>]" value="<?= $producto['id'] ?>"
+                                                            disabled>
                                                     </td>
                                                     <td>
                                                         <?= $producto['Nombre'] ?>
                                                     </td>
                                                     <!-- Agrega campos de entrada para la cantidad y el estado pendiente -->
-                                                    <td><input type="number" name="CantidadPrendaUp[<?= $producto['id'] ?>]" value="<?= $producto['Cantidad'] ?>" class="producto_cantidad" disabled></td>
+                                                    <td><input type="number" name="CantidadPrendaUp[<?= $producto['id'] ?>]"
+                                                            value="<?= $producto['Cantidad'] ?>" class="producto_cantidad" disabled></td>
                                                 </tr>
-                                            <?php
+                                                <?php
                                             }
                                             ?>
                                         </tbody>
-                                    </table>   
+                                    </table>
                                 </div>
                                 <div class="pagination" id="paginationContainer"></div>
                             </div>
@@ -240,34 +242,34 @@ if ($datosEnsamble->rowCount() == 1) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                            require_once "./controladores/prendasCControlador.php";
-                                            $prendasControlador = new prendasCControlador();
-                                            $prendas = $prendasControlador->obtenerPrendasCortadasControlador();
-                                            while ($producto = $prendas->fetch(PDO::FETCH_ASSOC)) {
-                                            ?>
+                                                require_once "./controladores/prendasCControlador.php";
+                                                $prendasControlador = new prendasCControlador();
+                                                $prendas = $prendasControlador->obtenerPrendasCortadasControlador();
+                                                while ($producto = $prendas->fetch(PDO::FETCH_ASSOC)) {
+                                                    ?>
                                                 <tr>
                                                     <td>
                                                         <?= $producto['id'] ?>
-                                                        <input type="hidden" name="IdPrenda1[]" value="<?= $producto['id'] ?>" >
-
+                                                        <input type="hidden" name="IdPrenda1[]" value="<?= $producto['id'] ?>">
+                            
                                                     </td>
                                                     <td>
                                                         <?= $producto['Nombre'] ?>
                                                     </td>
                                                     <!-- Agrega campos de entrada para la cantidad y el estado pendiente -->
                                                     <td><input type="number" name="CantidadPrendaUp1[<?= $producto['id'] ?>]" required></td>
-
-
+                            
+                            
                                                 </tr>
-                                            <?php
-                                            }
-                                            ?>
+                                                <?php
+                                                }
+                                                ?>
                                         </tbody>
-                                    </table>   
+                                    </table>
                                 </div>
                                 <div class="pagination" id="paginationContainer"></div>
                             </div>
-                        </div>
+                            </div>
                         <div class="boton">
                         <button id="enviar" title="Enviar" class="estado-volver" name="enviarDatos" type="submit">Enviar</button>   
                     </form>
@@ -276,7 +278,7 @@ if ($datosEnsamble->rowCount() == 1) {
                                 </div>
                 </div>
                 <?php
-        ?>
+                            ?>
 
     <?php
     if(isset($_POST['enviarDatos'])) {
@@ -286,10 +288,7 @@ if ($datosEnsamble->rowCount() == 1) {
         $controlador->actualizarPrendasEnviadasControlador($_POST);
     }
     ?>
-
-
-
-        </section>
+    </section>
 
     </main>
 

@@ -184,12 +184,12 @@ class talleresControlador extends talleresModelo
     {
         // Obtener el ID del taller utilizando el nombre proporcionado
         $conexion = mainModel::conectarBD();
-        $sqlTaller = $conexion->prepare("SELECT id FROM taller WHERE nombre = :nombre");
-        $sqlTaller->bindParam(':nombre', $nombre);
+        $sqlTaller = $conexion->prepare("SELECT cedula FROM usuario WHERE nombre_usuario = :nombre_usuario");
+        $sqlTaller->bindParam(':nombre_usuario', $nombre);
         $sqlTaller->execute();
         $resultadoTaller = $sqlTaller->fetch(PDO::FETCH_ASSOC);
-        $idTaller = $resultadoTaller['id'];
-    
+        $idTaller = $resultadoTaller['cedula'];
+
         // Consulta para seleccionar los datos relacionados con el taller especificado por su ID
         $consulta = "SELECT te.ensamble_id, 
                             GROUP_CONCAT(p.Nombre SEPARATOR '<br>') as contenido_ensamble, 
@@ -203,19 +203,19 @@ class talleresControlador extends talleresModelo
                      AND te.cantidadproductose > 0
                      GROUP BY te.ensamble_id
                      ORDER BY te.ensamble_id ASC";
-    
+
         $sql = $conexion->prepare($consulta);
         $sql->bindParam(':idTaller', $idTaller);
         $sql->execute();
         $datos = $sql->fetchAll();
         $total = count($datos);
         $tabla = '';
-    
+
         if ($total >= 1) {
             $contador = 1;
             foreach ($datos as $rows) {
                 $tabla .= '<tr>';
-    
+
                 // Imprimir el ID del ensamble en la primera columna
                 $tabla .= '<td>' . $rows['ensamble_id'] . '</td>';
                 // Imprimir el contenido del ensamble (nombres de los productos) en la segunda columna
@@ -227,7 +227,7 @@ class talleresControlador extends talleresModelo
                 // Imprimir las cantidades de las prendas cortadas en la cuarta columna
                 $tabla .= '<td>' . $rows['cantidad_prendas_cortadas'] . '</td>';
                 // Imprimir la cantidad de productos del ensamble en la quinta columna
-    
+
                 // Imprimir botones u opciones en la sexta columna
                 // Cerrar la fila actual
                 $tabla .= '</tr>';
@@ -236,10 +236,9 @@ class talleresControlador extends talleresModelo
         } else {
             $tabla .= '<tr><td colspan="5">No hay registros en el sistema para este taller</td></tr>';
         }
-    
+
         return $tabla; // Devolver la tabla construida
     }
-    
 
     public function actualizarPrendasEnviadasControlador($datos)
     {
@@ -346,113 +345,57 @@ class talleresControlador extends talleresModelo
         $this->insertarDatos($datos);
     }
 
-
-
-
     public function insertarDatos($datos)
     {
-    // Recibe los datos del formulario
-    $nombreTaller = $datos['nombretaller'];
-    $nuevaCantidadProducto = $datos['NuevaCantidad'];
-    $cantidadPrendaUp = $datos['CantidadPrendaUp1'];
-    $idProducto = $datos['IdProducto'];
-    $nuevaCantidadProducto = $datos['NuevaCantidad'];
-    $ordenProduccion = $datos['OrdenProduccionUp2'];
+        // Recibe los datos del formulario
+        $nombreTaller = $datos['nombretaller'];
+        $ordenProduccion = $datos['OrdenProduccionUp2'];
 
-    // Obtener el id del taller
-    $sqlTaller = mainModel::conectarBD()->prepare("SELECT id FROM taller WHERE nombre = :nombreTaller");
-    $sqlTaller->bindParam(':nombreTaller', $nombreTaller);
-    $sqlTaller->execute();
-    $resultadoTaller = $sqlTaller->fetch(PDO::FETCH_ASSOC);
-    $idTaller = $resultadoTaller['id'];
+        // Obtener el id del taller
+        $sqlTaller = mainModel::conectarBD()->prepare("SELECT cedula FROM usuario WHERE nombre_usuario = :nombreTaller");
+        $sqlTaller->bindParam(':nombreTaller', $nombreTaller);
+        $sqlTaller->execute();
+        $resultadoTaller = $sqlTaller->fetch(PDO::FETCH_ASSOC);
+        $idTaller = $resultadoTaller['cedula'];
 
-    // Obtener las longitudes de los arrays
-    $cantidadPrendaUpLength = count($cantidadPrendaUp);
-    $idProductoLength = count($idProducto);
+        // Insertar productos del ensamble
+        foreach ($datos['IdProducto'] as $idProducto => $cantidadProducto) {
+            $sqlInsertProducto = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, :productose_id, :cantidadproductose, NULL, NULL)");
+            $sqlInsertProducto->bindParam(':idTaller', $idTaller);
+            $sqlInsertProducto->bindParam(':ensamble_id', $ordenProduccion);
+            $sqlInsertProducto->bindParam(':productose_id', $idProducto);
+            $sqlInsertProducto->bindParam(':cantidadproductose', $cantidadProducto);
+            $sqlInsertProducto->execute();
+        }
 
-    // Determinar cuál es mayor
-    if ($cantidadPrendaUpLength >= $idProductoLength) {
-        // Si $cantidadPrendaUp es mayor o igual, utilizar su longitud en el bucle
-        $maxLength = $cantidadPrendaUpLength;
-    } else {
-        // Si $idProducto es mayor, utilizar su longitud en el bucle
-        $maxLength = $idProductoLength;
-    }
-    // Insertar nuevos registros
-    for ($i = 0; $i < $maxLength; $i++) {
+        // Insertar prendas cortadas
+        foreach ($datos['IdPrenda1'] as $idPrenda => $cantidadPrenda) {
+            $sqlInsertPrenda = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, NULL, NULL, :prendascortadas_id, :cantidadprendascortadas)");
+            $sqlInsertPrenda->bindParam(':idTaller', $idTaller);
+            $sqlInsertPrenda->bindParam(':ensamble_id', $ordenProduccion);
+            $sqlInsertPrenda->bindParam(':prendascortadas_id', $idPrenda);
+            $sqlInsertPrenda->bindParam(':cantidadprendascortadas', $cantidadPrenda);
+            $sqlInsertPrenda->execute();
+        }
 
-        if ($cantidadPrendaUpLength >= $idProductoLength) {
-
-            if($idProductoLength< $i){ 
-
-                $sqlInsert = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, NULL, NULL, :prendascortadas_id, :cantidadprendascortadas)");
-                $sqlInsert->bindParam(':idTaller', $idTaller);
-                $sqlInsert->bindParam(':ensamble_id', $ordenProduccion);
-                $sqlInsert->bindParam(':prendascortadas_id', $i);
-                $sqlInsert->bindParam(':cantidadprendascortadas', $cantidadPrendaUp[$i]);
-                $sqlInsert->execute();
-
-                }else{
-
-                    $sqlInsert = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, :productose_id, :cantidadproductose, :prendascortadas_id, :cantidadprendascortadas)");
-                    $sqlInsert->bindParam(':idTaller', $idTaller);
-                    $sqlInsert->bindParam(':ensamble_id', $ordenProduccion);
-                    $sqlInsert->bindParam(':productose_id', $i);
-                    $sqlInsert->bindParam(':cantidadproductose', $nuevaCantidadProducto[$i]);
-                    $sqlInsert->bindParam(':prendascortadas_id', $i);
-                    $sqlInsert->bindParam(':cantidadprendascortadas', $cantidadPrendaUp[$i]);
-                    $sqlInsert->execute();
-
-                }
-
-        } 
-
-        if ($idProductoLength > $cantidadPrendaUpLength) {
-
-            if($cantidadPrendaUpLength< $i){ 
-
-                $sqlInsert = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, :productose_id, :cantidadproductose, NULL, NULL)");
-                $sqlInsert->bindParam(':idTaller', $idTaller);
-                $sqlInsert->bindParam(':ensamble_id', $ordenProduccion);
-                $sqlInsert->bindParam(':productose_id', $i);
-                $sqlInsert->bindParam(':cantidadproductose', $nuevaCantidadProducto[$i]);
-                $sqlInsert->execute();
-
-                }else{
-
-                    $sqlInsert = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, :productose_id, :cantidadproductose, :prendascortadas_id, :cantidadprendascortadas)");
-                    $sqlInsert->bindParam(':idTaller', $idTaller);
-                    $sqlInsert->bindParam(':ensamble_id', $ordenProduccion);
-                    $sqlInsert->bindParam(':productose_id', $i);
-                    $sqlInsert->bindParam(':cantidadproductose', $nuevaCantidadProducto[$i]);
-                    $sqlInsert->bindParam(':prendascortadas_id', $i);
-                    $sqlInsert->bindParam(':cantidadprendascortadas', $cantidadPrendaUp[$i]);
-                    $sqlInsert->execute();
-
-                }
-
-            } 
-
-
-        
+        // Mostrar mensaje de éxito
+        echo "<script>
+        Swal.fire({
+            title: 'Se ha registrado con éxito',
+            text: 'Has enviado materia prima',
+            type: 'success',
+            confirmButtonText: 'Aceptar',
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = '" . SERVERURL . "ensambleTaller/taller?variable=" . $nombreTaller . "';
+            }
+        });
+    </script>";
+        exit();
     }
 
-    // Mostrar mensaje de éxito
-    echo "<script>
-            Swal.fire({
-                title: 'Se ha registrado con éxito',
-                text: 'Has enviado materia prima',
-                type: 'success',
-                confirmButtonText: 'Aceptar',
-                allowOutsideClick: false,
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = '" . SERVERURL . "ensambleTaller/taller?variable=" . $nombreTaller . "';
-                }
-            });
-        </script>";
-    exit();
-    }
+
 
 
 

@@ -60,7 +60,7 @@
             <?php
             require_once "./controladores/talleresControlador.php";
             $tallerControlador = new talleresControlador();
-            echo $tallerControlador->cargarTallerModelo();
+            echo $tallerControlador->cargarTallerControlador();
             ?>
     </section>
 </main>
