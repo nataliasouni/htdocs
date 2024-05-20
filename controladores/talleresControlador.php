@@ -459,33 +459,31 @@ class talleresControlador extends talleresModelo
 
     public function enlistarProductoControlador($idEnsamble)
     {
-
         $idEnsamble = mainModel::limpiarCadena($idEnsamble);
 
         $consulta = "SELECT SQL_CALC_FOUND_ROWS pe2.producto_id, pe.Nombre, pe2.cantidad
-        FROM producto_ensamble pe2
-        JOIN ensamble e ON e.OrdenProdccion = pe2.ensamble_id
-        JOIN productose pe ON pe.Id = pe2.producto_id
-        WHERE e.OrdenProdccion = $idEnsamble
-        ORDER BY pe.Id ASC;";
+                 FROM producto_ensamble pe2
+                 JOIN ensamble e ON e.OrdenProdccion = pe2.ensamble_id
+                 JOIN productose pe ON pe.Id = pe2.producto_id
+                 WHERE e.OrdenProdccion = :idEnsamble
+                 ORDER BY pe.Id ASC;";
         $conexion = mainModel::conectarBD();
-        $datos = $conexion->query($consulta);
-        $datos = $datos->fetchAll();
-        $total = $conexion->query("SELECT FOUND_ROWS()");
-        $total = (int) $total->fetchColumn();
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':idEnsamble', $idEnsamble, PDO::PARAM_INT);
+        $stmt->execute();
+        $datos = $stmt->fetchAll();
+        $total = $conexion->query("SELECT FOUND_ROWS()")->fetchColumn();
         $tabla = '';
 
         if ($total >= 1) {
-            $contador = 1;
             foreach ($datos as $rows) {
-                //Filas
+                // Filas
                 $tabla .= '<tr>
-                    <td name="Id">' . $rows['producto_id'] . '</td>' .
-                    '<td name="Nombre">' . $rows['Nombre'] . '</td>' .
-                    '<td name="Nombre">' . $rows['cantidad'] . '</td>' .
-                    '<td><input type="number" name="cantidad[]" class="cantidad" required></td>';
-                $tabla .= '</tr>';
-                $contador++;
+                <td name="IdProducto">' . htmlspecialchars($rows['producto_id']) . '</td>
+                <td name="NombreProducto">' . htmlspecialchars($rows['Nombre']) . '</td>
+                <td name="cantidadPr">' . htmlspecialchars($rows['cantidad']) . '</td>
+                <td><input type="number" name="cantidadProducto[]" class="cantidadProducto" required></td>
+            </tr>';
             }
         } else {
             $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
@@ -494,29 +492,23 @@ class talleresControlador extends talleresModelo
         return $tabla; // Devolver la tabla construida
     }
 
-
     public function enlistarPrendasControlador()
     {
-
-        $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM prendascortadas pe2;";
+        $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM prendascortadas;";
         $conexion = mainModel::conectarBD();
-        $datos = $conexion->query($consulta);
-        $datos = $datos->fetchAll();
-        $total = $conexion->query("SELECT FOUND_ROWS()");
-        $total = (int) $total->fetchColumn();
+        $datos = $conexion->query($consulta)->fetchAll();
+        $total = $conexion->query("SELECT FOUND_ROWS()")->fetchColumn();
         $tabla = '';
 
         if ($total >= 1) {
-            $contador = 1;
             foreach ($datos as $rows) {
                 //Filas
                 $tabla .= '<tr>
-                    <td name="Id">' . $rows['id'] . '</td>' .
-                    '<td name="Nombre">' . $rows['Nombre'] . '</td>' .
-                    '<td name="Nombre">' . $rows['Cantidad'] . '</td>' .
-                    '<td><input type="number" name="cantidad[]" class="cantidad" required></td>';
-                $tabla .= '</tr>';
-                $contador++;
+                <td name="IdPrenda">' . htmlspecialchars($rows['id']) . '</td>
+                <td name="NombrePrenda">' . htmlspecialchars($rows['Nombre']) . '</td>
+                <td name="cantidadP">' . htmlspecialchars($rows['Cantidad']) . '</td>
+                <td><input type="number" name="cantidadPrenda[]" class="cantidad" required></td>
+            </tr>';
             }
         } else {
             $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
@@ -527,19 +519,32 @@ class talleresControlador extends talleresModelo
 
     public function agregarEnsambleControlador()
     {
-        // Obtener datos del ensamble principal
         $OrdenProduccion = mainModel::limpiarCadena($_POST['OrdenProduccion']);
-
-        // Obtener datos de los productos
-        $productos = isset($_POST['datosTablaProducto']) ? json_decode($_POST['datosTablaProductos'], true) : [];
-
-        // Obtener datos de los prendas
+        $nombreTaller = mainModel::limpiarCadena($_POST['nombreTaller']);
+        $productos = isset($_POST['datosTablaProductos']) ? json_decode($_POST['datosTablaProductos'], true) : [];
         $prendas = isset($_POST['datosTablaPrendas']) ? json_decode($_POST['datosTablaPrendas'], true) : [];
 
-        $nombreTaller = isset($_GET['variable']) ? $_GET['variable'] : '';
+        $consultaUsuario = "SELECT cedula FROM usuario WHERE nombre_usuario = :nombreTaller AND permiso = 'Taller'";
+        $conexion = mainModel::conectarBD();
+        $stmt = $conexion->prepare($consultaUsuario);
+        $stmt->bindParam(':nombreTaller', $nombreTaller);
+        $stmt->execute();
+        $filaUsuario = $stmt->fetch();
 
+        if (!$filaUsuario) {
+            // Manejar el caso en que no se encuentre ningún usuario asociado al taller
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Error",
+                "Texto" => "No se encontró ningún usuario asociado al taller.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+    
+        $idTaller = $filaUsuario['cedula'];
 
-        // Verificar que se hayan proporcionado datos de productos
         if (empty($productos)) {
             $alerta = [
                 "Alerta" => "simple",
@@ -551,7 +556,6 @@ class talleresControlador extends talleresModelo
             exit();
         }
 
-        // Verificar que se hayan proporcionado datos de productos
         if (empty($prendas)) {
             $alerta = [
                 "Alerta" => "simple",
@@ -563,41 +567,18 @@ class talleresControlador extends talleresModelo
             exit();
         }
 
-        // Iterar sobre los productos asociados al ensamble
         foreach ($productos as $producto) {
             $idProducto = $producto['Id'];
-            $cantidadProducto = $producto['cantidad'];
+            $cantidadProducto = $producto['Cantidad'];
 
-            // Actualizar la cantidad total del producto en la tabla productose
-            if ($estadoProducto == 'No') {
-                $actualizacionExitosa = talleresModelo::actualizarCantidadTotalProducto($idProducto, $cantidadProducto);
+            // Actualizar la cantidad total del producto en ensamble
+            $actualizacionExitosa = talleresModelo::actualizarCantidadTotalProducto($idProducto, $cantidadProducto, $OrdenProduccion);
 
-
-                // Verificar si ocurrió algún error durante la actualización
-                if (!$actualizacionExitosa) {
-                    // Manejar el error
-                    $alerta = [
-                        "Alerta" => "simple",
-                        "Titulo" => "Error",
-                        "Texto" => "No se pudo actualizar la cantidad total del producto $idProducto.",
-                        "Tipo" => "error"
-                    ];
-                    echo json_encode($alerta);
-                    exit();
-                }
-            }
-        }
-
-        foreach ($productos as $producto) {
-            $idProducto = $producto['Id'];
-            $cantidadProducto = $producto['cantidad'];
-
-            // Verificar si la cantidad del producto es menor o igual a 0
-            if ($cantidadProducto <= 0) {
+            if (!$actualizacionExitosa) {
                 $alerta = [
                     "Alerta" => "simple",
                     "Titulo" => "Error",
-                    "Texto" => "La cantidad del producto $idProducto no puede ser menor o igual a 0.",
+                    "Texto" => "No se pudo actualizar la cantidad total del producto $idProducto.",
                     "Tipo" => "error"
                 ];
                 echo json_encode($alerta);
@@ -605,9 +586,7 @@ class talleresControlador extends talleresModelo
             }
         }
 
-        // Comprobar que no hay un ensamble con el mismo ID
         $checkId = mainModel::consultaSimple("SELECT id_ensamble FROM ensamble_taller WHERE id_ensamble = '$OrdenProduccion'");
-       
         if ($checkId->rowCount() > 0) {
             $alerta = [
                 "Alerta" => "simple",
@@ -619,26 +598,29 @@ class talleresControlador extends talleresModelo
             exit();
         }
 
-
-        // Datos para agregar el ensamble principal
         $datosAgregarEnsamble = [
             "id_ensamble" => $OrdenProduccion,
-            "id_taller" => $nombreTaller
+            "id_taller" => $idTaller
         ];
 
-        // Agregar el ensamble principal al modelo
-        $agregarEnsamble = ensambleModelo::agregarEnsambleModelo($datosAgregarEnsamble);
-
-        // Verificar si el ensamble principal se agregó correctamente
+        $agregarEnsamble = talleresModelo::agregarEnsambleModelo($datosAgregarEnsamble);
         if ($agregarEnsamble->rowCount() == 1) {
-            // Agregar los productos asociados al ensamble
             foreach ($productos as $producto) {
                 $datosProducto = [
-                    "ensamble_id" => $OrdenProduccion,
-                    "producto_id" => $producto['Id'],
-                    "cantidad" => $producto['cantidad'],
+                    "id_producto" => $producto['Id'],
+                    "id_ensamble" => $OrdenProduccion,
+                    "cantidadProducto" => $producto['Cantidad']
                 ];
-                ensambleModelo::agregarProductosModelo($datosProducto);
+                talleresModelo::agregarProductosModelo($datosProducto);
+            }
+
+            foreach ($prendas as $prenda) {
+                $datosPrendas = [
+                    "id_prenda" => $prenda['Id'],
+                    "id_ensamble" => $OrdenProduccion,
+                    "cantidadPrenda" => $prenda['Cantidad']
+                ];
+                talleresModelo::agregarPrendasModelo($datosPrendas);
             }
 
             $alerta = [
@@ -660,6 +642,6 @@ class talleresControlador extends talleresModelo
             echo json_encode($alerta);
             exit();
         }
-    } //Fin del controlador 
+    }
 
 }

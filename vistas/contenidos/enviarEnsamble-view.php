@@ -1,6 +1,4 @@
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-talleres/enviarEnsambleTaller.css">
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/sweetalert2.min.css">
-<script src="<?php echo SERVERURL; ?>vistas/js/sweetalert2.min.js"></script>
 <?php
 
 require_once "./controladores/ensambleControlador.php";
@@ -24,13 +22,13 @@ if ($datosEnsamble->rowCount() == 1) {
                         <h2 style='color: #0053A9'> Enviar ensamble</h2>
                     </div>
 
-                    <form class="formularioAjax content" action="<?php echo SERVERURL; ?>ajax/ensambleAjax.php"
+                    <form class="formularioAjax content" action="<?php echo SERVERURL; ?>ajax/tallerAjax.php"
                         method="POST" data-form="save">
                         <div class="añadir_cleinte-form">
                             <div class="form-group">
                                 <p class="titulos_form">Orden de Producción</p>
                                 <input type="text" name="OrdenProduccion" value="<?= $campos['ensamble_id'] ?>"
-                                    class="login_nombreUsuario" disabled>
+                                    class="login_nombreUsuario" readonly>
                                 <?php
                                 // Verificar si $_GET['variable'] está definida y no está vacía
                                 if (isset($_GET['variable']) && !empty($_GET['variable'])) {
@@ -38,14 +36,14 @@ if ($datosEnsamble->rowCount() == 1) {
                                     $Nombre = $_GET['variable'];
                                 }
                                 ?>
-                                <input type="hidden" name="nombretaller"
+                                <input type="hidden" name="nombreTaller" id="nombreTaller"
                                     value="<?php echo isset($Nombre) ? $Nombre : ''; ?>" class="login_nombreUsuario">
 
                             </div>
                             <div class="form-group">
                                 <p class="titulos_form">Cantidad de Producción</p>
-                                <input type="number" value="<?= $campos['CantidadProduccion'] ?>" name="CantidadPUp1"
-                                    class="login_password" disabled>
+                                <input type="number" value="<?= $campos['CantidadProduccion'] ?>" name="CantidadProduccion"
+                                    class="login_password" readonly>
                             </div>
 
                             <div class="gestionarProducto">
@@ -53,7 +51,8 @@ if ($datosEnsamble->rowCount() == 1) {
                                     <h2 style='color: #0053A9'>Productos del ensamble</h2>
                                 </div>
                                 <div class="choose-option">
-                                    <p>A cada producto agrega la cantidad que desea enviar, en caso de que no sea necesario ponga 0</p>
+                                    <p>A cada producto agrega la cantidad que desea enviar, en caso de que no sea necesario
+                                        ponga 0</p>
                                 </div>
                                 <div class="filter-container">
                                     <input type="text" class="form-control" id="filterInputP"
@@ -70,7 +69,8 @@ if ($datosEnsamble->rowCount() == 1) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php                   
+                                            <?php
+                                            // Suponiendo que el controlador ya agrega las filas con la estructura correcta
                                             require_once "./controladores/talleresControlador.php";
                                             $insEnsamble = new talleresControlador();
                                             echo $insEnsamble->enlistarProductoControlador($campos['ensamble_id']);
@@ -81,12 +81,14 @@ if ($datosEnsamble->rowCount() == 1) {
                                 <div class="pagination" id="paginationContainerP"></div>
                             </div>
 
+
                             <div class="gestionarProducto">
                                 <div class="choose-option">
                                     <h2 style='color: #0053A9'>Prendas a enviar del ensamble</h2>
                                 </div>
                                 <div class="choose-option">
-                                    <p>A cada prenda agrega la cantidad que desea enviar, en caso de que no sea necesario ponga 0</p>
+                                    <p>A cada prenda agrega la cantidad que desea enviar, en caso de que no sea necesario
+                                        ponga 0</p>
                                 </div>
                                 <div class="filter-container">
                                     <input type="text" class="form-control" id="filterInputPr"
@@ -113,7 +115,6 @@ if ($datosEnsamble->rowCount() == 1) {
                                 </div>
                                 <div class="pagination" id="paginationContainerPr"></div>
                             </div>
-
                             <!-- Botones de acción -->
                             <div class="botones">
                                 <button id="AgregarEnsamble" class="estado-enviar" style="cursor: pointer"
@@ -121,7 +122,9 @@ if ($datosEnsamble->rowCount() == 1) {
                                 <button id="botonCancelar" type="button" class="estado-cancelar" style="cursor: pointer"
                                     title="Cancelar" name="Cancelar">Cancelar</button>
                             </div>
-                            <input type="hidden" id="datosTabla" name="datosTabla">
+
+                            <input type="hidden" id="datosTablaProductos" name="datosTablaProductos">
+                            <input type="hidden" id="datosTablaPrendas" name="datosTablaPrendas">
                         </div>
                     </form>
                 </div>

@@ -244,23 +244,31 @@ filterRowsPr();
 showPagePr(currentPagePr);
 createPaginationPr(currentPagePr, Math.ceil(filteredRowsPr.length / itemsPerPage));
 
-document.getElementById('AgregarEnsamble').addEventListener('click', function () {
 
+document.getElementById('AgregarEnsamble').addEventListener('click', function () {
     // Obtener los datos de la tabla de productos
     var datosTablaProductos = [];
     document.querySelectorAll('#alertTableP tbody tr').forEach(function (row) {
-        var id = row.querySelector('td:nth-child(1)').textContent;
-        var cantidad = row.querySelector('.cantidad').value;
+        var id = row.querySelector('td[name="IdProducto"]').textContent.trim();
+        var cantidad = row.querySelector('input[name="cantidadProducto[]"]').value;
         datosTablaProductos.push({ Id: id, Cantidad: cantidad });
     });
 
     // Obtener los datos de la tabla de prendas
     var datosTablaPrendas = [];
     document.querySelectorAll('#alertTablePr tbody tr').forEach(function (row) {
-        var id = row.querySelector('td:nth-child(1)').textContent;
-        var cantidad = row.querySelector('.cantidad').value;
+        var id = row.querySelector('td[name="IdPrenda"]').textContent.trim();
+        var cantidad = row.querySelector('input[name="cantidadPrenda[]"]').value;
         datosTablaPrendas.push({ Id: id, Cantidad: cantidad });
     });
+
+    var nombreTaller = document.getElementById('nombreTaller').value;
+
+    console.log("Nombre del taller:", nombreTaller);
+
+    // Mostrar los datos que se enviarán en la consola del navegador
+    console.log("Datos de productos:", datosTablaProductos);
+    console.log("Datos de prendas:", datosTablaPrendas);
 
     // Colocar los datos en los campos ocultos como JSON
     document.getElementById('datosTablaProductos').value = JSON.stringify(datosTablaProductos);
@@ -270,21 +278,18 @@ document.getElementById('AgregarEnsamble').addEventListener('click', function ()
     swal("¡Datos agregados!", "Los datos se han agregado correctamente.", "success")
         .then((value) => {
             // Enviar el formulario manualmente después de mostrar la alerta
-            document.querySelector('form').submit();
+            var form = document.querySelector('form');
+            if (form) {
+                form.submit();
+            } else {
+                console.error('No se encontró el formulario para enviar.');
+            }
         });
 });
 
-// Obtener el valor de la variable 'variable' de la URL
-var nombreTaller = obtenerNombreTaller();
 
-// Asignar el valor al campo oculto del formulario
-document.getElementById('nombreTaller').value = nombreTaller;
 
-// Función para obtener el valor de la variable 'variable' de la URL
-function obtenerNombreTaller() {
-    var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('variable');
-}
+
 
 
 
