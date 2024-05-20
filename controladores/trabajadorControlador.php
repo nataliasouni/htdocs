@@ -240,4 +240,15 @@ class trabajadorControlador extends trabajadoresModelo
       exit();
     }
   } //Fin del controlador
+
+
+  public function cantidadTrabajadoresControlador()
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadTrabajadores = trabajadoresModelo::cantidadTrabajadoresModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadTrabajadores;
+        
+    }
 }

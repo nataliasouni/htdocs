@@ -38,7 +38,13 @@ class notificacionesControlador extends notificacionesModelo {
         }
     }
     
-    
+    public function cantidadProductosControlador() {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadProductos = notificacionesControlador::cantidadProductosModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadProductos;
+    }
 
 
 }

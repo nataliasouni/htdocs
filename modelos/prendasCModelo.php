@@ -56,4 +56,18 @@ protected static function obtenerPrendaModelo()
     return $sql;
 
 } //Fin del modelo
+
+
+public function cantidadPrendasCModelo() {
+    $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM prendascortadas");
+
+    // Ejecutar la consulta
+    $sql->execute();
+
+    // Obtener el resultado de la consulta
+    $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+    // Devolver la cantidad de registros
+    return $resultado['total'];
+}
 }

@@ -62,4 +62,23 @@ class productosModelo extends mainModel
     }
 }
 
+
+
+public function cantidadProductosModelo($categoria) {
+    // Preparar la consulta SQL con un marcador de posición
+    $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM productos WHERE categoria = :categoria");
+
+    // Enlazar el valor de la variable $categoria al marcador de posición
+    $sql->bindParam(":categoria", $categoria, PDO::PARAM_STR);
+
+    // Ejecutar la consulta
+    $sql->execute();
+
+    // Obtener el resultado de la consulta
+    $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+    // Devolver la cantidad de registros
+    return $resultado['total'];
+}
+
 }

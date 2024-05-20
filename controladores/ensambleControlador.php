@@ -471,5 +471,14 @@ class ensambleControlador extends ensambleModelo
         exit();
     }
 
+    public function cantidadEnsambleControlador()
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadEnsamble = ensambleModelo::cantidadEnsambleModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadEnsamble;
+        
+    }
 
 }

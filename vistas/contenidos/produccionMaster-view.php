@@ -23,14 +23,12 @@
                     <table id="alertTable" class="table table-striped">
                         <thead>
                             <tr>
-                                    <th>Item</th>
                                     <th>Nombre del trabajador</th>
                                     <th>Taller</th>
                                     <th>Fecha</th>
                                     <th>Prenda elaborada</th>
                                     <th>Cantidad de prendas</th>
                                     <th>Prendas defectuosas</th>
-                                    <th class="editar">Opciones</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody">

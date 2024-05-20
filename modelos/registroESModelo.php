@@ -71,4 +71,17 @@ public function obtenerNombresYCedulasTrabajadoresModelo() {
     return $datosTrabajadores;
 }
 
+public function cantidadRegistrosESModelo() {
+    $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM registroentradasalida");
+
+    // Ejecutar la consulta
+    $sql->execute();
+
+    // Obtener el resultado de la consulta
+    $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+    // Devolver la cantidad de registros
+    return $resultado['total'];
+}
+
 }
