@@ -58,7 +58,11 @@
 
             <!-- Content -->
             <div class="tile-container">
-
+                <?php
+                require_once "./controladores/ensambleControlador.php";
+                $ensambleControlador = new ensambleControlador();
+                $cantidadRegistrosEnsamble = $ensambleControlador->cantidadEnsambleControlador();
+                ?>
                 <a href="<?= SERVERURL; ?>ensambleM">
                     <div class="card">
                         <div class="card-content">
@@ -69,12 +73,18 @@
                             <div class="card-details">
                                 <h2 class="card-title">Ensamble</h2>
                                 <p class="card-description">Descripción</p>
-                                <div class="registradas">Registradas</div>
+                                <div class="registradas"><?php echo $cantidadRegistrosEnsamble; ?> Registrados</div>
                             </div>
                         </div>
                     </div>
                 </a>
 
+
+                <?php
+                require_once "./controladores/prendasCControlador.php";
+                $prendasCControlador = new prendasCControlador();
+                $cantidadRegistrosPrC = $prendasCControlador->cantidadPrendasCControlador();
+                ?>
                 <a href="<?= SERVERURL; ?>prendasCortadas">
                 <div class="card">
                     <div class="card-content">
@@ -85,12 +95,17 @@
                         <div class="card-details">
                             <h2 class="card-title">Prendas Cortadas</h2>
                             <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
+                            <div class="registradas"><?php echo $cantidadRegistrosPrC; ?> Registradas</div>
                         </div>
                     </div>
                 </div>
                 </a>
 
+                <?php
+                require_once "./controladores/insumoControlador.php";
+                $insumoControlador = new insumoControlador();
+                $cantidadRegistrosInsumos = $insumoControlador->cantidadInsumosControlador();
+                ?>
                 <a href="<?= SERVERURL; ?>insumos">
                 <div class="card">
                     <div class="card-content">
@@ -102,12 +117,17 @@
                             <h2 class="card-title">Insumos</h2>
                             <p class="card-description">Descripción
                             </p>
-                            <div class="registradas">Registradas</div>
+                            <div class="registradas"><?php echo $cantidadRegistrosInsumos; ?> Registrados</div>
                         </div>
                     </div>
                 </div>
                 </a>
-
+                
+                <?php
+                require_once "./controladores/devolucionPrendasControlador.php";
+                $devolucionPrendasControlador = new devolucionPrendasControlador();
+                $cantidadRegistrosPD = $devolucionPrendasControlador->cantidadRegistrosDPControlador();
+                ?>
                 <a href="<?= SERVERURL; ?>devolucionPorDefecto">
                     <div class="card">
                         <div class="card-content">
@@ -119,7 +139,7 @@
                                 <h2 class="card-title">Devolución por defectos</h2>
                                 <p class="card-description">Descripción
                                 </p>
-                                <div class="registradas">Registradas</div>
+                                <div class="registradas"><?php echo $cantidadRegistrosPD; ?> Registradas</div>
                             </div>
                         </div>
                     </div>

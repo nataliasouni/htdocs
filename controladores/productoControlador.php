@@ -561,4 +561,15 @@ class productoControlador extends productosModelo
     }
   }
 
+
+  public function cantidadProductosControlador($categoria)
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadProductos = productosModelo::cantidadProductosModelo($categoria);
+
+        // Devuelve la cantidad de registros
+        return $cantidadProductos;
+        
+    }
+
 }

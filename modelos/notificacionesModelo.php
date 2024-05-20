@@ -14,5 +14,20 @@ class notificacionesModelo extends mainModel
             $datosProductos[] = $row;;
         }
         return $datosProductos;
-        }
+    }
+
+
+    public function cantidadProductosModelo() {
+        $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM productos WHERE cantidad <= 5");
+
+        // Ejecutar la consulta
+        $sql->execute();
+
+        // Obtener el resultado de la consulta
+        $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+        // Devolver la cantidad de registros
+        return $resultado['total'];
+    }
+
 }

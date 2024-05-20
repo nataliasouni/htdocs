@@ -30,15 +30,13 @@
                                     <th>Nombre</th>
                                     <th>Descripción</th>
                                     <th>Cantidad</th>
-                                    <th>Estado</th>
-                                    <th class="editar">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 require_once "./controladores/devolucionPrendasControlador.php";
                                 $insPrendas = new devolucionPrendasControlador();
-                                echo $insPrendas->enlistarPrendaControlador();
+                                echo $insPrendas->enlistarPrenda2Controlador();
                                 ?>
                             </tbody>
 

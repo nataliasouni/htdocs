@@ -301,4 +301,15 @@ class registroESControlador extends registroESModelo
             exit();
         }
     } //Fin del controlador
+
+
+    public function cantidadRegistrosESControlador()
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadRegistrosES = registroESModelo::cantidadRegistrosESModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadRegistrosES;
+        
+    }
 }

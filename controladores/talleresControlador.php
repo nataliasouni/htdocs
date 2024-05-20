@@ -49,7 +49,7 @@ class talleresControlador extends talleresModelo
         $consulta = "SELECT p.fecha, p.idPrenda, p.prendasdefectuosas, t.nombre_usuario AS nombre_taller
                  FROM produccion p
                  JOIN usuario t ON p.idtaller = t.cedula
-                 WHERE t.nombre_usuario = :nombre ORDER BY p.fecha DESC"
+                 WHERE t.nombre_usuario = :nombre AND p.prendasdefectuosas> 0 ORDER BY p.fecha DESC"
         ;
         $conexion = mainModel::conectarBD();
         $datos = $conexion->prepare($consulta);
@@ -453,6 +453,29 @@ class talleresControlador extends talleresModelo
         </script>";
     exit();
     }
+
+
+
+    public function cantidadPrendasQuirurgicasControlador($var)
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadprendasq = talleresModelo::cantidadPrendasQuirurgicasModelo($var);
+
+        // Devuelve la cantidad de registros
+        return $cantidadprendasq;
+
+    }
+
+    public function cantidadPrendasDefectuosasControlador($var)
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadprendasd = talleresModelo::cantidadPrendasDefectuosasModelo($var);
+
+        // Devuelve la cantidad de registros
+        return $cantidadprendasd;
+
+    }
+
 
 
 

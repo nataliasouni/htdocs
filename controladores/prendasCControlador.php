@@ -287,4 +287,15 @@ class prendasCControlador extends prendasCModelo
       return $productosEnsamble;
   }
 
+
+  public function cantidadPrendasCControlador()
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadPrendasC = prendasCModelo::cantidadPrendasCModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadPrendasC;
+        
+    }
+
 }
