@@ -31,6 +31,18 @@ class talleresModelo extends mainModel
         return $actualizarCantidad->rowCount() === 1;
     }
 
+    public static function actualizarCantidadTotalPrenda($idPrenda, $cantidadPrenda)
+    {
+        $queryActualizarCantidad = "UPDATE prendascortadas SET Cantidad = Cantidad - :cantidadPrenda WHERE id = :idPrenda";
+        $conexion = mainModel::conectarBD();
+        $actualizarCantidad = $conexion->prepare($queryActualizarCantidad);
+        $actualizarCantidad->bindParam(':cantidadPrenda', $cantidadPrenda);
+        $actualizarCantidad->bindParam(':idPrenda', $idPrenda);
+        $actualizarCantidad->execute();
+
+        return $actualizarCantidad->rowCount() === 1;
+    }
+
 
     protected static function agregarEnsambleModelo($datos)
     {

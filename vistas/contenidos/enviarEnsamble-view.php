@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-talleres/enviarEnsambleTaller.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-ensamble/ensamble.css">
 <?php
 
 require_once "./controladores/ensambleControlador.php";
@@ -28,6 +28,21 @@ if ($datosEnsamble->rowCount() == 1) {
                             <div class="form-group">
                                 <p class="titulos_form">Orden de Producción</p>
                                 <input type="text" name="OrdenProduccion" value="<?= $campos['ensamble_id'] ?>"
+                                    class="login_nombreUsuario" readonly>
+                                <?php
+                                // Verificar si $_GET['variable'] está definida y no está vacía
+                                if (isset($_GET['variable']) && !empty($_GET['variable'])) {
+                                    // Obtener el valor de $_GET['variable']
+                                    $Nombre = $_GET['variable'];
+                                }
+                                ?>
+                                <input type="hidden" name="nombreTaller" id="nombreTaller"
+                                    value="<?php echo isset($Nombre) ? $Nombre : ''; ?>" class="login_nombreUsuario">
+
+                            </div>
+                            <div class="form-group">
+                                <p class="titulos_form">Orden de Producción</p>
+                                <input type="text" name="idEnsamble" value="<?= $campos['ensamble_id'] ?>"
                                     class="login_nombreUsuario" readonly>
                                 <?php
                                 // Verificar si $_GET['variable'] está definida y no está vacía
