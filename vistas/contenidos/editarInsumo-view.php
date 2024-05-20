@@ -67,7 +67,7 @@ if ($datosInsumo->rowCount() == 1) {
                         </div>
                         <div class="botones">
                                 <button id="btnActualizar" class="estado-enviar" type="submit" style="cursor: pointer" title="Enviar" name="Enviar">Actualizar</button>
-                                <button id="cancelarEdicion" type="button" class="estado-cancelar" style="cursor: pointer" title="Cancelar" name="Cancelar">Cancelar</button> 
+                                <button id="botonCancelar" type="button" class="estado-cancelar" style="cursor: pointer" title="Cancelar" name="Cancelar">Cancelar</button> 
                             </div>
                     </form>
                 </div>

@@ -30,7 +30,6 @@
                                     <th>Descripción</th>
                                     <th>Categoria</th>
                                     <th>Cantidad</th>
-                                    <th>Alquiler</th>
                                     <th>Estado</th>
                                     <th>Imagen</th>
                                     <th class="editar">Opciones</th>

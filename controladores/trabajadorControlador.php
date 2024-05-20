@@ -147,7 +147,7 @@ class trabajadorControlador extends trabajadoresModelo
       $alerta = [
         "Alerta" => "simple",
         "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "EL usuario que intentas editar no se encuentra registrado en el sistema",
+        "Texto" => "EL trabajador que intentas editar no se encuentra registrado en el sistema",
         "Tipo" => "error"
       ];
       echo json_encode($alerta);
@@ -223,7 +223,7 @@ class trabajadorControlador extends trabajadoresModelo
       $alerta = array(
         "Alerta" => "redireccionarUser",
         "Titulo" => "Usuario actualizado",
-        "Texto" => "Se ha completado la actualizacion de datos del usuario.",
+        "Texto" => "Se ha completado la actualizacion de datos del trabajador.",
         "Tipo" => "success",
         "Url" => SERVERURL . "trabajadores"
       );
@@ -233,7 +233,7 @@ class trabajadorControlador extends trabajadoresModelo
       $alerta = array(
         "Alerta" => "simple",
         "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "No se ha podido completar la actualización de los datos del usuario.",
+        "Texto" => "No se ha podido completar la actualización de los datos del trabajador.",
         "Tipo" => "error"
       );
       echo json_encode($alerta);

@@ -16,7 +16,7 @@ botonCancelar.addEventListener('click', function () {
     if (formCambiado) {
         Swal.fire({
             title: '¿Estás seguro?',
-            text: 'Los datos que hayas ingresado se eliminarán y regresarás a la ventana "alquilerProductos".',
+            text: 'Los datos que hayas ingresado se eliminarán y regresarás a la ventana "Productos Disponibles para Alquilar".',
             type: 'question',
             showCancelButton: true,
             confirmButtonText: 'Aceptar',
@@ -30,7 +30,7 @@ botonCancelar.addEventListener('click', function () {
     } else {
         Swal.fire({
             title: '¿Estás seguro?',
-            text: 'Regresarás a la ventana "alquilerProductos".',
+            text: 'Regresarás a la ventana "Productos Disponibles para Alquilar".',
             type: 'question',
             showCancelButton: true,
             confirmButtonText: 'Aceptar',

@@ -23,7 +23,7 @@
                     <div class="añadir_producto-form">
                         <div class="form-group">
                             <label for="idNormal" class="titulos_form">Id</label>
-                            <input type="text" id="idNormal" name="idNormal" class="producto_id" required>
+                            <input type="number" id="idNormal" name="idNormal" class="producto_id" required>
                         </div>
                         <div class="form-group">
                             <label for="Nombre" class="titulos_form">Nombre</label>
@@ -48,14 +48,6 @@
                         <div class="form-group">
                             <label for="Cantidad" class="titulos_form">Cantidad</label>
                             <input type="number" id="Cantidad" name="Cantidad" class="producto_cantidad" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="Alquiler" class="titulos_form">Alquiler</label>
-                            <select id="Alquiler" name="Alquiler" class="selectform alquiler" required>
-                                <option value="" selected>Seleccionar</option>
-                                <option value="Sí">Sí</option>
-                                <option value="No">No</option>
-                            </select>
                         </div>
                         <div class="form-group">
                             <label for="Imagen" class="titulos_form">Imagen</label>

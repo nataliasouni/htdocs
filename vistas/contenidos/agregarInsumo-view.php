@@ -22,7 +22,7 @@
                     <div class="añadir_producto-form">
                         <div class="form-group">
                             <label for="idNormal" class="titulos_form">Id</label>
-                            <input type="text" id="idInsumo" name="idInsumo" class="producto_id" required>
+                            <input type="number" id="idInsumo" name="idInsumo" class="producto_id" required>
                         </div>
                         <div class="form-group">
                             <label for="Nombre" class="titulos_form">Nombre</label>

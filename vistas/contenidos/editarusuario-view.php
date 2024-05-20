@@ -76,7 +76,7 @@ if ($datosUsuario->rowCount() == 1) {
                             </div>
                             <div class="form-group">
                                 <p class="titulos_form">Telefono</p>
-                                <input type="text" name="telefonoUp" class="login_password" value="<?= $campos['telefono'] ?>"
+                                <input type="number" name="telefonoUp" class="login_password" value="<?= $campos['telefono'] ?>"
                                     required>
                             </div>
                             <div class="form-group">

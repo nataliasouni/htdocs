@@ -85,17 +85,6 @@ if ($datosProducto->rowCount() == 1) {
                                 </select>
                             </div>       
                             <div class="form-group">
-                                <label for="Alquiler" class="titulos_form">Alquiler</label>
-                                <select name="AlquilerUp" class="selectform alquiler" required>
-                                    <option value="Sí" <?php if ($campos['Alquiler'] == "Sí") {
-                                        echo "selected";
-                                    } ?>>Sí</option>
-                                    <option value="No" <?php if ($campos['Alquiler'] == "No") {
-                                        echo "selected";
-                                    } ?>>No</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label for="Imagen" class="titulos_form">Imagen</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="Imagen" name="ImagenUp" accept="image/*" lang="es">

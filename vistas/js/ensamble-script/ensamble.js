@@ -136,8 +136,6 @@ createPagination(currentPage, Math.ceil(filteredRows.length / itemsPerPage));
 
 
 document.getElementById('AgregarEnsamble').addEventListener('click', function () {
-  // Mostrar mensaje en la consola
-  console.log("Se ha hecho clic en el botón AgregarEnsamble");
 
   // Obtener los datos de la tabla
   var datosTabla = [];

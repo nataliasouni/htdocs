@@ -24,7 +24,7 @@ class alquilerproductosControlador extends alquilerproductosModelo
       $alerta = [
         "Alerta" => "simple",
         "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "No has llenado todos los campos para el registro de un nuevo trabajador.",
+        "Texto" => "No has llenado todos los campos para el registro de un nuevo producto .",
         "Tipo" => "error"
       ];
       echo json_encode($alerta);
@@ -40,7 +40,7 @@ class alquilerproductosControlador extends alquilerproductosModelo
       $alerta = array(
         "Alerta" => "simple",
         "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "Ya existe un trabajador registrado con el número de cédula que quieres usar para el registro de este nuevo trabajador.",
+        "Texto" => "Ya existe un producto registrado con el codigo que quieres usar para el registro de este nuevo codigo.",
         "Tipo" => "error"
       );
       echo json_encode($alerta);
@@ -131,7 +131,7 @@ class alquilerproductosControlador extends alquilerproductosModelo
 
     return $tabla;
   } //Fin del controlador
-
+  
 
 
   //Inicio del controlador
@@ -156,7 +156,7 @@ class alquilerproductosControlador extends alquilerproductosModelo
       $alerta = [
         "Alerta" => "simple",
         "Titulo" => "Ocurrió un error inesperado",
-        "Texto" => "EL usuario que intentas editar no se encuentra registrado en el sistema",
+        "Texto" => "EL producto que intentas editar no se encuentra registrado en el sistema",
         "Tipo" => "error"
       ];
       echo json_encode($alerta);

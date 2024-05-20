@@ -171,6 +171,13 @@ class talleresControlador extends talleresModelo
             <img src="./vistas/img/Agregar.png"></img>
             </button>       
         </td>';
+                $tabla .= '<td>
+        <button onclick="window.location.href = \'' . SERVERURL . 'enviarEnsamble/' .
+                    mainModel::encryption($rows['id']) . '?variable=' . $Nombre . '\' ;" class="estado-detalles button_js btn-detalles" 
+        type="button" title="Agregar" name="detalles"> 
+        <img src="./vistas/img/Agregar.png"></img>
+        </button>       
+    </td>';
                 $tabla .= '</tr>';
                 $contador++;
             }
@@ -184,12 +191,12 @@ class talleresControlador extends talleresModelo
     {
         // Obtener el ID del taller utilizando el nombre proporcionado
         $conexion = mainModel::conectarBD();
-        $sqlTaller = $conexion->prepare("SELECT id FROM taller WHERE nombre = :nombre");
-        $sqlTaller->bindParam(':nombre', $nombre);
+        $sqlTaller = $conexion->prepare("SELECT cedula FROM usuario WHERE nombre_usuario = :nombre_usuario");
+        $sqlTaller->bindParam(':nombre_usuario', $nombre);
         $sqlTaller->execute();
         $resultadoTaller = $sqlTaller->fetch(PDO::FETCH_ASSOC);
-        $idTaller = $resultadoTaller['id'];
-    
+        $idTaller = $resultadoTaller['cedula'];
+
         // Consulta para seleccionar los datos relacionados con el taller especificado por su ID
         $consulta = "SELECT te.ensamble_id, 
                             GROUP_CONCAT(p.Nombre SEPARATOR '<br>') as contenido_ensamble, 
@@ -203,19 +210,19 @@ class talleresControlador extends talleresModelo
                      AND te.cantidadproductose > 0
                      GROUP BY te.ensamble_id
                      ORDER BY te.ensamble_id ASC";
-    
+
         $sql = $conexion->prepare($consulta);
         $sql->bindParam(':idTaller', $idTaller);
         $sql->execute();
         $datos = $sql->fetchAll();
         $total = count($datos);
         $tabla = '';
-    
+
         if ($total >= 1) {
             $contador = 1;
             foreach ($datos as $rows) {
                 $tabla .= '<tr>';
-    
+
                 // Imprimir el ID del ensamble en la primera columna
                 $tabla .= '<td>' . $rows['ensamble_id'] . '</td>';
                 // Imprimir el contenido del ensamble (nombres de los productos) en la segunda columna
@@ -227,7 +234,7 @@ class talleresControlador extends talleresModelo
                 // Imprimir las cantidades de las prendas cortadas en la cuarta columna
                 $tabla .= '<td>' . $rows['cantidad_prendas_cortadas'] . '</td>';
                 // Imprimir la cantidad de productos del ensamble en la quinta columna
-    
+
                 // Imprimir botones u opciones en la sexta columna
                 // Cerrar la fila actual
                 $tabla .= '</tr>';
@@ -236,10 +243,9 @@ class talleresControlador extends talleresModelo
         } else {
             $tabla .= '<tr><td colspan="5">No hay registros en el sistema para este taller</td></tr>';
         }
-    
+
         return $tabla; // Devolver la tabla construida
     }
-    
 
     public function actualizarPrendasEnviadasControlador($datos)
     {
@@ -346,53 +352,50 @@ class talleresControlador extends talleresModelo
         $this->insertarDatos($datos);
     }
 
-
-
-
     public function insertarDatos($datos)
     {
-    // Recibe los datos del formulario
-    $nombreTaller = $datos['nombretaller'];
-    $nuevaCantidadProducto = $datos['NuevaCantidad'];
-    $cantidadPrendaUp = $datos['CantidadPrendaUp1'];
-    $idProducto = $datos['IdProducto'];
-    $nuevaCantidadProducto = $datos['NuevaCantidad'];
-    $ordenProduccion = $datos['OrdenProduccionUp2'];
+        // Recibe los datos del formulario
+        $nombreTaller = $datos['nombretaller'];
+        $nuevaCantidadProducto = $datos['NuevaCantidad'];
+        $cantidadPrendaUp = $datos['CantidadPrendaUp1'];
+        $idProducto = $datos['IdProducto'];
+        $nuevaCantidadProducto = $datos['NuevaCantidad'];
+        $ordenProduccion = $datos['OrdenProduccionUp2'];
 
-    // Obtener el id del taller
-    $sqlTaller = mainModel::conectarBD()->prepare("SELECT id FROM taller WHERE nombre = :nombreTaller");
-    $sqlTaller->bindParam(':nombreTaller', $nombreTaller);
-    $sqlTaller->execute();
-    $resultadoTaller = $sqlTaller->fetch(PDO::FETCH_ASSOC);
-    $idTaller = $resultadoTaller['id'];
+        // Obtener el id del taller
+        $sqlTaller = mainModel::conectarBD()->prepare("SELECT cedula FROM usuario WHERE nombre_usuario = :nombreTaller");
+        $sqlTaller->bindParam(':nombreTaller', $nombreTaller);
+        $sqlTaller->execute();
+        $resultadoTaller = $sqlTaller->fetch(PDO::FETCH_ASSOC);
+        $idTaller = $resultadoTaller['cedula'];
 
-    // Obtener las longitudes de los arrays
-    $cantidadPrendaUpLength = count($cantidadPrendaUp);
-    $idProductoLength = count($idProducto);
+        // Obtener las longitudes de los arrays
+        $cantidadPrendaUpLength = count($cantidadPrendaUp);
+        $idProductoLength = count($idProducto);
 
-    // Determinar cuál es mayor
-    if ($cantidadPrendaUpLength >= $idProductoLength) {
-        // Si $cantidadPrendaUp es mayor o igual, utilizar su longitud en el bucle
-        $maxLength = $cantidadPrendaUpLength;
-    } else {
-        // Si $idProducto es mayor, utilizar su longitud en el bucle
-        $maxLength = $idProductoLength;
-    }
-    // Insertar nuevos registros
-    for ($i = 0; $i < $maxLength; $i++) {
-
+        // Determinar cuál es mayor
         if ($cantidadPrendaUpLength >= $idProductoLength) {
+            // Si $cantidadPrendaUp es mayor o igual, utilizar su longitud en el bucle
+            $maxLength = $cantidadPrendaUpLength;
+        } else {
+            // Si $idProducto es mayor, utilizar su longitud en el bucle
+            $maxLength = $idProductoLength;
+        }
+        // Insertar nuevos registros
+        for ($i = 1; $i < $maxLength; $i++) {
 
-            if($idProductoLength< $i){ 
+            if ($cantidadPrendaUpLength >= $idProductoLength) {
 
-                $sqlInsert = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, NULL, NULL, :prendascortadas_id, :cantidadprendascortadas)");
-                $sqlInsert->bindParam(':idTaller', $idTaller);
-                $sqlInsert->bindParam(':ensamble_id', $ordenProduccion);
-                $sqlInsert->bindParam(':prendascortadas_id', $i);
-                $sqlInsert->bindParam(':cantidadprendascortadas', $cantidadPrendaUp[$i]);
-                $sqlInsert->execute();
+                if ($idProductoLength < $i) {
 
-                }else{
+                    $sqlInsert = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, NULL, NULL, :prendascortadas_id, :cantidadprendascortadas)");
+                    $sqlInsert->bindParam(':idTaller', $idTaller);
+                    $sqlInsert->bindParam(':ensamble_id', $ordenProduccion);
+                    $sqlInsert->bindParam(':prendascortadas_id', $i);
+                    $sqlInsert->bindParam(':cantidadprendascortadas', $cantidadPrendaUp[$i]);
+                    $sqlInsert->execute();
+
+                } else {
 
                     $sqlInsert = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, :productose_id, :cantidadproductose, :prendascortadas_id, :cantidadprendascortadas)");
                     $sqlInsert->bindParam(':idTaller', $idTaller);
@@ -405,20 +408,20 @@ class talleresControlador extends talleresModelo
 
                 }
 
-        } 
+            }
 
-        if ($idProductoLength > $cantidadPrendaUpLength) {
+            if ($idProductoLength > $cantidadPrendaUpLength) {
 
-            if($cantidadPrendaUpLength< $i){ 
+                if ($cantidadPrendaUpLength < $i) {
 
-                $sqlInsert = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, :productose_id, :cantidadproductose, NULL, NULL)");
-                $sqlInsert->bindParam(':idTaller', $idTaller);
-                $sqlInsert->bindParam(':ensamble_id', $ordenProduccion);
-                $sqlInsert->bindParam(':productose_id', $i);
-                $sqlInsert->bindParam(':cantidadproductose', $nuevaCantidadProducto[$i]);
-                $sqlInsert->execute();
+                    $sqlInsert = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, :productose_id, :cantidadproductose, NULL, NULL)");
+                    $sqlInsert->bindParam(':idTaller', $idTaller);
+                    $sqlInsert->bindParam(':ensamble_id', $ordenProduccion);
+                    $sqlInsert->bindParam(':productose_id', $i);
+                    $sqlInsert->bindParam(':cantidadproductose', $nuevaCantidadProducto[$i]);
+                    $sqlInsert->execute();
 
-                }else{
+                } else {
 
                     $sqlInsert = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, :productose_id, :cantidadproductose, :prendascortadas_id, :cantidadprendascortadas)");
                     $sqlInsert->bindParam(':idTaller', $idTaller);
@@ -431,14 +434,14 @@ class talleresControlador extends talleresModelo
 
                 }
 
-            } 
+            }
 
 
-        
-    }
 
-    // Mostrar mensaje de éxito
-    echo "<script>
+        }
+
+        // Mostrar mensaje de éxito
+        echo "<script>
             Swal.fire({
                 title: 'Se ha registrado con éxito',
                 text: 'Has enviado materia prima',
@@ -451,10 +454,43 @@ class talleresControlador extends talleresModelo
                 }
             });
         </script>";
-    exit();
+        exit();
     }
 
+    public function enlistarProductoControlador($idEnsamble)
+    {
+        $idEnsamble = mainModel::limpiarCadena($idEnsamble);
 
+        $consulta = "SELECT SQL_CALC_FOUND_ROWS pe2.producto_id, pe.Nombre, pe2.cantidad
+                 FROM producto_ensamble pe2
+                 JOIN ensamble e ON e.OrdenProdccion = pe2.ensamble_id
+                 JOIN productose pe ON pe.Id = pe2.producto_id
+                 WHERE e.OrdenProdccion = :idEnsamble
+                 ORDER BY pe.Id ASC;";
+        $conexion = mainModel::conectarBD();
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':idEnsamble', $idEnsamble, PDO::PARAM_INT);
+        $stmt->execute();
+        $datos = $stmt->fetchAll();
+        $total = $conexion->query("SELECT FOUND_ROWS()")->fetchColumn();
+        $tabla = '';
+
+        if ($total >= 1) {
+            foreach ($datos as $rows) {
+                // Filas
+                $tabla .= '<tr>
+                <td name="IdProducto">' . htmlspecialchars($rows['producto_id']) . '</td>
+                <td name="NombreProducto">' . htmlspecialchars($rows['Nombre']) . '</td>
+                <td name="cantidadPr">' . htmlspecialchars($rows['cantidad']) . '</td>
+                <td><input type="number" name="cantidadProducto[]" class="cantidadProducto" required></td>
+            </tr>';
+            }
+        } else {
+            $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
+        }
+
+        return $tabla; // Devolver la tabla construida
+    }
 
     public function cantidadPrendasQuirurgicasControlador($var)
     {
@@ -476,9 +512,156 @@ class talleresControlador extends talleresModelo
 
     }
 
+    public function enlistarPrendasControlador()
+    {
+        $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM prendascortadas;";
+        $conexion = mainModel::conectarBD();
+        $datos = $conexion->query($consulta)->fetchAll();
+        $total = $conexion->query("SELECT FOUND_ROWS()")->fetchColumn();
+        $tabla = '';
 
+        if ($total >= 1) {
+            foreach ($datos as $rows) {
+                //Filas
+                $tabla .= '<tr>
+                <td name="IdPrenda">' . htmlspecialchars($rows['id']) . '</td>
+                <td name="NombrePrenda">' . htmlspecialchars($rows['Nombre']) . '</td>
+                <td name="cantidadP">' . htmlspecialchars($rows['Cantidad']) . '</td>
+                <td><input type="number" name="cantidadPrenda[]" class="cantidad" required></td>
+            </tr>';
+            }
+        } else {
+            $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
+        }
 
+        return $tabla; // Devolver la tabla construida
+    }
 
+    public function agregarEnsambleControlador()
+    {
+        $OrdenProduccion = mainModel::limpiarCadena($_POST['OrdenProduccion']);
+        $nombreTaller = mainModel::limpiarCadena($_POST['nombreTaller']);
+        $productos = isset($_POST['datosTablaProductos']) ? json_decode($_POST['datosTablaProductos'], true) : [];
+        $prendas = isset($_POST['datosTablaPrendas']) ? json_decode($_POST['datosTablaPrendas'], true) : [];
 
+        $consultaUsuario = "SELECT cedula FROM usuario WHERE nombre_usuario = :nombreTaller AND permiso = 'Taller'";
+        $conexion = mainModel::conectarBD();
+        $stmt = $conexion->prepare($consultaUsuario);
+        $stmt->bindParam(':nombreTaller', $nombreTaller);
+        $stmt->execute();
+        $filaUsuario = $stmt->fetch();
+
+        if (!$filaUsuario) {
+            // Manejar el caso en que no se encuentre ningún usuario asociado al taller
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Error",
+                "Texto" => "No se encontró ningún usuario asociado al taller.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+    
+        $idTaller = $filaUsuario['cedula'];
+
+        if (empty($productos)) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Error",
+                "Texto" => "No se han proporcionado datos de productos.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        if (empty($prendas)) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Error",
+                "Texto" => "No se han proporcionado datos de prendas.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        foreach ($productos as $producto) {
+            $idProducto = $producto['Id'];
+            $cantidadProducto = $producto['Cantidad'];
+
+            // Actualizar la cantidad total del producto en ensamble
+            $actualizacionExitosa = talleresModelo::actualizarCantidadTotalProducto($idProducto, $cantidadProducto, $OrdenProduccion);
+
+            if (!$actualizacionExitosa) {
+                $alerta = [
+                    "Alerta" => "simple",
+                    "Titulo" => "Error",
+                    "Texto" => "No se pudo actualizar la cantidad total del producto $idProducto.",
+                    "Tipo" => "error"
+                ];
+                echo json_encode($alerta);
+                exit();
+            }
+        }
+
+        $checkId = mainModel::consultaSimple("SELECT id_ensamble FROM ensamble_taller WHERE id_ensamble = '$OrdenProduccion'");
+        if ($checkId->rowCount() > 0) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "Ya existe un ensamble registrado con el mismo código.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        $datosAgregarEnsamble = [
+            "id_ensamble" => $OrdenProduccion,
+            "id_taller" => $idTaller
+        ];
+
+        $agregarEnsamble = talleresModelo::agregarEnsambleModelo($datosAgregarEnsamble);
+        if ($agregarEnsamble->rowCount() == 1) {
+            foreach ($productos as $producto) {
+                $datosProducto = [
+                    "id_producto" => $producto['Id'],
+                    "id_ensamble" => $OrdenProduccion,
+                    "cantidadProducto" => $producto['Cantidad']
+                ];
+                talleresModelo::agregarProductosModelo($datosProducto);
+            }
+
+            foreach ($prendas as $prenda) {
+                $datosPrendas = [
+                    "id_prenda" => $prenda['Id'],
+                    "id_ensamble" => $OrdenProduccion,
+                    "cantidadPrenda" => $prenda['Cantidad']
+                ];
+                talleresModelo::agregarPrendasModelo($datosPrendas);
+            }
+
+            $alerta = [
+                "Alerta" => "redireccionarUser",
+                "Titulo" => "Ensamble registrado",
+                "Texto" => "Se ha completado el registro del ensamble.",
+                "Tipo" => "success",
+                "Url" => SERVERURL . "ensambleM"
+            ];
+            echo json_encode($alerta);
+            exit();
+        } else {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "No hemos podido registrar el ensamble.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+    }
 
 }

@@ -21,16 +21,16 @@
                 <div class="añadir_cleinte-form">
                     <div class="form-group">
                         <p class="titulos_form">Cédula</p>
-                        <input type="number" name="cedula" class="login_nombreUsuario" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                        <input type="number" name="cedula" class="login_nombreUsuario" required >
                     </div>
 
                     <div class="form-group">
                     <p class="titulos_form">Nombre del trabajador</p>
-                    <input type="text" name="nombreTrabajador" class="login_password" required oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                    <input type="text" name="nombreTrabajador" class="login_password" required >
                     </div>
                     <div class="form-group">
                     <p class="titulos_form">Telefono</p>
-                    <input type="number" name="telefono" class="login_password" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    <input type="number" name="telefono" class="login_password" required >
                     </div>
                     <div class="botones">
                     <button class="estado-enviar" type="submit" style="cursor: pointer" title="Enviar" name="Enviar">Agregar</button>

@@ -51,17 +51,27 @@ class alquilerModelo extends mainModel
     } //Fin del modelo
 
     // Modelo para actualizar los datos del usuario
-    protected static function actualizarAlquilerModelo($datos)
+    // Modelo para actualizar los datos del usuario
+    protected static function actualizarEstadoModelo($datos)
     {
-        $sql = mainModel::conectarBD()->prepare("UPDATE registroentradasalida SET  cedula = :cedula, fecha = :fecha, horaEntrada = :horaEntrada, horaSalida = :horaSalida, horasTrabajadas = :horasTrabajadas  WHERE id = :id");
+        $sql = mainModel::conectarBD()->prepare("UPDATE alquilerproductos SET  estado = :estado  WHERE id = :id");
         $sql->bindParam(":id", $datos['id']);
-        $sql->bindParam(":cedula", $datos['cedula']);
-        $sql->bindParam(":fecha", $datos['fecha']);
-        $sql->bindParam(":horaEntrada", $datos['horaEntrada']);
-        $sql->bindParam(":horaSalida", $datos['horaSalida']);
-        $sql->bindParam(":horasTrabajadas", $datos['horasTrabajadas']);
+        $sql->bindParam(":estado", $datos['estado']);
         $sql->execute();
         return $sql;
     }
+
+    // Fin del modelo
+
+    // Modelo para actualizar los datos del usuario
+    protected static function actualizarEstadoaAlquilerModelo($datos)
+    {
+        $sql = mainModel::conectarBD()->prepare("UPDATE alquiler SET  estado = :estado  WHERE numeroalquiler = :numeroalquiler");
+        $sql->bindParam(":numeroalquiler", $datos['numeroalquiler']);
+        $sql->bindParam(":estado", $datos['estado']);
+        $sql->execute();
+        return $sql;
+    }
+
     // Fin del modelo
 }
