@@ -22,7 +22,7 @@ class alquilerProductosModelo extends mainModel
 
     //Modelo para obtener datos 
     protected static function datosalquilerproductoModelo($id)
-    {   
+    {
         $sql = mainModel::conectarBD()->prepare("SELECT * FROM  alquilerproductos WHERE id = :id");
         $sql->bindParam(":id", $id);
         $sql->execute();
@@ -32,7 +32,7 @@ class alquilerProductosModelo extends mainModel
 
     // Modelo para actualizar los datos del usuario
     protected static function actualizarProductoModelo($datos)
-    {   
+    {
         $sql = mainModel::conectarBD()->prepare("UPDATE alquilerproductos SET  id = :id, nombreproducto = :nombreproducto, detalles = :detalles, alquiler15dias = :alquiler15dias, alquiler30dias = :alquiler30dias, deposito = :deposito  WHERE id = :id");
         $sql->bindParam(":id", $datos['id']);
         $sql->bindParam(":nombreproducto", $datos['nombreproducto']);
@@ -43,5 +43,8 @@ class alquilerProductosModelo extends mainModel
         $sql->execute();
         return $sql;
     }
-    // Fin del modelo
+
+
+
+
 }

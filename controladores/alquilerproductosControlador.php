@@ -131,7 +131,7 @@ class alquilerproductosControlador extends alquilerproductosModelo
 
     return $tabla;
   } //Fin del controlador
-
+  
 
 
   //Inicio del controlador

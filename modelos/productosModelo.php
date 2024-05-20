@@ -6,15 +6,14 @@ class productosModelo extends mainModel
     //Modelo para agregar un usuario
     protected static function agregarProductoModelo($datos)
     {
-        $sql = mainModel::conectarBD()->prepare("INSERT INTO productos(Id,Nombre,Descripcion,Categoria,Cantidad,Alquiler,Estado,Imagen) 
-        VALUES(:Id,:Nombre,:Descripcion,:Categoria,:Cantidad,:Alquiler,:Estado,:Imagen)");
+        $sql = mainModel::conectarBD()->prepare("INSERT INTO productos(Id,Nombre,Descripcion,Categoria,Cantidad,Estado,Imagen) 
+        VALUES(:Id,:Nombre,:Descripcion,:Categoria,:Cantidad,:Estado,:Imagen)");
 
         $sql->bindParam(":Id", $datos['idNormal']);
         $sql->bindParam(":Nombre", $datos['Nombre']);
         $sql->bindParam(":Descripcion", $datos['Descripcion']);
         $sql->bindParam(":Categoria", $datos['Categoria']);
         $sql->bindParam(":Cantidad", $datos['Cantidad']);
-        $sql->bindParam(":Alquiler", $datos['Alquiler']);
         $sql->bindParam(":Estado", $datos['Estado']);
         $sql->bindParam(":Imagen", $datos['Imagen']);
         $sql->execute();
@@ -45,14 +44,13 @@ class productosModelo extends mainModel
     protected static function actualizarProductoModelo($datos)
 {   
     $sql = mainModel::conectarBD()->prepare("UPDATE productos SET Nombre = :Nombre, 
-    Descripcion = :Descripcion, Categoria = :Categoria, Cantidad = :Cantidad, Alquiler = :Alquiler, 
+    Descripcion = :Descripcion, Categoria = :Categoria, Cantidad = :Cantidad,
     Estado = :Estado, Imagen = :Imagen WHERE Id = :Id");
     
     $sql->bindParam(":Nombre", $datos['NombreUp']);
     $sql->bindParam(":Descripcion", $datos['DescripcionUp']);
     $sql->bindParam(":Categoria", $datos['CategoriaUp']);
     $sql->bindParam(":Cantidad", $datos['CantidadUp']);
-    $sql->bindParam(":Alquiler", $datos['AlquilerUp']);
     $sql->bindParam(":Estado", $datos['EstadoUp']);
     $sql->bindParam(":Imagen", $datos['ImagenUp']);
     $sql->bindParam(":Id", $datos['Id']);
