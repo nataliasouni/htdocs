@@ -86,6 +86,11 @@
                 </a>
 
                 <a href="<?= SERVERURL; ?>devolucionDefectos/taller?variable=<?= $var; ?>">
+                <?php
+                require_once "./controladores/talleresControlador.php";
+                $talleresControladorD = new talleresControlador();
+                $cantidadRegistrosD = $talleresControladorD->cantidadPrendasDefectuosasControlador($var);
+                ?> 
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -96,13 +101,18 @@
                             <h2 class="card-title">Devolución por defectos</h2>
                             <p class="card-description">Descripción
                             </p>
-                            <div class="registradas">Registradas</div>
+                            <div class="registradas"><?php echo $cantidadRegistrosD; ?> Registradas</div>
                         </div>
                     </div>
                 </div>
                 </a>
 
                 <a href="<?= SERVERURL; ?>prendasQuirurgicas/taller?variable=<?= $var; ?>">
+                <?php
+                require_once "./controladores/talleresControlador.php";
+                $talleresControladorQ = new talleresControlador();
+                $cantidadRegistrosQ = $talleresControladorQ->cantidadPrendasQuirurgicasControlador($var);
+                ?> 
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -113,7 +123,7 @@
                             <h2 class="card-title">Prendas quirurgicas</h2>
                             <p class="card-description">Descripción
                             </p>
-                            <div class="registradas">Registradas</div>
+                            <div class="registradas"><?php echo $cantidadRegistrosQ; ?> Registradas</div>
                         </div>
                     </div>
                 </div>

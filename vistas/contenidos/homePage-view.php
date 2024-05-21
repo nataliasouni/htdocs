@@ -103,7 +103,7 @@
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector3.jpg" alt="Imagen 3">
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector4.jpg" alt="Imagen 4">
                 </div>
-                <a href="<?= SERVERURL; ?>agendarCita" class="cta">Agendar Cita</a>
+                <a href="login" class="cta">Agendar Cita</a>
             </div>
                     
 

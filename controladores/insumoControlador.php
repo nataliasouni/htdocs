@@ -275,4 +275,14 @@ class insumoControlador extends insumoModelo
     }
   }
 
+  public function cantidadInsumosControlador()
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadInsumos = insumoModelo::cantidadInsumosModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadInsumos;
+        
+    }
+
 }

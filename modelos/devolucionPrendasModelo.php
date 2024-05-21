@@ -48,4 +48,33 @@ class devolucionPrendasModelo extends mainModel
     }
 }
 
+public function cantidadRegistrosDPModelo() {
+    // Preparar la consulta SQL para contar la cantidad de registros
+    $sql = mainModel::conectarBD()->prepare("
+        SELECT COUNT(*) AS cantidad_registros
+        FROM (
+            SELECT 
+                pq.nombre AS nombre_prenda,
+                SUM(p.prendasdefectuosas) AS total_defectuosas,
+                pq.descripcion AS descripcion_prenda
+            FROM 
+                produccion p
+            JOIN 
+                prendasquirurgicas pq ON p.idprenda = pq.id
+            GROUP BY 
+                pq.id, pq.nombre, pq.descripcion
+        ) AS subconsulta
+    ");
+
+    // Ejecutar la consulta
+    $sql->execute();
+
+    // Obtener el resultado de la consulta
+    $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+    // Devolver la cantidad de registros
+    return $resultado['cantidad_registros'];
+}
+
+
 }

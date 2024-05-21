@@ -114,14 +114,6 @@ class devolucionPrendasControlador extends devolucionPrendasModelo
           '<td>' . $rows['Cantidad'] . '</td>' .
           '<td>' . $estadoProducto . '</td>';
 
-        $tabla .= '<td>
-                <button onclick="window.location.href = \'' . SERVERURL . 'detallesDevolucion/' .
-          mainModel::encryption($rows['id']) . '\';" class="estado-detalles button_js btn-detalles" 
-                type="button" title="detalles" name="detalles"> 
-                <img src="./vistas/img/detalles.png"></img>
-                </button>       
-            </td>';
-        $tabla .= '</tr>';
         $contador++;
       }
     } else {
@@ -269,5 +261,65 @@ class devolucionPrendasControlador extends devolucionPrendasModelo
       exit();
     }
   }
+
+
+  public function enlistarPrenda2Controlador()
+{
+    // Prepara la consulta SQL para obtener el nombre de la prenda, la sumatoria de las prendas defectuosas y la descripción de cada prenda
+    $consulta = "
+        SELECT 
+            pq.nombre AS nombre_prenda,
+            SUM(p.prendasdefectuosas) AS total_defectuosas,
+            pq.descripcion AS descripcion_prenda
+        FROM 
+            produccion p
+        JOIN 
+            prendasquirurgicas pq ON p.idprenda = pq.id
+        GROUP BY 
+            pq.id, pq.nombre, pq.descripcion
+        ORDER BY 
+            pq.id ASC
+    ";
+    
+    // Realiza la consulta en la base de datos
+    $conexion = mainModel::conectarBD();
+    $datos = $conexion->query($consulta);
+    $datos = $datos->fetchAll();
+    $total = $conexion->query("SELECT FOUND_ROWS()");
+    $total = (int) $total->fetchColumn();
+    $tabla = '';
+
+    if ($total >= 1) {
+        $contador = 1;
+        foreach ($datos as $rows) {
+            // Filas
+            $tabla .= '<tr>';
+            $tabla .= '<td>' . $contador . '</td>' .
+                '<td>' . $rows['nombre_prenda'] . '</td>' .
+                '<td>' . $rows['descripcion_prenda'] . '</td>'.
+                '<td>' . $rows['total_defectuosas'] . '</td>' ;
+            $tabla .= '</tr>';
+
+            $contador++;
+        }
+    } else {
+        $tabla .= '<tr><td colspan="4">No hay registros</td></tr>';
+    }
+
+    return $tabla;
+}
+
+
+
+public function cantidadRegistrosDPControlador()
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadTrabajadores = devolucionPrendasModelo::cantidadRegistrosDPModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadTrabajadores;
+        
+    }
+
 
 }

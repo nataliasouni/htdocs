@@ -49,7 +49,7 @@ class talleresControlador extends talleresModelo
         $consulta = "SELECT p.fecha, p.idPrenda, p.prendasdefectuosas, t.nombre_usuario AS nombre_taller
                  FROM produccion p
                  JOIN usuario t ON p.idtaller = t.cedula
-                 WHERE t.nombre_usuario = :nombre ORDER BY p.fecha DESC"
+                 WHERE t.nombre_usuario = :nombre AND p.prendasdefectuosas> 0 ORDER BY p.fecha DESC"
         ;
         $conexion = mainModel::conectarBD();
         $datos = $conexion->prepare($consulta);
@@ -128,81 +128,33 @@ class talleresControlador extends talleresModelo
         }
     }
 
-
-    public function enlistarEnsambleControlador($Nombre)
-    {
-        $consulta = "SELECT p.id, p.ensamble_id, GROUP_CONCAT(e.Nombre SEPARATOR '<br>') as nombre_productos, SUM(p.cantidad) as total_cantidad, en.CantidadProduccion as cantidad_produccion, en.Estado as Estado
-             FROM producto_ensamble p
-             INNER JOIN productose e ON p.producto_id = e.Id
-             INNER JOIN ensamble en ON p.ensamble_id = en.OrdenProdccion
-             WHERE en.Estado = 'Si'
-             GROUP BY p.ensamble_id
-             ORDER BY p.ensamble_id ASC";
-
-        $conexion = mainModel::conectarBD();
-        $datos = $conexion->query($consulta);
-        $datos = $datos->fetchAll();
-        $total = count($datos);
-        $tabla = '';
-
-        if ($total >= 1) {
-            $contador = 1;
-            foreach ($datos as $rows) {
-
-                $estadoProducto = $rows['Estado'] == "Si" ? "Habilitada" : "Deshabilitada";
-                $claseFila = $rows['Estado'] == "Si" ? "" : "deshabilitado";
-
-                $tabla .= '<tr class="' . $claseFila . '">';
-
-
-                // Imprimir el ID del ensamble en la primera columna
-                $tabla .= '<td>' . $rows['ensamble_id'] . '</td>';
-                // Imprimir el nombre de los productos en una sola celda
-                $tabla .= '<td>' . $rows['cantidad_produccion'] . '</td>';
-                // Imprimir la cantidad de producción en la siguiente columna
-                $tabla .= '<td>' . $rows['nombre_productos'] . '</td>';
-                // Imprimir la suma total de la cantidad de productos en la última columna
-                $tabla .= '<td>' . $rows['total_cantidad'] . '</td>';
-                // Cerrar la fila actual
-                $tabla .= '<td>
-            <button onclick="window.location.href = \'' . SERVERURL . 'enviarEnsambleTaller/' .
-                    mainModel::encryption($rows['id']) . '?variable=' . $Nombre . '\' ;" class="estado-detalles button_js btn-detalles" 
-            type="button" title="Agregar" name="detalles"> 
-            <img src="./vistas/img/Agregar.png"></img>
-            </button>       
-        </td>';
-                $tabla .= '</tr>';
-                $contador++;
-            }
-        } else {
-            $tabla .= '<tr><td colspan="4">No hay registros en el sistema</td></tr>';
-        }
-
-        return $tabla; // Devolver la tabla construida
-    }
     public function enlistarEnsamblePrendasControlador($nombre)
     {
         // Obtener el ID del taller utilizando el nombre proporcionado
         $conexion = mainModel::conectarBD();
-        $sqlTaller = $conexion->prepare("SELECT cedula FROM usuario WHERE nombre_usuario = :nombre_usuario");
-        $sqlTaller->bindParam(':nombre_usuario', $nombre);
+        $sqlTaller = $conexion->prepare("SELECT cedula FROM usuario WHERE nombre_usuario = :nombre_taller");
+        $sqlTaller->bindParam(':nombre_taller', $nombre);
         $sqlTaller->execute();
         $resultadoTaller = $sqlTaller->fetch(PDO::FETCH_ASSOC);
         $idTaller = $resultadoTaller['cedula'];
 
         // Consulta para seleccionar los datos relacionados con el taller especificado por su ID
-        $consulta = "SELECT te.ensamble_id, 
-                            GROUP_CONCAT(p.Nombre SEPARATOR '<br>') as contenido_ensamble, 
-                            GROUP_CONCAT(te.cantidadproductose SEPARATOR '<br>') as cantidad_producto_ensamble, 
-                            GROUP_CONCAT(pc.Nombre SEPARATOR '<br>') as prendas_cortadas_nombre,
-                            GROUP_CONCAT(te.cantidadprendascortadas SEPARATOR '<br>') as cantidad_prendas_cortadas
-                     FROM taller_ensamble_prendas te
-                     INNER JOIN productose p ON te.productose_id = p.Id
-                     LEFT JOIN prendascortadas pc ON te.prendascortadas_id = pc.Id
-                     WHERE te.idTaller = :idTaller
-                     AND te.cantidadproductose > 0
-                     GROUP BY te.ensamble_id
-                     ORDER BY te.ensamble_id ASC";
+        $consulta = "SELECT ep.id_ensamble,
+        GROUP_CONCAT(DISTINCT CONCAT(pe.Nombre, ' (', ep.cantidadProducto, ')') SEPARATOR '<br>') AS contenido_ensamble,
+        GROUP_CONCAT(DISTINCT CONCAT(pc.Nombre, ' (', pr.cantidadPrenda, ')') SEPARATOR '<br>') AS prendas_cortadas,
+        (SELECT SUM(cantidadProducto) FROM ensamblet_productos WHERE id_ensamble = ep.id_ensamble) AS total_productos,
+        (SELECT SUM(cantidadPrenda) FROM ensamblet_prendas WHERE id_ensamble = ep.id_ensamble) AS total_prendas
+        FROM ensamble_taller et
+        INNER JOIN ensamblet_productos ep ON ep.id_ensamble = et.id_ensamble
+        INNER JOIN ensamblet_prendas pr ON ep.id_ensamble = pr.id_ensamble 
+        INNER JOIN producto_ensamble p ON ep.id_producto = p.producto_id
+        INNER JOIN productose pe ON p.producto_id = pe.Id
+        LEFT JOIN prendascortadas pc ON pr.id_prenda = pc.id
+        WHERE et.id_taller = :idTaller
+        GROUP BY ep.id_ensamble
+        ORDER BY ep.id_ensamble ASC
+    ";
+
 
         $sql = $conexion->prepare($consulta);
         $sql->bindParam(':idTaller', $idTaller);
@@ -217,17 +169,15 @@ class talleresControlador extends talleresModelo
                 $tabla .= '<tr>';
 
                 // Imprimir el ID del ensamble en la primera columna
-                $tabla .= '<td>' . $rows['ensamble_id'] . '</td>';
+                $tabla .= '<td>' . $rows['id_ensamble'] . '</td>';
                 // Imprimir el contenido del ensamble (nombres de los productos) en la segunda columna
                 $tabla .= '<td>' . $rows['contenido_ensamble'] . '</td>';
-                // Imprimir los nombres de las prendas cortadas en la tercera columna
-                $tabla .= '<td>' . $rows['cantidad_producto_ensamble'] . '</td>';
-                // Imprimir los nombres de las prendas cortadas en la tercera columna
-                $tabla .= '<td>' . $rows['prendas_cortadas_nombre'] . '</td>';
-                // Imprimir las cantidades de las prendas cortadas en la cuarta columna
-                $tabla .= '<td>' . $rows['cantidad_prendas_cortadas'] . '</td>';
-                // Imprimir la cantidad de productos del ensamble en la quinta columna
-
+                // Imprimir el total de productos
+                $tabla .= '<td>' . $rows['total_productos'] . '</td>';
+                // Imprimir las cantidades de los productos del ensamble en la tercera columna
+                $tabla .= '<td>' . $rows['prendas_cortadas'] . '</td>';
+                // Imprimir el total de prendas
+                $tabla .= '<td>' . $rows['total_prendas'] . '</td>';
                 // Imprimir botones u opciones en la sexta columna
                 // Cerrar la fila actual
                 $tabla .= '</tr>';
@@ -240,165 +190,372 @@ class talleresControlador extends talleresModelo
         return $tabla; // Devolver la tabla construida
     }
 
-    public function actualizarPrendasEnviadasControlador($datos)
+    public function enlistarEnsambleControlador($Nombre)
+{
+    // Consulta para obtener los ensambles que aún no están asociados al taller
+    $consulta = "SELECT p.id, p.ensamble_id, GROUP_CONCAT(e.Nombre SEPARATOR '<br>') as nombre_productos, SUM(p.cantidad) as total_cantidad, en.CantidadProduccion as cantidad_produccion, en.Estado as Estado
+         FROM producto_ensamble p
+         INNER JOIN productose e ON p.producto_id = e.Id
+         INNER JOIN ensamble en ON p.ensamble_id = en.OrdenProdccion
+         WHERE en.Estado = 'Si' AND p.ensamble_id NOT IN (
+             SELECT id_ensamble FROM ensamble_taller WHERE id_taller = (
+                 SELECT cedula FROM usuario WHERE nombre_usuario = :Nombre
+             )
+         )
+         GROUP BY p.ensamble_id
+         ORDER BY p.ensamble_id ASC";
+
+    $conexion = mainModel::conectarBD();
+    $stmt = $conexion->prepare($consulta);
+    $stmt->bindParam(':Nombre', $Nombre);
+    $stmt->execute();
+    $datos = $stmt->fetchAll();
+    $total = count($datos);
+    $tabla = '';
+
+    if ($total >= 1) {
+        $contador = 1;
+        foreach ($datos as $rows) {
+            $estadoProducto = $rows['Estado'] == "Si" ? "Habilitada" : "Deshabilitada";
+            $claseFila = $rows['Estado'] == "Si" ? "" : "deshabilitado";
+
+            $tabla .= '<tr class="' . $claseFila . '">';
+
+            // Imprimir el ID del ensamble en la primera columna
+            $tabla .= '<td>' . $rows['ensamble_id'] . '</td>';
+            // Imprimir el nombre de los productos en una sola celda
+            $tabla .= '<td>' . $rows['cantidad_produccion'] . '</td>';
+            // Imprimir la cantidad de producción en la siguiente columna
+            $tabla .= '<td>' . $rows['nombre_productos'] . '</td>';
+            // Imprimir la suma total de la cantidad de productos en la última columna
+            $tabla .= '<td>' . $rows['total_cantidad'] . '</td>';
+            // Cerrar la fila actual
+            $tabla .= '<td>
+            <button onclick="window.location.href = \'' . SERVERURL . 'enviarEnsamble/' .
+                mainModel::encryption($rows['id']) . '?variable=' . $Nombre . '\' ;" class="estado-detalles button_js btn-detalles" 
+            type="button" title="Agregar" name="detalles"> 
+            <img src="./vistas/img/Agregar.png"></img>
+            </button>       
+            </td>';
+            $tabla .= '</tr>';
+            $contador++;
+        }
+    } else {
+        $tabla .= '<tr><td colspan="4">No hay registros en el sistema</td></tr>';
+    }
+
+    return $tabla; // Devolver la tabla construida
+}
+
+
+
+    public function enlistarProductoControlador($idEnsamble)
     {
-        // Recibe los datos del formulario
-        $nombreTaller = $datos['nombretaller'];
-        $nuevaCantidadProducto = $datos['NuevaCantidad'];
-        $cantidadPrendaUp = $datos['CantidadPrendaUp1'];
-        $idProducto = $datos['IdProducto'];
-        $nuevaCantidadProducto = $datos['NuevaCantidad'];
-        $ordenProduccion = $datos['OrdenProduccionUp2'];
+        $idEnsamble = mainModel::limpiarCadena($idEnsamble);
 
-        foreach ($idProducto as $id => $productoId) {
-            $sql2 = mainModel::conectarBD()->prepare("SELECT id, cantidad FROM producto_ensamble WHERE ensamble_id = :ensamble_id AND producto_id = :producto_id");
-            $sql2->bindParam(':ensamble_id', $ordenProduccion);
-            $sql2->bindParam(':producto_id', $productoId);
-            $sql2->execute();
-            $resultado2 = $sql2->fetch(PDO::FETCH_ASSOC);
+        $consulta = "SELECT SQL_CALC_FOUND_ROWS pe2.producto_id, pe.Nombre, pe2.cantidad
+                 FROM producto_ensamble pe2
+                 JOIN ensamble e ON e.OrdenProdccion = pe2.ensamble_id
+                 JOIN productose pe ON pe.Id = pe2.producto_id
+                 WHERE e.OrdenProdccion = :idEnsamble
+                 ORDER BY pe.Id ASC;";
+        $conexion = mainModel::conectarBD();
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':idEnsamble', $idEnsamble, PDO::PARAM_INT);
+        $stmt->execute();
+        $datos = $stmt->fetchAll();
+        $total = $conexion->query("SELECT FOUND_ROWS()")->fetchColumn();
+        $tabla = '';
 
-            $nuevaCantidadProductoEnsamble = intval($resultado2['cantidad']) - intval($nuevaCantidadProducto[$id]);
+        if ($total >= 1) {
+            foreach ($datos as $rows) {
+                // Filas
+                $tabla .= '<tr>
+                <td name="IdProducto">' . htmlspecialchars($rows['producto_id']) . '</td>
+                <td name="NombreProducto">' . htmlspecialchars($rows['Nombre']) . '</td>
+                <td name="cantidadPr">' . htmlspecialchars($rows['cantidad']) . '</td>
+                <td><input type="number" name="cantidadProducto[]" class="cantidadProducto" required></td>
+            </tr>';
+            }
+        } else {
+            $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
+        }
 
-            if ($nuevaCantidadProductoEnsamble < 0) {
-                // La resta resulta en un valor negativo, muestra la alerta
-                echo "<script>
-                    Swal.fire({
-                        title: 'Ocurrió un error inesperado',
-                        text: 'La cantidad ingresada para el producto excede la cantidad disponible.',
-                        type: 'error',
-                        confirmButtonText: 'Aceptar'
-                    }).then((result) => {
-                        if (result.value) {
-                            window.location.href = '" . SERVERURL . "enviarEnsambleTaller/" . mainModel::encryption($resultado2['id']) . "?variable=" . $nombreTaller . "';
-                        }
-                    });
-                </script>";
+        return $tabla; // Devolver la tabla construida
+    }
+
+    public function cantidadPrendasQuirurgicasControlador($var)
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadprendasq = talleresModelo::cantidadPrendasQuirurgicasModelo($var);
+
+        // Devuelve la cantidad de registros
+        return $cantidadprendasq;
+
+    }
+
+    public function cantidadPrendasDefectuosasControlador($var)
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadprendasd = talleresModelo::cantidadPrendasDefectuosasModelo($var);
+
+        // Devuelve la cantidad de registros
+        return $cantidadprendasd;
+
+    }
+
+    public function enlistarPrendasControlador()
+    {
+        $consulta = "SELECT SQL_CALC_FOUND_ROWS * FROM prendascortadas;";
+        $conexion = mainModel::conectarBD();
+        $datos = $conexion->query($consulta)->fetchAll();
+        $total = $conexion->query("SELECT FOUND_ROWS()")->fetchColumn();
+        $tabla = '';
+
+        if ($total >= 1) {
+            foreach ($datos as $rows) {
+                //Filas
+                $tabla .= '<tr>
+                <td name="IdPrenda">' . htmlspecialchars($rows['id']) . '</td>
+                <td name="NombrePrenda">' . htmlspecialchars($rows['Nombre']) . '</td>
+                <td name="cantidadP">' . htmlspecialchars($rows['Cantidad']) . '</td>
+                <td><input type="number" name="cantidadPrenda[]" class="cantidad" required></td>
+            </tr>';
+            }
+        } else {
+            $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
+        }
+
+        return $tabla; // Devolver la tabla construida
+    }
+
+    public function agregarEnsambleControlador()
+    {
+        $OrdenProduccion = mainModel::limpiarCadena($_POST['OrdenProduccion']);
+        $nombreTaller = mainModel::limpiarCadena($_POST['nombreTaller']);
+        $productos = isset($_POST['datosTablaProductos']) ? json_decode($_POST['datosTablaProductos'], true) : [];
+        $prendas = isset($_POST['datosTablaPrendas']) ? json_decode($_POST['datosTablaPrendas'], true) : [];
+
+        $consultaUsuario = "SELECT cedula FROM usuario WHERE nombre_usuario = :nombreTaller AND permiso = 'Taller'";
+        $conexion = mainModel::conectarBD();
+        $stmt = $conexion->prepare($consultaUsuario);
+        $stmt->bindParam(':nombreTaller', $nombreTaller);
+        $stmt->execute();
+        $filaUsuario = $stmt->fetch();
+
+        if (!$filaUsuario) {
+            // Manejar el caso en que no se encuentre ningún usuario asociado al taller
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Error",
+                "Texto" => "No se encontró ningún usuario asociado al taller.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        $idTaller = $filaUsuario['cedula'];
+
+        if (empty($productos)) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Error",
+                "Texto" => "No se han proporcionado datos de productos.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        if (empty($prendas)) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Error",
+                "Texto" => "No se han proporcionado datos de prendas.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        $checkId = mainModel::consultaSimple("SELECT id_ensamble FROM ensamble_taller WHERE id_ensamble = '$OrdenProduccion' AND id_taller = '$idTaller'");
+        if ($checkId->rowCount() > 0) {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "Ya existe un ensamble registrado con el mismo código.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        foreach ($productos as $producto) {
+            $idProducto = $producto['Id'];
+            $cantidadProducto = $producto['Cantidad'];
+
+            // Verificar si la cantidad ingresada por el usuario es menor que la cantidad actual del producto en la tabla producto_ensamble
+            $consultaCantidadProducto = "SELECT cantidad FROM producto_ensamble WHERE producto_id = :idProducto AND ensamble_id = :OrdenProduccion";
+            $stmtCantidadProducto = $conexion->prepare($consultaCantidadProducto);
+            $stmtCantidadProducto->bindParam(':idProducto', $idProducto);
+            $stmtCantidadProducto->bindParam(':OrdenProduccion', $OrdenProduccion);
+            $stmtCantidadProducto->execute();
+            $filaCantidadProducto = $stmtCantidadProducto->fetch();
+
+            if ($cantidadProducto < 0) {
+                $alerta = [
+                    "Alerta" => "simple",
+                    "Titulo" => "Error",
+                    "Texto" => "La cantidad del producto $idProducto debe ser un valor entre 0 y la cantidad actual en el ensamble.",
+                    "Tipo" => "error"
+                ];
+                echo json_encode($alerta);
+                exit();
+            }
+
+            if ($cantidadProducto > $filaCantidadProducto['cantidad']) {
+                $alerta = [
+                    "Alerta" => "simple",
+                    "Titulo" => "Error",
+                    "Texto" => "La cantidad del producto $idProducto no puede ser mayor que la cantidad total actual del producto en el ensamble.",
+                    "Tipo" => "error"
+                ];
+                echo json_encode($alerta);
                 exit();
             }
         }
 
-        foreach ($cantidadPrendaUp as $id => $cantidad) {
-            $cantidad = intval($cantidad);
-            $idProducto = $datos['IdProducto'];
-            $nuevaCantidadProducto = $datos['NuevaCantidad'];
-            $ordenProduccion = $datos['OrdenProduccionUp2'];
+        foreach ($prendas as $prenda) {
+            $idPrenda = $prenda['Id'];
+            $cantidadPrenda = $prenda['Cantidad'];
 
-            $sql = mainModel::conectarBD()->prepare("SELECT cantidad, Nombre FROM prendascortadas WHERE id = :IdPrenda1");
-            $sql->bindParam(':IdPrenda1', $id);
-            $sql->execute();
-            $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+            // Verificar si la cantidad ingresada por el usuario es menor que la cantidad actual del producto en la tabla producto_ensamble
+            $consultaCantidadPrenda = "SELECT Cantidad FROM prendascortadas WHERE id = :idPrenda";
+            $stmtCantidadPrenda = $conexion->prepare($consultaCantidadPrenda);
+            $stmtCantidadPrenda->bindParam(':idPrenda', $idPrenda);
+            $stmtCantidadPrenda->execute();
+            $filaCantidadPrenda = $stmtCantidadPrenda->fetch();
 
-            // Calcular la nueva cantidad después de la actualización
-            $nuevaCantidad = intval($resultado['cantidad']) - intval($cantidad);
-            if ($nuevaCantidad < 0) {
-                // La resta resulta en un valor negativo, muestra la alerta
-                echo "<script>
-                    Swal.fire({
-                        title: 'Ocurrió un error inesperado',
-                        text: 'La cantidad ingresada para el producto excede la cantidad disponible.',
-                        type: 'error',
-                        confirmButtonText: 'Aceptar'
-                    }).then((result) => {
-                        if (result.value) {
-                            window.location.href = '" . SERVERURL . "enviarEnsambleTaller/" . mainModel::encryption($resultado2['id']) . "?variable=" . $nombreTaller . "';
-                        }
-                    });
-                </script>";
+            if ($cantidadPrenda < 0) {
+                $alerta = [
+                    "Alerta" => "simple",
+                    "Titulo" => "Error",
+                    "Texto" => "La cantidad del producto $idPrenda debe ser un valor entre 0 y la cantidad actual en el ensamble.",
+                    "Tipo" => "error"
+                ];
+                echo json_encode($alerta);
+                exit();
+            }
+
+            if ($cantidadPrenda > $filaCantidadPrenda['Cantidad']) {
+                $alerta = [
+                    "Alerta" => "simple",
+                    "Titulo" => "Error",
+                    "Texto" => "La cantidad de la prenda $idPrenda no puede ser mayor que la cantidad total actual de la prenda.",
+                    "Tipo" => "error"
+                ];
+                echo json_encode($alerta);
                 exit();
             }
         }
 
-        foreach ($idProducto as $id => $productoId) {
+        $actualizacionExitosa = true; // Variable para controlar si todas las actualizaciones son exitosas
 
-            $ordenProduccion = $datos['OrdenProduccionUp2'];
+        foreach ($productos as $producto) {
+            $idProducto = $producto['Id'];
+            $cantidadProducto = $producto['Cantidad'];
 
-            $sql2 = mainModel::conectarBD()->prepare("SELECT id, cantidad FROM producto_ensamble WHERE ensamble_id = :ensamble_id AND producto_id = :producto_id");
-            $sql2->bindParam(':ensamble_id', $ordenProduccion);
-            $sql2->bindParam(':producto_id', $id);
-            $sql2->execute();
-            $resultado2 = $sql2->fetch(PDO::FETCH_ASSOC);
-
-            $nuevaCantidadProductoEnsamble = intval($resultado2['cantidad']) - intval($nuevaCantidadProducto[$id]);
-
-            $sqlProductoEnsamble = mainModel::conectarBD()->prepare("UPDATE producto_ensamble SET cantidad = :cantidad WHERE ensamble_id = :ensamble_id AND producto_id = :producto_id");
-            $sqlProductoEnsamble->bindParam(':cantidad', $nuevaCantidadProductoEnsamble);
-            $sqlProductoEnsamble->bindParam(':ensamble_id', $ordenProduccion);
-            $sqlProductoEnsamble->bindParam(':producto_id', $id);
-            $sqlProductoEnsamble->execute();
-        }
-
-        foreach ($cantidadPrendaUp as $id => $cantidad) {
-
-            $sql = mainModel::conectarBD()->prepare("SELECT cantidad, Nombre FROM prendascortadas WHERE id = :IdPrenda1");
-            $sql->bindParam(':IdPrenda1', $id);
-            $sql->execute();
-            $resultado = $sql->fetch(PDO::FETCH_ASSOC);
-
-            $nuevaCantidad = intval($resultado['cantidad']) - intval($cantidad);
-
-            $sqlPrendasCortadas = mainModel::conectarBD()->prepare("UPDATE prendascortadas SET cantidad = :cantidad WHERE id = :id");
-            $sqlPrendasCortadas->bindParam(':cantidad', $nuevaCantidad);
-            $sqlPrendasCortadas->bindParam(':id', $id);
-            $sqlPrendasCortadas->execute();
-        }
-
-        $this->insertarDatos($datos);
-    }
-
-    public function insertarDatos($datos)
-    {
-        // Recibe los datos del formulario
-        $nombreTaller = $datos['nombretaller'];
-        $ordenProduccion = $datos['OrdenProduccionUp2'];
-
-        // Obtener el id del taller
-        $sqlTaller = mainModel::conectarBD()->prepare("SELECT cedula FROM usuario WHERE nombre_usuario = :nombreTaller");
-        $sqlTaller->bindParam(':nombreTaller', $nombreTaller);
-        $sqlTaller->execute();
-        $resultadoTaller = $sqlTaller->fetch(PDO::FETCH_ASSOC);
-        $idTaller = $resultadoTaller['cedula'];
-
-        // Insertar productos del ensamble
-        foreach ($datos['IdProducto'] as $idProducto => $cantidadProducto) {
-            $sqlInsertProducto = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, :productose_id, :cantidadproductose, NULL, NULL)");
-            $sqlInsertProducto->bindParam(':idTaller', $idTaller);
-            $sqlInsertProducto->bindParam(':ensamble_id', $ordenProduccion);
-            $sqlInsertProducto->bindParam(':productose_id', $idProducto);
-            $sqlInsertProducto->bindParam(':cantidadproductose', $cantidadProducto);
-            $sqlInsertProducto->execute();
-        }
-
-        // Insertar prendas cortadas
-        foreach ($datos['IdPrenda1'] as $idPrenda => $cantidadPrenda) {
-            $sqlInsertPrenda = mainModel::conectarBD()->prepare("INSERT INTO taller_ensamble_prendas (idTaller, ensamble_id, productose_id, cantidadproductose, prendascortadas_id, cantidadprendascortadas) VALUES (:idTaller, :ensamble_id, NULL, NULL, :prendascortadas_id, :cantidadprendascortadas)");
-            $sqlInsertPrenda->bindParam(':idTaller', $idTaller);
-            $sqlInsertPrenda->bindParam(':ensamble_id', $ordenProduccion);
-            $sqlInsertPrenda->bindParam(':prendascortadas_id', $idPrenda);
-            $sqlInsertPrenda->bindParam(':cantidadprendascortadas', $cantidadPrenda);
-            $sqlInsertPrenda->execute();
-        }
-
-        // Mostrar mensaje de éxito
-        echo "<script>
-        Swal.fire({
-            title: 'Se ha registrado con éxito',
-            text: 'Has enviado materia prima',
-            type: 'success',
-            confirmButtonText: 'Aceptar',
-            allowOutsideClick: false,
-        }).then((result) => {
-            if (result.value) {
-                window.location.href = '" . SERVERURL . "ensambleTaller/taller?variable=" . $nombreTaller . "';
+            // Verificar si la cantidad es cero
+            if ($cantidadProducto == 0) {
+                continue; // Saltar esta iteración del bucle y pasar a la siguiente
             }
-        });
-    </script>";
-        exit();
+
+
+            // Actualizar la cantidad total del producto en ensamble
+            if (!talleresModelo::actualizarCantidadTotalProducto($idProducto, $cantidadProducto, $OrdenProduccion)) {
+                $actualizacionExitosa = false;
+                $mensajeError = "No se pudo actualizar la cantidad total del producto $idProducto.";
+                break; // Salir del bucle en caso de error
+            }
+        }
+
+        if ($actualizacionExitosa) {
+            foreach ($prendas as $prenda) {
+                $idPrenda = $prenda['Id'];
+                $cantidadPrenda = $prenda['Cantidad'];
+
+                // Verificar si la cantidad es cero
+                if ($cantidadPrenda == 0) {
+                    continue; // Saltar esta iteración del bucle y pasar a la siguiente
+                }
+
+                // Actualizar la cantidad total del producto en ensamble
+                if (!talleresModelo::actualizarCantidadTotalPrenda($idPrenda, $cantidadPrenda)) {
+                    $actualizacionExitosa = false;
+                    $mensajeError = "No se pudo actualizar la cantidad total del prenda $idPrenda.";
+                    break; // Salir del bucle en caso de error
+                }
+            }
+        }
+
+        if (!$actualizacionExitosa) {
+            // Al menos una actualización falló, mostrar alerta
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Error",
+                "Texto" => $mensajeError,
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
+
+        $datosAgregarEnsamble = [
+            "id_ensamble" => $OrdenProduccion,
+            "id_taller" => $idTaller
+        ];
+
+        $agregarEnsamble = talleresModelo::agregarEnsambleModelo($datosAgregarEnsamble);
+
+        if ($agregarEnsamble->rowCount() == 1) {
+            foreach ($productos as $producto) {
+                $datosProducto = [
+                    "id_producto" => $producto['Id'],
+                    "id_ensamble" => $OrdenProduccion,
+                    "cantidadProducto" => $producto['Cantidad']
+                ];
+                talleresModelo::agregarProductosModelo($datosProducto);
+            }
+
+            foreach ($prendas as $prenda) {
+                $datosPrendas = [
+                    "id_prenda" => $prenda['Id'],
+                    "id_ensamble" => $OrdenProduccion,
+                    "cantidadPrenda" => $prenda['Cantidad']
+                ];
+                talleresModelo::agregarPrendasModelo($datosPrendas);
+            }
+
+            $alerta = [
+                "Alerta" => "redireccionarUser",
+                "Titulo" => "Ensamble registrado",
+                "Texto" => "Se ha completado el registro del ensamble.",
+                "Tipo" => "success",
+                "Url" => SERVERURL . "ensambleTaller/taller?variable=" . $nombreTaller
+            ];
+            echo json_encode($alerta);
+            exit();
+        } else {
+            $alerta = [
+                "Alerta" => "simple",
+                "Titulo" => "Ocurrió un error inesperado",
+                "Texto" => "No hemos podido registrar el ensamble.",
+                "Tipo" => "error"
+            ];
+            echo json_encode($alerta);
+            exit();
+        }
     }
-
-
-
-
-
-
 
 }

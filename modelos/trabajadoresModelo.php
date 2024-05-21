@@ -49,4 +49,17 @@ class trabajadoresModelo extends mainModel
         $sql->execute();
         return $sql;
     } //Fin del modelo
+
+    public function cantidadTrabajadoresModelo() {
+        $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM trabajadores");
+
+        // Ejecutar la consulta
+        $sql->execute();
+
+        // Obtener el resultado de la consulta
+        $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+        // Devolver la cantidad de registros
+        return $resultado['total'];
+    }
 }

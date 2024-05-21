@@ -60,6 +60,9 @@
             <div class="tile-container">
                 <?php
                 if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" ) {
+                        require_once "./controladores/prendasControlador.php";
+                        $prendasControlador = new prendasControlador();
+                        $cantidadRegistrosProductos = $prendasControlador->cantidadPrendasQControlador();
                     ?>
                 <a href="<?= SERVERURL; ?>notificaciones">
                 <div class="card">
@@ -71,7 +74,7 @@
                         <div class="card-details">
                             <h2 class="card-title">Inventario</h2>
                             <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
+                            <div class="registradas"><?php echo $cantidadRegistrosProductos; ?> Alertas</div>
                         </div>
                     </div>
                 </div>

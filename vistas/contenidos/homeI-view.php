@@ -68,7 +68,6 @@
                             <div class="card-details">
                                 <h2 class="card-title">Producción de prendas quirurgicas</h2>
                                 <p class="card-description">Descripción</p>
-                                <div class="registradas">Registradas</div>
                             </div>
                         </div>
                     </div>
@@ -76,6 +75,9 @@
 
                 <?php
                 $var = "Movilidad y Recuperación";
+                require_once "./controladores/productoControlador.php";
+                $productoControlador = new productoControlador();
+                $cantidadRegistrosP = $productoControlador->cantidadProductosControlador($var);
                 ?>
                 <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
                     <div class="card" data-categoria="Movilidad y Recuperación">
@@ -87,7 +89,7 @@
                             <div class="card-details">
                                 <h2 class="card-title">Movilidad y Recuperación</h2>
                                 <p class="card-description">Descripción</p>
-                                <div class="registradas">Registradas</div>
+                                <div class="registradas"><?php echo $cantidadRegistrosP; ?> Registrados</div>
                             </div>
                         </div>
                     </div>
@@ -95,6 +97,9 @@
 
                 <?php
                 $var = "Muebles Hospitalarios";
+                require_once "./controladores/productoControlador.php";
+                $productoControlador = new productoControlador();
+                $cantidadRegistrosP = $productoControlador->cantidadProductosControlador($var);
                 ?>
                 <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
                     <div class="card" data-categoria="Muebles Hospitalarios">
@@ -106,13 +111,16 @@
                             <div class="card-details">
                                 <h2 class="card-title">Muebles hospitalarios</h2>
                                 <p class="card-description">Descripción</p>
-                                <div class="registradas">Registradas</div>
+                                <div class="registradas"><?php echo $cantidadRegistrosP; ?> Registrados</div>
                             </div>
                         </div>
                     </div>
                 </a>
                 <?php
                 $var = "Línea respiratoria";
+                require_once "./controladores/productoControlador.php";
+                $productoControlador = new productoControlador();
+                $cantidadRegistrosP = $productoControlador->cantidadProductosControlador($var);
                 ?>
                 <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
 
@@ -125,13 +133,16 @@
                             <div class="card-details">
                                 <h2 class="card-title">Línea respiratoría</h2>
                                 <p class="card-description">Descripción</p>
-                                <div class="registradas">Registradas</div>
+                                <div class="registradas"><?php echo $cantidadRegistrosP; ?> Registrados</div>
                             </div>
                         </div>
                     </div>
                 </a>
                 <?php
                 $var = "Colchones y Colchonetas";
+                require_once "./controladores/productoControlador.php";
+                $productoControlador = new productoControlador();
+                $cantidadRegistrosP = $productoControlador->cantidadProductosControlador($var);
                 ?>
                 <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
                     <div class="card">
@@ -143,11 +154,16 @@
                             <div class="card-details">
                                 <h2 class="card-title">Colchones y Colchonetas</h2>
                                 <p class="card-description">Descripción</p>
-                                <div class="registradas">Registradas</div>
+                                <div class="registradas"><?php echo $cantidadRegistrosP; ?> Registrados</div>
                             </div>
                         </div>
                     </div>
                 </a>
+                <?php
+                require_once "./controladores/prendasControlador.php";
+                $prendasControlador = new prendasControlador();
+                $cantidadRegistrosPr = $prendasControlador->cantidadPrendasQControlador();
+                ?>
                 <a href="<?= SERVERURL; ?>prendasQuirurgicasI">
                     <div class="card">
                         <div class="card-content">
@@ -158,7 +174,7 @@
                             <div class="card-details">
                                 <h2 class="card-title">Prendas quirurgicas</h2>
                                 <p class="card-description">Descripción</p>
-                                <div class="registradas">Registradas</div>
+                                <div class="registradas"><?php echo $cantidadRegistrosPr; ?> Registradas</div>
                             </div>
                         </div>
                     </div>

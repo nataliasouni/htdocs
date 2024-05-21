@@ -37,7 +37,7 @@
                     </div>
                 </li>
             </ul>
-            <a href="<?= SERVERURL; ?>agendarCita">Agendar Cita</a>
+            <a href="login">Agendar Cita</a>
             <a href="<?= SERVERURL; ?>homePage#contacto">Contáctanos</a>
         </div>
         <div class="login-container">

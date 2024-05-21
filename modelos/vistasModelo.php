@@ -69,7 +69,8 @@ class vistasModelo
       "homeAlquileres",
       "controlAlquileresTerminados",
       "visualizarA",
-      "alquileresV"
+      "alquileresV",
+      "enviarEnsamble"
 
     ];
 

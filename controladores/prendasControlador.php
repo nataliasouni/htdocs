@@ -275,4 +275,14 @@ class prendasControlador extends prendasModelo
     }
   }
 
+  public function cantidadPrendasQControlador()
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadPrendasQ = prendasModelo::cantidadPrendasQModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadPrendasQ;
+        
+    }
+
 }

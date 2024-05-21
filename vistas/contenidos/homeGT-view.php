@@ -60,6 +60,9 @@
             <div class="tile-container">
                 <?php
                 if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" ) {
+                    require_once "./controladores/trabajadorControlador.php";
+                    $trabajadorControlador = new trabajadorControlador();
+                    $cantidadRegistros = $trabajadorControlador->cantidadTrabajadoresControlador();                                         
                     ?>
                     <a href="<?= SERVERURL; ?>trabajadores">
                         <div class="card">
@@ -71,7 +74,7 @@
                                 <div class="card-details">
                                     <h2 class="card-title">Lista Trabajadores</h2>
                                     <p class="card-description">Aqui podrás ver la lista de trabajadores</p>
-                                    <div class="registradas">Registradas</div>
+                                    <div class="registradas"><?php echo $cantidadRegistros; ?> Registrados</div>
                                 </div>
                             </div>
                         </div>
@@ -80,6 +83,9 @@
                 ?>
                 <?php
                 if ($_SESSION['permiso'] == "Master") {
+                    require_once "./controladores/registroESControlador.php";
+                    $registroESControlador = new registroESControlador();
+                    $cantidadRegistrosEs = $registroESControlador->cantidadRegistrosESControlador();
                     ?>
                      <a href="<?= SERVERURL; ?>registroES">
                         <div class="card">
@@ -91,7 +97,7 @@
                                 <div class="card-details">
                                     <h2 class="card-title">Registro Entrada y Salida</h2>
                                     <p class="card-description">Aqui podras registrar la entrada y salida de los trabajadores</p>
-                                    <div class="registradas">Registradas</div>
+                                    <div class="registradas"><?php echo $cantidadRegistrosEs; ?> Registradas</div>
                                 </div>
                             </div>
                         </div>

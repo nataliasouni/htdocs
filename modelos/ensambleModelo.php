@@ -128,4 +128,17 @@ class ensambleModelo extends mainModel
     }
 
 
+    public function cantidadEnsambleModelo() {
+        $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM ensamble");
+    
+        // Ejecutar la consulta
+        $sql->execute();
+    
+        // Obtener el resultado de la consulta
+        $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+    
+        // Devolver la cantidad de registros
+        return $resultado['total'];
+    }
+
 }

@@ -60,6 +60,9 @@
                             <div class="tile-container">
                                 <?php
                                 if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador") {
+                                        require_once "./controladores/prendasControlador.php";
+                                        $prendasControlador = new prendasControlador();
+                                        $cantidadRegistrosProductos = $prendasControlador->cantidadPrendasQControlador();
                                     ?>
                                     <a href="<?= SERVERURL; ?>homeN">
                                     <div class="card">
@@ -72,7 +75,7 @@
                                                 <h2 class="card-title">Notificaciones</h2>
                                                 <p class="card-description">Aqui podrás ver tus notificaciones respecto al inventario y
                                                     producción</p>
-                                                <div class="registradas">Registradas</div>
+                                                <div class="registradas">Alertas</div>
                                             </div>
                                         </div>
                                 </div>
@@ -138,7 +141,6 @@
                                             <h2 class="card-title">Inventario</h2>
                                             <p class="card-description">Aqui podrás los diferentes productos disponibles en tu tienda
                                             </p>
-                                            <div class="registradas">Registradas</div>
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +163,6 @@
                                             <p class="card-description">Aqui podrás ver el materail de los talleres que actualmente
                                                 tienen disponible
                                             </p>
-                                            <div class="registradas">Registradas</div>
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +184,6 @@
                                             <h2 class="card-title">Control de Trabajadores</h2>
                                             <p class="card-description">Aqui podrás llevar el seguimiento de los trabajadores
                                             </p>
-                                            <div class="registradas">Registradas</div>
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +206,6 @@
                                             <p class="card-description">Aqui podrás llevar el proceso de alquiler
                                                 de producotos de tu tienda
                                             </p>
-                                            <div class="registradas">Registradas</div>
                                         </div>
                                     </div>
                                 </div>
@@ -249,7 +248,6 @@
                                             <h2 class="card-title">Citas</h2>
                                             <p class="card-description">Aqui podrás ver las citas agendadas
                                             </p>
-                                            <div class="registradas">Registradas</div>
                                         </div>
                                     </div>
                                 </div>
@@ -258,6 +256,9 @@
                             ?>
                             <?php
                             if ($_SESSION['permiso'] == "Master") {
+                                require_once "./controladores/produccionControlador.php";
+                                $produccionControlador = new produccionControlador();
+                                $cantidadRegistros = $produccionControlador->cantidadRegistrosProduccionControlador();                             
                                 ?>
                                 <a href="<?= SERVERURL; ?>produccionMaster">
                                 <div class="card">
@@ -271,7 +272,7 @@
                                             <p class="card-description">Aqui podrás llevar el control de la produccion de los trabajadores
                                                 actuales
                                             </p>
-                                            <div class="registradas">Registradas</div>
+                                            <div class="registradas"> <?php echo $cantidadRegistros; ?> Registradas </div>
                                         </div>
                                     </div>
                                 </div>
@@ -281,7 +282,7 @@
                             ?>
                             <?php
                             if ($_SESSION['permiso'] == "Produccion") {
-                                ?>
+                            ?>
                             <a href="<?= SERVERURL; ?>produccion">
                                 <div class="card">
                                     <div class="card-content">
@@ -293,6 +294,7 @@
                                             <h2 class="card-title">Registro de Producción</h2>
                                             <p class="card-description">Aqui podrás subir la producción de los trabajadores actuales
                                             </p>
+                                            
                                             <div class="registradas">Registradas</div>
                                         </div>
                                     </div>
