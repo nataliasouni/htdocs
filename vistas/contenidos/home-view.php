@@ -217,7 +217,7 @@
                             <?php
                             if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador") {
                                 ?>
-                                <a href="<?= SERVERURL; ?>controlAlquileres">
+                                <a href="<?= SERVERURL; ?>homeAlquileres">
                                 <div class="card">
                                     <div class="card-content">
                                         <div class="content-img">

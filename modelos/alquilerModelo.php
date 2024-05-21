@@ -66,8 +66,25 @@ class alquilerModelo extends mainModel
     // Modelo para actualizar los datos del usuario
     protected static function actualizarEstadoaAlquilerModelo($datos)
     {
-        $sql = mainModel::conectarBD()->prepare("UPDATE alquiler SET  estado = :estado  WHERE numeroalquiler = :numeroalquiler");
-        $sql->bindParam(":numeroalquiler", $datos['numeroalquiler']);
+        $sql = mainModel::conectarBD()->prepare("UPDATE alquiler SET  fechaentrega = :fechaEntrega, fechadevolucion = :fechaDevolucion,
+        tiempodias = :tiempoDias, id = :Id, nombrecliente = :nombreCliente, cedulacliente = :cedulaCliente, 
+        direccion = :Direccion,telefono = :Telefono,nombreref1= :nombreRef1,nombreref2= :nombreRef2,telefonoref1= :telefonoRef1, telefonoref2= :telefonoRef2, 
+        totalpagar = :totalPagar,  estado = :estado  WHERE numeroalquiler = :numeroAlquiler");
+
+        $sql->bindParam(":numeroAlquiler", $datos['numeroAlquiler']);
+        $sql->bindParam(":fechaEntrega", $datos['fechaentrega']);
+        $sql->bindParam(":fechaDevolucion", $datos['fechadevolucion']);
+        $sql->bindParam(":tiempoDias", $datos['tiempodias']);
+        $sql->bindParam(":Id", $datos['id']);
+        $sql->bindParam(":nombreCliente", $datos['nombrecliente']);
+        $sql->bindParam(":cedulaCliente", $datos['cedulacliente']);
+        $sql->bindParam(":Direccion", $datos['direccion']);
+        $sql->bindParam(":Telefono", $datos['telefono']);
+        $sql->bindParam(":nombreRef1", $datos['nombreref1']);
+        $sql->bindParam(":nombreRef2", $datos['nombreref2']);
+        $sql->bindParam(":telefonoRef1", $datos['telefonoref1']);
+        $sql->bindParam(":telefonoRef2", $datos['telefonoref2']);
+        $sql->bindParam(":totalPagar", $datos['totalpagar']);
         $sql->bindParam(":estado", $datos['estado']);
         $sql->execute();
         return $sql;

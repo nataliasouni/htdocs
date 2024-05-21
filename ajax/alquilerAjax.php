@@ -3,7 +3,7 @@ $peticionAjax = true;
 require_once "../config/APP.php";
 
 
-if (isset($_POST['numeroAlquiler']) || isset($_POST['alquilerUpdate'])) {
+if (isset($_POST['numeroAlquiler']) || isset($_POST['alquilerUp'])) {
 
 
     //Instancia del controlador de usuarios
@@ -16,7 +16,7 @@ if (isset($_POST['numeroAlquiler']) || isset($_POST['alquilerUpdate'])) {
     }
 
     //Actualizar trabajador
-    if (isset($_POST['alquilerUpdate'])) {
+    if (isset($_POST['alquilerUp'])) {
         echo $objAlquiler->actualizarEstadosControlador();
     }
 

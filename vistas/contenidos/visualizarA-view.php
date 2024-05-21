@@ -31,19 +31,11 @@ if ($datosalquiler->rowCount() == 1) {
 
                     <div class="choose-option">
 
-                        <form class="formularioAjax content" action="<?php echo SERVERURL; ?>ajax/alquilerAjax.php"
-                            method="POST" data-form="update" id="formularioContrato">
+                        <form class="formularioAjax content" 
+                            id="formularioContrato">
                             <input type="hidden" name="alquilerUp" value="<?= $pagina[1] ?>">
                             <div class="añadir_alquiler-form">
 
-                                <div class="form-group">
-                                    <p class="titulos_form">Estado del Alquiler</p>
-                                    <select name="estado" class="login_nombreUsuario">
-                                        <option value="En proceso">En proceso</option>
-                                        <option value="Terminado">Terminado</option>
-                                        <option value="Vencido">Vencido</option>
-                                    </select>
-                                </div>
 
 
 
@@ -208,8 +200,7 @@ if ($datosalquiler->rowCount() == 1) {
                         </form>
 
                         <div class="boton">
-                            <button class="estado-enviar" type="submit" style="cursor: pointer" title="Enviar"
-                                name="Enviar">Confirmar</button>
+
                             <a onclick="window.history.back();"><button class="estado-volver" title="Volver"
                                     name="Volver">Volver</button></a>
                         </div>
