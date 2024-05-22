@@ -91,4 +91,44 @@ class alquilerModelo extends mainModel
     }
 
     // Fin del modelo
+
+    public function cantidadRegistrosModelo() {
+        $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM alquiler WHERE estado = 'Terminado'");
+    
+        // Ejecutar la consulta
+        $sql->execute();
+    
+        // Obtener el resultado de la consulta
+        $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+    
+        // Devolver la cantidad de registros
+        return $resultado['total'];
+    }
+
+    public function cantidadvencidosModelo() {
+        $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM alquiler WHERE estado = 'Vencido'");
+    
+        // Ejecutar la consulta
+        $sql->execute();
+    
+        // Obtener el resultado de la consulta
+        $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+    
+        // Devolver la cantidad de registros
+        return $resultado['total'];
+    }
+
+    public function cantidadvigenteModelo() {
+        $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM alquiler WHERE estado = 'En proceso'");
+    
+        // Ejecutar la consulta
+        $sql->execute();
+    
+        // Obtener el resultado de la consulta
+        $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+    
+        // Devolver la cantidad de registros
+        return $resultado['total'];
+    }
+    
 }

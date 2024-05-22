@@ -230,5 +230,15 @@ class alquilerproductosControlador extends alquilerproductosModelo
     }
   } //Fin del controlador
 
+  public function cantidadpalquilerControlador()
+  {
+      // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+      $cantidadRegistros = alquilerproductosModelo::cantidadPalquilerModelo();
+
+      // Devuelve la cantidad de registros
+      return $cantidadRegistros;
+      
+  }
+
 }
 

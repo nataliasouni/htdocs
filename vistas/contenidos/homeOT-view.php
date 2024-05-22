@@ -70,6 +70,11 @@
             <!-- Content -->
             <div class="tile-container">
                 <a href="<?= SERVERURL; ?>ensambleTaller/taller?variable=<?= $var; ?>">
+                <?php
+                require_once "./controladores/talleresControlador.php";
+                $talleresControladorD = new talleresControlador();
+                $cantidadRegistrosD = $talleresControladorD->cantidadEnsambleTallerControlador($var);
+                ?> 
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -79,7 +84,7 @@
                         <div class="card-details">
                             <h2 class="card-title">Ensamble</h2>
                             <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
+                            <div class="registradas"><?php echo $cantidadRegistrosD; ?> Registradas</div>
                         </div>
                     </div>
                 </div>

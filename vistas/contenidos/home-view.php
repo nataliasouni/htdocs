@@ -120,7 +120,6 @@
                                     <p class="card-description">Aqui podrás los diferentes productos disponibles en tu
                                         tienda
                                     </p>
-                                    <div class="registradas">Registradas</div>
                                 </div>
                             </div>
                         </div>
@@ -195,6 +194,9 @@
                 ?>
                 <?php
                 if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador") {
+                    require_once "./controladores/alquilerproductosControlador.php";
+                    $produccionControlador = new alquilerproductosControlador();
+                    $cantidadRegistros = $produccionControlador->cantidadpalquilerControlador();
                     ?>
                     <a href="<?= SERVERURL; ?>alquilerProductos">
                         <div class="card">
@@ -208,6 +210,7 @@
                                     <p class="card-description">Aqui podrás llevar el proceso de alquiler
                                         de producotos de tu tienda
                                     </p>
+                                    <div class="registradas"> <?php echo $cantidadRegistros; ?> Registradas</div>
                                 </div>
                             </div>
                         </div>
@@ -229,7 +232,6 @@
                                     <h2 class="card-title">Control de Alquiler</h2>
                                     <p class="card-description">Aqui podrás llevar el proceso de alquiler en tu tienda
                                     </p>
-                                    <div class="registradas">Registradas</div>
                                 </div>
                             </div>
                         </div>

@@ -45,6 +45,20 @@ class alquilerProductosModelo extends mainModel
     }
 
 
+    public function cantidadPalquilerModelo() {
+        $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM alquilerproductos WHERE estado = 'si'");
+
+        // Ejecutar la consulta
+        $sql->execute();
+
+        // Obtener el resultado de la consulta
+        $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+        // Devolver la cantidad de registros
+        return $resultado['total'];
+    }
+
+
 
 
 }

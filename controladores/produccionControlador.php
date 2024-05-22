@@ -186,14 +186,12 @@ class produccionControlador extends produccionModelo
     public function generarTablaProduccion()
     {
         // Consulta SQL para obtener los datos necesarios de la tabla producción y realizar los joins con las tablas relacionadas
-        $consulta = "SELECT p.id ,p.fecha, t.nombre AS nombre_trabajador, tall.nombre_usuario AS nombre_taller, pq.nombre AS prenda_elaborada, p.prendasquirurgicas AS cantidad_prendas, p.prendasdefectuosas AS prendas_defectuosas
-                 FROM produccion p
-                 INNER JOIN trabajadores t ON p.cedulatrabajador = t.cedula
-                 INNER JOIN usuario tall ON p.idtaller = tall.cedula
-                 INNER JOIN prendasquirurgicas pq ON p.idprenda = pq.id
-                 GROUP BY p.id
-                 ORDER BY p.id DESC"
-        ;
+        $consulta = "SELECT p.id, p.fecha, t.nombre AS nombre_trabajador, tall.nombre_usuario AS nombre_taller, pq.nombre AS prenda_elaborada, p.prendasquirurgicas AS cantidad_prendas, p.prendasdefectuosas AS prendas_defectuosas
+        FROM produccion p
+        INNER JOIN trabajadores t ON p.cedulatrabajador = t.cedula
+        INNER JOIN usuario tall ON p.idtaller = tall.cedula
+        INNER JOIN prendasquirurgicas pq ON p.idprenda = pq.id
+        ORDER BY p.id DESC";
 
         // Ejecutar la consulta y obtener los datos
         $conexion = mainModel::conectarBD();

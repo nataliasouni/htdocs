@@ -514,5 +514,34 @@ class alquilerControlador extends alquilerModelo
         }
     } //Fin del controlador
 
+    public function cantidadalquilerTControlador()
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadRegistros = alquilerModelo::cantidadRegistrosModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadRegistros;
+        
+    }
+
+    public function cantidadalquilerVEControlador()
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadRegistros = alquilerModelo::cantidadvencidosModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadRegistros;
+        
+    }
+    public function cantidadalquilerVIControlador()
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadRegistros = alquilerModelo::cantidadvigenteModelo();
+
+        // Devuelve la cantidad de registros
+        return $cantidadRegistros;
+        
+    }
+
 
 }

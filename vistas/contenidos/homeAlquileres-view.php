@@ -59,7 +59,10 @@
             <!-- Content -->
             <div class="tile-container">
                 <?php
-                if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" ) {
+                if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador") {
+                    require_once "./controladores/alquilerControlador.php";
+                    $produccionControlador = new alquilerControlador();
+                    $cantidadRegistros = $produccionControlador->cantidadalquilerVIControlador();
                     ?>
                     <a href="<?= SERVERURL; ?>controlAlquileres">
                         <div class="card">
@@ -71,53 +74,60 @@
                                 <div class="card-details">
                                     <h2 class="card-title">Alquileres Vigentes</h2>
                                     <p class="card-description">Aqui podrás ver la lista de Alquileres</p>
-                                    <div class="registradas">Registradas</div>
+                                    <div class="registradas"><?php echo $cantidadRegistros; ?> Registradas</div>
                                 </div>
                             </div>
                         </div>
-                <?php
+                        <?php
                 }
                 ?>
-                <?php
-                if ($_SESSION['permiso'] == "Master"  || $_SESSION['permiso'] == "Administrador" ) {
+                    <?php
+                    if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador") {
+                        require_once "./controladores/alquilerControlador.php";
+                        $produccionControlador = new alquilerControlador();
+                        $cantidadRegistros = $produccionControlador->cantidadalquilerTControlador();
+                        ?>
+                        <a href="<?= SERVERURL; ?>controlAlquileresTerminados">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="content-img">
+                                        <img class="card-image"
+                                            src="<?php echo SERVERURL; ?>vistas/img/alquilerTerminado.png" alt="Talleres">
+                                    </div>
+                                    <div class="card-details">
+                                        <h2 class="card-title">Alquileres Terminados</h2>
+                                        <p class="card-description">Aqui podrás ver la lista de Alquileres Terminados</p>
+                                        <div class="registradas"><?php echo $cantidadRegistros; ?> Registradas</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                    }
                     ?>
-                     <a href="<?= SERVERURL; ?>controlAlquileresTerminados">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="content-img">
-                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/alquilerTerminado.png"
-                                        alt="Talleres">
+                        <?php
+                        if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador") {
+                            require_once "./controladores/alquilerControlador.php";
+                            $produccionControlador = new alquilerControlador();
+                            $cantidadRegistros = $produccionControlador->cantidadalquilerVEControlador();
+                            ?>
+                            <a href="<?= SERVERURL; ?>alquileresV">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="content-img">
+                                            <img class="card-image"
+                                                src="<?php echo SERVERURL; ?>vistas/img/alquilar-archivo.png"
+                                                alt="Talleres">
+                                        </div>
+                                        <div class="card-details">
+                                            <h2 class="card-title">Alquileres Vencidos</h2>
+                                            <p class="card-description">Aqui podrás ver la lista de Alquileres Vencidos</p>
+                                            <div class="registradas"><?php echo $cantidadRegistros; ?> Registradas</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-details">
-                                    <h2 class="card-title">Alquileres Terminados</h2>
-                                    <p class="card-description">Aqui podrás ver la lista de Alquileres Terminados</p>
-                                    <div class="registradas">Registradas</div>
-                                </div>
-                            </div>
-                        </div>
-                <?php
-                }
-                ?>
                                 <?php
-                if ($_SESSION['permiso'] == "Master"  || $_SESSION['permiso'] == "Administrador" ) {
-                    ?>
-                     <a href="<?= SERVERURL; ?>alquileresV">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="content-img">
-                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/alquilar-archivo.png"
-                                        alt="Talleres">
-                                </div>
-                                <div class="card-details">
-                                    <h2 class="card-title">Alquileres Vencidos</h2>
-                                    <p class="card-description">Aqui podrás ver la lista de Alquileres Vencidos</p>
-                                    <div class="registradas">Registradas</div>
-                                </div>
-                            </div>
-                        </div>
-                <?php
-                }
-                ?>
+                        }
+                        ?>
             </div>
     </section>
 </main>

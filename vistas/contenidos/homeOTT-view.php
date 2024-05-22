@@ -60,6 +60,13 @@
             <class="tile-container">
 
                 <a href="<?php echo SERVERURL; ?>ensambleDeTaller">
+                    <?php
+                    $var = $_SESSION['nombre_usuario'];
+                    require_once "./controladores/talleresControlador.php";
+                    $talleresControladorD = new talleresControlador();
+                    $cantidadRegistrosD = $talleresControladorD->cantidadEnsambleTallerControlador($var);
+                    ?>
+
                     <div class="card">
                         <div class="card-content">
                             <div class="content-img">
@@ -69,43 +76,57 @@
                             <div class="card-details">
                                 <h2 class="card-title">Ensambles</h2>
                                 <p class="card-description">Aquí encontrarás los ensambles enviados a tu taller</p>
-                                <div class="registradas">Registradas</div>
+                                <div class="registradas"><?php echo $cantidadRegistrosD; ?> Registradas</div>
                             </div>
                         </div>
                     </div>
                 </a>
-                
+
                 <a href="<?php echo SERVERURL; ?>prendasTaller">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
-                                alt="Devolucion">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Devolución por defectos</h2>
-                            <p class="card-description">Aquí encontrarás tus devoluciones por defectos</p>
-                            <div class="registradas">Registradas</div>
-                        </div>
-                    </div>
-                </div>
-</a>
-<a href="<?php echo SERVERURL; ?>prendasQTaller">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
-                                alt="Devolucion">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Prendas quirurgicas</h2>
-                            <p class="card-description">Aqui encontrarás las prendas quirurgicas salidas de tu taller
-                            </p>
-                            <div class="registradas">Registradas</div>
+                    <?php
+                    $var = $_SESSION['nombre_usuario'];
+                    require_once "./controladores/talleresControlador.php";
+                    $talleresControladorD = new talleresControlador();
+                    $cantidadRegistrosD = $talleresControladorD->cantidadPrendasDefectuosasControlador($var);
+                    ?>
+
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
+                                    alt="Devolucion">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Devolución por defectos</h2>
+                                <p class="card-description">Aquí encontrarás tus devoluciones por defectos</p>
+                                <div class="registradas"><?php echo $cantidadRegistrosD; ?> Registradas</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            </a>
+                </a>
+                <a href="<?php echo SERVERURL; ?>prendasQTaller">
+                    <?php
+                     $var = $_SESSION['nombre_usuario'];
+                    require_once "./controladores/talleresControlador.php";
+                    $talleresControladorQ = new talleresControlador();
+                    $cantidadRegistrosQ = $talleresControladorQ->cantidadPrendasQuirurgicasControlador($var);
+                    ?>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
+                                    alt="Devolucion">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Prendas quirurgicas</h2>
+                                <p class="card-description">Aqui encontrarás las prendas quirurgicas salidas de tu
+                                    taller
+                                </p>
+                                <div class="registradas"><?php echo $cantidadRegistrosQ; ?> Registradas</div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        </a>
     </section>
 </main>

@@ -175,7 +175,6 @@ class talleresControlador extends talleresModelo
             echo '<div class="card-details">';
             echo '<h2 class="card-title">' . $nombre . '</h2>';
             echo '<p class="card-description">Descripción</p>';
-            echo '<div class="registradas">Registradas</div>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
@@ -435,6 +434,16 @@ class talleresControlador extends talleresModelo
     {
         // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
         $cantidadprendasd = talleresModelo::cantidadPrendasDefectuosasModelo($var);
+
+        // Devuelve la cantidad de registros
+        return $cantidadprendasd;
+
+    }
+
+    public function cantidadEnsambleTallerControlador($var)
+    {
+        // Llama al método del modelo que obtiene la cantidad de registros en la tabla produccion
+        $cantidadprendasd = talleresModelo::cantidadEnsamblesModelo($var);
 
         // Devuelve la cantidad de registros
         return $cantidadprendasd;

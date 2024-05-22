@@ -60,9 +60,9 @@
             <div class="tile-container">
                 <?php
                 if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" ) {
-                        require_once "./controladores/prendasControlador.php";
-                        $prendasControlador = new prendasControlador();
-                        $cantidadRegistrosProductos = $prendasControlador->cantidadPrendasQControlador();
+                        require_once "./controladores/notificacionesControlador.php";
+                        $prendasControlador = new notificacionesControlador();
+                        $cantidadRegistrosProductos = $prendasControlador->cantidadProductosControlador();
                     ?>
                 <a href="<?= SERVERURL; ?>notificaciones">
                 <div class="card">
