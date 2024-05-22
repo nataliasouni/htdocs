@@ -87,28 +87,21 @@
             </a>
             <ul class="submenu">
                 <li>
-                    <a href="#">
+                    <a href="<?= SERVERURL; ?>ensambleDeTaller">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png"
                             alt="Submenu Image">
-                        Materia Prima
+                        Ensambles
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/corte.png"
-                            alt="Submenu Image">
-                        Prendas Cortadas
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
+                    <a href="<?= SERVERURL; ?>prendasTaller">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
                             alt="Submenu Image">
                         Devolución por Defectos
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<?= SERVERURL; ?>prendasQTaller">
                         <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/prendas.png"
                             alt="Submenu Image">
                         Prendas quirurgicas

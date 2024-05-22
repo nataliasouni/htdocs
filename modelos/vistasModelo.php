@@ -66,7 +66,10 @@ class vistasModelo
       "visualizarAlquiler",
       "agendarCitas", 
       "prendasQuirurgicasI",
-      "enviarEnsamble"
+      "enviarEnsamble",
+      "ensambleDeTaller",
+      "prendasTaller",
+      "prendasQTaller"
     ];
 
     if (in_array($vistas, $listaBlanca)) {

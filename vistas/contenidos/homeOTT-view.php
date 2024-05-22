@@ -57,35 +57,25 @@
             </div>
 
             <!-- Content -->
-            <div class="tile-container">
+            <class="tile-container">
 
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png"
-                                alt="Ensamble">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Materia Prima</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
+                <a href="<?php echo SERVERURL; ?>ensambleDeTaller">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content-img">
+                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png"
+                                    alt="Ensamble">
+                            </div>
+                            <div class="card-details">
+                                <h2 class="card-title">Ensambles</h2>
+                                <p class="card-description">Aquí encontrarás los ensambles enviados a tu taller</p>
+                                <div class="registradas">Registradas</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content-img">
-                            <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/corte.png"
-                                alt="Prendas Cortadas">
-                        </div>
-                        <div class="card-details">
-                            <h2 class="card-title">Prendas Cortadas</h2>
-                            <p class="card-description">Descripción</p>
-                            <div class="registradas">Registradas</div>
-                        </div>
-                    </div>
-                </div>
+                </a>
+                
+                <a href="<?php echo SERVERURL; ?>prendasTaller">
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -94,12 +84,13 @@
                         </div>
                         <div class="card-details">
                             <h2 class="card-title">Devolución por defectos</h2>
-                            <p class="card-description">Descripción
-                            </p>
+                            <p class="card-description">Aquí encontrarás tus devoluciones por defectos</p>
                             <div class="registradas">Registradas</div>
                         </div>
                     </div>
                 </div>
+</a>
+<a href="<?php echo SERVERURL; ?>prendasQTaller">
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -108,12 +99,13 @@
                         </div>
                         <div class="card-details">
                             <h2 class="card-title">Prendas quirurgicas</h2>
-                            <p class="card-description">Descripción
+                            <p class="card-description">Aqui encontrarás las prendas quirurgicas salidas de tu taller
                             </p>
                             <div class="registradas">Registradas</div>
                         </div>
                     </div>
                 </div>
             </div>
+            </a>
     </section>
 </main>
