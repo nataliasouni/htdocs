@@ -13,7 +13,7 @@
             <div class="tile-container">
 
                 <div class="choose-option">
-                    <h2 style='color: #0053A9'>Alquileres Vigentes</h2>
+                    <h2 style='color: #0053A9'>Alquileres Vencidos</h2>
                 </div>
 
                 <div class="gestionarCliente">
@@ -40,7 +40,7 @@
                             <?php
                             require_once "./controladores/alquilerControlador.php";
                             $insProducto = new alquilerControlador();
-                            echo $insProducto->enlistaralquilerControlador();
+                            echo $insProducto->enlistaralquilerVencidoControlador();
 
                             ?>
                         </tbody>

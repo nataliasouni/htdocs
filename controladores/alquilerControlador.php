@@ -180,7 +180,7 @@ class alquilerControlador extends alquilerModelo
     public function enlistaralquilerControlador()
     {
         // Consulta SQL para obtener los datos de la tabla alquiler
-        $consulta = "SELECT a.numeroalquiler, a.nombrecliente, ap.id AS id, ap.nombreproducto AS nombre_producto, a.fechaentrega, a.fechadevolucion 
+        $consulta = "SELECT a.numeroalquiler, a.nombrecliente, ap.id AS id, ap.nombreproducto AS nombre_producto, a.fechaentrega, a.fechadevolucion, a.estado 
     FROM alquiler a
     JOIN alquilerproductos ap ON a.id = ap.id
     ORDER BY a.numeroalquiler ASC";
@@ -204,29 +204,171 @@ class alquilerControlador extends alquilerModelo
             $contador = 1; // Inicializar contador de filas
             // Iterar sobre los datos obtenidos
             foreach ($datos as $rows) {
-                // Calcular el tiempo restante en días
-                $fechaDevolucion = new DateTime($rows['fechadevolucion']);
-                $fechaActual = new DateTime();
-                $diferencia = $fechaDevolucion->diff($fechaActual);
-                $tiempoRestante = $diferencia->days + 1;
-                // Filas de la tabla HTML
-                $tabla .= '<tr>
+                if ($rows['estado'] == 'En proceso') {
+                    // Calcular el tiempo restante en días
+                    $fechaDevolucion = new DateTime($rows['fechadevolucion']);
+                    $fechaActual = new DateTime();
+                    $diferencia = $fechaDevolucion->diff($fechaActual);
+                    $tiempoRestante = $diferencia->days + 1;
+                    // Filas de la tabla HTML
+                    $tabla .= '<tr>
                             <td>' . $contador . '</td>
                             <td>' . $rows['numeroalquiler'] . '</td>' .
-                    '<td>' . $rows['nombrecliente'] . '</td>' .
-                    '<td>' . $rows['id'] . '</td>' .
-                    '<td>' . $rows['nombre_producto'] . '</td>' .
-                    '<td>' . $rows['fechaentrega'] . '</td>' .
-                    '<td>' . $rows['fechadevolucion'] . '</td>' .
-                    '<td>' . $tiempoRestante + 1 . '</td>';
-                // Botones (si es necesario)
-                if ($rows['id'] != 0) {
-                    $tabla .= '<td>
-                              <button onclick="window.location.href = \'' . SERVERURL . 'visualizarAlquiler/' . mainModel::encryption($rows['numeroalquiler']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/detalles.png"></img></button>
-                          </td>';
+                        '<td>' . $rows['nombrecliente'] . '</td>' .
+                        '<td>' . $rows['id'] . '</td>' .
+                        '<td>' . $rows['nombre_producto'] . '</td>' .
+                        '<td>' . $rows['fechaentrega'] . '</td>' .
+                        '<td>' . $rows['fechadevolucion'] . '</td>' .
+                        '<td>' . $tiempoRestante . '</td>' .
+                        '<td>' . $rows['estado'] . '</td>';
+                    // Botones (si es necesario)
+                    if ($rows['id'] != 0) {
+                        $tabla .= '<td>
+                              <button onclick="window.location.href = \'' . SERVERURL . 'visualizarAlquiler/' . mainModel::encryption($rows['numeroalquiler']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/lapiz.png"></img></button>
+                              <button onclick="window.location.href = \'' . SERVERURL . 'visualizarA/' . mainModel::encryption($rows['numeroalquiler']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/detalles.png"></img></button>
+                              </td>';
+
+                    }
+                    $tabla .= '</tr>';
+                    $contador++; // Incrementar contador de filas
                 }
-                $tabla .= '</tr>';
-                $contador++; // Incrementar contador de filas
+            }
+        } else {
+            // Mensaje si no se encontraron registros
+            $tabla .= '<tr><td colspan="6">No hay registros en el sistema</td></tr>';
+        }
+
+        // Cerrar la tabla HTML
+        $tabla .= '</tbody>
+                </table>';
+
+        // Devolver la tabla HTML generada
+        return $tabla;
+    } //Fin del controlador
+
+    public function enlistaralquilerVencidoControlador()
+    {
+        // Consulta SQL para obtener los datos de la tabla alquiler
+        $consulta = "SELECT a.numeroalquiler, a.nombrecliente, ap.id AS id, ap.nombreproducto AS nombre_producto, a.fechaentrega, a.fechadevolucion, a.estado 
+    FROM alquiler a
+    JOIN alquilerproductos ap ON a.id = ap.id
+    ORDER BY a.numeroalquiler ASC";
+
+        // Conexión a la base de datos
+        $conexion = mainModel::conectarBD();
+
+        // Ejecutar la consulta y obtener los datos
+        $datos = $conexion->query($consulta);
+        $datos = $datos->fetchAll();
+
+        // Contar el total de filas encontradas
+        $total = $conexion->query("SELECT FOUND_ROWS()");
+        $total = (int) $total->fetchColumn();
+
+        // Inicializar variable para construir la tabla HTML
+        $tabla = '';
+
+        // Comprobar si se encontraron filas
+        if ($total >= 1) {
+            $contador = 1; // Inicializar contador de filas
+            // Iterar sobre los datos obtenidos
+            foreach ($datos as $rows) {
+                if ($rows['estado'] == 'Vencido') {
+                    // Calcular el tiempo restante en días
+                    $fechaDevolucion = new DateTime($rows['fechadevolucion']);
+                    $fechaActual = new DateTime();
+                    $diferencia = $fechaDevolucion->diff($fechaActual);
+                    $tiempoRestante = $diferencia->days + 1;
+                    // Filas de la tabla HTML
+                    $tabla .= '<tr>
+                            <td>' . $contador . '</td>
+                            <td>' . $rows['numeroalquiler'] . '</td>' .
+                        '<td>' . $rows['nombrecliente'] . '</td>' .
+                        '<td>' . $rows['id'] . '</td>' .
+                        '<td>' . $rows['nombre_producto'] . '</td>' .
+                        '<td>' . $rows['fechaentrega'] . '</td>' .
+                        '<td>' . $rows['fechadevolucion'] . '</td>' .
+                        '<td>' . $tiempoRestante . '</td>' .
+                        '<td>' . $rows['estado'] . '</td>';
+                    // Botones (si es necesario)
+                    if ($rows['id'] != 0) {
+                        $tabla .= '<td>
+                              <button onclick="window.location.href = \'' . SERVERURL . 'visualizarAlquiler/' . mainModel::encryption($rows['numeroalquiler']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/lapiz.png"></img></button>
+                              <button onclick="window.location.href = \'' . SERVERURL . 'visualizarA/' . mainModel::encryption($rows['numeroalquiler']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/detalles.png"></img></button>
+                              </td>';
+
+                    }
+                    $tabla .= '</tr>';
+                    $contador++; // Incrementar contador de filas
+                }
+            }
+        } else {
+            // Mensaje si no se encontraron registros
+            $tabla .= '<tr><td colspan="6">No hay registros en el sistema</td></tr>';
+        }
+
+        // Cerrar la tabla HTML
+        $tabla .= '</tbody>
+                </table>';
+
+        // Devolver la tabla HTML generada
+        return $tabla;
+    } //Fin del controlador
+
+
+    public function enlistaralquilerTerminadoControlador()
+    {
+        // Consulta SQL para obtener los datos de la tabla alquiler
+        $consulta = "SELECT a.numeroalquiler, a.nombrecliente, ap.id AS id, ap.nombreproducto AS nombre_producto, a.fechaentrega, a.fechadevolucion, a.estado 
+    FROM alquiler a
+    JOIN alquilerproductos ap ON a.id = ap.id
+    ORDER BY a.numeroalquiler ASC";
+
+        // Conexión a la base de datos
+        $conexion = mainModel::conectarBD();
+
+        // Ejecutar la consulta y obtener los datos
+        $datos = $conexion->query($consulta);
+        $datos = $datos->fetchAll();
+
+        // Contar el total de filas encontradas
+        $total = $conexion->query("SELECT FOUND_ROWS()");
+        $total = (int) $total->fetchColumn();
+
+        // Inicializar variable para construir la tabla HTML
+        $tabla = '';
+
+        // Comprobar si se encontraron filas
+        if ($total >= 1) {
+            $contador = 1; // Inicializar contador de filas
+            // Iterar sobre los datos obtenidos
+            foreach ($datos as $rows) {
+                if ($rows['estado'] == 'Terminado') {
+                    // Calcular el tiempo restante en días
+                    $fechaDevolucion = new DateTime($rows['fechadevolucion']);
+                    $fechaActual = new DateTime();
+                    $diferencia = $fechaDevolucion->diff($fechaActual);
+                    $tiempoRestante = $diferencia->days + 1;
+                    // Filas de la tabla HTML
+                    $tabla .= '<tr>
+                            <td>' . $contador . '</td>
+                            <td>' . $rows['numeroalquiler'] . '</td>' .
+                        '<td>' . $rows['nombrecliente'] . '</td>' .
+                        '<td>' . $rows['id'] . '</td>' .
+                        '<td>' . $rows['nombre_producto'] . '</td>' .
+                        '<td>' . $rows['fechaentrega'] . '</td>' .
+                        '<td>' . $rows['fechadevolucion'] . '</td>' .
+                        '<td>' . $tiempoRestante . '</td>' .
+                        '<td>' . $rows['estado'] . '</td>';
+                    // Botones (si es necesario)
+                    if ($rows['id'] != 0) {
+                        $tabla .= '<td>
+                              <button onclick="window.location.href = \'' . SERVERURL . 'visualizarA/' . mainModel::encryption($rows['numeroalquiler']) . '\';" class="estado-editar button_js btn-editar" type="button" title="Editar" name="Editar"><img src="./vistas/img/detalles.png"></img></button>
+                          </td>';
+                    }
+                    $tabla .= '</tr>';
+                    $contador++; // Incrementar contador de filas
+                }
             }
         } else {
             // Mensaje si no se encontraron registros
@@ -244,6 +386,7 @@ class alquilerControlador extends alquilerModelo
 
 
 
+
     //Inicio del controlador
     public function datosalquilerControlador($numeroalquiler)
     {
@@ -257,11 +400,11 @@ class alquilerControlador extends alquilerModelo
     public function actualizarestadosControlador()
     {
         //Recibiendo Identificador unico
-        $codigoProducto = mainModel::decryption($_POST['alquilerUpdate']);
-        $codigoProducto = mainModel::limpiarCadena($codigoProducto);
+        $numeroAlquiler = mainModel::decryption($_POST['alquilerUp']);
+        $numeroAlquiler = mainModel::limpiarCadena($numeroAlquiler);
 
         //Comprobar existencia del usuario
-        $checKCedula = mainModel::consultaSimple("SELECT * FROM alquiler WHERE id = $codigoProducto");
+        $checKCedula = mainModel::consultaSimple("SELECT * FROM alquiler WHERE numeroalquiler = $numeroAlquiler");
 
         if ($checKCedula->rowCount() <= 0) {
             $alerta = [
@@ -277,14 +420,30 @@ class alquilerControlador extends alquilerModelo
         }
 
         //Obtener valores del form
-        $id = mainModel::limpiarCadena($_POST['alquilerUpdate']);
-        $codigo = mainModel::limpiarCadena($_POST['estado']);
-        $producto = mainModel::limpiarCadena($_POST['idProducto']);
+        $numeroAlquiler = mainModel::limpiarCadena($_POST['alquilerUpdate']);
+        $fechaentrega = mainModel::limpiarCadena($_POST['fechaEntrega']);
+        $fechadevolucion = mainModel::limpiarCadena($_POST['fechaDevolucion']);
+        $tiempodias = mainModel::limpiarCadena($_POST['tiempoAlquiler']);
+        $id = mainModel::limpiarCadena($_POST['idProducto']);
+        $nombrecliente = mainModel::limpiarCadena($_POST['nombreCliente']);
+        $cedulacliente = mainModel::limpiarCadena($_POST['cedulaCliente']);
+        $direccion = mainModel::limpiarCadena($_POST['Direccion']);
+        $telefono = mainModel::limpiarCadena($_POST['Telefono']);
+        $nombreref1 = mainModel::limpiarCadena($_POST['nombreReferencia1']);
+        $nombreref2 = mainModel::limpiarCadena($_POST['nombreReferencia2']);
+        $telefonoref1 = mainModel::limpiarCadena($_POST['telefonoReferencia1']);
+        $telefonoref2 = mainModel::limpiarCadena($_POST['telefonoReferencia2']);
+        $totalpagar = mainModel::limpiarCadena($_POST['totalPagar']);
+        $estado = mainModel::limpiarCadena($_POST['estado']);
 
         //Comprobar si han habido cambios
         if (
-            $codigo == $datos['estado']
+            $numeroAlquiler == $datos['numeroalquiler'] && $fechaentrega == $datos['fechaentrega'] && $fechadevolucion == $datos['fechadevolucion'] && $tiempodias == $datos['tiempodias']
+            && $id == $datos['id'] && $nombrecliente == $datos['nombrecliente'] && $cedulacliente == $datos['cedulacliente'] && $direccion == $datos['direccion'] && $telefono == $datos['telefono'] &&
+            $nombreref1 == $datos['nombreref1'] && $nombreref2 == $datos['nombreref2'] && $telefonoref1 == $datos['telefonoref1'] && $telefonoref2 == $datos['telefonoref2']
+            && $totalpagar == $datos['totalpagar'] && $estado == $datos['estado']
         ) {
+
 
             $alerta = [
                 "Alerta" => "simple",
@@ -296,10 +455,15 @@ class alquilerControlador extends alquilerModelo
             exit();
 
         }
+
+        $estadoProducto = "no";
+        if ($estado === "Terminado") {
+            $estadoProducto = "si";
+        }
         //Array de datos para la actualizacion de datos
         $datosActualizarProducto = [
-            "id" => $producto,
-            "estado" => "si",
+            "id" => $id,
+            "estado" => $estadoProducto,
 
         ];
         alquilerModelo::actualizarEstadoModelo($datosActualizarProducto);
@@ -308,8 +472,21 @@ class alquilerControlador extends alquilerModelo
 
         //Array de datos para la actualizacion de datos
         $datosActualizar = [
-            "id" => $id,
-            "estado" => $codigo,
+            'numeroAlquiler' => $numeroAlquiler,
+            'fechaentrega' => $fechaentrega,
+            'fechadevolucion' => $fechadevolucion,
+            'tiempodias' => $tiempodias,
+            'id' => $id,
+            'nombrecliente' => $nombrecliente,
+            'cedulacliente' => $cedulacliente,
+            'direccion' => $direccion,
+            'telefono' => $telefono,
+            'nombreref1' => $nombreref1,
+            'nombreref2' => $nombreref2,
+            'telefonoref1' => $telefonoref1,
+            'telefonoref2' => $telefonoref2,
+            'totalpagar' => $totalpagar,
+            'estado' => $estado,
 
         ];
 
@@ -321,7 +498,7 @@ class alquilerControlador extends alquilerModelo
                 "Titulo" => "Usuario actualizado",
                 "Texto" => "Se ha completado la actualizacion de datos del producto.",
                 "Tipo" => "success",
-                "Url" => SERVERURL . "alquilerProductos"
+                "Url" => SERVERURL . "controlAlquileres"
             );
             echo json_encode($alerta);
             exit();
