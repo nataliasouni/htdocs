@@ -65,7 +65,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="content-img">
-                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/gestion-de-candidatos.png"
+                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/alquiler-seguro.png"
                                         alt="Inventario">
                                 </div>
                                 <div class="card-details">
@@ -85,7 +85,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="content-img">
-                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/tiempo-extraordinario.png"
+                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/alquilerTerminado.png"
                                         alt="Talleres">
                                 </div>
                                 <div class="card-details">
@@ -105,7 +105,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="content-img">
-                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/tiempo-extraordinario.png"
+                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/alquilar-archivo.png"
                                         alt="Talleres">
                                 </div>
                                 <div class="card-details">

@@ -209,21 +209,21 @@
                 <ul class="submenu">
                     <li>
                         <a href="<?= SERVERURL; ?>controlAlquileres">
-                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/tiempo-extraordinario.png"
+                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/alquiler-seguro.png"
                                 alt="Submenu Image">
                             Alquileres Vigentes
                         </a>
                     </li>
                     <li>
                         <a href="<?= SERVERURL; ?>controlAlquileresTerminados">
-                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/gestion-de-candidatos.png"
+                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/alquilerTerminado.png"
                                 alt="Submenu Image">
                             Alquileres Terminados
                         </a>
                     </li>
                     <li>
                         <a href="<?= SERVERURL; ?>alquileresV">
-                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/gestion-de-candidatos.png"
+                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/alquilar-archivo.png"
                                 alt="Submenu Image">
                             Alquileres Vencidos
                         </a>
