@@ -22,6 +22,7 @@ a {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap; 
+    padding: 20px;
 }
 
 .choose-option {
@@ -191,6 +192,10 @@ a {
     }
 
     .tile-container {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        display: contents;
         width: 90%; /* Reducir el ancho del contenedor de tarjetas para pantallas más pequeñas */
     }
 

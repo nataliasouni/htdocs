@@ -2,13 +2,17 @@
 .navLateral {
     position: fixed;
     top: 0;
-    left: -300px; 
-    height: 100vh; 
+    left: -300px;
+    height: 100vh;
     width: 250px;
-    background-color: #62B8B9;
-    color: #000000;
+    background-color: rgba(125, 212, 173, 0.26);
+    /* Color de fondo con transparencia */
+    color: #000;
+    /* Texto en color negro */
     transition: left 0.3s ease;
-    z-index: 99; 
+    z-index: 99;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* Sombra suave */
 }
 
 .navLateral.active {
@@ -21,35 +25,44 @@
     margin: 0;
 }
 
-.navLateral > ul > li > a {
-    color: #000000;
+.navLateral>ul>li>a {
+    color: #000;
+    /* Color de texto en negro */
     text-decoration: none;
     display: block;
-    text-align: left; 
-    padding-top: 20px;
-    padding-left: 10px;
-    font-size: 20px;
+    text-align: left;
+    padding: 10px 15px;
+    /* Ajuste del espaciado */
+    font-size: 18px;
+    /* Tamaño de fuente */
 }
 
 .navLateral .submenu li a {
-    color: #000000;
+    color: #000;
+    /* Color de texto en negro */
     text-decoration: none;
     display: block;
-    padding-left: 1px; 
-    text-align: left; 
-    font-size: px;
+    padding: 10px 25px;
+    /* Ajuste del espaciado */
+    text-align: left;
+    font-size: 16px;
 }
 
 .navLateral .submenu {
     display: none;
     position: absolute;
     top: 0;
-    background-color: #86dcdd;
-    width: 200px;
-    overflow-y: auto; /* Añade esta línea */
-    max-height: 300px; /* Ajusta la altura máxima según tu preferencia */
-    border-radius: 0px 10px 10px 0px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Añade sombra para un aspecto más elegante */
+    background-color: rgba(125, 212, 173, 0.774);
+    /* Color de fondo con transparencia */
+    width: 220px;
+    /* Ancho del submenú */
+    overflow-y: auto;
+    /* Añade desplazamiento vertical */
+    max-height: calc(100vh - 80px);
+    /* Altura máxima para evitar que se desborde */
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
 }
 
 /* Personaliza el aspecto de la barra de desplazamiento */
@@ -59,6 +72,7 @@
 
 .navLateral .submenu::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.3);
+    /* Color del scrollbar */
     border-radius: 10px;
 }
 
@@ -66,81 +80,95 @@
     background-color: transparent;
 }
 
-
 .navLateral ul li:hover .submenu {
     display: block;
 }
 
 .navLateral ul li {
-    position: relative; 
+    position: relative;
 }
 
 .navLateral ul li .submenu {
-    left: 100%; 
+    left: 100%;
 }
 
 .navLateral .submenu li {
-    padding: 15px 10px;
-    border-bottom: 1px solid #62B8B9;
-    width: 80%;
-    margin: 0 auto 5px auto;
+    border-bottom: 1px solid rgba(125, 212, 173, 0.26);
+    /* Borde inferior con transparencia */
 }
 
 .profile {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-top: 20px;
     padding: 10px;
-    background-color: rgba(73, 227, 158, 0);
-    color: #000000;
+    background-color: rgba(125, 212, 173, 0.26);
+    /* Color de fondo con transparencia */
 }
 
 .navLateral .profile img {
-    width: 100px; 
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    margin-bottom: 2px;
+    margin-bottom: 10px;
+    /* Espaciado inferior */
 }
 
 .profile span {
-    font-size: 25px; 
+    font-size: 20px;
+    /* Tamaño de fuente */
     font-weight: bold;
-    margin-bottom: 2px;
+    margin-bottom: 10px;
+    /* Espaciado inferior */
 }
 
 .divider {
-    height: 3px; 
-    background-color: #ffffff; 
-    margin-bottom: 20px; 
-    width: 80%;
-    margin: 0 auto 5px auto;
+    height: 3px;
+    background-color: #000;
+    /* Color de la línea divisoria en negro */
+    margin-bottom: 20px;
 }
 
 .navLateral .menu-image,
 .navLateral .submenu-image {
-    width: 20px; 
+    width: 20px;
     height: 20px;
-    margin-right: 5px; 
+    margin-right: 5px;
 }
 
 /* Estilos para dispositivos móviles */
 @media screen and (max-width: 768px) {
     .navLateral {
-        width: 150px; /* Reducir el ancho del menú lateral */
+        width: 150px;
+        /* Ancho reducido para dispositivos móviles */
+        z-index: 100;
+        /* Ajuste del z-index */
     }
 
     .navLateral .submenu {
-        width: 150px; /* Reducir el ancho del submenú lateral */
+        width: 150px;
+        /* Ancho del submenú */
     }
 
-    .navLateral.active + .page-content {
-        margin-left: 150px; /* Ajustar el margen izquierdo del contenido de la página cuando la barra lateral está activa */
+    .navLateral.active+.page-content {
+        margin-left: 500px;
+        /* Ajuste del margen izquierdo del contenido */
     }
 
-    .navLateral.active + .page-content.shifted {
-        margin-left: 0; /* Ajustar el margen izquierdo del contenido de la página cuando la barra lateral está activa y desplazada */
+    .navLateral.active+.page-content.shifted {
+        margin-left: 0;
+        /* Ajuste del margen izquierdo */
     }
+
+    .page-content {
+        transition: margin-left 0.1s ease;
+        display: block !important;
+        flex-direction: column;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: 250;
+        font-family: "Yeseva One", serif;
+    }
+
+
 }
-
-
