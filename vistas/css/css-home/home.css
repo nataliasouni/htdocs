@@ -18,7 +18,7 @@ a {
 
 /* Estilos CSS para las tarjetas */
 .tile-container {
-    width: 80%;
+    width: 90%; /* Aumentar el ancho del contenedor de tarjetas */
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap; 
@@ -49,11 +49,11 @@ a {
 }
 
 .choose-option h2:before {
-    left: -210; /* Posiciona la línea izquierda al inicio del título */
+    left: -210px; /* Posiciona la línea izquierda al inicio del título */
 }
 
 .choose-option h2:after {
-    right: -210; /* Posiciona la línea derecha al final del título */
+    right: -210px; /* Posiciona la línea derecha al final del título */
 }
 
 /* Media query para ajustar el diseño cuando la pantalla es más pequeña */
@@ -77,7 +77,7 @@ a {
 }
 
 .card {
-    width: 500px; /* Ancho de la tarjeta */
+    width: 800px; /* Aumentar el ancho de la tarjeta */
     height: 200px; /* Altura de la tarjeta */
     background-color: #fff; 
     border-radius: 20px;
@@ -205,4 +205,3 @@ a {
         margin: 30px 0; /* Espaciar las tarjetas verticalmente */
     }
 }
-
