@@ -44,6 +44,43 @@ class talleresControlador extends talleresModelo
         return $tabla;
     }
 
+    public function enlistarPrendasQTallerControlador($cedula)
+    {
+        $consulta = "SELECT p.fecha, p.idPrenda, p.prendasquirurgicas, t.cedula AS nombre_taller
+                 FROM produccion p
+                 JOIN usuario t ON p.idtaller = t.cedula
+                 WHERE t.cedula = :cedula ORDER BY p.fecha DESC";
+        $conexion = mainModel::conectarBD();
+        $datos = $conexion->prepare($consulta);
+        $datos->bindParam(':cedula', $cedula);
+        $datos->execute();
+        $total = $datos->rowCount();
+        $tabla = '';
+
+        if ($total >= 1) {
+            while ($rows = $datos->fetch()) {
+                $idPrenda = $rows['idPrenda'];
+                // Consulta para obtener el nombre de la prenda correspondiente al ID de prenda
+                $consultaPrenda = "SELECT nombre FROM prendasQuirurgicas WHERE id = :idPrenda";
+                $stmt = $conexion->prepare($consultaPrenda);
+                $stmt->bindParam(':idPrenda', $idPrenda);
+                $stmt->execute();
+                $nombrePrenda = $stmt->fetchColumn();
+
+                $tabla .= '<tr>';
+                $tabla .= '<td>' . $rows['fecha'] . '</td>';
+                // Mostrar el nombre de la prenda en lugar del ID de prenda
+                $tabla .= '<td>' . $nombrePrenda . '</td>';
+                $tabla .= '<td>' . $rows['prendasquirurgicas'] . '</td>';
+                $tabla .= '</tr>';
+            }
+        } else {
+            $tabla .= '<tr><td colspan="4">No hay registros en el taller seleccionado</td></tr>';
+        }
+
+        return $tabla;
+    }
+
     public function enlistarDefectuosasControlador($nombre)
     {
         $consulta = "SELECT p.fecha, p.idPrenda, p.prendasdefectuosas, t.nombre_usuario AS nombre_taller
@@ -54,6 +91,44 @@ class talleresControlador extends talleresModelo
         $conexion = mainModel::conectarBD();
         $datos = $conexion->prepare($consulta);
         $datos->bindParam(':nombre', $nombre);
+        $datos->execute();
+        $total = $datos->rowCount();
+        $tabla = '';
+
+        if ($total >= 1) {
+            while ($rows = $datos->fetch()) {
+                $idPrenda = $rows['idPrenda'];
+                // Consulta para obtener el nombre de la prenda correspondiente al ID de prenda
+                $consultaPrenda = "SELECT nombre FROM prendasQuirurgicas WHERE id = :idPrenda";
+                $stmt = $conexion->prepare($consultaPrenda);
+                $stmt->bindParam(':idPrenda', $idPrenda);
+                $stmt->execute();
+                $nombrePrenda = $stmt->fetchColumn();
+
+                $tabla .= '<tr>';
+                $tabla .= '<td>' . $rows['fecha'] . '</td>';
+                // Mostrar el nombre de la prenda en lugar del ID de prenda
+                $tabla .= '<td>' . $nombrePrenda . '</td>';
+                $tabla .= '<td>' . $rows['prendasdefectuosas'] . '</td>';
+                $tabla .= '</tr>';
+            }
+        } else {
+            $tabla .= '<tr><td colspan="4">No hay registros en el taller seleccionado</td></tr>';
+        }
+
+        return $tabla;
+    }
+
+    public function enlistarDefectuosasTallerControlador($cedula)
+    {
+        $consulta = "SELECT p.fecha, p.idPrenda, p.prendasdefectuosas, t.cedula AS nombre_taller
+                 FROM produccion p
+                 JOIN usuario t ON p.idtaller = t.cedula
+                 WHERE cedula = :cedula AND p.prendasdefectuosas> 0 ORDER BY p.fecha DESC"
+        ;
+        $conexion = mainModel::conectarBD();
+        $datos = $conexion->prepare($consulta);
+        $datos->bindParam(':cedula', $cedula);
         $datos->execute();
         $total = $datos->rowCount();
         $tabla = '';
@@ -139,18 +214,19 @@ class talleresControlador extends talleresModelo
         $idTaller = $resultadoTaller['cedula'];
 
         // Consulta para seleccionar los datos relacionados con el taller especificado por su ID
-        $consulta = "SELECT ep.id_ensamble,
+        $consulta = "SELECT 
+        ep.id_ensamble,
         GROUP_CONCAT(DISTINCT CONCAT(pe.Nombre, ' (', ep.cantidadProducto, ')') SEPARATOR '<br>') AS contenido_ensamble,
         GROUP_CONCAT(DISTINCT CONCAT(pc.Nombre, ' (', pr.cantidadPrenda, ')') SEPARATOR '<br>') AS prendas_cortadas,
-        (SELECT SUM(cantidadProducto) FROM ensamblet_productos WHERE id_ensamble = ep.id_ensamble) AS total_productos,
-        (SELECT SUM(cantidadPrenda) FROM ensamblet_prendas WHERE id_ensamble = ep.id_ensamble) AS total_prendas
+        (SELECT SUM(cantidadProducto) FROM ensamblet_productos WHERE id_ensamble = et.id_ensamble AND id_ensamblet = et.id) AS total_productos,
+        (SELECT SUM(cantidadPrenda) FROM ensamblet_prendas WHERE id_ensamble = et.id_ensamble AND id_ensamblet = et.id) AS total_prendas
         FROM ensamble_taller et
         INNER JOIN ensamblet_productos ep ON ep.id_ensamble = et.id_ensamble
         INNER JOIN ensamblet_prendas pr ON ep.id_ensamble = pr.id_ensamble 
         INNER JOIN producto_ensamble p ON ep.id_producto = p.producto_id
         INNER JOIN productose pe ON p.producto_id = pe.Id
         LEFT JOIN prendascortadas pc ON pr.id_prenda = pc.id
-        WHERE et.id_taller = :idTaller
+        WHERE et.id_taller = :idTaller AND ep.id_ensamblet = et.id AND pr.id_ensamblet = et.id
         GROUP BY ep.id_ensamble
         ORDER BY ep.id_ensamble ASC
     ";
@@ -190,10 +266,71 @@ class talleresControlador extends talleresModelo
         return $tabla; // Devolver la tabla construida
     }
 
-    public function enlistarEnsambleControlador($Nombre)
+    public function enlistarEnsambleTallerControlador($cedula)
 {
-    // Consulta para obtener los ensambles que aún no están asociados al taller
-    $consulta = "SELECT p.id, p.ensamble_id, GROUP_CONCAT(e.Nombre SEPARATOR '<br>') as nombre_productos, SUM(p.cantidad) as total_cantidad, en.CantidadProduccion as cantidad_produccion, en.Estado as Estado
+    // Obtener la conexión a la base de datos
+    $conexion = mainModel::conectarBD();
+
+    // Consulta para seleccionar los datos relacionados con el taller especificado por su ID
+    $consulta = "SELECT 
+        ep.id_ensamble,
+        GROUP_CONCAT(DISTINCT CONCAT(pe.Nombre, ' (', ep.cantidadProducto, ')') SEPARATOR '<br>') AS contenido_ensamble,
+        GROUP_CONCAT(DISTINCT CONCAT(pc.Nombre, ' (', pr.cantidadPrenda, ')') SEPARATOR '<br>') AS prendas_cortadas,
+        (SELECT SUM(cantidadProducto) FROM ensamblet_productos WHERE id_ensamble = et.id_ensamble AND id_ensamblet = et.id) AS total_productos,
+        (SELECT SUM(cantidadPrenda) FROM ensamblet_prendas WHERE id_ensamble = et.id_ensamble AND id_ensamblet = et.id) AS total_prendas
+        FROM ensamble_taller et
+        INNER JOIN ensamblet_productos ep ON ep.id_ensamble = et.id_ensamble
+        INNER JOIN ensamblet_prendas pr ON ep.id_ensamble = pr.id_ensamble 
+        INNER JOIN producto_ensamble p ON ep.id_producto = p.producto_id
+        INNER JOIN productose pe ON p.producto_id = pe.Id
+        LEFT JOIN prendascortadas pc ON pr.id_prenda = pc.id
+        WHERE et.id_taller = :cedula AND ep.id_ensamblet = et.id AND pr.id_ensamblet = et.id
+        GROUP BY ep.id_ensamble
+        ORDER BY ep.id_ensamble ASC";
+
+    // Preparar la consulta
+    $sql = $conexion->prepare($consulta);
+    // Asignar el valor del parámetro :cedula
+    $sql->bindParam(':cedula', $cedula);
+    // Ejecutar la consulta
+    $sql->execute();
+    // Obtener los datos
+    $datos = $sql->fetchAll();
+    $total = count($datos);
+    $tabla = '';
+
+    if ($total >= 1) {
+        $contador = 1;
+        foreach ($datos as $rows) {
+            $tabla .= '<tr>';
+
+            // Imprimir el ID del ensamble en la primera columna
+            $tabla .= '<td>' . $rows['id_ensamble'] . '</td>';
+            // Imprimir el contenido del ensamble (nombres de los productos) en la segunda columna
+            $tabla .= '<td>' . $rows['contenido_ensamble'] . '</td>';
+            // Imprimir el total de productos
+            $tabla .= '<td>' . $rows['total_productos'] . '</td>';
+            // Imprimir las cantidades de los productos del ensamble en la tercera columna
+            $tabla .= '<td>' . $rows['prendas_cortadas'] . '</td>';
+            // Imprimir el total de prendas
+            $tabla .= '<td>' . $rows['total_prendas'] . '</td>';
+            // Imprimir botones u opciones en la sexta columna
+            // Cerrar la fila actual
+            $tabla .= '</tr>';
+            $contador++;
+        }
+    } else {
+        $tabla .= '<tr><td colspan="5">No hay registros en el sistema para este taller</td></tr>';
+    }
+
+    return $tabla; // Devolver la tabla construida
+}
+
+
+    public function enlistarEnsambleControlador($Nombre)
+    {
+        // Consulta para obtener los ensambles que aún no están asociados al taller
+        $consulta = "SELECT p.id, p.ensamble_id, GROUP_CONCAT(e.Nombre SEPARATOR '<br>') as nombre_productos, SUM(p.cantidad) as total_cantidad, en.CantidadProduccion as cantidad_produccion, en.Estado as Estado
          FROM producto_ensamble p
          INNER JOIN productose e ON p.producto_id = e.Id
          INNER JOIN ensamble en ON p.ensamble_id = en.OrdenProdccion
@@ -205,47 +342,47 @@ class talleresControlador extends talleresModelo
          GROUP BY p.ensamble_id
          ORDER BY p.ensamble_id ASC";
 
-    $conexion = mainModel::conectarBD();
-    $stmt = $conexion->prepare($consulta);
-    $stmt->bindParam(':Nombre', $Nombre);
-    $stmt->execute();
-    $datos = $stmt->fetchAll();
-    $total = count($datos);
-    $tabla = '';
+        $conexion = mainModel::conectarBD();
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':Nombre', $Nombre);
+        $stmt->execute();
+        $datos = $stmt->fetchAll();
+        $total = count($datos);
+        $tabla = '';
 
-    if ($total >= 1) {
-        $contador = 1;
-        foreach ($datos as $rows) {
-            $estadoProducto = $rows['Estado'] == "Si" ? "Habilitada" : "Deshabilitada";
-            $claseFila = $rows['Estado'] == "Si" ? "" : "deshabilitado";
+        if ($total >= 1) {
+            $contador = 1;
+            foreach ($datos as $rows) {
+                $estadoProducto = $rows['Estado'] == "Si" ? "Habilitada" : "Deshabilitada";
+                $claseFila = $rows['Estado'] == "Si" ? "" : "deshabilitado";
 
-            $tabla .= '<tr class="' . $claseFila . '">';
+                $tabla .= '<tr class="' . $claseFila . '">';
 
-            // Imprimir el ID del ensamble en la primera columna
-            $tabla .= '<td>' . $rows['ensamble_id'] . '</td>';
-            // Imprimir el nombre de los productos en una sola celda
-            $tabla .= '<td>' . $rows['cantidad_produccion'] . '</td>';
-            // Imprimir la cantidad de producción en la siguiente columna
-            $tabla .= '<td>' . $rows['nombre_productos'] . '</td>';
-            // Imprimir la suma total de la cantidad de productos en la última columna
-            $tabla .= '<td>' . $rows['total_cantidad'] . '</td>';
-            // Cerrar la fila actual
-            $tabla .= '<td>
+                // Imprimir el ID del ensamble en la primera columna
+                $tabla .= '<td>' . $rows['ensamble_id'] . '</td>';
+                // Imprimir el nombre de los productos en una sola celda
+                $tabla .= '<td>' . $rows['cantidad_produccion'] . '</td>';
+                // Imprimir la cantidad de producción en la siguiente columna
+                $tabla .= '<td>' . $rows['nombre_productos'] . '</td>';
+                // Imprimir la suma total de la cantidad de productos en la última columna
+                $tabla .= '<td>' . $rows['total_cantidad'] . '</td>';
+                // Cerrar la fila actual
+                $tabla .= '<td>
             <button onclick="window.location.href = \'' . SERVERURL . 'enviarEnsamble/' .
-                mainModel::encryption($rows['id']) . '?variable=' . $Nombre . '\' ;" class="estado-detalles button_js btn-detalles" 
+                    mainModel::encryption($rows['id']) . '?variable=' . $Nombre . '\' ;" class="estado-detalles button_js btn-detalles" 
             type="button" title="Agregar" name="detalles"> 
             <img src="./vistas/img/Agregar.png"></img>
             </button>       
             </td>';
-            $tabla .= '</tr>';
-            $contador++;
+                $tabla .= '</tr>';
+                $contador++;
+            }
+        } else {
+            $tabla .= '<tr><td colspan="4">No hay registros en el sistema</td></tr>';
         }
-    } else {
-        $tabla .= '<tr><td colspan="4">No hay registros en el sistema</td></tr>';
-    }
 
-    return $tabla; // Devolver la tabla construida
-}
+        return $tabla; // Devolver la tabla construida
+    }
 
 
 
@@ -331,6 +468,7 @@ class talleresControlador extends talleresModelo
 
     public function agregarEnsambleControlador()
     {
+        $idensamblet = mainModel::limpiarCadena($_POST['idEnsamblet']);
         $OrdenProduccion = mainModel::limpiarCadena($_POST['OrdenProduccion']);
         $nombreTaller = mainModel::limpiarCadena($_POST['nombreTaller']);
         $productos = isset($_POST['datosTablaProductos']) ? json_decode($_POST['datosTablaProductos'], true) : [];
@@ -512,6 +650,7 @@ class talleresControlador extends talleresModelo
         }
 
         $datosAgregarEnsamble = [
+            "id" => $idensamblet,
             "id_ensamble" => $OrdenProduccion,
             "id_taller" => $idTaller
         ];
@@ -523,7 +662,8 @@ class talleresControlador extends talleresModelo
                 $datosProducto = [
                     "id_producto" => $producto['Id'],
                     "id_ensamble" => $OrdenProduccion,
-                    "cantidadProducto" => $producto['Cantidad']
+                    "cantidadProducto" => $producto['Cantidad'],
+                    "id_ensamblet" => $idensamblet
                 ];
                 talleresModelo::agregarProductosModelo($datosProducto);
             }
@@ -532,7 +672,8 @@ class talleresControlador extends talleresModelo
                 $datosPrendas = [
                     "id_prenda" => $prenda['Id'],
                     "id_ensamble" => $OrdenProduccion,
-                    "cantidadPrenda" => $prenda['Cantidad']
+                    "cantidadPrenda" => $prenda['Cantidad'],
+                    "id_ensamblet" => $idensamblet
                 ];
                 talleresModelo::agregarPrendasModelo($datosPrendas);
             }
@@ -557,5 +698,4 @@ class talleresControlador extends talleresModelo
             exit();
         }
     }
-
 }

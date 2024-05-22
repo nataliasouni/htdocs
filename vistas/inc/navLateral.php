@@ -78,6 +78,37 @@
             </li>
         <?php } ?>
 
+        <?php if ($_SESSION['permiso'] == "Taller"){ ?>
+        <li>
+            <a href="<?= SERVERURL; ?>homeOTT">
+                <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/inventario.png" alt="Menu Image">
+                Inventario
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a href="<?= SERVERURL; ?>ensambleDeTaller">
+                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png"
+                            alt="Submenu Image">
+                        Ensambles
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= SERVERURL; ?>prendasTaller">
+                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
+                            alt="Submenu Image">
+                        Devolución por Defectos
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= SERVERURL; ?>prendasQTaller">
+                        <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/prendas.png"
+                            alt="Submenu Image">
+                        Prendas quirurgicas
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <?php } ?>
         <?php if ($_SESSION['permiso'] == "Taller") { ?>
             <li>
                 <a href="<?= SERVERURL; ?>homeOTT">
@@ -115,6 +146,7 @@
                     </li>
                 </ul>
             </li>
+
         <?php } ?>
         <?php if ($_SESSION['permiso'] == "Master") { ?>
             <li>
