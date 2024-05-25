@@ -113,7 +113,6 @@ class productoControlador extends productosModelo
 
       $var = $categoria;
 
-
       $alerta = [
         "Alerta" => "redireccionarUser",
         "Titulo" => "Producto registrado",

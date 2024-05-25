@@ -111,6 +111,15 @@
         <?php } ?>
         <?php if ($_SESSION['permiso'] == "Taller") { ?>
             <li>
+                <a href="<?= SERVERURL; ?>solicitarInsumosTalleres">
+                    <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png" alt="Menu Image">
+                    Solicitar materia prima
+                </a>
+            </li>
+
+        <?php } ?>
+        <?php if ($_SESSION['permiso'] == "Taller") { ?>
+            <li>
                 <a href="<?= SERVERURL; ?>homeOTT">
                     <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/inventario.png" alt="Menu Image">
                     Inventario
@@ -163,7 +172,7 @@
                 </ul>
             </li>
         <?php } ?>
-        <?php if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" || $_SESSION['permiso'] == "Taller") { ?>
+        <?php if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador" ) { ?>
             <li>
                 <a href="<?= SERVERURL; ?>homeN">
                     <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/notificaciones.png" alt="Menu Image">
@@ -181,7 +190,7 @@
                     <?php } ?>
                     <?php if ($_SESSION['permiso'] == "Master") { ?>
                         <li>
-                            <a href="#">
+                            <a href="notificacionesTaller">
                                 <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/talleres.png"
                                     alt="Submenu Image">
                                 Talleres

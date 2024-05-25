@@ -164,4 +164,48 @@ class talleresModelo extends mainModel
             return 0;
         }
     }
+
+
+
+    public function registrarAlertaInsumos($datos)
+    {
+        
+    // Preparar la consulta SQL para insertar datos en la tabla notificaciones_taller
+    $sql = mainModel::conectarBD()->prepare("INSERT INTO notificaciones_taller(cedula, insumos, estado) 
+    VALUES(:cedula, :insumos, 'Si')");
+
+    // Vincular los parámetros de la consulta con los valores de $datos
+    $sql->bindParam(":cedula", $datos['cedula']);
+    $sql->bindParam(":insumos", $datos['insumosTalleres']);
+
+    // Ejecutar la consulta
+    $sql->execute();
+
+    // Devolver el resultado de la ejecución de la consulta
+    return $sql;
+
+    }
+
+
+    public function modificarEstadoAlertasModelo($datos)
+    {
+        
+    // Preparar la consulta SQL para insertar datos en la tabla notificaciones_taller
+    $sql = mainModel::conectarBD()->prepare("
+    UPDATE notificaciones_taller 
+    SET estado = 'No' 
+    WHERE id = :id
+    ");
+
+    // Vincular los parámetros de la consulta con los valores de $datos
+    $sql->bindParam(":id", $datos['id']);
+
+
+    // Ejecutar la consulta
+    $sql->execute();
+
+    // Devolver el resultado de la ejecución de la consulta
+    return $sql;
+
+    }
 }

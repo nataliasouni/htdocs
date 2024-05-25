@@ -84,7 +84,11 @@
                 ?>
                 <?php
                 if ($_SESSION['permiso'] == "Master") {
+                        require_once "./controladores/notificacionesControlador.php";
+                        $prendasControlador = new notificacionesControlador();
+                        $cantidadRegistrosAlertas = $prendasControlador->cantidadInsumosTallerControlador();
                     ?>
+                <a href="<?= SERVERURL; ?>notificacionesTaller">
                 <div class="card">
                     <div class="card-content">
                         <div class="content-img">
@@ -94,10 +98,11 @@
                         <div class="card-details">
                             <h2 class="card-title">Talleres</h2>
                             <p class="card-description">Aquí podrás ver la info de todos los talleres</p>
-                            <div class="registradas">Registradas</div>
+                            <div class="registradas"><?php echo $cantidadRegistrosAlertas; ?> Alertas</div>
                         </div>
                     </div>
                 </div>
+                </a>
                 <?php
                 }
                 ?>

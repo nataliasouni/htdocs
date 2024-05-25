@@ -1,0 +1,144 @@
+.containerCompleto {
+    background-color: rgb(125, 212, 173, 26%);
+    border-radius: 15px;
+    margin-top: 5%; /* Margen superior */
+    width: 90%; /* Ancho del contenedor */
+    max-width: 600px; /* Ancho máximo del contenedor */
+    height: auto; /* Altura del contenedor */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7); 
+    margin-bottom: 5%; /* Margen inferior */
+}
+
+.centrados {
+    margin: 2em;
+    text-align: left;
+}
+
+input[type="date"] {
+    background-color: #f3f7fd;
+    width: 50%; /* Ancho del input */
+    text-transform: uppercase; 
+    margin-left: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2); 
+    padding: 6px;
+    border-radius: 10px;
+}
+
+textarea{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: #f3f7fd;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 10px;
+    margin-left: 35;
+    width:400px;
+    align-items: center;
+    height: 70px;
+}
+
+
+
+input#cedulatrabajador{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: #f3f7fd;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 10px;
+    margin-left: 50px;
+    width:150px;
+}
+
+/* Estilo para los botones */
+button#cancelar {
+    border-radius: 20px;
+    border: 1px solid #d6121c;
+    background: #d6121c;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: none;
+    transition: transform 80ms ease-in;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    width: 195px;
+    height: 35px;
+    margin-top: 40px ;
+    margin-left: 20px;
+}
+
+button#ingresarP {
+    border-radius: 20px;
+    border: 1px solid #0f61a8;
+    background: #0f61a8;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: none;
+    transition: transform 80ms ease-in;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7); 
+    margin-left: 30px;
+    margin-top: 40px ;
+    width: 195px;
+    height: 35px;
+}
+
+/* Estilo para el ComboBox */
+select {
+    width: 50%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f3f7fd;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+label{
+    margin-top: 25px;
+    margin-left: 70px;
+    font-weight: 300;
+}
+
+/* Media queries para hacer el diseño más responsive */
+@media screen and (max-width: 768px) {
+    .centrados {
+        margin: 1em;
+    }
+
+    input[type="date"],
+    select
+    {
+        width: 100%;
+        margin: 0.5em 0;
+    }
+
+    label{
+        margin-left: 5px;
+    }
+
+    
+    button#cancelar,
+    button#ingresarP {
+    
+    display: block; /* Mostrar los botones como bloques para que estén uno debajo del otro */    
+    margin: 20px auto; /* Centrar botones */
+    }
+
+    input#totalprendasquirurgicas {
+        margin-left: 3px;
+        width: 100%;
+    }
+
+    input#totalprendasdefectuosas {
+        width: 100%;
+    }
+    
+    
+}

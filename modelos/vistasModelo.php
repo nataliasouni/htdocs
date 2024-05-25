@@ -73,7 +73,9 @@ class vistasModelo
       "homeAlquileres",
       "controlAlquileresTerminados",
       "visualizarA",
-      "alquileresV"
+      "alquileresV",
+      "solicitarInsumosTalleres",
+      "notificacionesTaller"
     ];
 
     if (in_array($vistas, $listaBlanca)) {

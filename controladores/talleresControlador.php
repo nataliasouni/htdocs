@@ -707,4 +707,141 @@ class talleresControlador extends talleresModelo
             exit();
         }
     }
+
+
+
+    public function insumosTalleresControlador()
+    {
+        $cedula = mainModel::limpiarCadena($_POST['cedula']);
+        $insumosTalleres = mainModel::limpiarCadena($_POST['insumosTalleres']);
+
+        // Comprobar campos vacíos
+        if ($cedula == "" || $insumosTalleres == ""  ) {
+            echo "<script>
+            Swal.fire({
+                title: 'Ocurrió un error inesperado',
+                text: 'No has llenado todos los campos para completar el registro',
+                type: 'error',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '" . SERVERURL . "solicitarInsumosTalleres';
+                }
+            })
+          </script>";
+            exit();
+        }
+
+
+
+        $datos = [
+            "cedula" => $cedula,
+            "insumosTalleres" => $insumosTalleres
+
+        ];
+
+
+        if (talleresModelo::registrarAlertaInsumos($datos)) {
+
+            echo "<script>
+            Swal.fire({
+                title: 'Proceso exitoso',
+                text: 'Se ha solicitado materia prima',
+                type: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '" . SERVERURL . "solicitarInsumosTalleres';
+                }
+            })
+          </script>";
+            exit();
+
+        } else {
+            echo "<script>
+            Swal.fire({
+                title: 'Ocurrió un error inesperado',
+                text: 'Por favor intentelo de nuevo o mas tarde',
+                type: 'error',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '" . SERVERURL . "solicitarInsumosTalleres';
+                }
+            })
+           </script>";
+            exit();
+        }
+
+    }
+
+
+
+
+    public function modificarEstadoInsumosControlador()
+    {
+        $id = mainModel::limpiarCadena($_POST['id']);
+
+
+        // Comprobar campos vacíos
+        if ($id == ""  ) {
+            echo "<script>
+            Swal.fire({
+                title: 'Ocurrió un error inesperado',
+                text: 'No has llenado todos los campos para completar el registro',
+                type: 'error',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '" . SERVERURL . "notificacionesTaller';
+                }
+            })
+          </script>";
+            exit();
+        }
+
+
+
+        $datos = [
+            "id" => $id
+
+        ];
+
+        
+        if (talleresModelo::modificarEstadoAlertasModelo($datos)) {
+
+        
+            echo "<script>
+            Swal.fire({
+                title: 'Proceso exitoso',
+                text: 'Se elimino esta alerta, recuerda que debiste mandarle materia prima al taller',
+                type: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '" . SERVERURL . "notificacionesTaller';
+                }
+            })
+          </script>";
+            exit();
+
+        } else {
+            echo "<script>
+            Swal.fire({
+                title: 'Ocurrió un error inesperado',
+                text: 'Por favor intentelo de nuevo o mas tarde',
+                type: 'error',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = '" . SERVERURL . "notificacionesTaller';
+                }
+            })
+           </script>";
+            exit();
+        }
+
+    }
+
+
 }

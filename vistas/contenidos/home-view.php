@@ -60,9 +60,9 @@
             <div class="tile-container">
                 <?php
                 if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador") {
-                    require_once "./controladores/prendasControlador.php";
-                    $prendasControlador = new prendasControlador();
-                    $cantidadRegistrosProductos = $prendasControlador->cantidadPrendasQControlador();
+                    require_once "./controladores/notificacionesControlador.php";
+                    $prendasControlador = new notificacionesControlador();
+                    $cantidadAlertas = $prendasControlador->cantidadAlertas();
                     ?>
                     <a href="<?= SERVERURL; ?>homeN">
                         <div class="card">
@@ -75,7 +75,7 @@
                                     <h2 class="card-title">Notificaciones</h2>
                                     <p class="card-description">Aqui podrás ver tus notificaciones respecto al inventario y
                                         producción</p>
-                                    <div class="registradas">Alertas</div>
+                                    <div class="registradas"><?php echo $cantidadAlertas; ?> Alertas</div>
                                 </div>
                             </div>
                         </div>
@@ -86,18 +86,16 @@
                 <?php
                 if ($_SESSION['permiso'] == "Taller") {
                     ?>
-                    <a href="<?= SERVERURL; ?>homeN">
+                    <a href="<?= SERVERURL; ?>solicitarInsumosTalleres">
                         <div class="card">
                             <div class="card-content">
                                 <div class="content-img">
-                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/notificaciones.png"
+                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png"
                                         alt="Notificaciones">
                                 </div>
                                 <div class="card-details">
-                                    <h2 class="card-title">Notificaciones</h2>
-                                    <p class="card-description">Aqui podrás ver tus notificaciones respecto al inventario y
-                                        producción</p>
-                                    <div class="registradas">Registradas</div>
+                                    <h2 class="card-title">Solicitar materia prima</h2>
+                                    <p class="card-description">Aqui podrás solicitar insumos </p>
                                 </div>
                             </div>
                         </div>
