@@ -115,6 +115,14 @@ label{
 
 /* Media queries para hacer el diseño más responsive */
 @media screen and (max-width: 768px) {
+
+    .containerCompleto {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 95%;
+        height: 95%;
+    }
+
     .centrados {
         margin: 1em;
     }
@@ -131,11 +139,19 @@ label{
     }
 
     
-    button#cancelar,
+    
     button#ingresarP {
     
     display: block; /* Mostrar los botones como bloques para que estén uno debajo del otro */    
-    margin: 20px auto; /* Centrar botones */
+    margin-top: 30px;
+    margin-left: 90px;
+    }
+
+    button#cancelar { 
+    display: block; /* Mostrar los botones como bloques para que estén uno debajo del otro */    
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-left: 90px;
     }
 
     input#totalprendasquirurgicas {

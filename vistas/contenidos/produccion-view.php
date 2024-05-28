@@ -14,7 +14,7 @@
     <section class="full-box page-content">
         <div class="page-content">
             <div class="choose-option">
-                <h2>Produccion</h2>
+                <h2>Producción</h2>
                 <div class="page-content">
                     <div class="containerCompleto">
                         <div class="centrados">
@@ -29,7 +29,7 @@
                                     echo $produccionControlador->cargarNombresYCedulasTrabajadores();
                                     ?>
                                 </select>
-                                <label class="titulos" id="seleccionar">Seleccione el taller asociado con la produccion:</label>
+                                <label class="titulos" id="seleccionar">Seleccione el taller asociado con la producción:</label>
                                 <select id="idtaller" name="idtaller">
                                     <!-- Aquí se cargarán los nombres de los talleres desde el controlador -->
                                     <?php
@@ -40,7 +40,7 @@
                                 <label for="fecha" id="fec">Fecha:</label>
                                 <input type="date" id="fecha" name="fecha" required>
                                 <p> </p>
-                                <label class="titulos" id="seleccionarPrenda">Seleccione el tipo de prenda producido:</label>
+                                <label class="titulos" id="seleccionarPrenda">Seleccione el tipo de prenda producida:</label>
                                 <select id="idPrenda" name="idPrenda">
                                     <!-- Aquí se cargarán los nombres de los talleres desde el controlador -->
                                     <?php
@@ -49,14 +49,14 @@
                                 </select>
                                 <p> </p>
                                 <div class="input-button-container">
-                                    <label class="titulos" id="pr" >Ingrese las prendas quirurgicas elaboradas: </label>
+                                    <label class="titulos" id="pr" >Ingrese las prendas quirúrgicas elaboradas: </label>
                                     <input name="totalprendasquirurgicas"id="totalprendasquirurgicas" type="number" placeholder=" " autocomplete="off" id="produccion" name="produccion" required min="0" inputmode="numeric"> 
                                     <div >
                                         <label class="titulos" id="pre" >Ingrese las prendas defectuosas encontradas: </label>
                                         <input name="totalprendasdefectuosas" id="totalprendasdefectuosas" type="number" placeholder=" " autocomplete="off" id="otraProduccion" name="otraProduccion" required min="0" inputmode="numeric">
                                     </div>
                                 </div>
-                                <button id="ingresarP" type="submit">Ingresar Produccion</button>
+                                <button id="ingresarP" type="submit">Ingresar Producción</button>
                                 <button id="cancelar" type="button" onclick="window.location.href = 'home'">Cancelar</button>
                             </form> <!-- Fin del formulario -->
                         </div>  

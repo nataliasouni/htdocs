@@ -7,7 +7,6 @@
             <div class="footer-social">
                 <ul>
                     <li><a href="https://www.facebook.com/ayudasmedicasuniversales?locale=es_LA" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
                     <li><a href="https://www.instagram.com/amu_palmira/" target="_blank"><i class="fab fa-instagram"></i></a></li>
                 </ul>
             </div>

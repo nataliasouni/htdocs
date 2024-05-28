@@ -118,45 +118,6 @@
             </li>
 
         <?php } ?>
-        <?php if ($_SESSION['permiso'] == "Taller") { ?>
-            <li>
-                <a href="<?= SERVERURL; ?>homeOTT">
-                    <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/inventario.png" alt="Menu Image">
-                    Inventario
-                </a>
-                <ul class="submenu">
-                    <li>
-                        <a href="#">
-                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/ensamble.png"
-                                alt="Submenu Image">
-                            Materia Prima
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/corte.png"
-                                alt="Submenu Image">
-                            Prendas Cortadas
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/devolucion.png"
-                                alt="Submenu Image">
-                            Devolución por Defectos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/prendas.png"
-                                alt="Submenu Image">
-                            Prendas quirurgicas
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-        <?php } ?>
         <?php if ($_SESSION['permiso'] == "Master") { ?>
             <li>
                 <a href="<?= SERVERURL; ?>homeT">
@@ -274,7 +235,7 @@
         <?php } ?>
         <?php if ($_SESSION['permiso'] == "Administrador" || $_SESSION['permiso'] == "Master") { ?>
             <li>
-                <a href="#">
+                <a href="https://calendar.google.com/calendar/u/0/r" target="_blank">
                     <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/citas.png" alt="Menu Image">
                     Citas
                 </a>
@@ -293,6 +254,14 @@
                 <a href="<?= SERVERURL; ?>produccionMaster">
                     <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/produccion.png" alt="Menu Image">
                     Control de producción
+                </a>
+            </li>
+        <?php } ?>
+        <?php if ($_SESSION['permiso'] == "Cliente") { ?>
+            <li>
+                <a href="agendarCitas">
+                    <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/citas.png" alt="Menu Image">
+                    Agendamiento de citas
                 </a>
             </li>
         <?php } ?>

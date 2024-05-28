@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h2 class="card-title">Solicitar materia prima</h2>
-                                    <p class="card-description">Aqui podrás solicitar insumos </p>
+                                    <p class="card-description">Aquí podrás solicitar insumos </p>
                                 </div>
                             </div>
                         </div>
@@ -115,8 +115,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h2 class="card-title">Inventario</h2>
-                                    <p class="card-description">Aqui podrás los diferentes productos disponibles en tu
-                                        tienda
+                                    <p class="card-description">Aquí podrás encontrar información de tus insumos y producciones
                                     </p>
                                 </div>
                             </div>
@@ -240,19 +239,19 @@
                 <?php
                 if ($_SESSION['permiso'] == "Master" || $_SESSION['permiso'] == "Administrador") {
                     ?>
-
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="content-img">
-                                <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/cita.png" alt="Cita">
-                            </div>
-                            <div class="card-details">
-                                <h2 class="card-title">Citas</h2>
-                                <p class="card-description">Aqui podrás ver las citas agendadas
-                                </p>
+                    <a href="https://calendar.google.com/calendar/u/0/r" target="_blank">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="content-img">
+                                    <img class="card-image" src="<?php echo SERVERURL; ?>vistas/img/cita.png" alt="Cita">
+                                </div>
+                                <div class="card-details">
+                                    <h2 class="card-title">Citas</h2>
+                                    <p class="card-description">Aquí podrás ver las citas agendadas</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <?php
                 }
                 ?>
@@ -295,10 +294,8 @@
                                 </div>
                                 <div class="card-details">
                                     <h2 class="card-title">Registro de Producción</h2>
-                                    <p class="card-description">Aqui podrás subir la producción de los trabajadores actuales
+                                    <p class="card-description">Aqui podrás subir la producción de los trabajadores 
                                     </p>
-
-                                    <div class="registradas">Registradas</div>
                                 </div>
                             </div>
                         </div>
@@ -318,7 +315,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h2 class="card-title">Agendamiento de citas</h2>
-                                    <p class="card-description">Aqui podrás registrar tus citas con la doctora Diana
+                                    <p class="card-description">Aquí podrás registrar tus citas con la doctora Diana
                                     </p>
                                     <div class="registradas"></div>
                                 </div>

@@ -77,7 +77,7 @@ a {
 }
 
 .card {
-    width: 800px; /* Aumentar el ancho de la tarjeta */
+    width: 700px; /* Aumentar el ancho de la tarjeta */
     height: 200px; /* Altura de la tarjeta */
     background-color: #fff; 
     border-radius: 20px;

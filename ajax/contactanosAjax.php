@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mensaje = $_POST['mensaje'];
 
     // Dirección de correo electrónico a la que se enviará la notificación
-    $destinatario = 'natalia.2002.saldana@gmail.com';
+    $destinatario = 'dianacarolinarodriguezcalle@gmail.com';
 
     // Configurar PHPMailer
     $mail = new PHPMailer(true); // True para habilitar excepciones
@@ -25,8 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'natalia.2002.saldana@gmail.com'; // Tu dirección de correo electrónico de Gmail
-        $mail->Password = 'xxlixcocrlrzpbgj'; // Tu contraseña de Gmail
+        $mail->Username = 'dianacarolinarodriguezcalle@gmail.com'; // Tu dirección de correo electrónico de Gmail
+        $mail->Password = 'ffqudepmgstnkvgg'; // Tu contraseña de Gmail
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 

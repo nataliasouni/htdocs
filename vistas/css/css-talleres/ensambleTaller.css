@@ -219,16 +219,19 @@
         display: block;
     }
 
-    .filter-input,
+    
     .pagination a,
     .formularioAjax {
         width: 90%; /* Ajustar el ancho en dispositivos pequeños */
         max-width: none; /* Anular el ancho máximo en dispositivos pequeños */
     }
 
+    #filterInput{
+        width: 50%;
+    }
 
     .table {
-        width: 350px;
+        width: 100%;
         display: block;
         overflow-x: auto;
     }

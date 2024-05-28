@@ -118,9 +118,8 @@
                                     alt="Devolucion">
                             </div>
                             <div class="card-details">
-                                <h2 class="card-title">Prendas quirurgicas</h2>
-                                <p class="card-description">Aqui encontrarás las prendas quirurgicas salidas de tu
-                                    taller
+                                <h2 class="card-title">Prendas quirúrgicas</h2>
+                                <p class="card-description">Aquí encontrarás las prendas quirúrgicas salidas de tu taller
                                 </p>
                                 <div class="registradas"><?php echo $cantidadRegistrosQ; ?> Registradas</div>
                             </div>

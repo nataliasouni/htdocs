@@ -26,8 +26,8 @@
                                     <th>Nombre del trabajador</th>
                                     <th>Taller</th>
                                     <th>Fecha</th>
-                                    <th>Prenda elaborada</th>
-                                    <th>Cantidad de prendas</th>
+                                    <th>Tipo de prenda</th>
+                                    <th>Prendas elaboradas</th>
                                     <th>Prendas defectuosas</th>
                             </tr>
                         </thead>

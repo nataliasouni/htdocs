@@ -73,7 +73,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
                 <p style="text-align: center; margin: 15px; font-size: 15px;">Saludos, Equipo de soporte</p>
             </body>
         </html>';
-        $headers = "From: julianviveros47@gmail.com" . "\r\n" . "Reply-To:julianviveros47@gmail.com" . "\r\n";
+        $headers = "From: dianacarolinarodriguezcalle@gmail.com" . "\r\n" . "Reply-To:dianacarolinarodriguezcalle@gmail.com" . "\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
         try {
@@ -81,13 +81,13 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'julianviveros47@gmail.com'; // Tu dirección de correo electrónico de Gmail
-            $mail->Password = 'fnfhrvstyndkwtos'; // Tu contraseña de Gmail
+            $mail->Username = 'dianacarolinarodriguezcalle@gmail.com'; // Tu dirección de correo electrónico de Gmail
+            $mail->Password = 'ffqudepmgstnkvgg'; // Tu contraseña de Gmail
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;            
 
             // Configuración del correo
-            $mail->setFrom('julianviveros47@gmail.com', 'Tu Nombre');
+            $mail->setFrom('dianacarolinarodriguezcalle@gmail.com', 'Tu Nombre');
             $mail->addAddress($destinatario);
             $mail->isHTML(true);
             $mail->Subject = 'Cambio de contraseña';
