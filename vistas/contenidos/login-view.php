@@ -41,7 +41,7 @@
 
         <div class="centrados">
           <button class="login_botonIngresar" type="submit" style="cursor: pointer" title="Ingresar"
-            name="Ingresar">Iniciar Sesion</button>
+            name="Ingresar">Iniciar Sesión</button>
         </div>
       </form>
       <div class="centrados">

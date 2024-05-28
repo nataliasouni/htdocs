@@ -41,7 +41,7 @@ class produccionControlador extends produccionModelo
             echo "<script>
                 Swal.fire({
                     title: 'Ocurrió un error inesperado',
-                    text: 'Has ingresado un valor invalido en el apartado de las prendas quirurgicas',
+                    text: 'Has ingresado un valor inválido en el apartado de las prendas quirúrgicas',
                     type: 'error',
                     confirmButtonText: 'Aceptar'
                 }).then((result) => {
@@ -57,7 +57,7 @@ class produccionControlador extends produccionModelo
             echo "<script>
                 Swal.fire({
                     title: 'Ocurrió un error inesperado',
-                    text: 'Has ingresado un valor invalido en el apartado de las prendas quirurgicas',
+                    text: 'Has ingresado un valor inválido en el apartado de las prendas quirúrgicas',
                     type: 'error',
                     confirmButtonText: 'Aceptar'
                 }).then((result) => {
@@ -119,7 +119,7 @@ class produccionControlador extends produccionModelo
             echo "<script>
             Swal.fire({
                 title: 'Proceso exitoso',
-                text: 'Se ha registrado la produccion',
+                text: 'Se ha registrado la producción',
                 type: 'success',
                 confirmButtonText: 'Aceptar'
             }).then((result) => {

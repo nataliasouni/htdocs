@@ -25,7 +25,7 @@
                     <table id="alertTable" class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Orden de produccion</th>
+                                <th>Orden de producción</th>
                                 <th>Contenido del ensamble</th>
                                 <th>Cantidad(PE)</th>
                                 <th>Prendas cortadas</th>

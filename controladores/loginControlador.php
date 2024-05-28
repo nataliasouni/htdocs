@@ -142,7 +142,7 @@ class loginControlador extends loginModelo
             echo "<script>
                     Swal.fire({
                     title: 'Ocurrio un error inesperado',
-                    text: 'No has ingresado un correo electronico',
+                    text: 'No has ingresado un correo electrónico',
                     type: 'warning',
                     confirmButtonText: 'Aceptar',
                     allowOutsideClick: false
@@ -215,7 +215,7 @@ class loginControlador extends loginModelo
                     echo "<script>
                     Swal.fire({
                     title: 'Ocurrio un error inesperado',
-                    text: 'El correo electronico ingresado no es valido',
+                    text: 'El correo electrónico ingresado no es válido',
                     type: 'error',
                     confirmButtonText: 'Aceptar',
                     allowOutsideClick: false
@@ -231,7 +231,7 @@ class loginControlador extends loginModelo
                 echo "<script>
                 Swal.fire({
                     title: 'Ocurrio un error inesperado',
-                    text: 'El correo electronico ingresado no es valido',
+                    text: 'El correo electrónico ingresado no es válido',
                     type: 'error',
                     confirmButtonText: 'Aceptar',
                     allowOutsideClick: false

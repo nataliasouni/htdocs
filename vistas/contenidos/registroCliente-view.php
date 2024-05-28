@@ -30,11 +30,11 @@
             
             <p>Nombre de usuario</p>
             <input type="text" name="nombre_usuario" placeholder="" required>
-            <p>Cedula</p>
+            <p>Cédula</p>
             <input type="text" name="cedula" placeholder=""required>
             <p>Correo electrónico</p>
             <input type="text" name="email" placeholder=""required>
-            <p>Telefono</p>
+            <p>Teléfono</p>
             <input type="text" name="telefono" placeholder=""required>
             <p>Contraseña</p>
             <input type="password" name="contrasena" placeholder=""required>

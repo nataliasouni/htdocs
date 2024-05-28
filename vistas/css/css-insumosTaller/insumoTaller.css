@@ -108,6 +108,17 @@ label{
 
 /* Media queries para hacer el diseño más responsive */
 @media screen and (max-width: 768px) {
+
+    .containerCompleto {
+        width: 95%;
+        margin-left: 10px;
+        height: 29%;
+    }
+
+    #pr{
+        margin-left: 20px;
+    }
+
     .centrados {
         margin: 1em;
     }
@@ -131,14 +142,12 @@ label{
     margin: 20px auto; /* Centrar botones */
     }
 
-    input#totalprendasquirurgicas {
-        margin-left: 3px;
+    textarea{
+        margin-left: 1px;
         width: 100%;
     }
 
-    input#totalprendasdefectuosas {
-        width: 100%;
-    }
+
     
     
 }
