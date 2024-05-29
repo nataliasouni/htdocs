@@ -73,7 +73,7 @@
     margin-top: 15px;
 }
 
-.añadir_cliente-form{
+.añadir_cliente-form {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
@@ -86,11 +86,11 @@
 .referenciasPersonales1-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;    
+    grid-gap: 20px;
     margin-top: 15px;
 }
 
-.añadir_producto-form{
+.añadir_producto-form {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
@@ -107,7 +107,7 @@
     margin-top: 15px;
 }
 
-.Cliente-group{
+.Cliente-group {
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -127,13 +127,12 @@
     cursor: pointer;
     font-size: 16px;
     margin-top: 30px;
-
 }
-.contratoPagare{
+
+.contratoPagare {
     margin-top: 20px;
     margin-bottom: 30px;
 }
-
 
 .contrato:hover, .pagare:hover {
     background-color: #003366;
@@ -211,7 +210,7 @@
     transition: background-color 0.3s;
 }
 
-.estado-enviar:hover{
+.estado-enviar:hover {
     background-color: #00864c;
 }
 
@@ -219,12 +218,12 @@
     background-color: #a50101;
 }
 
-.btn-primary{
-    background-color: #0053A9 !important; 
+.btn-primary {
+    background-color: #0053A9 !important;
 }
 
-.btn-primary:hover{
-    background-color: #003064 !important; 
+.btn-primary:hover {
+    background-color: #003064 !important;
 }
 
 .form-group p {
@@ -279,8 +278,75 @@
     text-align: center;
 }
 
-.editar{
+.editar {
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .añadir_alquiler-form,
+    .añadir_cliente-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .referenciasPersonales1-form,
+    .referenciasPersonales2-form {
+        grid-template-columns: 1fr;
+    }
+
+    .añadir_producto-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fotocopias {
+        grid-template-columns: 1fr;
+    }
+
+    .ref-group input[type="text"],
+    .refTel-group input[type="text"] {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .añadir_alquiler-form,
+    .añadir_cliente-form {
+        grid-template-columns: 1fr;
+    }
+
+    .referenciasPersonales1-form,
+    .referenciasPersonales2-form {
+        grid-template-columns: 1fr;
+    }
+
+    .añadir_producto-form {
+        grid-template-columns: 1fr;
+    }
+
+    .botones button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .estado-volver, .estado-enviar, .estado-cancelar {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .añadir_alquiler-form,
+    .añadir_cliente-form,
+    .referenciasPersonales1-form,
+    .referenciasPersonales2-form,
+    .añadir_producto-form {
+        grid-template-columns: 1fr;
+    }
+
+    .fotocopias .form-group embed {
+        height: 200px;
+    }
 }
