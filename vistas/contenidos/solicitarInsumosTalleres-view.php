@@ -21,7 +21,7 @@
                         <form action="" method="POST"> <!-- Formulario -->
                             <div class="input-button-container">
                                 <label class="titulos" id="pr">Ingrese los materiales que desea solicitar a AMU:</label>
-                                <textarea name="insumosTalleres" id="insumosTalleres" placeholder="Ej: Agujas(10),Velcro(10)... " required></textarea>
+                                <textarea name="insumosTalleres" id="insumosTalleres" placeholder="Ejemplo: Agujas(10), Velcro(10)..." required></textarea>
                                 <input type="hidden" name="cedula" value="<?php echo $_SESSION['cedula']; ?>">
                             </div>
                             <button id="ingresarP" type="submit">Enviar</button>

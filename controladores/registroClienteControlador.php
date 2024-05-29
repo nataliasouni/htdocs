@@ -36,7 +36,7 @@ class registroClienteControlador extends registroClienteModelo
             echo "<script>
                 Swal.fire({
                     title: 'Ocurrió un error inesperado',
-                    text: 'Has ingresado un valor invalido en el apartado de la cedula',
+                    text: 'Has ingresado un valor inválido  en el apartado de la cédula',
                     type: 'error',
                     confirmButtonText: 'Aceptar'
                 }).then((result) => {
@@ -69,7 +69,7 @@ class registroClienteControlador extends registroClienteModelo
             echo "<script>
                 Swal.fire({
                     title: 'Ocurrió un error inesperado',
-                    text: 'Has ingresado un valor invalido en el apartado del telefono',
+                    text: 'Has ingresado un valor inválido  en el apartado del teléfono',
                     type: 'error',
                     confirmButtonText: 'Aceptar'
                 }).then((result) => {
@@ -109,7 +109,7 @@ class registroClienteControlador extends registroClienteModelo
             echo "<script>
             Swal.fire({
                 title: 'Ocurrió un error inesperado',
-                text: 'El numero de cedula ya se encuentra registrado en el sistema',
+                text: 'El numero de cédula ya se encuentra registrado en el sistema',
                 type: 'error',
                 confirmButtonText: 'Aceptar'
             }).then((result) => {
@@ -131,7 +131,7 @@ class registroClienteControlador extends registroClienteModelo
             echo "<script>
             Swal.fire({
                 title: 'Ocurrió un error inesperado',
-                text: 'El correo electronico ya se encuentra registrado en el sistema',
+                text: 'El correo electrónico ya se encuentra registrado en el sistema',
                 type: 'error',
                 confirmButtonText: 'Aceptar'
             }).then((result) => {

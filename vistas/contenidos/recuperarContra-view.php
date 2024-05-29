@@ -27,8 +27,8 @@
 
             <form id="loginform" action="" method="POST">
                 <img src="/vistas/img/logoAMU2.png" alt="Logo de AMU" class="imagen-verticalmente-centrada"">
-                <p class="titulos"> Ingresa tu email para recibir tu nueva contraseña:</p>
-                <input class="correo" type="text" name="email">
+                <p class="titulos">Ingresa tu email para recibir tu nueva contraseña:</p>
+                <input class="correo" type="text" name="email" >
                 <button  class="correo_solicitar"  style="cursor: pointer" title="Solicitar"
                     name="Solicitar">Solicitar</button>
                     <p> </p>
