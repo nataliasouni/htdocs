@@ -226,12 +226,9 @@
         max-width: none; /* Anular el ancho máximo en dispositivos pequeños */
     }
 
-    #filterInput{
-        width: 50%;
-    }
 
     .table {
-        width: 100%;
+        width: auto;
         display: block;
         overflow-x: auto;
     }

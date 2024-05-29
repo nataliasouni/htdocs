@@ -226,9 +226,7 @@
         max-width: none; /* Anular el ancho máximo en dispositivos pequeños */
     }
 
-    #filterInput{
-        width: 50%;
-    }
+
 
     .table {
         width: 100%;
@@ -277,11 +275,7 @@
     }
 
 
-    .table-responsive {
-        overflow-x: auto;
-        margin-left: 10px; /* Ajustar margen izquierdo */
-        margin-right: 10px; /* Ajustar margen derecho */
-    }
+
     .table-responsive {
         margin-right: 0;
         overflow-x: auto; /* Permitir desplazamiento horizontal */
