@@ -228,12 +228,15 @@
 
     #filterInput{
         width: 50%;
+        margin-left: 10px;
     }
 
     .table {
-        width: 100%;
+        width: auto;
         display: block;
         overflow-x: auto;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .table thead,
@@ -294,6 +297,11 @@
     .table th.editar,
     .table td.editar {
         width: auto; /* Ancho fijo para la columna "Opciones" */
+    }
+
+    .table th:nth-child(5),
+    .table td:nth-child(5) {
+        width: auto; /* Ajustar el ancho de la columna "Nombre del trabajador" */
     }
     
 }

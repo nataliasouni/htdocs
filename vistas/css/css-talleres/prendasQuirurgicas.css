@@ -229,9 +229,11 @@
 
 
     .table {
-        width: 100%;
+        width: auto;
         display: block;
         overflow-x: auto;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .table thead,
@@ -283,7 +285,7 @@
     }
 
     .filter-container {
-        margin-top: 0px;
+        margin-left: 10px;
         width: 200px !important;
         
     }

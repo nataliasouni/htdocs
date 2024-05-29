@@ -238,9 +238,11 @@
     }
 
     .table {
-        width: 100%;
+        width: auto;
         display: block;
         overflow-x: auto;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .table thead,
@@ -269,8 +271,14 @@
 
     }
 
+    .table th:nth-child(5),
+    .table td:nth-child(5) {
+        width: auto;
+
+    }
+
     .filter-container {
-        margin-top: 0px;
+        margin-left: 10px;
         width: 200px !important;
 
     }
@@ -283,7 +291,7 @@
 
     .table th,
     .table td {
-        padding: 12px 175px;
+        padding: 12px ;
         /* Aumentar el padding para dar más espacio */
         text-align: left;
         border-bottom: 1px solid #ddd;

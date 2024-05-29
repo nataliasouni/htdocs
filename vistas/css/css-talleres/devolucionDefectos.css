@@ -231,6 +231,8 @@
         width: auto;
         display: block;
         overflow-x: auto;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .table thead,
@@ -272,21 +274,13 @@
         white-space: normal;
         overflow: hidden;
     }
+    
 
 
-    .table-responsive {
-        overflow-x: auto;
-        margin-left: 10px; /* Ajustar margen izquierdo */
-        margin-right: 10px; /* Ajustar margen derecho */
-    }
-    .table-responsive {
-        margin-right: 0;
-        overflow-x: auto; /* Permitir desplazamiento horizontal */
-        width: 400px !important;
-    }
+
 
     .filter-container {
-        margin-top: 0px;
+        margin-left: 10px;
         width: 200px !important;
         
     }
