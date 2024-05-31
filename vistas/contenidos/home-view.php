@@ -14,29 +14,29 @@
                         <div class="carousel-item active">
                             <img src="<?php echo SERVERURL; ?>vistas/img/img1.jpg" alt="Primera imagen">
                             <div class="carousel-caption">
-                                <h5>Título de la primera imagen</h5>
-                                <p>Descripción de la primera imagen.</p>
+                                <h3>A.M.U(Ayudas Medicas Universales)</h3>
+                                <h4>Mejoramos tu vivir</h4>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="<?php echo SERVERURL; ?>vistas/img/img2.jpg" alt="Segunda imagen">
                             <div class="carousel-caption">
-                                <h5>Título de la segunda imagen</h5>
-                                <p>Descripción de la segunda imagen.</p>
+                                <h3>A.M.U(Ayudas Medicas Universales)</h3>
+                                <h4>Mejoramos tu vivir</h4>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="<?php echo SERVERURL; ?>vistas/img/img3.jpg" alt="Tercera imagen">
                             <div class="carousel-caption">
-                                <h5>Título de la tercera imagen</h5>
-                                <p>Descripción de la tercera imagen.</p>
+                                <h3>A.M.U(Ayudas Medicas Universales)</h3>
+                                <h4>Mejoramos tu vivir</h4>  
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="<?php echo SERVERURL; ?>vistas/img/img4.jpg" alt="Cuarta imagen">
                             <div class="carousel-caption">
-                                <h5>Título de la cuarta imagen</h5>
-                                <p>Descripción de la cuarta imagen.</p>
+                                <h3>A.M.U(Ayudas Medicas Universales)</h3>
+                                <h4>Mejoramos tu vivir</h4>
                             </div>
                         </div>
                         <!-- Agrega más imágenes aquí -->

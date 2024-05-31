@@ -150,6 +150,7 @@ a {
  #myCarousel {
     width: 100%;
     height: 50vh; /* Altura completa de la ventana */
+    
 }
 
 /* Ajustar el tamaño de las imágenes para que ocupen todo el carrusel */
@@ -157,6 +158,7 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Para que la imagen se ajuste dentro del espacio sin deformarse */
+    filter: brightness(60%);
 }
 
 /* Estilos para la navegación lateral */

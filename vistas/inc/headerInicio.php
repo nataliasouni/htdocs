@@ -27,7 +27,7 @@
                         <?php
                         $var3 = "Línea Respiratoria";
                         ?>
-                        <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var3; ?>">Linea
+                        <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var3; ?>">Línea
                             Respiratoria</a>
                         <?php
                         $var4 = "Colchones y Colchonetas";

@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-produccion/produccion.css">
 
+
     <section class="full-box page-content">
         <div class="page-content">
             <div class="choose-option">
