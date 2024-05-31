@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h2 class="card-title">Notificaciones</h2>
-                                    <p class="card-description">Aqui podrás ver tus notificaciones respecto al inventario y
+                                    <p class="card-description">Aquí podrás ver tus notificaciones respecto al inventario y
                                         producción</p>
                                     <div class="registradas"><?php echo $cantidadAlertas; ?> Alertas</div>
                                 </div>
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h2 class="card-title">Inventario</h2>
-                                    <p class="card-description">Aqui podrás los diferentes productos disponibles en tu
+                                    <p class="card-description">Aquí podrás los diferentes productos disponibles en tu
                                         tienda
                                     </p>
                                 </div>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h2 class="card-title">Control de Talleres</h2>
-                                    <p class="card-description">Aqui podrás ver el materail de los talleres que actualmente
+                                    <p class="card-description">Aquí podrás ver el material de los talleres que actualmente
                                         tienen disponible
                                     </p>
                                 </div>
@@ -180,7 +180,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h2 class="card-title">Control de Trabajadores</h2>
-                                    <p class="card-description">Aqui podrás llevar el seguimiento de los trabajadores
+                                    <p class="card-description">Aquí podrás llevar el seguimiento de los trabajadores
                                     </p>
                                 </div>
                             </div>
@@ -204,8 +204,8 @@
                                 </div>
                                 <div class="card-details">
                                     <h2 class="card-title">Alquiler de productos</h2>
-                                    <p class="card-description">Aqui podrás llevar el proceso de alquiler
-                                        de producotos de tu tienda
+                                    <p class="card-description">Aquí podrás llevar el proceso de alquiler
+                                        de los productos de tu tienda
                                     </p>
                                     <div class="registradas"> <?php echo $cantidadRegistros; ?> Registradas</div>
                                 </div>
@@ -270,7 +270,7 @@
                                 </div>
                                 <div class="card-details">
                                     <h2 class="card-title">Control de producción</h2>
-                                    <p class="card-description">Aqui podrás llevar el control de la produccion de los
+                                    <p class="card-description">Aqui podrás llevar el control de la producción de los
                                         trabajadores
                                         actuales
                                     </p>

@@ -298,5 +298,10 @@
     .table td.editar {
         width: auto; /* Ancho fijo para la columna "Opciones" */
     }
+
+    .table th:nth-child(5),
+    .table td:nth-child(5) {
+        width: auto; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+    }
     
 }

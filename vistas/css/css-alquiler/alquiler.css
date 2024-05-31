@@ -238,9 +238,11 @@
     }
 
     .table {
-        width: 350px;
+        width: auto;
         display: block;
         overflow-x: auto;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .table thead,
@@ -259,10 +261,28 @@
 
     .table th:nth-child(3),
     .table td:nth-child(3) {
-        width: 230px;
-        /* Ajustar el ancho de la columna "Nombre del trabajador" */
-        padding: 20px 175px;
+        width: 100%;
+
     }
+
+    .table th:nth-child(4),
+    .table td:nth-child(4) {
+        width: 100%;
+
+    }
+
+    .table th:nth-child(5),
+    .table td:nth-child(5) {
+        width: auto;
+
+    }
+
+    .filter-container {
+        margin-left: 10px;
+        width: 200px !important;
+
+    }
+
 
     .table tr {
         margin-bottom: 20px;
@@ -271,7 +291,7 @@
 
     .table th,
     .table td {
-        padding: 12px 175px;
+        padding: 12px ;
         /* Aumentar el padding para dar más espacio */
         text-align: left;
         border-bottom: 1px solid #ddd;
@@ -331,18 +351,5 @@
         content: "Opciones: ";
     }
 
-    /* Mostrar la columna "Item" en dispositivos móviles */
-    .table td:nth-of-type(1),
-    .table th:nth-of-type(1) {
-        position: absolute;
-        top: 0px;
-        width: 350px;
-        padding-right: 200px;
-        white-space: normal;
-        overflow: hidden;
-        display: block;
-        position: relative;
-        width: 350px;
-        padding: 12px 175px;
-    }
+
 }

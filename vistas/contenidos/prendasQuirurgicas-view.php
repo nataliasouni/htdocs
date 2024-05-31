@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-talleres/prendasQuirurgicas.css">
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-prendasQ/prendasQ.css">
+
 
 <main class="full-box main-container">
     <!-- Incluir la barra lateral -->

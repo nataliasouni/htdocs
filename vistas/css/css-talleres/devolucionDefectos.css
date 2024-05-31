@@ -226,6 +226,7 @@
         max-width: none; /* Anular el ancho máximo en dispositivos pequeños */
     }
 
+
     #filterInput{
         width: 50%;
         margin-left: 10px;
@@ -278,7 +279,61 @@
         white-space: normal;
         overflow: hidden;
     }
+    
 
+
+
+
+    .filter-container {
+        margin-left: 10px;
+        width: 200px !important;
+        
+    }
+
+    .btn-primary {
+        margin-top: 10px;
+    }
+    .table-responsive table,
+    .table-responsive thead,
+    .table-responsive tbody,
+    .table-responsive tr,
+    .table-responsive th,
+    .table-responsive td {
+        display: block;
+    }
+
+    .table-responsive thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .table {
+        text-align: left !important;
+    }
+
+    .table-responsive tr {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+    }
+
+    .table-responsive td {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .table-responsive td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 30%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    
     .table td:nth-of-type(1):before { content: "Fecha: "; }
     .table td:nth-of-type(2):before { content: "Tipo de prenda: "; }
     .table td:nth-of-type(3):before { content: "Total: "; }

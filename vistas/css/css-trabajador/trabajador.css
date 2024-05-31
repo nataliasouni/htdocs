@@ -82,7 +82,9 @@
     color: #333;
 }
 
-.login_nombreUsuario, .login_password, .selectform {
+.login_nombreUsuario,
+.login_password,
+.selectform {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
@@ -98,7 +100,8 @@
 .detallesUs {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Esto puede variar según tu diseño */
+    align-items: center;
+    /* Esto puede variar según tu diseño */
 }
 
 .estado-volver {
@@ -135,7 +138,7 @@
     transition: background-color 0.3s;
 }
 
-.estado-enviar:hover{
+.estado-enviar:hover {
     background-color: #00864c;
 }
 
@@ -143,66 +146,83 @@
     background-color: #a50101;
 }
 
-.btn-primary{
-    background-color: #0053A9 !important; 
+.btn-primary {
+    background-color: #0053A9 !important;
 }
 
-.btn-primary:hover{
-    background-color: #003064 !important; 
+.btn-primary:hover {
+    background-color: #003064 !important;
 }
 
 .btn-editar,
 .btn-detalles {
-    border: none; /* Eliminar bordes */
-    background: none; /* Eliminar fondo */
-    padding: 0; /* Eliminar espaciado interno */
+    border: none;
+    /* Eliminar bordes */
+    background: none;
+    /* Eliminar fondo */
+    padding: 0;
+    /* Eliminar espaciado interno */
     cursor: pointer;
 }
 
 .btn-estado-usuario {
-    border: none; /* Eliminar bordes */
-    background: none; /* Eliminar fondo */
-    padding: 0; /* Eliminar espaciado interno */
+    border: none;
+    /* Eliminar bordes */
+    background: none;
+    /* Eliminar fondo */
+    padding: 0;
+    /* Eliminar espaciado interno */
     cursor: none;
 }
 
 .btn-editar img,
 .btn-detalles img,
 .btn-estado-usuario img {
-    width: 20px; /* Ancho de la imagen */
-    height: 20px; /* Altura de la imagen */
-    border: none !important; /* Asegurar que no haya bordes en la imagen */
+    width: 20px;
+    /* Ancho de la imagen */
+    height: 20px;
+    /* Altura de la imagen */
+    border: none !important;
+    /* Asegurar que no haya bordes en la imagen */
 }
 
 .table {
     width: 100%;
-    max-width: 1400px; /* Ampliar el ancho máximo de la tabla */
+    max-width: 1400px;
+    /* Ampliar el ancho máximo de la tabla */
     border-collapse: collapse;
 }
 
 .table th,
 .table td {
-    padding: 12px 20px; /* Aumentar el padding para dar más espacio */
+    padding: 12px 20px;
+    /* Aumentar el padding para dar más espacio */
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
 .table th {
     background-color: #f2f2f2;
-    vertical-align: middle; /* Alinear verticalmente el contenido */
+    vertical-align: middle;
+    /* Alinear verticalmente el contenido */
 }
 
 .table th:nth-child(3),
 .table td:nth-child(3) {
-    width: 230px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+    width: 230px;
+    /* Ajustar el ancho de la columna "Nombre del trabajador" */
 }
+
 .table th:nth-child(4),
 .table td:nth-child(4) {
-    width: 120px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
+    width: 120px;
+    /* Ajustar el ancho de la columna "Nombre del trabajador" */
 }
+
 .table th.editar,
 .table td.editar {
-    width: 150px; /* Ancho fijo para la columna "Opciones" */
+    width: 150px;
+    /* Ancho fijo para la columna "Opciones" */
     border: none !important;
 }
 
@@ -212,6 +232,19 @@
         display: block;
     }
 
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        width: 100%;
+        /* Ajustar el ancho de la columna "Nombre del trabajador" */
+    }
+
+    .table th:nth-child(4),
+    .table td:nth-child(4) {
+        width: 100%;
+        /* Ajustar el ancho de la columna "Nombre del trabajador" */
+    }
+
+
     .filter-input,
     .pagination a,
     .formularioAjax {
@@ -219,10 +252,18 @@
         max-width: none;
     }
 
+    .filter-container {
+        margin-left: 10px;
+        width: 200px !important;
+
+    }
+
     .table {
-        width: 350px;
+        width: auto;
         display: block;
         overflow-x: auto;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .table thead,
@@ -239,19 +280,16 @@
         left: -9999px;
     }
 
-    .table th:nth-child(3),
-    .table td:nth-child(3) {
-        width: 230px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
-        padding: 20px 175px;
-    }
 
     .table tr {
-        margin-bottom: 20px; /* Aumentar el margen inferior */
+        margin-bottom: 20px;
+        /* Aumentar el margen inferior */
     }
 
     .table th,
     .table td {
-        padding: 12px 175px; /* Aumentar el padding para dar más espacio */
+        padding: 12px 175px;
+        /* Aumentar el padding para dar más espacio */
         text-align: left;
         border-bottom: 1px solid #ddd;
     }
@@ -273,25 +311,30 @@
         white-space: normal;
         overflow: hidden;
     }
-    .table td:nth-of-type(1):before { content: "Item: "; }
-    .table td:nth-of-type(2):before { content: "Cédula: "; }
-    .table td:nth-of-type(3):before { content: "Nombre de Trabajador: "; }
-    .table td:nth-of-type(4):before { content: "Teléfono: "; }
-    .table td:nth-of-type(5):before { content: "Estado: "; }
-    .table td:nth-of-type(6):before { content: "Opciones: "; }
 
-    /* Mostrar la columna "Item" en dispositivos móviles */
-    .table td:nth-of-type(1),
-    .table th:nth-of-type(1) {
-        position: absolute;
-        top: 0px;
-        width: 350px;
-        padding-right: 200px;
-        white-space: normal;
-        overflow: hidden;
-        display: block;
-        position: relative;      
-        width: 350px;
-        padding: 12px 175px;
+    .table td:nth-of-type(1):before {
+        content: "Item: ";
     }
+
+    .table td:nth-of-type(2):before {
+        content: "Cédula: ";
+    }
+
+    .table td:nth-of-type(3):before {
+        content: "Nombre de Trabajador: ";
+    }
+
+    .table td:nth-of-type(4):before {
+        content: "Teléfono: ";
+    }
+
+    .table td:nth-of-type(5):before {
+        content: "Estado: ";
+    }
+
+    .table td:nth-of-type(6):before {
+        content: "Opciones: ";
+    }
+
+
 }
