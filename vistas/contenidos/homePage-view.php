@@ -83,9 +83,10 @@
     <section id="servicios" class="servicios">
         <div class="container-servicios">
             <div class="servicios-info">
-                <h2>Agendamiento de Citas para Fonondología</h2>
+                <h2>Agendamiento de Citas para Fonoaudiología</h2>
                 <p></p>
-                <p>Soy Diana Carolina Rodriguez Calle y me complace presentarme como fonoaudióloga especializada en la
+                <p class="paragraph-1">Soy Diana Carolina Rodriguez Calle y me complace presentarme como fonoaudióloga
+                    especializada en la
                     creación de moldes para protectores de oído en AMU (ayudas medicas universales). Con una sólida
                     formación académica obtenida en la Universidad del Valle y años de experiencia en el campo de la
                     fonoaudiología, me comprometo a proporcionarle servicios de la más alta calidad y atención
@@ -94,7 +95,9 @@
                     especializadas en la toma de impresiones para garantizar la máxima comodidad y eficacia de los
                     protectores de oído.
                 </p>
-                <p>Agende su cita con nuestra especialista en fonodilogía, la Dra. Diana Carolina Rodriguez, quien
+
+                <p class="paragraph-2">Agende su cita con nuestra especialista en fonoaudiología, la Dra. Diana Carolina
+                    Rodriguez, quien
                     cuenta con años de
                     experiencia y un trato humano excepcional para ayudarlo con sus necesidades auditivas.</p>
                 <div class="gallery">
@@ -104,12 +107,19 @@
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector4.jpg" alt="Imagen 4">
                 </div>
                 <a href="login" class="cta">Agendar Cita</a>
+                <div class="servicios-images">
+                    <img src="<?php echo SERVERURL; ?>vistas/img/diana.jpg" alt="Foto de la Fonoaudiologa"
+                        class="fonoaudiologa-img">
+                </div>
             </div>
-                    
 
             <div class="servicios-images">
-                <img src="<?php echo SERVERURL; ?>vistas/img/diana.jpg" alt="Foto de la Fonodilogo">
+                <img src="<?php echo SERVERURL; ?>vistas/img/diana.jpg" alt="Foto de la Fonoaudiologa"
+                    class="fonoaudiologa-img2">
             </div>
+
+
+
         </div>
     </section>
 
@@ -265,5 +275,5 @@
                 });
             });
     }
-    
+
 </script>
