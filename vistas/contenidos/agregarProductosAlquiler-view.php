@@ -36,15 +36,25 @@
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Precio del Alquiler 15 Dias</p>
-                            <input type="number" name="precio15Dias" class="login_password" required >
+                            <div style="display: flex; align-items: center;">
+                                <span style="margin-right: 2px;">$</span>
+                                <input type="number" name="precio15Dias" class="login_password" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <p class="titulos_form">Precio del Alquiler 30 Dias</p>
-                            <input type="number" name="precio30Dias" class="login_password" required >
+                            <div style="display: flex; align-items: center;">
+                                <span style="margin-right: 2px;">$</span>
+                                <input type="number" name="precio30Dias" class="login_password" required>
+                            </div>
                         </div>
+
                         <div class="form-group">
                             <p class="titulos_form">Precio del Deposito</p>
-                            <input type="number" name="precioDeposito" class="login_password" required >
+                            <div style="display: flex; align-items: center;">
+                                <span style="margin-right: 2px;">$</span>
+                                <input type="number" name="precioDeposito" class="login_password" required>
+                            </div>
                         </div>
                         <div class="botones">
                             <button class="estado-enviar" type="submit" style="cursor: pointer" title="Enviar"

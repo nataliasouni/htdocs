@@ -2,7 +2,7 @@
 var filterInput = document.getElementById("filterInput");
 
 // Obtener la tabla
-var table = document.getElementById("alertTableProductos");
+var table = document.getElementById("alertTable");
 
 // Obtener todas las filas de la tabla
 var rows = table.getElementsByTagName("tr");

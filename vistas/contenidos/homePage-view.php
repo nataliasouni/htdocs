@@ -100,7 +100,7 @@
                     experiencia y un trato humano excepcional para ayudarlo con sus necesidades auditivas.</p>
 
                 <div class="gallery">
-                    <img src="<?php echo SERVERURL; ?>vistas/img/tapones.jpg" alt="Imagen 1">
+                    <img src="<?php echo SERVERURL; ?>vistas/img/tapones.jpg" alt="Imagen 1" class="imagen1">
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector2.jpg" alt="Imagen 2">
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector3.jpg" alt="Imagen 3">
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector4.jpg" alt="Imagen 4">

@@ -521,14 +521,13 @@ body {
 
 
 
-/* Estilos responsivos */
 @media (max-width: 768px) {
     .banner {
         padding: 50px 20px;
     }
     .fonoaudiologa-img2 {
         display: none;
-        margin:  0;
+        margin: 0;
     }
     .container-servicios {
         flex-direction: column;
@@ -538,15 +537,28 @@ body {
         order: 0;
         margin-top: 20px;
     }
-    .cta{
+    .cta {
         order: 4;
     }
 
     .paragraph-2 {
         order: 2;
     }
-    .gallery{
-        order:3;
+    .gallery {
+        order: 3;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-left: 0px;
+    }
+
+
+    .imagen1{
+
+        margin-top: 5px;
+        margin-left: 0px;
+        height: 160px;
+        width: 2140px;
     }
 
     .banner h1 {
@@ -558,15 +570,15 @@ body {
     }
 
     .productos .container {
-        
         align-items: center;
     }
 
     .container-servicios {
         flex-direction: column;
     }
-    .servicios-info{
+    .servicios-info {
         margin-left: 0%;
+        max-width: 100%;
     }
 
     .categoria {

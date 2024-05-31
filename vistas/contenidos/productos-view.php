@@ -22,7 +22,7 @@
                         <input type="text" class="form-control" id="filterInput" placeholder="Buscar producto...">
                     </div>
                     <div class="table-responsive">
-                        <table id="alertTableProductos" class="table table-striped">
+                        <table id="alertTable" class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -70,3 +70,23 @@
 <script src="<?php echo SERVERURL; ?>vistas/js/producto-script/producto.js"></script>
 
 <script src="<?php echo SERVERURL; ?>vistas/js/producto-script/cancelarBtn.js" type="module"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener todas las filas del cuerpo de la tabla
+    var tableRows = document.querySelectorAll('#alertTable tbody tr');
+
+    tableRows.forEach(function(row) {
+        // Obtener todas las celdas de la fila
+        var cells = row.querySelectorAll('td');
+
+        cells.forEach(function(cell) {
+            // Convertir el contenido de texto de la celda a minúsculas sin afectar el HTML interno
+            cell.innerHTML = cell.innerHTML.split(/(<[^>]*>)/).map(function(part) {
+                return part.startsWith('<') ? part : part.toLowerCase();
+            }).join('');
+        });
+    });
+});
+
+</script>

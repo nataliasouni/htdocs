@@ -60,3 +60,23 @@
 </main>
 
 <script src="<?php echo SERVERURL; ?>vistas/js/alquiler-script/alquilerProductos.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener todas las filas del cuerpo de la tabla
+    var tableRows = document.querySelectorAll('#alertTable tbody tr');
+
+    tableRows.forEach(function(row) {
+        // Obtener todas las celdas de la fila
+        var cells = row.querySelectorAll('td');
+
+        cells.forEach(function(cell) {
+            // Convertir el contenido de texto de la celda a minúsculas sin afectar el HTML interno
+            cell.innerHTML = cell.innerHTML.split(/(<[^>]*>)/).map(function(part) {
+                return part.startsWith('<') ? part : part.toLowerCase();
+            }).join('');
+        });
+    });
+});
+
+</script>

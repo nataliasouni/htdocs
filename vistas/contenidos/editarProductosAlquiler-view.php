@@ -39,8 +39,7 @@ if ($datosTrabajador->rowCount() == 1) {
                             <div class="form-group">
                                 <p class="titulos_form">Nombre del Producto</p>
                                 <input type="text" name="nombreUp" class="login_password"
-                                    value="<?= $campos['nombreproducto'] ?>" required
-                                    >
+                                    value="<?= $campos['nombreproducto'] ?>" required>
                             </div>
 
                             <div class="form-group">
@@ -50,28 +49,34 @@ if ($datosTrabajador->rowCount() == 1) {
                             </div>
                             <div class="form-group">
                                 <p class="titulos_form">Precio del Alquiler 15 Dias</p>
-                                <input type="number" name="precio15Dias" class="login_password"
-                                    value="<?= $campos['alquiler15dias'] ?>" required
-                                    >
+                                <div style="display: flex; align-items: center;">
+                                    <span style="margin-right: 2px;">$</span>
+                                    <input type="number" name="precio15Dias" class="login_password"
+                                        value="<?= $campos['alquiler15dias'] ?>" required>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <p class="titulos_form">Precio del Alquiler 30 Dias</p>
-                                <input type="number" name="precio30Dias" class="login_password"
-                                    value="<?= $campos['alquiler30dias'] ?>" required
-                                    >
+                                <div style="display: flex; align-items: center;">
+                                    <span style="margin-right: 2px;">$</span>
+                                    <input type="number" name="precio30Dias" class="login_password"
+                                        value="<?= $campos['alquiler30dias'] ?>" required>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <p class="titulos_form">Precio del Deposito</p>
-                                <input type="number" name="precioDeposito" class="login_password"
-                                    value="<?= $campos['deposito'] ?>" required
-                                    >
+                                <div style="display: flex; align-items: center;">
+                                    <span style="margin-right: 2px;">$</span>
+                                    <input type="number" name="precioDeposito" class="login_password"
+                                        value="<?= $campos['deposito'] ?>" required>
+                                </div>
                             </div>
 
                             <div class="botones">
                                 <button id="btnActualizar" class="estado-enviar" type="submit" style="cursor: pointer"
                                     title="Enviar" name="Enviar">Actualizar</button>
-                                <button id="botonCancelarAl" type="button" class="estado-cancelar"
-                                    style="cursor: pointer" title="Cancelar" name="Cancelar">Cancelar</button>
+                                <button id="botonCancelarAl" type="button" class="estado-cancelar" style="cursor: pointer"
+                                    title="Cancelar" name="Cancelar">Cancelar</button>
                             </div>
                         </div>
                     </form>

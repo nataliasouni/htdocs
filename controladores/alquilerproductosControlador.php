@@ -106,9 +106,9 @@ class alquilerproductosControlador extends alquilerproductosModelo
                           <td>' . $rows['id'] . '</td>' .
             '<td>' . $rows['nombreproducto'] . '</td>' .
             '<td>' . $rows['detalles'] . '</td>' .
-            '<td>' . $rows['alquiler15dias'] . '</td>' .
-            '<td>' . $rows['alquiler30dias'] . '</td>' .
-            '<td>' . $rows['deposito'] . '</td>';
+            '<td>$' . $rows['alquiler15dias'] . '</td>' .
+            '<td>$' . $rows['alquiler30dias'] . '</td>' .
+            '<td>$' . $rows['deposito'] . '</td>';
 
           //Botones
           if ($rows['id'] != 0) {

@@ -28,8 +28,7 @@ if ($datosalquiler->rowCount() == 1) {
 
                     <div class="choose-option">
 
-                        <form class="formularioAjax content" 
-                            id="formularioContrato">
+                        <form class="formularioAjax content" id="formularioContrato">
                             <input type="hidden" name="alquilerUp" value="<?= $pagina[1] ?>">
                             <div class="añadir_alquiler-form">
 
@@ -89,110 +88,121 @@ if ($datosalquiler->rowCount() == 1) {
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Deposito</p>
-                                        <input type="text" name="deposito" class="login_password"
-                                            value="<?= $campos['deposito_producto'] ?>" readonly
-                                            oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="margin-right: 2px;">$</span>
+                                            <input type="text" name="deposito" class="login_password"
+                                                value="<?= $campos['deposito_producto'] ?>" readonly
+                                                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                        </div>
                                     </div>
 
 
                                     <div class="totalPagar">
                                         <p class="titulos_form">Total a Pagar</p>
-                                        <input type="number" name="totalPagar" class="login_nombreUsuario"
-                                            value="<?= $campos['totalpagar'] ?>" readonly>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="Cliente-group">
-                                <div class="choose-option">
-                                    <h2 style='color: #0053A9'>Informacion del Cliente</h2>
-                                </div>
-                                <div class="añadir_cliente-form">
-                                    <div class="form-group">
-                                        <p class="titulos_form">Nombre del Cliente</p>
-                                        <input type="text" name="nombreCliente" id="nombreCliente"
-                                            class="login_nombreUsuario" value="<?= $campos['nombrecliente'] ?>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <p class="titulos_form">Cedula </p>
-                                        <input type="text" name="cedulaCliente" id="cedulaCliente"
-                                            class="login_nombreUsuario" value="<?= $campos['cedulacliente'] ?>" readonly>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <p class="titulos_form">Direccion</p>
-                                        <input type="text" name="Direccion" id="Direccion" class="login_nombreUsuario"
-                                            value="<?= $campos['direccion'] ?>" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <p class="titulos_form">Telefono</p>
-                                        <input type="text" name="Telefono" id="Telefono" class="login_nombreUsuario"
-                                            value="<?= $campos['telefono'] ?>" readonly>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="margin-right: 2px;">$</span>
+                                            <input type="number" name="totalPagar" class="login_nombreUsuario"
+                                                value="<?= $campos['totalpagar'] ?>" readonly>
+                                                
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="fotocopias">
-                                    <div class="form-group">
-                                        <label for="FotocopiaC" class="titulos_form">Fotocopia de la Cedula</label>
-                                        <!-- Aquí agregamos la vista previa del PDF -->
-                                        <embed src="<?= SERVERURL . 'src/alquiler/cedula/' . $campos['fotocopiacedula'] ?>"
-                                            type="application/pdf" width="400" height="300" />
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label for="FotocopiaR" class="titulos_form">Fotocopia del Recibo</label>
-                                        <embed src="<?= SERVERURL . 'src/alquiler/recibo/' . $campos['fotocopiarecibo'] ?>"
-                                            type="application/pdf" width="400" height="300" />
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <div class="Cliente-group">
-                                <div class="choose-option">
-                                    <h2 style='color: #0053A9'>Referencias Personales</h2>
-                                </div>
-                                <div class="referenciasPersonales1-form">
-                                    <div class="ref-group">
-                                        <p class="titulos_form">Nombre del Referente 1</p>
-                                        <input type="text" name="nombreReferencia1" class="login_nombreUsuario"
-                                            value="<?= $campos['nombreref1'] ?>" readonly>
-                                    </div>
-                                    <div class="refTel-group">
-                                        <p class="tituloT_form">Telefono </p>
-                                        <input type="text" name="telefonoReferencia1" class="login_nombreUsuario"
-                                            value="<?= $campos['telefonoref1'] ?>" readonly>
-                                    </div>
-                                </div>
-
-                                <div class="referenciasPersonales2-form">
-                                    <div class="ref-group">
-                                        <p class="titulos_form">Nombre del Referente 2</p>
-                                        <input type="text" name="nombreReferencia2" class="login_nombreUsuario"
-                                            value="<?= $campos['nombreref2'] ?>" readonly>
-                                    </div>
-                                    <div class="refTel-group">
-                                        <p class="tituloT_form">Telefono </p>
-                                        <input type="text" name="telefonoReferencia2" class="login_nombreUsuario"
-                                            value="<?= $campos['telefonoref2'] ?>" readonly>
-                                    </div>
-                                </div>
 
                                 <div class="Cliente-group">
-                                    <div class="contratoPagare">
-                                        <h2 style='color: #0053A9'>Contrato y Pagare</h2>
+                                    <div class="choose-option">
+                                        <h2 style='color: #0053A9'>Informacion del Cliente</h2>
+                                    </div>
+                                    <div class="añadir_cliente-form">
+                                        <div class="form-group">
+                                            <p class="titulos_form">Nombre del Cliente</p>
+                                            <input type="text" name="nombreCliente" id="nombreCliente"
+                                                class="login_nombreUsuario" value="<?= $campos['nombrecliente'] ?>"
+                                                readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="titulos_form">Cedula </p>
+                                            <input type="text" name="cedulaCliente" id="cedulaCliente"
+                                                class="login_nombreUsuario" value="<?= $campos['cedulacliente'] ?>"
+                                                readonly>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p class="titulos_form">Direccion</p>
+                                            <input type="text" name="Direccion" id="Direccion" class="login_nombreUsuario"
+                                                value="<?= $campos['direccion'] ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="titulos_form">Telefono</p>
+                                            <input type="text" name="Telefono" id="Telefono" class="login_nombreUsuario"
+                                                value="<?= $campos['telefono'] ?>" readonly>
+                                        </div>
                                     </div>
 
+                                    <div class="fotocopias">
+                                        <div class="form-group">
+                                            <label for="FotocopiaC" class="titulos_form">Fotocopia de la Cedula</label>
+                                            <!-- Aquí agregamos la vista previa del PDF -->
+                                            <embed
+                                                src="<?= SERVERURL . 'src/alquiler/cedula/' . $campos['fotocopiacedula'] ?>"
+                                                type="application/pdf" width="400" height="300" />
+                                        </div>
 
-                                    <div class="form-group">
-                                        <embed src="<?= SERVERURL . 'src/alquiler/contrato/' . $campos['contratopagare'] ?>"
-                                            type="application/pdf" width="400" height="300" />
+                                        <div class="form-group">
+                                            <label for="FotocopiaR" class="titulos_form">Fotocopia del Recibo</label>
+                                            <embed
+                                                src="<?= SERVERURL . 'src/alquiler/recibo/' . $campos['fotocopiarecibo'] ?>"
+                                                type="application/pdf" width="400" height="300" />
+                                        </div>
+
                                     </div>
+
+                                </div>
+
+
+
+                                <div class="Cliente-group">
+                                    <div class="choose-option">
+                                        <h2 style='color: #0053A9'>Referencias Personales</h2>
+                                    </div>
+                                    <div class="referenciasPersonales1-form">
+                                        <div class="ref-group">
+                                            <p class="titulos_form">Nombre del Referente 1</p>
+                                            <input type="text" name="nombreReferencia1" class="login_nombreUsuario"
+                                                value="<?= $campos['nombreref1'] ?>" readonly>
+                                        </div>
+                                        <div class="refTel-group">
+                                            <p class="tituloT_form">Telefono </p>
+                                            <input type="text" name="telefonoReferencia1" class="login_nombreUsuario"
+                                                value="<?= $campos['telefonoref1'] ?>" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="referenciasPersonales2-form">
+                                        <div class="ref-group">
+                                            <p class="titulos_form">Nombre del Referente 2</p>
+                                            <input type="text" name="nombreReferencia2" class="login_nombreUsuario"
+                                                value="<?= $campos['nombreref2'] ?>" readonly>
+                                        </div>
+                                        <div class="refTel-group">
+                                            <p class="tituloT_form">Telefono </p>
+                                            <input type="text" name="telefonoReferencia2" class="login_nombreUsuario"
+                                                value="<?= $campos['telefonoref2'] ?>" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="Cliente-group">
+                                        <div class="contratoPagare">
+                                            <h2 style='color: #0053A9'>Contrato y Pagare</h2>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <embed
+                                                src="<?= SERVERURL . 'src/alquiler/contrato/' . $campos['contratopagare'] ?>"
+                                                type="application/pdf" width="400" height="300" />
+                                        </div>
 
                         </form>
 
@@ -233,4 +243,3 @@ if ($datosalquiler->rowCount() == 1) {
 }
 ?>
     <script src="<?php echo SERVERURL; ?>vistas/js/alquiler-script/alquiler.js"></script>
-

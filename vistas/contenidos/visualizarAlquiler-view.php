@@ -97,16 +97,22 @@ if ($datosalquiler->rowCount() == 1) {
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Deposito</p>
-                                        <input type="text" name="deposito" class="login_password"
-                                            value="<?= $campos['deposito_producto'] ?>" readonly
-                                            oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="margin-right: 2px;">$</span>
+                                            <input type="text" name="deposito" class="login_password"
+                                                value="<?= $campos['deposito_producto'] ?>" readonly
+                                                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                        </div>
                                     </div>
 
 
                                     <div class="totalPagar">
                                         <p class="titulos_form">Total a Pagar</p>
-                                        <input type="number" name="totalPagar" class="login_nombreUsuario"
-                                            value="<?= $campos['totalpagar'] ?>" readonly>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="margin-right: 2px;">$</span>
+                                            <input type="number" name="totalPagar" class="login_nombreUsuario"
+                                                value="<?= $campos['totalpagar'] ?>" readonly>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -242,4 +248,3 @@ if ($datosalquiler->rowCount() == 1) {
 }
 ?>
     <script src="<?php echo SERVERURL; ?>vistas/js/alquiler-script/alquiler.js"></script>
-

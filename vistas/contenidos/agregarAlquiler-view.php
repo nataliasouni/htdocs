@@ -86,15 +86,22 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Deposito</p>
-                                        <input type="text" name="deposito" class="login_password"
-                                            value="<?= $campos['deposito'] ?>" readonly
-                                            oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="margin-right: 2px;">$</span>
+                                            <input type="text" name="deposito" class="login_password"
+                                                value="<?= $campos['deposito'] ?>" readonly
+                                                oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                        </div>
                                     </div>
 
 
                                     <div class="totalPagar">
                                         <p class="titulos_form">Total a Pagar</p>
-                                        <input type="number" name="totalPagar" class="login_nombreUsuario" readonly>
+                                        <div style="display: flex; align-items: center;">
+                                            <span style="margin-right: 2px;">$</span>
+                                            <input type="number" name="totalPagar" class="login_nombreUsuario" readonly>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -109,8 +116,7 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     <div class="form-group">
                                         <p class="titulos_form">Nombre del Cliente</p>
                                         <input type="text" name="nombreCliente" id="nombreCliente"
-                                            class="login_nombreUsuario" required
-                                            >
+                                            class="login_nombreUsuario" required>
                                     </div>
                                     <div class="form-group">
                                         <p class="titulos_form">Cedula </p>
@@ -145,7 +151,7 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     <div class="form-group">
                                         <p class="titulos_form">Telefono</p>
                                         <input type="number" name="Telefono" class="login_nombreUsuario" required>
-                                            
+
                                     </div>
                                 </div>
 
@@ -157,8 +163,8 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     <div class="referenciasPersonales1-form">
                                         <div class="ref-group">
                                             <p class="titulos_form">Nombre del Referente 1</p>
-                                            <input type="text" name="nombreReferencia1" class="login_nombreUsuario" required
-                                               >
+                                            <input type="text" name="nombreReferencia1" class="login_nombreUsuario"
+                                                required>
                                         </div>
                                         <div class="refTel-group">
                                             <p class="tituloT_form">Telefono </p>
@@ -170,8 +176,8 @@ if ($datosalquilerproductos->rowCount() == 1) {
                                     <div class="referenciasPersonales2-form">
                                         <div class="ref-group">
                                             <p class="titulos_form">Nombre del Referente 2</p>
-                                            <input type="text" name="nombreReferencia2" class="login_nombreUsuario" required
-                                                >
+                                            <input type="text" name="nombreReferencia2" class="login_nombreUsuario"
+                                                required>
                                         </div>
                                         <div class="refTel-group">
                                             <p class="tituloT_form">Telefono </p>
