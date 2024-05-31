@@ -26,7 +26,7 @@
     </a>
 
         <form action="#" method="POST">
-            <img id="amu" src="<?php echo SERVERURL; ?>vistas/img/logoAMU2.png" alt="Logo de AMU" class="imagen-verticalmente-centrada" >
+            <img id="amu" src="<?php echo SERVERURL; ?>vistas/img/logoAMU.png" alt="Logo de AMU" class="imagen-verticalmente-centrada" >
             
             <p>Nombre de usuario</p>
             <input type="text" name="nombre_usuario" placeholder="" required>

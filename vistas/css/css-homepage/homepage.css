@@ -224,8 +224,8 @@ body {
 }
 
 .gallery img {
-    width: 100%;
-    max-width: 100px;
+    width: 118px;
+    max-width: 118px;
     margin: 5px;
 }
 
@@ -249,11 +249,13 @@ body {
     width: 250px;
 }
 
-#imagen1 {
+
+#imagen1{
+
     margin-top: 5px;
     margin-left: 0px;
     height: 210px;
-    width: 200px;
+    width: 240px;
 }
 
 #box1 {
@@ -425,7 +427,9 @@ body {
     border-radius: 10px;
     /* Ajuste los bordes si es necesario */
     margin-bottom: 10px;
+    height: 135px;
 }
+
 
 /* Estilos generales de la sección de contacto */
 .contacto {

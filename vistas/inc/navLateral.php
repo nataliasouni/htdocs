@@ -170,7 +170,7 @@
                 </ul>
             </li>
         <?php } ?>
-        <?php if ($_SESSION['permiso'] == "Administrador" || $_SESSION['permiso'] == "Master") { ?>
+        <?php if ($_SESSION['permiso'] == "Master") { ?>
             <li>
                 <a href="<?= SERVERURL; ?>homeGT">
                     <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/obrero.png" alt="Menu Image">
@@ -184,6 +184,23 @@
                             Registro Entrada y Salida
                         </a>
                     </li>
+                    <li>
+                        <a href="<?= SERVERURL; ?>trabajadores">
+                            <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/gestion-de-candidatos.png"
+                                alt="Submenu Image">
+                            Lista Trabajadores
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        <?php } ?>
+        <?php if ($_SESSION['permiso'] == "Administrador") { ?>
+            <li>
+                <a href="<?= SERVERURL; ?>homeGT">
+                    <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/obrero.png" alt="Menu Image">
+                    Control de Trabajadores
+                </a>
+                <ul class="submenu">
                     <li>
                         <a href="<?= SERVERURL; ?>trabajadores">
                             <img class="submenu-image" src="<?php echo SERVERURL; ?>vistas/img/gestion-de-candidatos.png"

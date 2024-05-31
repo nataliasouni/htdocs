@@ -1,9 +1,6 @@
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-alquiler/agregarAlquiler.css">
 <?php
-if ($_SESSION['permiso'] != "Master") {
-    $insLoginControlador->forzarCierreSesionControlador();
-    exit();
-}
+
 
 require_once "./controladores/alquilerproductosControlador.php";
 $insalquilerproductosControlador = new alquilerproductosControlador();

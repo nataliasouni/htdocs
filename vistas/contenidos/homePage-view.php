@@ -22,10 +22,10 @@
                 $var = "Movilidad y Recuperación";
                 ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo1.png" alt="Categoría 1">
-                <p>Ofrecemos una gama completa de ayudas de movilidad y recuperación en venta, alquiler, mantenimiento y
-                    reparación. Desde camas hospitalarias, sillas de ruedas, muletas, hasta nebulizadores y extractores
-                    de leche materna, cubrimos todas tus necesidades de cuidado y rehabilitación. ¡Contáctanos para
-                    encontrar la solución perfecta para ti!</p>
+                <p>Ofrecemos una gama completa de ayudas para la movilidad y la recuperación en venta, alquiler, mantenimiento y reparación. 
+                    Desde camas hospitalarias, sillas de ruedas y muletas, hasta nebulizadores y extractores de 
+                    leche materna, cubrimos todas tus necesidades de cuidado y rehabilitación. 
+                    ¡Contáctanos para encontrar la solución perfecta para ti!</p>
                 <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
             <div class="categoria">
@@ -33,19 +33,17 @@
                 $var = "Muebles Hospitalarios";
                 ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo2.png" alt="Categoría 2">
-                <p>Descubre nuestra línea de muebles hospitalarios, diseñados para garantizar calidad y funcionalidad en
-                    entornos médicos. Desde camillas y camas de levante hasta mesas especializadas y botiquines de
-                    primeros auxilios, equipa tu centro médico con lo mejor.</p>
+                <p>Descubre nuestra línea de muebles hospitalarios, diseñados para garantizar calidad y funcionalidad en entornos médicos. 
+                    Desde camillas y camas de levante, hasta mesas especializadas y botiquines de primeros auxilios, equipa tu centro médico con lo mejor.</p>
                 <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
             <div class="categoria">
                 <?php
                 $var = "Línea Respiratoria";
                 ?>
-                <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo3.png" alt="Categoría 3">
-                <p>Explora nuestra línea respiratoria, dedicada a mejorar la calidad de vida de nuestros clientes. Desde
-                    nebulizadores hasta oxígeno y extractores de leche materna, ofrecemos una amplia gama de productos
-                    diseñados para facilitar la respiración y promover la salud pulmonar. Confía en nosotros para
+                <img src="<?php echo SERVERURL; ?>vistas/img/respiratoria.jpg" alt="Categoría 3">
+                <p>Explora nuestra línea respiratoria, dedicada a mejorar la calidad de vida de nuestros clientes. Desde nebulizadores hasta oxígeno, 
+                    ofrecemos una amplia gama de productos diseñados para facilitar la respiración y promover la salud pulmonar. Confía en nosotros para 
                     encontrar las soluciones que necesitas para cuidar de tu salud respiratoria.</p>
                 <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
@@ -54,10 +52,9 @@
                 $var = "Colchones y Colchonetas";
                 ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo4.png" alt="Categoría 4">
-                <p>Descubre nuestra selección de colchones y ropa de cama hospitalaria diseñados para ofrecer confort y
-                    cuidado. Desde almohadas hasta colchones clínicos y tipo antiescara, así como protectores para
-                    colchón y almohada. Además, disponemos de juegos de sábanas y toallas de cuerpo y manos para
-                    garantizar un entorno cómodo y acogedor. ¡Haz de tu espacio médico un lugar de descanso y bienestar!
+                <p>Descubre nuestra selección de colchones y ropa de cama hospitalaria, diseñados para ofrecer confort y cuidado. 
+                    Desde almohadas hasta colchones clínicos y antiescaras, así como protectores para colchones y almohadas. Además, 
+                    disponemos de juegos de sábanas y toallas para cuerpo y manos, garantizando un entorno cómodo y acogedor. ¡Haz de tu espacio médico un lugar de descanso y bienestar!
                 </p>
                 <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
@@ -85,6 +82,7 @@
             <div class="servicios-info">
                 <h2>Agendamiento de Citas para Fonoaudiología</h2>
                 <p></p>
+
                 <p class="paragraph-1">Soy Diana Carolina Rodriguez Calle y me complace presentarme como fonoaudióloga
                     especializada en la
                     creación de moldes para protectores de oído en AMU (ayudas medicas universales). Con una sólida
@@ -100,8 +98,9 @@
                     Rodriguez, quien
                     cuenta con años de
                     experiencia y un trato humano excepcional para ayudarlo con sus necesidades auditivas.</p>
+
                 <div class="gallery">
-                    <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector1.jpg" alt="Imagen 1">
+                    <img src="<?php echo SERVERURL; ?>vistas/img/tapones.jpg" alt="Imagen 1">
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector2.jpg" alt="Imagen 2">
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector3.jpg" alt="Imagen 3">
                     <img src="<?php echo SERVERURL; ?>vistas/img/imgProtector4.jpg" alt="Imagen 4">
@@ -136,7 +135,7 @@
             <div class="informacion-contacto">
                 <p>Dirección: Carrera 27 No.31-32</p>
                 <p>Teléfono: 300 6137041</p>
-                <p>Correo electrónico: info@amu.com</p>
+                <p>Correo electrónico: dianacarolinarodriguezcalle@gmail.com</p>
             </div>
         </div>
     </section>

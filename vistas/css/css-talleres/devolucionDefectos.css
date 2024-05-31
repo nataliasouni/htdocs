@@ -227,6 +227,11 @@
     }
 
 
+    #filterInput{
+        width: 50%;
+        margin-left: 10px;
+    }
+
     .table {
         width: auto;
         display: block;
