@@ -54,6 +54,9 @@
   }
   ?>
 
+  
+
+
   <script src="<?php echo SERVERURL; ?>vistas/js/nav.js"></script>
   <?php include "./vistas/inc/script.php"; ?>
 

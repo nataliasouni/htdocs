@@ -15,28 +15,28 @@
                             <img src="<?php echo SERVERURL; ?>vistas/img/img1.jpg" alt="Primera imagen">
                             <div class="carousel-caption">
                                 <h3>A.M.U(Ayudas Medicas Universales)</h3>
-                                <h4>Mejoramos tu vivir</h4>
+                                <h4>Hacemos más fácil tu vivir</h4>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="<?php echo SERVERURL; ?>vistas/img/img2.jpg" alt="Segunda imagen">
                             <div class="carousel-caption">
                                 <h3>A.M.U(Ayudas Medicas Universales)</h3>
-                                <h4>Mejoramos tu vivir</h4>
+                                <h4>Hacemos más fácil tu vivir</h4>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="<?php echo SERVERURL; ?>vistas/img/img3.jpg" alt="Tercera imagen">
                             <div class="carousel-caption">
                                 <h3>A.M.U(Ayudas Medicas Universales)</h3>
-                                <h4>Mejoramos tu vivir</h4>  
+                                <h4>Hacemos más fácil tu vivir</h4> 
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="<?php echo SERVERURL; ?>vistas/img/img4.jpg" alt="Cuarta imagen">
                             <div class="carousel-caption">
                                 <h3>A.M.U(Ayudas Medicas Universales)</h3>
-                                <h4>Mejoramos tu vivir</h4>
+                                <h4>Hacemos más fácil tu vivir</h4>
                             </div>
                         </div>
                         <!-- Agrega más imágenes aquí -->
