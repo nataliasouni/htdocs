@@ -18,7 +18,7 @@
 
                 <div class="gestionarCliente">
                     <div class="filter-container">
-                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar produccion...">
+                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar registro...">
                     </div>
                     <table id="alertTable" class="table table-striped">
                         <thead>

@@ -42,7 +42,6 @@
                                 <option value="Muebles Hospitalarios">Muebles Hospitalarios</option>
                                 <option value="Línea Respiratoria">Línea Respiratoria</option>
                                 <option value="Colchones y Colchonetas">Colchones y Colchonetas</option>
-                                <option value="Prendas Quirurgicas">Prendas Quirurgicas</option>
                             </select>
                         </div>
                         <div class="form-group">

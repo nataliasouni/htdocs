@@ -54,7 +54,7 @@
   }
   ?>
 
-  
+ 
 
 
   <script src="<?php echo SERVERURL; ?>vistas/js/nav.js"></script>

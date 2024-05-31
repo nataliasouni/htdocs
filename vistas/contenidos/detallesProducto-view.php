@@ -71,7 +71,7 @@ if ($datosProducto->rowCount() == 1) {
                                         value="<?= $campos['Cantidad'] ?>" disabled>
                                 </div>
                                 <div class="form-group">
-                                    <p class="titulos_form">Estado de la cuenta:</p>
+                                    <p class="titulos_form">Estado:</p>
                                     <select name="EstadoUp" class="selectform area" disabled>
                                         <option value="si" <?php if ($campos['Estado'] == "si") {
                                             echo "selected";

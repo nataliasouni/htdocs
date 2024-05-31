@@ -44,7 +44,7 @@ if ($datosEnsamble->rowCount() == 1) {
                                     class="login_password" required>
                             </div>
                             <div class="form-group">
-                                <p class="titulos_form">Estado de la cuenta:</p>
+                                <p class="titulos_form">Estado:</p>
                                 <select name="EstadoUp" class="selectform area" required>
                                     <option value="Si" <?php if ($campos['Estado'] == "Si") {
                                         echo "selected";

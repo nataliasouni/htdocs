@@ -54,7 +54,7 @@ if ($datosPrenda->rowCount() == 1) {
                                     value="<?= $campos['cantidadDisponible'] ?>" required>
                             </div>
                             <div class="form-group">
-                                <p class="titulos_form">Estado de la cuenta:</p>
+                                <p class="titulos_form">Estado:</p>
                                 <select name="EstadoUp" class="selectform area" required>
                                     <option value="si" <?php if ($campos['Estado'] == "si") {
                                         echo "selected";
