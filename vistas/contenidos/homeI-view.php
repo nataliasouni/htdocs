@@ -117,7 +117,7 @@
                     </div>
                 </a>
                 <?php
-                $var = "Línea respiratoria";
+                $var = "Línea Respiratoria";
                 require_once "./controladores/productoControlador.php";
                 $productoControlador = new productoControlador();
                 $cantidadRegistrosP = $productoControlador->cantidadProductosControlador($var);

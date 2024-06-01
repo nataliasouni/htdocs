@@ -25,7 +25,7 @@
                             <tr>
                                 <th>Item</th>
                                 <th>Numero de Alquiler</th>
-                                <th>Nombre del cliente </th>
+                                <th>Nombre del Cliente </th>
                                 <th>Codigo del Producto </th>
                                 <th>Nombre del Producto</th>
                                 <th>Fecha de Entrega</th>

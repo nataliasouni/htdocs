@@ -69,7 +69,6 @@
 
 <script src="<?php echo SERVERURL; ?>vistas/js/producto-script/producto.js"></script>
 
-<script src="<?php echo SERVERURL; ?>vistas/js/producto-script/cancelarBtn.js" type="module"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
