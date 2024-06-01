@@ -182,36 +182,11 @@
     border: none !important; /* Asegurar que no haya bordes en la imagen */
 }
 
-.table {
-    border-collapse: collapse; /* Para fusionar los bordes de las celdas */
-}
 
 
 
-.table th,
-.table td {
-    padding: 12px 20px; /* Añadir un espaciado interno a las celdas */
-    vertical-align: middle; /* Centrar verticalmente el contenido */
-}
-
-.table th {
-    background-color: #f2f2f2;
-}
-
-.table th:nth-child(4),
-.table td:nth-child(4) {
-    width: 150px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
-}
-.table th:nth-child(5),
-.table td:nth-child(5) {
-    width: 150px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
-}
-.table th:nth-child(3),
-.table td:nth-child(3) {
-    width: 80px; /* Ajustar el ancho de la columna "Nombre del trabajador" */
 
 
-}
 
 /* Media queries para ajustar estilos en diferentes tamaños de pantalla */
 @media screen and (max-width: 768px) {
@@ -227,10 +202,6 @@
     }
 
 
-    #filterInput{
-        width: 100%;
-        margin-left: 10px;
-    }
 
     .table {
         width: auto;
@@ -279,20 +250,12 @@
         white-space: normal;
         overflow: hidden;
     }
+    
 
 
 
-    .table-responsive {
-        margin-right: 0;
-        overflow-x: auto; /* Permitir desplazamiento horizontal */
-        width: 400px !important;
-    }
 
-    .filter-container {
-        margin-left: 10px;
-        width: 200px !important;
-        
-    }
+  
 
     .btn-primary {
         margin-top: 10px;
@@ -342,6 +305,7 @@
     .table td:nth-of-type(2):before { content: "Tipo de prenda: "; }
     .table td:nth-of-type(3):before { content: "Total: "; }
 
+
     .table th:nth-child(4),
     .table td:nth-child(4) {
         width: auto; /* Ajustar el ancho de la columna "Nombre del trabajador" */
@@ -353,6 +317,16 @@
     .table th.editar,
     .table td.editar {
         width: auto; /* Ancho fijo para la columna "Opciones" */
+    }
+    .filter-container{
+        width: 45%;
+        margin-left: 10px;
+    }
+
+    .table{
+        width: auto;
+        margin-left: 10px;
+        margin-right: 10px;
     }
     
 }

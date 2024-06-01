@@ -18,18 +18,18 @@
 
                 <div class="gestionarCliente">
                     <div class="filter-container">
-                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar Producto...">
+                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar Alquiler...">
                     </div>
                     <table id="alertTable" class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Item</th>
-                                <th>Numero de Alquiler</th>
+                                <th>Ítem</th>
+                                <th>Número de Alquiler</th>
                                 <th>Nombre del cliente </th>
-                                <th>Codigo del Producto </th>
+                                <th>Código del Producto </th>
                                 <th>Nombre del Producto</th>
                                 <th>Fecha de Entrega</th>
-                                <th>Fecha de Devolucion</th>
+                                <th>Fecha de Devolución</th>
                                 <th>Tiempo Restante</th>
                                 <th>Estado</th>
                                 <th class="editar">Opciones</th>
@@ -61,21 +61,21 @@
 
 <script src="<?php echo SERVERURL; ?>vistas/js/alquiler-script/alquilerProductos.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Obtener todas las filas del cuerpo de la tabla
-    var tableRows = document.querySelectorAll('#alertTable tbody tr');
+    document.addEventListener('DOMContentLoaded', function () {
+        // Obtener todas las filas del cuerpo de la tabla
+        var tableRows = document.querySelectorAll('#alertTable tbody tr');
 
-    tableRows.forEach(function(row) {
-        // Obtener todas las celdas de la fila
-        var cells = row.querySelectorAll('td');
+        tableRows.forEach(function (row) {
+            // Obtener todas las celdas de la fila
+            var cells = row.querySelectorAll('td');
 
-        cells.forEach(function(cell) {
-            // Convertir el contenido de texto de la celda a minúsculas sin afectar el HTML interno
-            cell.innerHTML = cell.innerHTML.split(/(<[^>]*>)/).map(function(part) {
-                return part.startsWith('<') ? part : part.toLowerCase();
-            }).join('');
+            cells.forEach(function (cell) {
+                // Convertir el contenido de texto de la celda a minúsculas sin afectar el HTML interno
+                cell.innerHTML = cell.innerHTML.split(/(<[^>]*>)/).map(function (part) {
+                    return part.startsWith('<') ? part : part.toLowerCase();
+                }).join('');
+            });
         });
     });
-});
 
 </script>

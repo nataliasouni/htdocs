@@ -316,7 +316,7 @@
     }
 
     .table td:nth-of-type(1):before {
-        content: "Item: ";
+        content: "Ítem: ";
     }
 
     .table td:nth-of-type(2):before {
@@ -328,7 +328,7 @@
     }
 
     .table td:nth-of-type(4):before {
-        content: "Codigo del Producto: ";
+        content: "Código del Producto: ";
     }
 
     .table td:nth-of-type(5):before {
@@ -341,7 +341,7 @@
     }
 
     .table td:nth-of-type(7):before {
-        content: "Fecha de Devolucion: ";
+        content: "Fecha de Devolución: ";
     }
 
     .table td:nth-of-type(8):before {

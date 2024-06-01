@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-alquiler/alquiler.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/css-alquiler/productosAlquiler.css">
 <main class="full-box main-container">
     <!-- Incluir la barra lateral -->
     <?php include "./vistas/inc/NavLateral.php"; ?>
@@ -23,13 +23,13 @@
                     <table id="alertTable" class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Item</th>
-                                <th>Codigo</th>
+                                <th>Ítem</th>
+                                <th>Código</th>
                                 <th>Nombre del Producto</th>
                                 <th>Detalles</th>
-                                <th>Alquiler 15 Dias</th>
-                                <th>Alquiler 30 Dias</th>
-                                <th>Deposito</th>
+                                <th>Alquiler 15 Días</th>
+                                <th>Alquiler 30 Días</th>
+                                <th>Depósito</th>
                                 <th class="editar">Opciones</th>
 
                             </tr>

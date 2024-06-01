@@ -28,12 +28,12 @@
 
                 <div class="gestionarCliente">
                     <div class="filter-container">
-                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar registro...">
+                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar ensamble...">
                     </div>
                     <table id="alertTable" class="table table-striped">
                         <thead>
                             <tr>
-                                    <th>Orden de produccion</th>
+                                    <th>Orden de producción</th>
                                     <th>Contenido del ensamble</th>
                                     <th>Cantidad(PE)</th>
                                     <th>Prendas cortadas</th>

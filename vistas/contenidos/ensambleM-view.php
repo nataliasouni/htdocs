@@ -19,13 +19,13 @@
 
                 <div class="gestionarCliente">
                     <div class="filter-container">
-                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar usuario...">
+                        <input type="text" class="form-control" id="filterInput" placeholder="Buscar ensamble...">
                     </div>
                     <div class="table-responsive">
                         <table id="alertTable" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Item</th>
+                                    <th>Ítem</th>
                                     <th>Orden de producción</th>
                                     <th>Cantidad por producción</th>
                                     <th>Estado</th>
