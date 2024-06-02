@@ -272,7 +272,9 @@
     }
 
     .table {
-        width: 400px;
+        width: auto;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .filter-container {
@@ -283,6 +285,10 @@
 
     .btn-primary {
         margin-top: 10px;
+    }
+    .filter-container{
+        margin-left: 15px;
+        width: 40%;
     }
 
 }
@@ -311,9 +317,7 @@
         display: block;
     }
 
-    .table {
-        text-align: left !important;
-    }
+
     
     .table-responsive thead tr {
         position: absolute;
