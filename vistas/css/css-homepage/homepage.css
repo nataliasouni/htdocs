@@ -250,7 +250,7 @@ body {
 }
 
 
-#imagen1{
+#imagen1 {
 
     margin-top: 5px;
     margin-left: 0px;
@@ -513,10 +513,11 @@ body {
 .informacion-contacto p {
     margin-bottom: 10px;
 }
+
 /* Estilo inicial: Ocultar la imagen en dispositivos grandes */
 .fonoaudiologa-img {
     display: none;
-    margin:  0;
+    margin: 0;
 }
 
 
@@ -525,10 +526,12 @@ body {
     .banner {
         padding: 50px 20px;
     }
+
     .fonoaudiologa-img2 {
         display: none;
         margin: 0;
     }
+
     .container-servicios {
         flex-direction: column;
     }
@@ -537,6 +540,7 @@ body {
         order: 0;
         margin-top: 20px;
     }
+
     .cta {
         order: 4;
     }
@@ -544,6 +548,7 @@ body {
     .paragraph-2 {
         order: 2;
     }
+
     .gallery {
         order: 3;
         display: grid;
@@ -553,7 +558,7 @@ body {
     }
 
 
-    .imagen1{
+    .imagen1 {
 
         margin-top: 5px;
         margin-left: 0px;
@@ -576,6 +581,7 @@ body {
     .container-servicios {
         flex-direction: column;
     }
+
     .servicios-info {
         margin-left: 0%;
         max-width: 100%;
@@ -584,10 +590,11 @@ body {
     .categoria {
         max-width: auto;
     }
+
     .fonoaudiologa-img {
         display: block;
     }
-    
+
     .servicios-info p:nth-of-type(2) {
         margin-bottom: 0;
     }
@@ -618,3 +625,4 @@ body {
         font-size: 14px;
     }
 }
+

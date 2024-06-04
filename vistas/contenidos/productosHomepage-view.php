@@ -14,7 +14,8 @@
             ?>
         </div>
     </section>
-
+    
+    <?php include "./vistas/inc/botonsubir.php"; ?>
 </main>
 
 <?php include "./vistas/inc/footerHome.php"; ?>
