@@ -22,9 +22,10 @@
                 $var = "Movilidad y Recuperación";
                 ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo1.png" alt="Categoría 1">
-                <p>Ofrecemos una gama completa de ayudas para la movilidad y la recuperación en venta, alquiler, mantenimiento y reparación. 
-                    Desde camas hospitalarias, sillas de ruedas y muletas, hasta nebulizadores y extractores de 
-                    leche materna, cubrimos todas tus necesidades de cuidado y rehabilitación. 
+                <p>Ofrecemos una gama completa de ayudas para la movilidad y la recuperación en venta, alquiler,
+                    mantenimiento y reparación.
+                    Desde camas hospitalarias, sillas de ruedas y muletas, hasta nebulizadores y extractores de
+                    leche materna, cubrimos todas tus necesidades de cuidado y rehabilitación.
                     ¡Contáctanos para encontrar la solución perfecta para ti!</p>
                 <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
@@ -33,8 +34,10 @@
                 $var = "Muebles Hospitalarios";
                 ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo2.png" alt="Categoría 2">
-                <p>Descubre nuestra línea de muebles hospitalarios, diseñados para garantizar calidad y funcionalidad en entornos médicos. 
-                    Desde camillas y camas de levante, hasta mesas especializadas y botiquines de primeros auxilios, equipa tu centro médico con lo mejor.</p>
+                <p>Descubre nuestra línea de muebles hospitalarios, diseñados para garantizar calidad y funcionalidad en
+                    entornos médicos.
+                    Desde camillas y camas de levante, hasta mesas especializadas y botiquines de primeros auxilios,
+                    equipa tu centro médico con lo mejor.</p>
                 <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
             <div class="categoria">
@@ -42,8 +45,10 @@
                 $var = "Línea Respiratoria";
                 ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/respiratoria.jpg" alt="Categoría 3">
-                <p>Explora nuestra línea respiratoria, dedicada a mejorar la calidad de vida de nuestros clientes. Desde nebulizadores hasta oxígeno, 
-                    ofrecemos una amplia gama de productos diseñados para facilitar la respiración y promover la salud pulmonar. Confía en nosotros para 
+                <p>Explora nuestra línea respiratoria, dedicada a mejorar la calidad de vida de nuestros clientes. Desde
+                    nebulizadores hasta oxígeno,
+                    ofrecemos una amplia gama de productos diseñados para facilitar la respiración y promover la salud
+                    pulmonar. Confía en nosotros para
                     encontrar las soluciones que necesitas para cuidar de tu salud respiratoria.</p>
                 <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
@@ -52,9 +57,12 @@
                 $var = "Colchones y Colchonetas";
                 ?>
                 <img src="<?php echo SERVERURL; ?>vistas/img/imgCatalogo4.png" alt="Categoría 4">
-                <p>Descubre nuestra selección de colchones y ropa de cama hospitalaria, diseñados para ofrecer confort y cuidado. 
-                    Desde almohadas hasta colchones clínicos y antiescaras, así como protectores para colchones y almohadas. Además, 
-                    disponemos de juegos de sábanas y toallas para cuerpo y manos, garantizando un entorno cómodo y acogedor. ¡Haz de tu espacio médico un lugar de descanso y bienestar!
+                <p>Descubre nuestra selección de colchones y ropa de cama hospitalaria, diseñados para ofrecer confort y
+                    cuidado.
+                    Desde almohadas hasta colchones clínicos y antiescaras, así como protectores para colchones y
+                    almohadas. Además,
+                    disponemos de juegos de sábanas y toallas para cuerpo y manos, garantizando un entorno cómodo y
+                    acogedor. ¡Haz de tu espacio médico un lugar de descanso y bienestar!
                 </p>
                 <a href="<?= SERVERURL; ?>productosHomepageCategorias?variable=<?php echo $var; ?>">Ver más</a>
             </div>
@@ -139,7 +147,7 @@
             </div>
         </div>
     </section>
-
+    <?php include "./vistas/inc/botonsubir.php"; ?>
 </main>
 
 <?php include "./vistas/inc/footerHome.php"; ?>

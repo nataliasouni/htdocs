@@ -213,7 +213,7 @@
         <?php } ?>
         <?php if ($_SESSION['permiso'] == "Administrador" || $_SESSION['permiso'] == "Master") { ?>
             <li>
-                <a href="alquilerProductos">
+                <a href="<?= SERVERURL; ?>alquilerProductos">
                     <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/alquiler.png" alt="Menu Image">
                     Alquiler Productos
                 </a>
@@ -221,7 +221,7 @@
         <?php } ?>
         <?php if ($_SESSION['permiso'] == "Administrador" || $_SESSION['permiso'] == "Master") { ?>
             <li>
-                <a href="homeAlquileres">
+                <a href="<?= SERVERURL; ?>homeAlquileres">
                     <img class="menu-image" src="<?php echo SERVERURL; ?>vistas/img/control.png" alt="Menu Image">
                     Control de Alquileres
                 </a>
