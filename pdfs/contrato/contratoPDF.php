@@ -205,7 +205,7 @@ if (isset($_POST['fechaEntrega']) && isset($_POST['fechaDevolucion']) && isset($
             identificado con documento de identidad 6386949 de PALMIRA, adelante se denomina como ARRENDADOR. Y
             <?= $nombreCliente ?> identificado(a) con C.C. o NIT. N°. <?= $cedulaCliente ?> y
             representado legalmente por el señor(a) <?= $nombreCliente ?> con cédula de ciudadanía N° <?= $cedulaCliente ?>
-            de CIUDAD y quien en el presente contrato se denominará el
+            de Palmira y quien en el presente contrato se denominará el
             ARRENDATARIO, hemos celebrado el siguiente contrato de arrendamiento; PRIMERO: a partir de hoy
             <?= $fechaEntrega ?> el ARRENDADOR hace entrega real y material a el ARRENDATARIO
             de los siguientes artículos: <?= $nombreProducto ?>; SEGUNDO: el término del contrato será pasado el periodo
