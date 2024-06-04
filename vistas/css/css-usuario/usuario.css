@@ -191,7 +191,7 @@
 
 .table th:nth-child(3),
 .table td:nth-child(3) {
-    width: 550px; /* Ancho de la columna "Nombre de usuario" */
+    width: 160px; /* Ancho de la columna "Nombre de usuario" */
 }
 .table th.editar,
 .table td.editar {

@@ -40,6 +40,7 @@
 .productos-container {
     overflow-x: auto; /* Permite el desplazamiento horizontal */
     scroll-behavior: smooth; /* Suaviza el desplazamiento */
+    
 }
 
 .productos-destacados .btn-prev,
