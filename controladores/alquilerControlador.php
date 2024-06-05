@@ -495,10 +495,10 @@ class alquilerControlador extends alquilerModelo
         if ($ActualizarProducto->rowCount() == 1) {
             $alerta = array(
                 "Alerta" => "redireccionarUser",
-                "Titulo" => "Usuario actualizado",
-                "Texto" => "Se ha completado la actualizacion de datos del producto.",
+                "Titulo" => "Alquiler actualizado",
+                "Texto" => "Se ha completado la actualizacion del alquiler.",
                 "Tipo" => "success",
-                "Url" => SERVERURL . "controlAlquileres"
+                "Url" => SERVERURL . "homeAlquileres"
             );
             echo json_encode($alerta);
             exit();
@@ -506,7 +506,7 @@ class alquilerControlador extends alquilerModelo
             $alerta = array(
                 "Alerta" => "simple",
                 "Titulo" => "Ocurrió un error inesperado",
-                "Texto" => "No se ha podido completar la actualización de los datos del producto.",
+                "Texto" => "No se ha podido completar la actualización del alquiler.",
                 "Tipo" => "error"
             );
             echo json_encode($alerta);
