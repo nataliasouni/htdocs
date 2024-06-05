@@ -64,7 +64,7 @@ public function cantidadInsumosTallerModelo() {
 
     public function cantidadAlertas() {
         // Conectar a la base de datos y preparar la primera consulta
-        $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM productos WHERE cantidad <= 5");
+        $sql = mainModel::conectarBD()->prepare("SELECT COUNT(*) AS total FROM productos WHERE cantidad <= 2");
 
         // Ejecutar la primera consulta
         $sql->execute();

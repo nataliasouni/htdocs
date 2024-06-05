@@ -66,10 +66,8 @@
                         </a>
                     </li>
                     <li>
-                        <?php
-                        $var = "Prendas Quirurgicas";
-                        ?>
-                        <a data-categoria="movilidad" href="<?= SERVERURL; ?>productos?variable=<?php echo $var; ?>">
+                        
+                        <a data-categoria="movilidad" href="<?= SERVERURL; ?>prendasQuirurgicasI">
                             <img class="submenu-image" src="./vistas/img/prendas.png" alt="Submenu Image">
                             Prendas quirurgicas
                         </a>

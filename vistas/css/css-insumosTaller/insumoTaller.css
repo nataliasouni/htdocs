@@ -106,6 +106,10 @@ label{
     font-weight: 300;
 }
 
+#titulo{
+    color:#0053A9;
+}
+
 /* Media queries para hacer el diseño más responsive */
 @media screen and (max-width: 768px) {
 

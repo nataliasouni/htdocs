@@ -83,6 +83,19 @@ class usuarioControlador extends usuarioModelo
       exit();
     }
 
+    $checkUser = mainModel::consultaSimple("SELECT telefono FROM usuario WHERE telefono = '$telefono'");
+
+    if ($checkUser->rowCount() > 0) {
+      $alerta = array(
+        "Alerta" => "simple",
+        "Titulo" => "Ocurrió un error inesperado",
+        "Texto" => "El teléfono no se encuentra disponible.",
+        "Tipo" => "error"
+      );
+      echo json_encode($alerta);
+      exit();
+    }
+
     //Comprobar email
     if ($email != "") {
       if (filter_var($email, FILTER_VALIDATE_EMAIL)) {

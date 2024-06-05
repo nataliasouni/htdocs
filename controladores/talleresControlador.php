@@ -389,7 +389,8 @@ class talleresControlador extends talleresModelo
     {
         $idEnsamble = mainModel::limpiarCadena($idEnsamble);
 
-        $consulta = "SELECT SQL_CALC_FOUND_ROWS pe2.producto_id, pe.Nombre, pe2.cantidad
+        $consulta = "SELECT SQL_CALC_FOUND_ROWS pe2.producto_id, pe.Nombre, pe2.cantidad, 
+                pe2.Pendiente
                  FROM producto_ensamble pe2
                  JOIN ensamble e ON e.OrdenProdccion = pe2.ensamble_id
                  JOIN productose pe ON pe.Id = pe2.producto_id
@@ -405,6 +406,7 @@ class talleresControlador extends talleresModelo
 
         if ($total >= 1) {
             foreach ($datos as $rows) {
+                if ($rows['Pendiente'] == 'No') {
                 // Filas
                 $tabla .= '<tr>
                 <td name="IdProducto">' . htmlspecialchars($rows['producto_id']) . '</td>
@@ -413,6 +415,7 @@ class talleresControlador extends talleresModelo
                 <td><input type="number" name="cantidadProducto[]" class="cantidadProducto" required></td>
             </tr>';
             }
+        }
         } else {
             $tabla .= '<tr><td colspan="10">No hay registros en el sistema</td></tr>';
         }

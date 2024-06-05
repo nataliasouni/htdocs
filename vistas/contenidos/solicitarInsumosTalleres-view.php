@@ -14,14 +14,14 @@
     <section class="full-box page-content">
     <div class="page-content">
         <div class="choose-option">
-            <h2>Solicitar insumos</h2>
+            <h2 id="titulo">Solicitar insumos</h2>
             <div class="page-content">
                 <div class="containerCompleto">
                     <div class="centrados">
                         <form action="" method="POST"> <!-- Formulario -->
                             <div class="input-button-container">
                                 <label class="titulos" id="pr">Ingrese los materiales que desea solicitar a AMU:</label>
-                                <textarea name="insumosTalleres" id="insumosTalleres" placeholder="Ejemplo: Agujas(10), Velcro(10)..." required></textarea>
+                                <textarea name="insumosTalleres" id="insumosTalleres" placeholder="Ejemplo: Hilo(10), Velcro(10)..." required></textarea>
                                 <input type="hidden" name="cedula" value="<?php echo $_SESSION['cedula']; ?>">
                             </div>
                             <button id="ingresarP" type="submit">Enviar</button>
